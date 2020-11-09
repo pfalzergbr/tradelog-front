@@ -37,7 +37,10 @@ const App = (props) => {
                 <Route path='/user/login'>
                     <Login />
                 </Route>
-                <Route path='/user/profile'>
+                <Route path='/:userId/dashboard'>
+                    <Dashboard />
+                </Route>
+                <Route path='/:userId/profile'>
                     <Profile />
                 </Route>
                 <Route path='/:userId/accounts'>
@@ -45,9 +48,6 @@ const App = (props) => {
                 </Route>
                 <Route path='/:userId/Strategies'>
                     <Strategies />
-                </Route>
-                <Route path='/:userId/dashboard'>
-                    <Dashboard />
                 </Route>
                 <Route path='/:userId/performance'>
                     <Performance />
