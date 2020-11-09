@@ -12,6 +12,7 @@ import Register from './Pages/Register';
 import Profile from './Pages/Profile';
 import Accounts from './Pages/Accounts';
 import Strategies from './Pages/Strategies';
+import NewTrade from './Pages/NewTrade'
 
 const userId = `1`;
 const routes = [
@@ -54,6 +55,9 @@ const App = (props) => {
                 </Route>
                 <Route path='/:userId/trades'>
                     <Trades />
+                </Route>
+                <Route path='/:userId/newTrade'>
+                    <NewTrade />
                 </Route>
                 <Route path='/trade/:tradeId'>
                     <TradeDetails />
