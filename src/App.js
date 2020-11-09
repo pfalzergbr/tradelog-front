@@ -7,6 +7,11 @@ import Performance from './Pages/Performance';
 import Trades from './Pages/Trades';
 import Landing from './Pages/Landing';
 import TradeDetails from './Pages/TradeDetails';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import Profile from './Pages/Profile';
+import Accounts from './Pages/Accounts';
+import Strategies from './Pages/Strategies';
 
 const userId = `1`;
 const routes = [
@@ -26,8 +31,20 @@ const App = (props) => {
             <Nav data={routes} />
 
             <Switch>
-                <Route exact path='/'>
-                    <Landing />
+                <Route path='/user/register'>
+                    <Register />
+                </Route>
+                <Route path='/user/login'>
+                    <Login />
+                </Route>
+                <Route path='/user/profile'>
+                    <Profile />
+                </Route>
+                <Route path='/:userId/accounts'>
+                    <Accounts />
+                </Route>
+                <Route path='/:userId/Strategies'>
+                    <Strategies />
                 </Route>
                 <Route path='/:userId/dashboard'>
                     <Dashboard />
@@ -40,6 +57,9 @@ const App = (props) => {
                 </Route>
                 <Route path='/trade/:tradeId'>
                     <TradeDetails />
+                </Route>
+                <Route exact path='/'>
+                    <Landing />
                 </Route>
             </Switch>
         </div>
