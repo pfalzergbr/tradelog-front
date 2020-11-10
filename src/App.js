@@ -22,15 +22,12 @@ const userId = `1`;
 const publicLinks = [
     { to: '/', name: 'Home' },
     { to: '/user/login', name: 'Log In' },
-    { to: '/user/register', name: 'Register'},
+    { to: '/user/register', name: 'Register' },
 ];
 
 const authLinks = [
     { to: `/${userId}/dashboard`, name: 'Dashboard' },
-    {
-        to: `/${userId}/profile`,
-        name: 'Profile',
-    },
+    { to: `/${userId}/profile`, name: 'Profile' },
     { to: `/${userId}/trades`, name: 'Trades' },
     { to: `/${userId}/newTrade`, name: 'New Trade' },
 ];
@@ -86,7 +83,6 @@ const App = (props) => {
         <div>
             <Nav data={isAuth ? authLinks : publicLinks} />
             {isAuth ? authRoutes : publicRoutes}
-            
         </div>
     );
 };
