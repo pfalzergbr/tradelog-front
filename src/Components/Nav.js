@@ -7,7 +7,7 @@ const Nav = (props) => {
     return (
         <div>
             {links.map((link) => (
-                <Link exact to={link.to}>
+                <Link key={link.to} exact to={link.to}>
                     {link.name}
                 </Link>
             ))}

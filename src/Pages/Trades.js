@@ -18,7 +18,7 @@ const Trades = (props) => {
         <div>
             <h1>Trades of {userId}</h1>
             {trades.map((trade) => (
-                <Link to={`/trade/${trade._id}`}><TradeItem data={trade}/></Link>
+                <Link key={trade._id} to={`/trade/${trade._id}`}><TradeItem data={trade}/></Link>
             ))}
             <button onClick={addTrade}> + </button>
         </div>

@@ -17,6 +17,7 @@ const TradeDetails = (props) => {
             <span>{amount}</span>
             <p>{date}</p>
             <p>{description}</p>
+            <button>Edit</button>
         </div>
     );
 };

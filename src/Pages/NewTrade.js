@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 
 const NewTrade = (props) => {
+    const [isBasic, setIsBasic] = useState(true)
     const {register, handleSubmit, watch, errors} = useForm();
     const { userId }  = useParams();
     const history = useHistory();
@@ -17,7 +18,7 @@ const NewTrade = (props) => {
         <div>
             <h1>New Trade</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label>Symbol</label>
+                <label htmlFor="symbol">Symbol</label>
                 <input name='symbol' ref={register} />
                 <button type="submit">New Trade</button>
             </form>
