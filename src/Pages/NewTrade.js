@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 
 const NewTrade = (props) => {
+    //TODO: Basic form, or extended?
     const [isBasic, setIsBasic] = useState(true)
     const {register, handleSubmit, watch, errors} = useForm();
     const { userId }  = useParams();
