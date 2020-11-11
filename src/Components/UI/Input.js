@@ -1,12 +1,14 @@
 import React from 'react';
 
-const Input = ({ name, label, ref, message }) => {
+const Input = (props) => {
+    const { name, label, ref, message, onBlur } = props
+    console.log(props)
     return (
-        <div>
+        <React.Fragment>
             <label htmlFor={name}>{label}</label>
-            <input name={name} ref={ref} />
+            <input name={name} ref={ref} onBlur={onBlur}/>
             {message && <p style={{ color: 'red' }}>{message}</p>}
-        </div>
+        </React.Fragment>
     );
 };
 
