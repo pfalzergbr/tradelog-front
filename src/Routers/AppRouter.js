@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { MainContextProvider, AuthContext } from '../Context/MainContext'
+import { AuthContext } from '../Context/MainContext';
 import Nav from '../Components/Nav';
 import Dashboard from '../Pages/Dashboard';
 import Performance from '../Pages/Performance';
@@ -16,24 +16,24 @@ import Strategies from '../Pages/Strategies';
 import NewTrade from '../Pages/NewTrade';
 import NotFound from '../Pages/NotFound';
 
+import DummyLogin from '../dummyData/dummyLogin';
 
 const App = (props) => {
-    const {isAuth, userId}= useContext(AuthContext)
-   
+    const { isAuth, userId, login, logout } = useContext(AuthContext);
 
     const publicLinks = [
         { to: '/', name: 'Home' },
         { to: '/user/login', name: 'Log In' },
         { to: '/user/register', name: 'Register' },
     ];
-    
+
     const authLinks = [
         { to: `/${userId}/dashboard`, name: 'Dashboard' },
         { to: `/${userId}/profile`, name: 'Profile' },
         { to: `/${userId}/trades`, name: 'Trades' },
         { to: `/${userId}/newTrade`, name: 'New Trade' },
     ];
-    
+
     const publicRoutes = (
         <Switch>
             <Route exact path='/'>
@@ -45,9 +45,12 @@ const App = (props) => {
             <Route path='/user/login'>
                 <Login />
             </Route>
+            <Route>
+                <NotFound />
+            </Route>
         </Switch>
     );
-    
+
     const authRoutes = (
         <Switch>
             <Route exact path='/'>
@@ -77,16 +80,18 @@ const App = (props) => {
             <Route path='/trade/:tradeId'>
                 <TradeDetails />
             </Route>
+            <Route>
+                <NotFound />
+            </Route>
         </Switch>
     );
 
-
-
     return (
-        <MainContextProvider>
+        <React.Fragment>
             <Nav data={isAuth ? authLinks : publicLinks} />
             {isAuth ? authRoutes : publicRoutes}
-        </MainContextProvider>
+            <DummyLogin login={login} logout={logout} />
+        </React.Fragment>
     );
 };
 

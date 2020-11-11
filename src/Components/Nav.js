@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../Context/MainContext';
 
 const Nav = (props) => {
     const links = props.data;
+    const { isAuth, userId, login, logout } = useContext(AuthContext);
+
 
     return (
         <div>
@@ -11,6 +15,7 @@ const Nav = (props) => {
                     {link.name}
                 </Link>
             ))}
+
         </div>
     );
 };
