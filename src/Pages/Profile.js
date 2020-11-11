@@ -10,21 +10,21 @@ const Profile = (props) => {
 
 
 
-    const handleClick = async () => {
-        try {
-            const data = await sendRequest(
-                'http://localhost:5000/api/places/user/5fabb7b2a9e436412c6443a7',
-            );
+    // const handleClick = async () => {
+    //     try {
+    //         const data = await sendRequest(
+    //             'http://localhost:5000/api/places/user/5fabb7b2a9e436412c6443a7',
+    //         );
            
-        } catch (err) {}
+    //     } catch (err) {}
 
-        };
+    //     };
 
 
     return (
         <div>
             Profile! Id: {userId}
-            <button onClick={handleClick}>Try request!</button>
+
         </div>
     );
 };
