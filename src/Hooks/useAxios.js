@@ -9,7 +9,7 @@ export const useAxios = () => {
     //Starting an axios Http request with the parameters provided.
     //TODO: Implement Cancel tokens.
     const sendRequest = useCallback(
-        async (url, method = 'get', data, headers = {}) => {
+        async (url, method = 'GET', data, headers = {}) => {
             setIsLoading(true);
 
             try {

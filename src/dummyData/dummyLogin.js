@@ -6,7 +6,7 @@ const DummyLogin = (props) => {
 
 
         const dummyLogin = () => {
-            props.login(1);
+            props.login(1, 'token');
         };
     
 

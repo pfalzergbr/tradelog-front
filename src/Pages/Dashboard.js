@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link, useParams } from 'react-router-dom';
+
+import {AuthContext} from '../Context/MainContext';
 
 
 const Dashboard = (props) => {
+    const auth = useContext(AuthContext);
     const { userId } = useParams();
 
     return (
         <div>
             <h1>Dashboard!!</h1>
-            <h2>{userId}</h2>
+            <h2>Welcome, {auth.user.userName}</h2>
+            <p>Ready for trading?</p>
 
             <Link to={`/${userId}/profile`}>Profile</Link>
             <Link to={`/${userId}/accounts`}>Accounts</Link>

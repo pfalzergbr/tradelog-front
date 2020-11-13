@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { AuthContext } from '../Context/MainContext' 
+import { useAxios } from '../Hooks/useAxios'
 import ErrorMessage from '../Components/UI/ErrorMessage'
 
 const registerSchema = yup.object().shape({
@@ -25,21 +27,29 @@ const registerSchema = yup.object().shape({
 });
 
 const Register = (props) => {
-    const { register, handleSubmit, watch, errors, formState } = useForm({
+    const auth = useContext(AuthContext);
+    const { isLoading, sendRequest } = useAxios();
+    const { register, handleSubmit, watch, errors } = useForm({
         resolver: yupResolver(registerSchema),
         mode: 'onTouched',
     });
-    const { isValid } = formState
+    
     const history = useHistory();
 
 
-    
-    const onSubmit = (data) => {
-        console.log(data);
-        history.push('/');
+    //Submits a POST request for /api/user/register, returns a token and a user ID for auth context. 
+    const onSubmit = async (data) => {
+
+        try {
+            const response = await sendRequest('http://localhost:3000/api/user/', 'POST', JSON.stringify(data), {'Content-Type': 'application/json'})
+            auth.login(response.data.user, response.data.token)
+            console.log(response.data)
+            history.push(`/${response.data.user.userId}/dashboard`);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
-    console.log(errors);
     return (
         <div>
             <h1>Create Account</h1>
@@ -56,7 +66,7 @@ const Register = (props) => {
                 <label htmlFor='verify'>Confirm Password</label>
                 <input type="password" name='verify' ref={register} />
                 { errors.verify && <ErrorMessage message={errors.verify.message} /> }
-                <button type='submit'>Log in</button>
+                <button type='submit'>Register</button>
                 <Link to={'/user/login'}>
                     Already have an account? Log in here.
                 </Link>

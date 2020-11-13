@@ -1,6 +1,7 @@
 {
   "name": "tradelog-front",
   "version": "1.0.0",
+  "proxy": "http://localhost:3000",
   "description": "Frontend for TradeLog App, an application to track your profits and losses.",
   "main": "index.js",
   "scripts": {

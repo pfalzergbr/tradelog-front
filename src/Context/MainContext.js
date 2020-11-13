@@ -7,25 +7,27 @@ export const AuthContext = createContext();
 
 export const MainContextProvider = (props) => {
     const [currentTrades , dispatchCurrentTrades] = useReducer(tradeReducer, []);
-    const [isAuth, setIsAuth] = useState(false); 
-    const [userId, setUserId] = useState(null)
+    const [token, setToken] = useState(false); 
+    const [user, setUser] = useState(null)
 
     const dispatch = useCallback((action) => {
         dispatchCurrentTrades(action)
     })
 
-    const login = useCallback((userId) => {
-        setIsAuth(true);
-        setUserId(userId);
+    const login = useCallback((user, token) => {
+        setToken(token);
+        setUser(user);
+        console.log('Auth set', token, user)
     })
 
     const logout = useCallback(() => {
-        setIsAuth(false);
+        setToken(null);
+        setUser(null)
     })
 
     return ( 
         <CurrentTradesContext.Provider value={{currentTrades, dispatch}}>
-            <AuthContext.Provider  value={{isAuth, userId, login, logout}}>
+            <AuthContext.Provider  value={{isAuth:!!token, token, user, login, logout}}>
                     {props.children}
             </AuthContext.Provider>
         </CurrentTradesContext.Provider> 
