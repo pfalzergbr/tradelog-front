@@ -19,7 +19,7 @@ import NotFound from '../Pages/NotFound';
 import DummyLogin from '../dummyData/dummyLogin';
 
 const App = (props) => {
-    const { isAuth, userId, login, logout } = useContext(AuthContext);
+    const { isAuth, user, login, logout } = useContext(AuthContext);
 
     const publicLinks = [
         { to: '/', name: 'Home' },
@@ -28,10 +28,10 @@ const App = (props) => {
     ];
 
     const authLinks = [
-        { to: `/${userId}/dashboard`, name: 'Dashboard' },
-        { to: `/${userId}/profile`, name: 'Profile' },
-        { to: `/${userId}/trades`, name: 'Trades' },
-        { to: `/${userId}/newTrade`, name: 'New Trade' },
+        { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
+        { to: `/${user && user.userId}/profile`, name: 'Profile' },
+        { to: `/${user && user.userId}/trades`, name: 'Trades' },
+        { to: `/${user && user.userId}/newTrade`, name: 'New Trade' },
     ];
 
     const publicRoutes = (
@@ -88,9 +88,8 @@ const App = (props) => {
 
     return (
         <React.Fragment>
-            <Nav data={isAuth ? authLinks : publicLinks} />
+            <Nav data={isAuth ? authLinks : publicLinks} user={user}/>
             {isAuth ? authRoutes : publicRoutes}
-            <DummyLogin login={login} logout={logout} />
         </React.Fragment>
     );
 };

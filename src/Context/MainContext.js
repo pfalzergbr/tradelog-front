@@ -22,7 +22,6 @@ export const MainContextProvider = (props) => {
         setToken(token);
         setUser(user);
         localStorage.setItem('userData', JSON.stringify({user, token}))
-        console.log('Auth set', token, user)
     }, [])
 
     // Handle logout. Clears tokens, user data and local storage. 

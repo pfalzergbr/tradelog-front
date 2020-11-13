@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../Context/MainContext';
 
 const Nav = (props) => {
     const links = props.data;
-    const { isAuth, userId, login, logout } = useContext(AuthContext);
-
 
     return (
         <div>
@@ -14,8 +11,8 @@ const Nav = (props) => {
                 <Link key={link.to} exact to={link.to}>
                     {link.name}
                 </Link>
-            ))}
-
+                ))}
+            <span>Welcome, {props.user && props.user.userName}</span>
         </div>
     );
 };
