@@ -33,7 +33,7 @@ export const MainContextProvider = (props) => {
         localStorage.removeItem('userData');
         history.push('/')
     }, [])
-
+    //Checking local storage on login for Token data, logs in if finds one. 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'))
         if (userData && userData.user &&userData.token){

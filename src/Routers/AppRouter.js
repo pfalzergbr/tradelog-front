@@ -32,7 +32,6 @@ const App = (props) => {
         { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
         { to: `/${user && user.userId}/profile`, name: 'Profile' },
         { to: `/${user && user.userId}/trades`, name: 'Trades' },
-        { to: `/${user && user.userId}/newTrade`, name: 'New Trade' },
     ];
 
     //Routes to display if there is no logged in user.
@@ -76,9 +75,6 @@ const App = (props) => {
             </Route>
             <Route path='/:userId/trades'>
                 <Trades />
-            </Route>
-            <Route path='/:userId/newTrade'>
-                <NewTrade />
             </Route>
             <Route path='/trade/:tradeId'>
                 <TradeDetails />

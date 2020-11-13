@@ -23,13 +23,14 @@ const registerSchema = yup.object().shape({
 
 const Register = (props) => {
     const auth = useContext(AuthContext);
+    const history = useHistory();
     const { isLoading, sendRequest } = useAxios();
     const { register, handleSubmit, watch, errors } = useForm({
         resolver: yupResolver(registerSchema),
         mode: 'onTouched',
     });
 
-    const history = useHistory();
+
 
     //Submits a POST request for /api/user/register, returns a token and a user ID for auth context.
     const onSubmit = async (data) => {
@@ -41,7 +42,6 @@ const Register = (props) => {
                 { 'Content-Type': 'application/json' },
             );
             auth.login(response.data.user, response.data.token);
-            console.log(response.data);
             history.push(`/${response.data.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);

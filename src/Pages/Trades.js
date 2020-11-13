@@ -11,7 +11,7 @@ const Trades = (props) => {
     const trades = dummyTrades.filter(trade => trade.userId === userId);
 
     const addTrade = () => {
-        history.push(`/${userId}/newTrade`)
+        
     }
 
     return (
