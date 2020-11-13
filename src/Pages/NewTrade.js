@@ -58,9 +58,9 @@ const NewTrade = (props) => {
                 )}
                 <label htmlFor='outcome'>Outcome</label>
                 <select name='outcome' ref={register}>
-                    <option value='BE'>Breakeven</option>
+                    <option value='breakeven'>Breakeven</option>
                     <option value='profit'>Profit</option>
-                    <option value='BE'>Loss</option>
+                    <option value='loss'>Loss</option>
                 </select>
                 <label htmlFor='bias'>Bias</label>
                 <select name='bias' ref={register}>
