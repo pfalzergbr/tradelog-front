@@ -16,17 +16,18 @@ import Strategies from '../Pages/Strategies';
 import NewTrade from '../Pages/NewTrade';
 import NotFound from '../Pages/NotFound';
 
-import DummyLogin from '../dummyData/dummyLogin';
 
 const App = (props) => {
-    const { isAuth, user, login, logout } = useContext(AuthContext);
+    const { token, user } = useContext(AuthContext);
 
+    //Links to display if there is no logged in user. Feeds into the Navbar components as props
     const publicLinks = [
         { to: '/', name: 'Home' },
         { to: '/user/login', name: 'Log In' },
         { to: '/user/register', name: 'Register' },
     ];
 
+    //Links to display if the user is logged in. Feeds into the Navbar components as props
     const authLinks = [
         { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
         { to: `/${user && user.userId}/profile`, name: 'Profile' },
@@ -34,6 +35,7 @@ const App = (props) => {
         { to: `/${user && user.userId}/newTrade`, name: 'New Trade' },
     ];
 
+    //Routes to display if there is no logged in user.
     const publicRoutes = (
         <Switch>
             <Route exact path='/'>
@@ -51,6 +53,7 @@ const App = (props) => {
         </Switch>
     );
 
+    //Routes if there is a user logged in. 
     const authRoutes = (
         <Switch>
             <Route exact path='/'>
@@ -88,8 +91,8 @@ const App = (props) => {
 
     return (
         <React.Fragment>
-            <Nav data={isAuth ? authLinks : publicLinks} user={user}/>
-            {isAuth ? authRoutes : publicRoutes}
+            <Nav data={ token && user ? authLinks : publicLinks} user={user}/>
+            {token && user ? authRoutes : publicRoutes}
         </React.Fragment>
     );
 };

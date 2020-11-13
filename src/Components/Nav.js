@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../Context/MainContext';
 
 const Nav = (props) => {
     const links = props.data;
+    const { token, logout } = useContext(AuthContext);
+
+    console.log(token);
 
     return (
         <div>
@@ -12,7 +16,9 @@ const Nav = (props) => {
                     {link.name}
                 </Link>
                 ))}
-            <span>Welcome, {props.user && props.user.userName}</span>
+            {token && <span>Welcome, {props.user && props.user.userName}</span>}
+            {/* Logout button for the time being*/}
+            {token && <button onClick={logout}>Logout</button>}
         </div>
     );
 };

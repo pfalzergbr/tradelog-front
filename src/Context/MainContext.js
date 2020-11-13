@@ -1,4 +1,5 @@
 import React, { createContext, useState, useReducer, useCallback, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import { tradeReducer } from '../Reducers/tradeReducer'
 
 export const CurrentTradesContext = createContext();
@@ -8,7 +9,8 @@ export const AuthContext = createContext();
 export const MainContextProvider = (props) => {
     const [currentTrades , dispatchCurrentTrades] = useReducer(tradeReducer, []);
     const [token, setToken] = useState(false); 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const history = useHistory();
 
     const dispatch = useCallback((action) => {
         dispatchCurrentTrades(action)
@@ -24,11 +26,12 @@ export const MainContextProvider = (props) => {
         localStorage.setItem('userData', JSON.stringify({user, token}))
     }, [])
 
-    // Handle logout. Clears tokens, user data and local storage. 
+    // Handle logout. Clears tokens, user data and local storage, and redirects to the homepage. 
     const logout = useCallback(() => {
         setToken(null);
         setUser(null)
         localStorage.removeItem('userData');
+        history.push('/')
     }, [])
 
     useEffect(() => {
@@ -40,7 +43,7 @@ export const MainContextProvider = (props) => {
 
     return ( 
         <CurrentTradesContext.Provider value={{currentTrades, dispatch}}>
-            <AuthContext.Provider  value={{isAuth:!!token, token, user, login, logout}}>
+            <AuthContext.Provider  value={{ token, user, login, logout}}>
                     {props.children}
             </AuthContext.Provider>
         </CurrentTradesContext.Provider> 
