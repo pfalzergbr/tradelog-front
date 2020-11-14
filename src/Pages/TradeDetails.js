@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { AuthContext } from '../Context/MainContext';
+import { useAxios } from '../Hooks/useAxios';
 
 const TradeDetails = (props) => {
+    const { token } = useContext(AuthContext);
+    const { isLoading, sendRequest } = useAxios();
+    const [ trade, setTrade] = useState({});
     const { tradeId } = useParams();
+    const { symbol, outcome, amount} = trade;
 
     //TODO!!
+    useEffect(() => {
+        const fetchTrade = async () => {
+            const response = await sendRequest(
+                `http://localhost:3000/api/trades/${tradeId}`,
+                'GET',
+                {},
+                {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            );
+            setTrade(response.data);
+        };
+        fetchTrade()
+    }, []);
 
 
-    const { symbol, outcome, amount } = props;
 
     return (
         <div>
