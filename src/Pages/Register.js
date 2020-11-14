@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 import ErrorMessage from '../Components/UI/ErrorMessage';
@@ -30,8 +31,6 @@ const Register = (props) => {
         mode: 'onTouched',
     });
 
-
-
     //Submits a POST request for /api/user/register, returns a token and a user ID for auth context.
     const onSubmit = async (data) => {
         try {
@@ -49,34 +48,41 @@ const Register = (props) => {
     };
 
     return (
-        <div>
-            <h1>Create Account</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='name'>Name</label>
-                <input name='name' ref={register} />
-                {errors.name && <ErrorMessage message={errors.name.message} />}
-                <label htmlFor='email'>E-mail</label>
-                <input name='email' ref={register} />
-                {errors.email && (
-                    <ErrorMessage message={errors.email.message} />
-                )}
-                <label htmlFor='password'>Password</label>
-                <input type='password' name='password' ref={register} />
-                {errors.password && (
-                    <ErrorMessage message={errors.password.message} />
-                )}
-                <label htmlFor='verify'>Confirm Password</label>
-                <input type='password' name='verify' ref={register} />
-                {errors.verify && (
-                    <ErrorMessage message={errors.verify.message} />
-                )}
-                <button type='submit'>Register</button>
-                <Link to={'/user/login'}>
-                    Already have an account? Log in here.
-                </Link>
-                <Link to={'/user/login'}>Forgot your password?</Link>
-            </form>
-        </div>
+        <React.Fragment>
+            {isLoading && <Loading />}
+            {!isLoading && (
+                <div>
+                    <h1>Create Account</h1>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <label htmlFor='name'>Name</label>
+                        <input name='name' ref={register} />
+                        {errors.name && (
+                            <ErrorMessage message={errors.name.message} />
+                        )}
+                        <label htmlFor='email'>E-mail</label>
+                        <input name='email' ref={register} />
+                        {errors.email && (
+                            <ErrorMessage message={errors.email.message} />
+                        )}
+                        <label htmlFor='password'>Password</label>
+                        <input type='password' name='password' ref={register} />
+                        {errors.password && (
+                            <ErrorMessage message={errors.password.message} />
+                        )}
+                        <label htmlFor='verify'>Confirm Password</label>
+                        <input type='password' name='verify' ref={register} />
+                        {errors.verify && (
+                            <ErrorMessage message={errors.verify.message} />
+                        )}
+                        <button type='submit'>Register</button>
+                        <Link to={'/user/login'}>
+                            Already have an account? Log in here.
+                        </Link>
+                        <Link to={'/user/login'}>Forgot your password?</Link>
+                    </form>
+                </div>
+            )}
+        </React.Fragment>
     );
 };
 

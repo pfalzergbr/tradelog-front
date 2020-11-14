@@ -65,7 +65,7 @@ const TradeDetails = (props) => {
                 <button onClick={openModal}>Delete</button>
                 <button
                     onClick={() => {
-                        history.back();
+                        history.go(-1);
                     }}>
                     Back
                 </button>

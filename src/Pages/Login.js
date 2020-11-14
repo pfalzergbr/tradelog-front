@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import Loading from '../Components/Loading'
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
@@ -42,7 +43,9 @@ const Login = (props) => {
     };
 
     return (
-        <div>
+        <React.Fragment>
+        {isLoading && <Loading />}
+        {!isLoading && <div>
             <h1>{Login}</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor='email'>E-mail</label>
@@ -54,7 +57,8 @@ const Login = (props) => {
                 </button>
                 <Link to='/user/register'>Register here</Link>
             </form>
-        </div>
+        </div>}
+        </React.Fragment>
     );
 };
 
