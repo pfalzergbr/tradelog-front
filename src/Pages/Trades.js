@@ -9,10 +9,7 @@ import TradeItem from '../Components/TradeItem';
 const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
-    const [ trades, setTrades ] = useState([]);
-    
-
-
+    const [trades, setTrades] = useState([]);
 
     useEffect(() => {
         const fetchTrades = async () => {
@@ -36,7 +33,7 @@ const Trades = (props) => {
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
-                    <h1>Trades of {user.name}</h1>
+                    <h1>Trades of {user.userName}</h1>
                     {trades &&
                         trades.map((trade) => (
                             <Link key={trade._id} to={`/trade/${trade._id}`}>
