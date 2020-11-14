@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAxios } from '../../Hooks/useAxios';
 
 const DeleteTradeModal = (props) => {
@@ -7,7 +7,6 @@ const DeleteTradeModal = (props) => {
     const [isChecked, setIsChecked] = useState(false);
     const { isLoading, sendRequest } = useAxios();
     const history = useHistory();
-
 
     const handleChange = (event) => {
         setIsChecked(event.target.checked);
@@ -17,7 +16,7 @@ const DeleteTradeModal = (props) => {
         try {
             const response = await sendRequest(
                 `http://localhost:3000/api/trades/${tradeId}`,
-                'DELETE', 
+                'DELETE',
                 {},
 
                 {
@@ -25,10 +24,9 @@ const DeleteTradeModal = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
-            console.log(response);
-            history.replace(`/${user.userId}/trades/`)
+            history.replace(`/${user.userId}/trades/`);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     };
 
@@ -54,7 +52,9 @@ const DeleteTradeModal = (props) => {
                     onChange={handleChange}
                 />
             </form>
-            <button disabled={!isChecked} onClick={handleDelete}>Delete</button>
+            <button disabled={!isChecked} onClick={handleDelete}>
+                Delete
+            </button>
             <button onClick={closeModal}>Cancel</button>
         </div>
     );

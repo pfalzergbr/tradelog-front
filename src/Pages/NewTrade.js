@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import Loading from '../Components/Loading'
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 import ErrorMessage from '../Components/UI/ErrorMessage';
@@ -46,7 +47,9 @@ const NewTrade = (props) => {
     };
 
     return (
-        <div>
+        <React.Fragment>
+        { isLoading && <Loading />}
+        { !isLoading && <div>
             <button onClick={props.closeModal}>X</button>
 
             <h1>New Trade</h1>
@@ -77,8 +80,9 @@ const NewTrade = (props) => {
                     New Trade
                 </button>
             </form>
-        </div>
-    );
+        </div>}
+        </React.Fragment>
+        );
 };
 
 export default NewTrade;
