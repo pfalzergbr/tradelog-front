@@ -9,8 +9,9 @@ import TradeItem from '../Components/TradeItem';
 const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
-    const [trades, setTrades] = useState([]);
-    const { userId } = useParams();
+    const [ trades, setTrades ] = useState([]);
+    
+
 
 
     useEffect(() => {

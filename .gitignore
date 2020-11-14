@@ -2,3 +2,4 @@ node_modules
 .prettierrc.json
 .eslintrc.json
 config
+./hooks/usePagination.js
