@@ -21,9 +21,11 @@ export const useAxios = () => {
                 });
 
                 setIsLoading(false);
+                console.log(response)
                 return response;
             } catch (error) {
                 //Opens a toast message if an error is thrown
+                console.log(error)
                 toast.error(<div>{error.response.data.message}</div>);
                 setIsLoading(false);
                 throw error;
