@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import Loading from '../Components/Loading';
@@ -12,7 +11,7 @@ const TradeDetails = (props) => {
     const { token, user } = useContext(AuthContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const { isLoading, sendRequest } = useAxios();
-    const [trade, setTrade] = useState({});
+    const [ trade, setTrade] = useState({});
     const { tradeId } = useParams();
     const { symbol, outcome, amount } = trade;
     const history = useHistory();

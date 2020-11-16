@@ -75,7 +75,7 @@ const NewTrade = (props) => {
                             />
                         )}
                         <label htmlFor='description'>Description</label>
-                        <input name='description' ref={register} />
+                        <input name='description' type="textfield" ref={register} />
                         {errors.symbol && (
                             <ErrorMessage
                                 message={errors.description.message}

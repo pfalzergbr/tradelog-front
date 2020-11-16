@@ -19,7 +19,7 @@ const Pagination = (props) => {
             </Switch>
             <ul>
                
-                { pageNumbers.map(pageNumber => <NavLink to={`/${userId}/trades/page-${pageNumber}`}>{pageNumber}</NavLink>)}
+                { pageNumbers.map(pageNumber => <NavLink key={pageNumber} to={`/${userId}/trades/page-${pageNumber}`}>{pageNumber}</NavLink>)}
         
             </ul>
         </div>

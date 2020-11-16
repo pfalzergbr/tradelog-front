@@ -13,9 +13,9 @@ import Register from '../Pages/Register';
 import Profile from '../Pages/Profile';
 import Accounts from '../Pages/Accounts';
 import Strategies from '../Pages/Strategies';
+import AccountDetails from '../Pages/AccountDetails';
 import NewTrade from '../Pages/NewTrade';
 import NotFound from '../Pages/NotFound';
-
 
 const App = (props) => {
     const { token, user } = useContext(AuthContext);
@@ -52,7 +52,7 @@ const App = (props) => {
         </Switch>
     );
 
-    //Routes if there is a user logged in. 
+    //Routes if there is a user logged in.
     const authRoutes = (
         <Switch>
             <Route exact path='/'>
@@ -64,6 +64,9 @@ const App = (props) => {
             <Route path='/:userId/profile'>
                 <Profile />
             </Route>
+            <Route path='/:userId/accounts/:accountId'>
+            <AccountDetails />
+        </Route>
             <Route path='/:userId/accounts'>
                 <Accounts />
             </Route>
@@ -87,7 +90,7 @@ const App = (props) => {
 
     return (
         <React.Fragment>
-            <Nav data={ token && user ? authLinks : publicLinks} user={user}/>
+            <Nav data={token && user ? authLinks : publicLinks} user={user} />
             {token && user ? authRoutes : publicRoutes}
         </React.Fragment>
     );
