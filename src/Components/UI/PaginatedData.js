@@ -1,4 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
+import TradeItem from '../TradeItem'
 
 const PaginatedData = (props) => {
     const { isLoading, pageData } = props;
@@ -9,7 +12,7 @@ const PaginatedData = (props) => {
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
-                    <h1>Trades of {user.userName}</h1>
+                    <h1>Paginated Trades</h1>
                     {pageData &&
                         pageData.map((item) => (
                             <Link key={item._id} to={`/item/${item._id}`}>

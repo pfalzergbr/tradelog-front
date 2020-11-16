@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { usePagination } from '../Hooks/usePagination'
+import Pagination from '../Components/UI/Pagination'
 
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
@@ -12,8 +13,7 @@ const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
     const [trades, setTrades] = useState([]);
-
-    
+    const {paginatedData, paginate, pageNumbers} = usePagination();
 
     useEffect(() => {
         const fetchTrades = async () => {
@@ -25,6 +25,8 @@ const Trades = (props) => {
                     { Authorization: `Bearer ${token}` },
                 );
                 setTrades(response.data);
+                paginate(response.data, 5)
+                
             } catch (error) {
                 console.log(error);
             }
@@ -47,7 +49,7 @@ const Trades = (props) => {
                 </div>
             )}
 
-
+        <Pagination data={paginatedData} pageNumbers={pageNumbers} userId={user.userId} isLoading={isLoading} />
                         
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
+import PaginatedData from './PaginatedData'
+
 const Pagination = (props) => {
     const { data, pageNumbers, userId, isLoading } = props;
     return (
@@ -16,9 +18,9 @@ const Pagination = (props) => {
                 ))}
             </Switch>
             <ul>
-                { pageNumber !== 1 && <NavLink to={`/${userId}/trades/page-${pageNumber-1}`}>Previous</NavLink>}
+               
                 { pageNumbers.map(pageNumber => <NavLink to={`/${userId}/trades/page-${pageNumber}`}>{pageNumber}</NavLink>)}
-                { pageNumber !== pageNumbers.length && <NavLink to={`/${userId}/trades/page-${pageNumber +1}`}>Next</NavLink>}
+        
             </ul>
         </div>
     );
