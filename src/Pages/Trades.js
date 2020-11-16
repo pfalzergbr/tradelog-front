@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import { usePagination } from '../Hooks/usePagination'
+
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
@@ -10,6 +12,8 @@ const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
     const [trades, setTrades] = useState([]);
+
+    
 
     useEffect(() => {
         const fetchTrades = async () => {
@@ -42,6 +46,11 @@ const Trades = (props) => {
                         ))}
                 </div>
             )}
+
+
+                        
+
+
         </React.Fragment>
     );
 };
