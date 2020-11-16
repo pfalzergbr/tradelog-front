@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { usePagination } from '../Hooks/usePagination'
 import Pagination from '../Components/UI/Pagination'
@@ -13,6 +13,7 @@ const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
     const [trades, setTrades] = useState([]);
+    const history = useHistory()
     const {paginatedData, paginate, pageNumbers} = usePagination();
 
     useEffect(() => {
@@ -26,6 +27,7 @@ const Trades = (props) => {
                 );
                 setTrades(response.data);
                 paginate(response.data, 5)
+                history.push(`/${user.userId}/trades/page-1`)
                 
             } catch (error) {
                 console.log(error);
@@ -39,17 +41,11 @@ const Trades = (props) => {
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
-                    <h1>Trades of {user.userName}</h1>
-                    {trades &&
-                        trades.map((trade) => (
-                            <Link key={trade._id} to={`/trade/${trade._id}`}>
-                                <TradeItem data={trade} />
-                            </Link>
-                        ))}
+                    <Pagination data={paginatedData} pageNumbers={pageNumbers} userId={user.userId} isLoading={isLoading} />
                 </div>
             )}
 
-        <Pagination data={paginatedData} pageNumbers={pageNumbers} userId={user.userId} isLoading={isLoading} />
+        
                         
 
 

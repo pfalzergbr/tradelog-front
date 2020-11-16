@@ -8,9 +8,6 @@ const PaginatedData = (props) => {
 
 
     return (
-        <React.Fragment>
-            {isLoading && <Loading />}
-            {!isLoading && (
                 <div>
                     <h1>Paginated Trades</h1>
                     {pageData &&
@@ -20,9 +17,7 @@ const PaginatedData = (props) => {
                             </Link>
                         ))}
                 </div>
-            )}
-        </React.Fragment>
-    );
+            )
 };
 
 export default PaginatedData;

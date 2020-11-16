@@ -73,7 +73,7 @@ const App = (props) => {
             <Route path='/:userId/performance'>
                 <Performance />
             </Route>
-            <Route path='/:userId/trades'>
+            <Route path='/:userId/trades/'>
                 <Trades />
             </Route>
             <Route path='/trade/:tradeId'>
