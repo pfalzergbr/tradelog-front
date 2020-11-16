@@ -7,7 +7,6 @@ import { useAxios } from '../Hooks/useAxios';
 
 const Profile = (props) => {
     const { token } = useContext(AuthContext);
-    const { userId } = useParams();
     const { isLoading, sendRequest } = useAxios();
     const [userProfile, setUserProfile] = useState({});
     const {name, email} = userProfile;
