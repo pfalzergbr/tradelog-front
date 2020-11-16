@@ -4,7 +4,7 @@ import { Switch, Route, NavLink } from 'react-router-dom';
 import PaginatedData from './PaginatedData'
 
 const Pagination = (props) => {
-    const { data, pageNumbers, userId, isLoading } = props;
+    const { data, pageNumbers, userId} = props;
     return (
         <div>
             <Switch>
@@ -12,7 +12,7 @@ const Pagination = (props) => {
                     <Route path={`/${userId}/trades/page-${pageNumber}`}>
                         <PaginatedData
                             pageData={data[pageNumber - 1]}
-                            isLoading={isLoading}
+                            itemType={'trade'}
                         />
                     </Route>
                 ))}
