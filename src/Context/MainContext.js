@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 export const MainContextProvider = (props) => {
     const [currentTrades, dispatchCurrentTrades] = useReducer(tradeReducer, []);
-    const { token, user, login, logout } = useAuthentication();
+    const { token, user, login, logout, addAccount, removeAccount } = useAuthentication();
 
     const dispatch = useCallback((action) => {
         dispatchCurrentTrades(action);
@@ -15,7 +15,7 @@ export const MainContextProvider = (props) => {
 
     return (
         <CurrentTradesContext.Provider value={{ currentTrades, dispatch }}>
-            <AuthContext.Provider value={{ token, user, login, logout }}>
+            <AuthContext.Provider value={{ token, user, login, logout, addAccount, removeAccount }}>
                 {props.children}
             </AuthContext.Provider>
         </CurrentTradesContext.Provider>

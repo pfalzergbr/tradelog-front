@@ -2,19 +2,17 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import DeleteAccountModal from '../Components/Modals/DeleteAccountModal'
+import DeleteAccountModal from '../Components/Modals/DeleteAccountModal';
 import EditAccount from '../Components/Modals/EditAccount';
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
-//TODO - Build edit trade Modal
-
 const AccountDetails = (props) => {
     const { token, user } = useContext(AuthContext);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [stratModalIsOpen, setStratModalIsOpen] = useState(false);
-    const [ deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [account, setAccount] = useState({});
     const { isLoading, sendRequest } = useAxios();
     const { userId, accountId } = useParams();

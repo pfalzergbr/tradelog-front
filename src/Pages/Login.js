@@ -35,7 +35,6 @@ const Login = (props) => {
                 { 'Content-Type': 'application/json' },
             );
             auth.login(response.data.user, response.data.token);
-            console.log(response.data);
             history.push(`/${response.data.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);

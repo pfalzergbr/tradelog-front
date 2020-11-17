@@ -10,7 +10,7 @@ export const useAuthentication = () => {
     //TODO - implement timeout function, and set expiry in the backend.
 
     // Handles login. Sets a token, and basic user data with name and Id, then sends it to local storage. .
-    const login = useCallback((user, token) => {
+    const login = useCallback((user, token,) => {
         setToken(token);
         setUser(user);
         localStorage.setItem('userData', JSON.stringify({ user, token }));
@@ -25,6 +25,23 @@ export const useAuthentication = () => {
     }, []);
     //Checking local storage on login for Token data, logs in if finds one.
 
+    const addAccount = useCallback((newAccount) => {
+        const newUser = {
+            ...user
+        }
+        newUser.accounts = [...newUser.accounts, newAccount];
+        setUser(newUser)
+    }, [])
+
+    const removeAccount = useCallback((newAccount) => {
+        const newUser = {
+            ...user
+        }
+        newUser.accounts = newUser.accounts.filter(account => newAccount._id !== account._id);
+        setUser(newUser)
+    }, [])
+
+
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));
         if (userData && userData.user && userData.token) {
@@ -32,5 +49,5 @@ export const useAuthentication = () => {
         }
     }, [login]);
 
-    return { token, user, login, logout };
+    return { token, user, login, logout, addAccount, removeAccount};
 };

@@ -8,7 +8,7 @@ const PaginatedData = (props) => {
 
     return (
         <div>
-            <h1>Paginated Trades</h1>
+            <h1>Trades</h1>
             {pageData &&
                 pageData.map((item) => (
                     <Link key={item._id} to={`/${itemType}/${item._id}`}>

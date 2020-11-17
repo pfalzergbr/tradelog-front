@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { usePagination } from '../Hooks/usePagination';
@@ -9,6 +9,7 @@ import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
 const Trades = (props) => {
+    const { accounts, setAccounts } = useState();
     const { user, token } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
     const { paginate, paginatedData, pageNumbers } = usePagination();
@@ -35,6 +36,9 @@ const Trades = (props) => {
 
     return (
         <React.Fragment>
+            <select>
+                
+            </select>
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
