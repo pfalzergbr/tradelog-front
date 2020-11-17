@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { usePagination } from '../Hooks/usePagination';
 import Pagination from '../Components/UI/Pagination';
@@ -9,8 +9,8 @@ import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
 const Trades = (props) => {
-    const { accounts, setAccounts } = useState();
     const { user, token } = useContext(AuthContext);
+    const [ account, setAccount ] = useState(user.accounts[0]);
     const { isLoading, sendRequest } = useAxios();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
@@ -32,13 +32,19 @@ const Trades = (props) => {
             }
         };
         fetchTrades();
-    }, []);
+    }, [account]);
+
+    const changeAccount = (event) => {
+        setAccount(event.target.value);
+        console.log(account)
+    } 
 
     return (
         <React.Fragment>
-            <select>
-                
+            { account ? <select value={account} onChange={changeAccount}>
+                {user.accounts.map(account => <option key={account._id} value={account._id}>{account.accountName}</option>)}
             </select>
+            : <div><p>You haven`t got any accounts yet</p><Link to={`/${user.userId}/accounts`}>Create one here</Link></div>}
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>

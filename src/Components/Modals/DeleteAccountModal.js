@@ -4,7 +4,7 @@ import { useAxios } from '../../Hooks/useAxios';
 
 const DeleteTradeModal = (props) => {
     const { closeModal, token, accountId, user, accountName, removeAccount } = props;
-    const [isChecked, setIsChecked] = useState(false);
+    const [ isChecked, setIsChecked] = useState(false);
     const { isLoading, sendRequest } = useAxios();
     const history = useHistory();
 
