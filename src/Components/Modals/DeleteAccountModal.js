@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useAxios } from '../../Hooks/useAxios';
 
 const DeleteTradeModal = (props) => {
-    const { closeModal, token, accountId, user, accountName } = props;
+    const { closeModal, token, accountId, user, accountName, removeAccount } = props;
     const [isChecked, setIsChecked] = useState(false);
     const { isLoading, sendRequest } = useAxios();
     const history = useHistory();
@@ -24,6 +24,9 @@ const DeleteTradeModal = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
+            console.log(response)
+            removeAccount(response.data._id)
+            closeModal()
             history.replace(`/${user.userId}/accounts/`);
         } catch (error) {
             console.log(error);

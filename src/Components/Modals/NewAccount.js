@@ -16,7 +16,7 @@ const accountSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token } = useContext(AuthContext);
+    const { user, token, addAccount } = useContext(AuthContext);
     const { isLoading, sendRequest } = useAxios();
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
@@ -39,7 +39,9 @@ const NewTrade = (props) => {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
-            );
+                );
+                console.log(response.data)
+                addAccount(response.data)
         } catch (error) {
             console.log(error);
         }

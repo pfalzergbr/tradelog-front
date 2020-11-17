@@ -25,22 +25,37 @@ export const useAuthentication = () => {
     }, []);
     //Checking local storage on login for Token data, logs in if finds one.
 
+    //Handles adding new accounts to a user, so the frontend can load basic account info without an API request.
     const addAccount = useCallback((newAccount) => {
+        const accountData = {
+            _id: newAccount._id,
+            accountName: newAccount.accountName
+        }
+
+        const newUser = {
+            userName: user.userName,
+            userId: user.userId,
+            accounts: [...user.accounts, accountData]
+        }
+
+
+        setUser(newUser)
+    }, [user])
+    //Removes an account from context, to match server side. 
+    const removeAccount = useCallback((accountId) => {
         const newUser = {
             ...user
         }
-        newUser.accounts = [...newUser.accounts, newAccount];
+        newUser.accounts = newUser.accounts.filter(account => accountId !== account._id);
         setUser(newUser)
-    }, [])
+    }, [user])
 
-    const removeAccount = useCallback((newAccount) => {
-        const newUser = {
-            ...user
+    //Saving changes of user to local storage on change, to keep track of accounts between refreshes.
+    useEffect(() => {
+        if ( user ){
+            localStorage.setItem('userData', JSON.stringify({ user, token }));
         }
-        newUser.accounts = newUser.accounts.filter(account => newAccount._id !== account._id);
-        setUser(newUser)
-    }, [])
-
+    }, [user])
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));

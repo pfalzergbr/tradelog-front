@@ -9,7 +9,7 @@ import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
 const AccountDetails = (props) => {
-    const { token, user } = useContext(AuthContext);
+    const { token, user, removeAccount } = useContext(AuthContext);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [stratModalIsOpen, setStratModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
@@ -79,6 +79,7 @@ const AccountDetails = (props) => {
                     accountId={accountId}
                     user={user}
                     accountName={accountName}
+                    removeAccount={removeAccount}
                 />
             </Modal>
             {isLoading && <Loading />}
