@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import Modal from 'react-modal';
 
-import Loading from '../Components/Loading'
+import DeleteAccountModal from '../Components/Modals/DeleteAccountModal'
+import EditAccount from '../Components/Modals/EditAccount';
+import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
 
@@ -9,10 +12,12 @@ import { useAxios } from '../Hooks/useAxios';
 
 const AccountDetails = (props) => {
     const { token, user } = useContext(AuthContext);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+    const [stratModalIsOpen, setStratModalIsOpen] = useState(false);
+    const [ deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [account, setAccount] = useState({});
     const { isLoading, sendRequest } = useAxios();
-    const { accountId } = useParams();
+    const { userId, accountId } = useParams();
     const { accountName, balance, description, strategies } = account;
     const history = useHistory();
 
@@ -28,7 +33,6 @@ const AccountDetails = (props) => {
                         Authorization: `Bearer ${token}`,
                     },
                 );
-                console.log(response.data);
                 setAccount(response.data);
             } catch (error) {
                 console.log(error);
@@ -38,21 +42,53 @@ const AccountDetails = (props) => {
         fetchAccount();
     }, []);
 
-    const openModal = () => {
-        setModalIsOpen(true);
+    const openEditModal = () => {
+        setEditModalIsOpen(true);
     };
 
-    const closeModal = () => {
-        setModalIsOpen(false);
+    const closeEditModal = () => {
+        setEditModalIsOpen(false);
+    };
+
+    const openStratModal = () => {
+        setStratModalIsOpen(true);
+    };
+
+    const closeStratModal = () => {
+        setStratModalIsOpen(false);
+    };
+
+    const openDeleteModal = () => {
+        setDeleteModalIsOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModalIsOpen(false);
     };
 
     return (
         <React.Fragment>
+            <Modal isOpen={editModalIsOpen} onRequestClose={closeEditModal}>
+                <EditAccount data={account} closeModal={closeEditModal} />
+            </Modal>
+            <Modal
+                isOpen={stratModalIsOpen}
+                onRequestClose={closeStratModal}></Modal>
+            <Modal isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
+                <DeleteAccountModal
+                    closeModal={closeDeleteModal}
+                    token={token}
+                    accountId={accountId}
+                    user={user}
+                    accountName={accountName}
+                />
+            </Modal>
             {isLoading && <Loading />}
             {!isLoading && (
-                <div> 
+                <div>
                     <h1>{accountName}</h1>
                     <h2>${balance}</h2>
+                    <p>{description}</p>
                     <ul>
                         {strategies && strategies.length !== 0
                             ? strategies.map((strategy) => (
@@ -60,6 +96,9 @@ const AccountDetails = (props) => {
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>
+                    <button onClick={openStratModal}>Add Strategy</button>
+                    <button onClick={openEditModal}>Edit</button>
+                    <button onClick={openDeleteModal}>Delete</button>
                 </div>
             )}
         </React.Fragment>

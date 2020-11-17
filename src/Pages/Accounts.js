@@ -57,7 +57,7 @@ const Accounts = (props) => {
                             </Link>
                         ))}
                     </ul>
-                    <button onClick={openModal}>Create Account</button>
+                    <button onClick={openModal} closeModal={closeModal}>Create Account</button>
                 </div>
             )}
         </React.Fragment>

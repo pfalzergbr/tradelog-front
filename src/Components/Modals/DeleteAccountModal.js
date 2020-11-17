@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useAxios } from '../../Hooks/useAxios';
 
 const DeleteTradeModal = (props) => {
-    const { closeModal, token, tradeId, user } = props;
-    const [ isChecked, setIsChecked ] = useState(false);
+    const { closeModal, token, accountId, user, accountName } = props;
+    const [isChecked, setIsChecked] = useState(false);
     const { isLoading, sendRequest } = useAxios();
     const history = useHistory();
 
@@ -15,7 +15,7 @@ const DeleteTradeModal = (props) => {
     const handleDelete = async () => {
         try {
             const response = await sendRequest(
-                `http://localhost:3000/api/trades/${tradeId}`,
+                `http://localhost:3000/api/user/accounts/${accountId}`,
                 'DELETE',
                 {},
 
@@ -24,7 +24,7 @@ const DeleteTradeModal = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
-            history.replace(`/${user.userId}/trades/`);
+            history.replace(`/${user.userId}/accounts/`);
         } catch (error) {
             console.log(error);
         }
@@ -32,18 +32,16 @@ const DeleteTradeModal = (props) => {
 
     return (
         <div>
-            <h1>Warning!</h1>
+            <h1>You are trying to delete your {accountName} account.</h1>
             <p>
-                Please only delete the trade if you had an input mistake.
-                Deleting trades from your record changes your statistics, and
-                distorts your real performance.{' '}
+                You are trying to delete this account. Once it is deleted, this
+                action cannot be reversed. All trades associated with this
+                account will be permanently deleted.
             </p>
-            <p>
-                Note: You cannot reverse this action once you deleted the trade
-            </p>
+
             <form action=''>
                 <label htmlFor='confirm-mistake'>
-                    Yes, I want to delete this trade
+                    Yes, I am sure I want to delete this account. 
                 </label>
                 <input
                     type='checkbox'
