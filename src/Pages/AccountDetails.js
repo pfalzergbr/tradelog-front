@@ -11,7 +11,6 @@ import { useAxios } from '../Hooks/useAxios';
 const AccountDetails = (props) => {
     const { token, user, removeAccount } = useContext(AuthContext);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
-    const [stratModalIsOpen, setStratModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [account, setAccount] = useState({});
     const { isLoading, sendRequest } = useAxios();
@@ -48,14 +47,6 @@ const AccountDetails = (props) => {
         setEditModalIsOpen(false);
     };
 
-    const openStratModal = () => {
-        setStratModalIsOpen(true);
-    };
-
-    const closeStratModal = () => {
-        setStratModalIsOpen(false);
-    };
-
     const openDeleteModal = () => {
         setDeleteModalIsOpen(true);
     };
@@ -69,9 +60,6 @@ const AccountDetails = (props) => {
             <Modal isOpen={editModalIsOpen} onRequestClose={closeEditModal}>
                 <EditAccount data={account} closeModal={closeEditModal} />
             </Modal>
-            <Modal
-                isOpen={stratModalIsOpen}
-                onRequestClose={closeStratModal}></Modal>
             <Modal isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
                 <DeleteAccountModal
                     closeModal={closeDeleteModal}
@@ -95,7 +83,6 @@ const AccountDetails = (props) => {
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>
-                    <button onClick={openStratModal}>Add Strategy</button>
                     <button onClick={openEditModal}>Edit</button>
                     <button onClick={openDeleteModal}>Delete</button>
                 </div>
