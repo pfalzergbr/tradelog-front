@@ -41,6 +41,7 @@ export const useAuthentication = () => {
 
         setUser(newUser)
     }, [user])
+    
     //Removes an account from context, to match server side. 
     const removeAccount = useCallback((accountId) => {
         const newUser = {

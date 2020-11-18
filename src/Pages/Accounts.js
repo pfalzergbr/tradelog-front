@@ -22,6 +22,7 @@ const Accounts = (props) => {
                     {},
                     { Authorization: `Bearer ${token}` },
                 );
+                console.log(response.data.accounts)
                 setAccounts(response.data.accounts);
             } catch (error) {
                 console.log(error);

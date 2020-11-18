@@ -10,7 +10,7 @@ import { useAxios } from '../Hooks/useAxios';
 
 const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
-    const [ account, setAccount ] = useState(user.accounts[0]);
+    const [ account, setAccount ] = useState( user.accounts[0]._id || null);
     const { isLoading, sendRequest } = useAxios();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
@@ -19,7 +19,7 @@ const Trades = (props) => {
         const fetchTrades = async () => {
             try {
                 const response = await sendRequest(
-                    'http://localhost:3000/api/trades/',
+                    `http://localhost:3000/api/trades/account/${account}`,
                     'GET',
                     {},
                     { Authorization: `Bearer ${token}` },
@@ -36,7 +36,6 @@ const Trades = (props) => {
 
     const changeAccount = (event) => {
         setAccount(event.target.value);
-        console.log(account)
     } 
 
     return (

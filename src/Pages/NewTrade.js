@@ -13,7 +13,7 @@ const basicTradeSchema = yup.object().shape({
     outcome: yup.string().required(),
     bias: yup.string().required(),
     amount: yup.number().required(),
-    accountId: yup.string().required(),
+    account: yup.string().required(),
 });
 
 const NewTrade = (props) => {

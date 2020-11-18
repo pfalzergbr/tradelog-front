@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -23,6 +24,7 @@ const NewTrade = (props) => {
         mode: 'onTouched',
     });
     const { isValid } = formState;
+    const history = useHistory();
     //TODO: Get the id from the actual user
 
     const onSubmit = async (data) => {
@@ -42,6 +44,8 @@ const NewTrade = (props) => {
                 );
                 console.log(response.data)
                 addAccount(response.data)
+                // history.push(`/${user.userId}/accounts/${response.data._id}`)
+                props.closeModal();
         } catch (error) {
             console.log(error);
         }
