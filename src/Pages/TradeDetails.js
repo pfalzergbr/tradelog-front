@@ -92,13 +92,14 @@ const TradeDetails = (props) => {
                 <h2>{symbol}</h2>
                 <p>{outcome}</p>
                 <span>{amount}</span>
-                <button onClick={openModal}>Delete</button>
+                <button>Edit Details</button>
                 <button
                     onClick={() => {
                         history.go(-1);
                     }}>
                     Back
                 </button>
+                <button onClick={openModal}>Delete</button>
             </div>}
         </React.Fragment>
     );

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -14,6 +14,8 @@ const basicTradeSchema = yup.object().shape({
     bias: yup.string().required(),
     amount: yup.number().required(),
     account: yup.string().required(),
+    notes: yup.string(),
+    date: yup.date().required()
 });
 
 const NewTrade = (props) => {
@@ -21,12 +23,13 @@ const NewTrade = (props) => {
     const { user, token } = useContext(AuthContext);
     const { accounts } = user;
     const { isLoading, sendRequest } = useAxios();
-    const { register, handleSubmit, formState, errors } = useForm({
+    const { register, handleSubmit, formState, errors, control } = useForm({
         resolver: yupResolver(basicTradeSchema),
-        mode: 'onTouched',
+        mode: 'onChange', defaultValues: {
+            notes: ''
+        }
     });
     const { isValid } = formState;
-    //TODO: Get the id from the actual user
 
     const onSubmit = async (data) => {
         const formData = {
@@ -59,7 +62,11 @@ const NewTrade = (props) => {
                     <h1>New Trade</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label htmlFor='symbol'>Symbol</label>
-                        <input name='symbol' ref={register} />
+                        <input
+                            name='symbol'
+                            ref={register}
+                            placeholder='Trade symbol or ticker'
+                        />
                         {errors.symbol && (
                             <ErrorMessage message={errors.symbol.message} />
                         )}
@@ -92,9 +99,24 @@ const NewTrade = (props) => {
                             step='0.01'
                             name='amount'
                             ref={register}
+                            placeholder='Profit or loss value'
                         />
                         {errors.amount && (
                             <ErrorMessage message={errors.amount.message} />
+                        )}
+                        <label htmlFor='notes'>Notes</label>
+                        <textArea
+                            name='notes'
+                            ref={register}
+                            placeholder='Optional notes'
+                        />
+                        {errors.notes && (
+                            <ErrorMessage message={errors.notes.message} />
+                        )}
+                        <label htmlFor='date'>Notes</label>
+                        <input type='date' name='date' ref={register}></input>
+                        {errors.date && (
+                            <ErrorMessage message={errors.date.message} />
                         )}
                         <button disabled={!isValid} type='submit'>
                             New Trade

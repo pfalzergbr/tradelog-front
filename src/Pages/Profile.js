@@ -13,7 +13,7 @@ import { useAxios } from '../Hooks/useAxios';
 
 const profileSchema = yup.object().shape({
     name: yup.string().required(),
-    email: yup.string().email().required(),
+    // email: yup.string().email().required(),
     // verify: yup
     //     .string()
     //     .oneOf(
@@ -39,6 +39,16 @@ const Profile = (props) => {
             email: email,
         },
     });
+    
+    // Modal Data to pass down.
+    const modalData = {
+        header: 'Warning',
+        message:
+            'You are about to delete your user. This action cannot be reversed, and removes all your accounts, trades, Are you sure you want to go ahead? ',
+        label: 'If you are sure to proceed, please tick this box to confirm',
+        button: 'Delete'
+        };
+
 
     // Fetching User Profile and loads into userProfile variable in state.
     useEffect(() => {
@@ -100,17 +110,23 @@ const Profile = (props) => {
         setModalIsOpen(false);
     };
 
-    const modalData = {
-        header: 'Warning',
-        message:
-            'You are about to delete your user. This action cannot be reversed, and removes all your accounts, trades, Are you sure you want to go ahead? ',
-        label: 'If you are sure to proceed, please tick this box to confirm',
-        button: 'Delete'
-        };
 
 
-    const onSubmit = async () => {
-        //TODO - sendRequest to EDIT USER rotue
+    const onSubmit = async (data) => {
+        try {
+            const response = await sendRequest(
+                `http://localhost:3000/api/user/profile/`,
+                'PATCH',
+                JSON.stringify(data),
+                {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            );
+            history.push(`/${user.userId}/dashboard`)
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -132,12 +148,12 @@ const Profile = (props) => {
                         {errors.name && (
                             <ErrorMessage message={errors.name.message} />
                         )}
-                        <label htmlFor='email'>E-mail</label>
-                        <input name='email' ref={register} />
-                        {errors.email && (
-                            <ErrorMessage message={errors.email.message} />
-                        )}
-                        <button>Save Changes</button>
+                        {// <label htmlFor='email'>E-mail</label>
+                        // <input name='email' ref={register} />
+                        // {errors.email && (
+                        //     <ErrorMessage message={errors.email.message} />
+                        // )}
+                        }<button>Save Changes</button>
                     </form>
                     <button onClick={openModal}>Delete</button>
                 </React.Fragment>

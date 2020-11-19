@@ -28,7 +28,7 @@ const Register = (props) => {
     const { isLoading, sendRequest } = useAxios();
     const { register, handleSubmit, watch, errors } = useForm({
         resolver: yupResolver(registerSchema),
-        mode: 'onTouched',
+        mode: 'onChange',
     });
 
     //Submits a POST request for /api/user/register, returns a token and a user ID for auth context.

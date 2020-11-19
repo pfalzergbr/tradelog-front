@@ -21,7 +21,7 @@ const NewTrade = (props) => {
     const { isLoading, sendRequest } = useAxios();
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
-        mode: 'onTouched',
+        mode: 'onChange',
     });
     const { isValid } = formState;
     const history = useHistory();

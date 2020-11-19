@@ -14,7 +14,6 @@ import Profile from '../Pages/Profile';
 import Accounts from '../Pages/Accounts';
 import Strategies from '../Pages/Strategies';
 import AccountDetails from '../Pages/AccountDetails';
-import NewTrade from '../Pages/NewTrade';
 import NotFound from '../Pages/NotFound';
 
 const App = (props) => {
@@ -30,7 +29,7 @@ const App = (props) => {
     //Links to display if the user is logged in. Feeds into the Navbar components as props
     const authLinks = [
         { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
-        { to: `/${user && user.userId}/profile`, name: 'Profile' },
+        // { to: `/${user && user.userId}/profile`, name: 'Profile' },
         { to: `/${user && user.userId}/trades`, name: 'Trades' },
     ];
 

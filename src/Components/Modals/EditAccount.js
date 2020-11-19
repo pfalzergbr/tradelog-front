@@ -20,7 +20,7 @@ const NewTrade = (props) => {
     const {accountName, description} = props.data
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
-        mode: 'onTouched', defaultValues: {
+        mode: 'onChange', defaultValues: {
             accountName, description
         }
     });
