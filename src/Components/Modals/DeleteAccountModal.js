@@ -12,27 +12,7 @@ const DeleteTradeModal = (props) => {
         setIsChecked(event.target.checked);
     };
 
-    const handleDelete = async () => {
-        try {
-            const response = await sendRequest(
-                `http://localhost:3000/api/user/accounts/${accountId}`,
-                'DELETE',
-                {},
-
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            );
-            console.log(response)
-            removeAccount(response.data._id)
-            closeModal()
-            history.replace(`/${user.userId}/accounts/`);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
+   
     return (
         <div>
             <h1>You are trying to delete your {accountName} account.</h1>

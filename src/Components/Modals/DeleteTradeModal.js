@@ -32,6 +32,7 @@ const DeleteTradeModal = (props) => {
 
     return (
         <div>
+            <button onClick={closeModal}>X</button>
             <h1>Warning!</h1>
             <p>
                 Please only delete the trade if you had an input mistake.

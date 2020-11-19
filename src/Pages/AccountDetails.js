@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import DeleteAccountModal from '../Components/Modals/DeleteAccountModal';
+import DeleteModal from '../Components/Modals/DeleteModal'
 import EditAccount from '../Components/Modals/EditAccount';
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
@@ -17,6 +17,14 @@ const AccountDetails = (props) => {
     const { userId, accountId } = useParams();
     const { accountName, balance, description, strategies } = account;
     const history = useHistory();
+
+    //Data to pass in the Delete Modal
+    const modalData = {
+        header: `You are trying to delete your ${accountName} account.`,
+        message:  'You are trying to delete this account. Once it is deleted, this action cannot be reversed. All trades associated with this account will be permanently deleted.',
+        label: 'Yes, I am sure I want to delete this account.',
+        button: 'Delete'
+    }
 
     useEffect(() => {
         const fetchAccount = async () => {
@@ -38,6 +46,28 @@ const AccountDetails = (props) => {
 
         fetchAccount();
     }, []);
+
+    const handleDelete = async () => {
+        try {
+            const response = await sendRequest(
+                `http://localhost:3000/api/user/accounts/${accountId}`,
+                'DELETE',
+                {},
+
+                {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            );
+            console.log(response)
+            removeAccount(response.data._id)
+            closeModal()
+            history.replace(`/${user.userId}/accounts/`);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     const openEditModal = () => {
         setEditModalIsOpen(true);
@@ -61,13 +91,10 @@ const AccountDetails = (props) => {
                 <EditAccount data={account} closeModal={closeEditModal} />
             </Modal>
             <Modal isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
-                <DeleteAccountModal
+                <DeleteModal
                     closeModal={closeDeleteModal}
-                    token={token}
-                    accountId={accountId}
-                    user={user}
-                    accountName={accountName}
-                    removeAccount={removeAccount}
+                    onDelete={handleDelete}
+                    modalData={modalData}
                 />
             </Modal>
             {isLoading && <Loading />}
