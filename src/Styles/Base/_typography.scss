@@ -1,7 +1,12 @@
 body {
+    font-family: 'Montserrat', sans-serif;
     font-size: $font-size-normal;
     color: $color-grey-dark;
     font-weight: 400;
     line-height: 1.7;
     box-sizing: border-box;
+}
+
+h1, h2 {
+    font-family: 'Merriweather', serif; 
 }

@@ -1,8 +1,24 @@
 .main-navigation {
-    background-color: $color-blue-dark;
+    background-color: $color-white;
     padding: 2rem;
+
 
     &__navlinks {
         margin-right: auto;
+    }
+}
+
+.navlink{
+    // box-sizing: content-box;
+
+    &:visited, &:link{
+        color: $color-blue-dark;
+        padding: 0.5em 1.5em;
+        margin-left: 0.5em
+    }
+    &:active, &:hover {
+        // color: $color-blue-medium;
+        border: 1px solid $color-blue-dark ;
+        border-radius: 5px;
     }
 }

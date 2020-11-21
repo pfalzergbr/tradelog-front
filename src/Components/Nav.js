@@ -25,7 +25,7 @@ const Nav = (props) => {
                     <NewTrade closeModal={closeModal} />
                 </Modal>
                 {links.map((link) => (
-                    <Link key={link.to} exact to={link.to}>
+                    <Link key={link.to} exact to={link.to} className="navlink">
                         {link.name}
                     </Link>
                 ))}
@@ -35,8 +35,8 @@ const Nav = (props) => {
                     <span>Welcome, {props.user && props.user.userName}</span>
                 )}
                 {/* Logout button for the time being*/}
-                {token && <button onClick={logout}>Logout</button>}
-                {token && <button onClick={openModal}>QuickTrade</button>}
+                {token && <a className="navlink" onClick={logout}>Logout</a>}
+                {token && <a className="navlink" onClick={openModal}>QuickTrade</a>}
             </div>
         </div>
     );
