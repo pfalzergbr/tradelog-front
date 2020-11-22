@@ -10,15 +10,15 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <h1>Dashboard!!</h1>
-            <h2>Welcome, {auth.user.userName}</h2>
-            <p>Ready for trading?</p>
+            <h1>Dashboard</h1>
+            <h2>Welcome, {auth.user.userName}!</h2>
+
 
             <Link to={`/${userId}/profile`}>Profile</Link>
             <Link to={`/${userId}/accounts`}>Accounts</Link>
             <Link to={`/${userId}/trades`}>Trades</Link>
-            <Link to={`/${userId}/performance`}>Performance</Link>
-            <Link to={`/${userId}/trades`}>Trades</Link>
+            {// <Link to={`/${userId}/performance`}>Performance</Link>}
+            }<Link to={`/${userId}/trades`}>Trades</Link>
         </div>
     );
 };

@@ -30,6 +30,7 @@
         color: $color-blue-dark;
         padding: 0.25em;
         transition: all .1s ease-in;
+        cursor: pointer;
         
         &:focus, 
         &:hover{
@@ -40,7 +41,12 @@
             padding: 0.25em 1em;
             border: 1px solid $color-blue-dark;
             border-radius: 3px;
-            display: none;
+
+            
+            position: absolute;
+            bottom: 5%;
+            right: 50%;
+            transform: translateX(50%);
 
             &:focus, 
             &:hover{
@@ -50,7 +56,8 @@
             }
 
             @media (min-width: 400px){
-                display: inline-block;
+                position: static;
+                transform: translateX(0);
             }
         }
     }
