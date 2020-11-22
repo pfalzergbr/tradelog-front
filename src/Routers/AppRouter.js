@@ -15,7 +15,7 @@ import Accounts from '../Pages/Accounts';
 import Strategies from '../Pages/Strategies';
 import AccountDetails from '../Pages/AccountDetails';
 import NotFound from '../Pages/NotFound';
-import Footer from '../Components/Footer';
+
 
 const App = (props) => {
     const { token, user } = useContext(AuthContext);
@@ -92,7 +92,6 @@ const App = (props) => {
         <div className="app">
             <Nav data={token && user ? authLinks : publicLinks} user={user} />
             <div className="container main-container">{token && user ? authRoutes : publicRoutes}</div>
-            <Footer />
         </div>
     );
 };
