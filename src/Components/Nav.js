@@ -20,6 +20,9 @@ const Nav = (props) => {
 
     return (
         <div className='main-navigation container'>
+        <div className="nav-navigation__logo-container">
+            <Link to="/" exact className="main-navigation__logo">TradeLog</Link>
+        </div>
             <div className='main-navigation__navlinks'>
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
                     <NewTrade closeModal={closeModal} />
@@ -29,14 +32,8 @@ const Nav = (props) => {
                         {link.name}
                     </Link>
                 ))}
-            </div>
-            <div className='main-navigation__user-container'>
-                {token && (
-                    <span>Welcome, {props.user && props.user.userName}</span>
-                )}
-                {/* Logout button for the time being*/}
-                {token && <a className="navlink" onClick={logout}>Logout</a>}
-                {token && <a className="navlink" onClick={openModal}>QuickTrade</a>}
+                {token && <button className="btn main-navigation__btn" onClick={logout}>Logout</button>}
+                {token && <button className="btn main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
             </div>
         </div>
     );

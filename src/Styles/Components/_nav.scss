@@ -1,10 +1,48 @@
 .main-navigation {
     background-color: $color-white;
     padding: 2rem;
+    justify-content: space-between;
+    align-items: center;
 
 
-    &__navlinks {
-        margin-right: auto;
+    // &__navlinks {
+    //     // margin-left: auto;
+    // }
+
+    &__logo {
+        font-size: $font-size-large;
+        font-weight: 600;
+        color: $color-blue-dark;
+        // background-color: $color-blue-dark;
+        padding: 0.25em 0;
+        border-bottom: 3px solid $color-blue-dark;
+        // border-radius: 5px;
+
+    }
+
+    &__btn {
+        margin-left: 1em;
+        color: $color-blue-dark;
+        padding: 0.25em;
+        transition: all .1s ease-in;
+        
+        &:focus, 
+        &:hover{
+            color: $color-grey-light;
+        }
+        
+        &--cta {
+            padding: 0.25em 1em;
+            border: 1px solid $color-blue-dark;
+            border-radius: 3px;
+
+            &:focus, 
+            &:hover{
+                color: $color-white;
+                background-color: $color-blue-dark;
+                border: 1px solid $color-blue-dark ;
+            }
+        }
     }
 }
 
@@ -13,12 +51,15 @@
 
     &:visited, &:link{
         color: $color-blue-dark;
-        padding: 0.5em 1.5em;
-        margin-left: 0.5em
+        padding: 0.25em 0;
+        margin-left: 1em;
+        border: 1px solid $color-white;
+        transition: all .1s ease-in;
     }
     &:active, &:hover {
+        color: $color-grey-light;
         // color: $color-blue-medium;
-        border: 1px solid $color-blue-dark ;
-        border-radius: 5px;
+        // border-bottom: 1px solid $color-blue-dark ;
+        // border-radius: 5px;
     }
 }
