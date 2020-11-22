@@ -15,6 +15,7 @@ import Accounts from '../Pages/Accounts';
 import Strategies from '../Pages/Strategies';
 import AccountDetails from '../Pages/AccountDetails';
 import NotFound from '../Pages/NotFound';
+import Footer from '../Components/Footer';
 
 const App = (props) => {
     const { token, user } = useContext(AuthContext);
@@ -88,10 +89,11 @@ const App = (props) => {
     );
 
     return (
-        <React.Fragment>
+        <div className="app">
             <Nav data={token && user ? authLinks : publicLinks} user={user} />
-            {token && user ? authRoutes : publicRoutes}
-        </React.Fragment>
+            <div className="container main-container">{token && user ? authRoutes : publicRoutes}</div>
+            <Footer />
+        </div>
     );
 };
 

@@ -14,11 +14,6 @@ a {
     text-decoration: none;
 }
 
-.container {
-    display: flex;
-    min-width: 90%;
-    margin: 0 auto;
-}
 
 body {
     background-color: $color-white;
@@ -32,4 +27,22 @@ button {
     outline: none;
     border: none;
     background-color: $color-white;
+}
+
+.container {
+    display: flex;
+    min-width: 90%;
+    margin: 0 auto;
+}
+
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-container {
+    flex-direction: column;
+    flex: 1;
 }

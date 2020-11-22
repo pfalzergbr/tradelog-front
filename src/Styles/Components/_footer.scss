@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    height: 10vh;
+    color: $color-blue-dark;
+    text-align: center;
+    font-size: $font-size-small;
+    flex-direction: column;
+    // min-width: 60%;
+    max-width: 60%;
+    margin: 0 auto;
+
+    &__disclaimer {
+        margin-bottom: 1em;
+        &--tag {
+            text-transform: uppercase;
+        }
+    }
+
+    &__trademark{
+        font-weight: 700;
+    }
+
+}
