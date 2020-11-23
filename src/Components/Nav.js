@@ -32,8 +32,8 @@ const Nav = (props) => {
                         {link.name}
                     </Link>
                 ))}
-                {token && <button className="btn main-navigation__btn" onClick={logout}>Logout</button>}
-                {token && <button className="btn main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
+                {token && <button className="main-navigation__btn" onClick={logout}>Logout</button>}
+                {token && <button className="main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
             </div>
         </div>
     );

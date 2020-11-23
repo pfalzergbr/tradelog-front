@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import Loading from '../Components/Loading'
+import Footer from '../Components/Footer';
+import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
 import { useAxios } from '../Hooks/useAxios';
-
 
 const loginSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -24,7 +24,6 @@ const Login = (props) => {
     const { isValid } = formState;
     const history = useHistory();
 
-  
     // Submits a Post request for /api/user/login
     const onSubmit = async (data) => {
         try {
@@ -42,22 +41,45 @@ const Login = (props) => {
     };
 
     return (
-        <React.Fragment>
-        {isLoading && <Loading />}
-        {!isLoading && <div>
-            <h1>{Login}</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='email'>E-mail</label>
-                <input name='email' ref={register} />
-                <label htmlFor='password'>Password</label>
-                <input type='password' name='password' ref={register} />
-                <button disabled={!isValid} type='submit'>
-                    Log in
-                </button>
-                <Link to='/user/register'>Register here</Link>
-            </form>
-        </div>}
-        </React.Fragment>
+        <div className='login-page'>
+            {isLoading && <Loading />}
+            {!isLoading && (
+                <div className='form-container'>
+                    <form
+                        className='form form--login'
+                        onSubmit={handleSubmit(onSubmit)}>
+                        <h2 className="form__title">Login</h2>
+                        <label className='form__label' htmlFor='email'>
+                            E-mail
+                        </label>
+                        <input
+                            className='form__input'
+                            name='email'
+                            placeholder="E-mail"
+                            ref={register}
+                        />
+                        <label className='form__label' htmlFor='password'>
+                            Password
+                        </label>
+                        <input
+                            className='form__input'
+                            type='password'
+                            name='password'
+                            placeholder="Password"
+                            ref={register}
+                        />
+                        <button
+                            className='btn form__btn btn--primary'
+                            disabled={!isValid}
+                            type='submit'>
+                            Log in
+                        </button>
+                        <Link className="form__link" to='/user/register'>Register here</Link>
+                    </form>
+                </div>
+            )}
+            <Footer />
+        </div>
     );
 };
 

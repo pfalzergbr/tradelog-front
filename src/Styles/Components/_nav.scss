@@ -28,19 +28,20 @@
     &__btn {
         margin-left: 1em;
         color: $color-blue-dark;
-        padding: 0.25em;
         transition: all .1s ease-in;
+        padding: 0.25em;
         cursor: pointer;
         
         &:focus, 
         &:hover{
-            color: $color-grey-light;
+            color: $color-blue-medium;
         }
-        
+
         &--cta {
             padding: 0.25em 1em;
             border: 1px solid $color-blue-dark;
             border-radius: 3px;
+            
 
             
             position: absolute;
@@ -77,8 +78,9 @@
         border: 1px solid $color-white;
         transition: all .1s ease-in;
     }
+
     &:active, &:hover {
-        color: $color-grey-light;
+        color: $color-blue-medium;
         // color: $color-blue-medium;
         // border-bottom: 1px solid $color-blue-dark ;
         // border-radius: 5px;
