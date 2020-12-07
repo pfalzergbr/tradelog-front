@@ -61,7 +61,7 @@ const AccountDetails = (props) => {
             );
             console.log(response)
             removeAccount(response.data._id)
-            closeModal()
+            closeDeleteModal()
             history.replace(`/${user.userId}/accounts/`);
         } catch (error) {
             console.log(error);
