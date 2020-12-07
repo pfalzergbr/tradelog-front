@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -24,13 +24,12 @@ const NewTrade = (props) => {
         mode: 'onChange',
     });
     const { isValid } = formState;
-    const history = useHistory();
     //TODO: Get the id from the actual user
 
     const onSubmit = async (data) => {
         const formData = {
             ...data,
-            trader: user.userId,
+            userId: user.userId,
         };
         try {
             const response = await sendRequest(
@@ -41,11 +40,11 @@ const NewTrade = (props) => {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
-                );
-                console.log(response.data)
-                addAccount(response.data)
-                // history.push(`/${user.userId}/accounts/${response.data._id}`)
-                props.closeModal();
+            );
+            console.log(response.data);
+            addAccount(response.data);
+
+            props.closeModal();
         } catch (error) {
             console.log(error);
         }
@@ -75,9 +74,7 @@ const NewTrade = (props) => {
                             ref={register}
                         />
                         {errors.symbol && (
-                            <ErrorMessage
-                                message={errors.balance.message}
-                            />
+                            <ErrorMessage message={errors.balance.message} />
                         )}
                         <label htmlFor='description'>Description</label>
                         <textarea name='description' ref={register} />
