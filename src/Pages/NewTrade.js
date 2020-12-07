@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
 import ErrorMessage from '../Components/UI/ErrorMessage';
+const API = process.env.REACT_APP_API;
 
 const basicTradeSchema = yup.object().shape({
     symbol: yup.string().required(),
@@ -22,8 +23,8 @@ const NewTrade = (props) => {
     //TODO: Basic form, or extended?
     const { user, token } = useContext(AuthContext);
     const { accounts } = user;
-    const { isLoading, sendRequest } = useAxios();
-    const { register, handleSubmit, formState, errors, control } = useForm({
+    const { isLoading, sendRequest } = useRequest();
+    const { register, handleSubmit, formState, errors} = useForm({
         resolver: yupResolver(basicTradeSchema),
         mode: 'onChange', defaultValues: {
             notes: ''
@@ -38,7 +39,7 @@ const NewTrade = (props) => {
         };
         try {
             const response = await sendRequest(
-                'http://localhost:3000/api/trades/',
+                `${API}/api/trades/`,
                 'POST',
                 JSON.stringify(formData),
                 {

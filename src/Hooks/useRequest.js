@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-export const useAxios = () => {
+export const useRequest = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     //Starting an axios Http request with the parameters provided.

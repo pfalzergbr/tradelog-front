@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import Loading from '../Components/Loading';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
 import { AuthContext } from '../Context/MainContext';
 import NewAccount from '../Components/Modals/NewAccount';
+const API = process.env.REACT_APP_API;
 
 const Accounts = (props) => {
     const { user, token } = useContext(AuthContext);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [accounts, setAccounts] = useState([]);
 
@@ -17,7 +18,7 @@ const Accounts = (props) => {
         const fetchAccounts = async () => {
             try {
                 const response = await sendRequest(
-                    'http://localhost:3000/api/user/accounts',
+                    `${API}/api/user/accounts`,
                     'GET',
                     {},
                     { Authorization: `Bearer ${token}` },
@@ -29,7 +30,7 @@ const Accounts = (props) => {
             }
         };
         fetchAccounts();
-    }, []);
+    }, [sendRequest, token]);
 
     const openModal = () => {
         setModalIsOpen(true);

@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Loading from '../Loading';
 import { AuthContext } from '../../Context/MainContext';
-import { useAxios } from '../../Hooks/useAxios';
+import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../UI/ErrorMessage';
+const API = process.env.REACT_APP_API;
 
 const accountSchema = yup.object().shape({
     accountName: yup.string().required(),
@@ -18,7 +18,7 @@ const accountSchema = yup.object().shape({
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
     const { user, token, addAccount } = useContext(AuthContext);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
         mode: 'onChange',
@@ -33,7 +33,7 @@ const NewTrade = (props) => {
         };
         try {
             const response = await sendRequest(
-                'http://localhost:3000/api/user/accounts',
+                `${API}/api/user/accounts`,
                 'POST',
                 JSON.stringify(formData),
                 {
@@ -41,7 +41,6 @@ const NewTrade = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
-            console.log(response.data);
             addAccount(response.data);
 
             props.closeModal();

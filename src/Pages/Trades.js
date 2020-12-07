@@ -6,12 +6,13 @@ import Pagination from '../Components/UI/Pagination';
 
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
+const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {
     const { user, token } = useContext(AuthContext);
     const [ account, setAccount ] = useState( user.accounts[0]._id || null);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
 
@@ -19,7 +20,7 @@ const Trades = (props) => {
         const fetchTrades = async () => {
             try {
                 const response = await sendRequest(
-                    `http://localhost:3000/api/trades/account/${account}`,
+                    `${API}/api/trades/account/${account}`,
                     'GET',
                     {},
                     { Authorization: `Bearer ${token}` },
@@ -32,7 +33,7 @@ const Trades = (props) => {
             }
         };
         fetchTrades();
-    }, [account]);
+    }, [account, history, paginate, sendRequest, token, user.userId]);
 
     const changeAccount = (event) => {
         setAccount(event.target.value);

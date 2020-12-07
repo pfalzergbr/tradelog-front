@@ -6,8 +6,9 @@ import * as yup from 'yup';
 
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
 import ErrorMessage from '../Components/UI/ErrorMessage';
+const API = process.env.REACT_APP_API;
 
 const registerSchema = yup.object().shape({
     name: yup.string().required(),
@@ -22,11 +23,11 @@ const registerSchema = yup.object().shape({
         .required(),
 });
 
-const Register = (props) => {
+const Register = () => {
     const auth = useContext(AuthContext);
     const history = useHistory();
-    const { isLoading, sendRequest } = useAxios();
-    const { register, handleSubmit, watch, errors } = useForm({
+    const { isLoading, sendRequest } = useRequest();
+    const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(registerSchema),
         mode: 'onChange',
     });
@@ -35,7 +36,7 @@ const Register = (props) => {
     const onSubmit = async (data) => {
         try {
             const response = await sendRequest(
-                'http://localhost:3000/api/user/',
+                `${API}/api/user/`,
                 'POST',
                 JSON.stringify(data),
                 { 'Content-Type': 'application/json' },

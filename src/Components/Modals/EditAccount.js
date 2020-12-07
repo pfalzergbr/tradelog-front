@@ -6,8 +6,9 @@ import * as yup from 'yup';
 
 import Loading from '../Loading';
 import { AuthContext } from '../../Context/MainContext';
-import { useAxios } from '../../Hooks/useAxios';
+import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../UI/ErrorMessage';
+const API = process.env.REACT_APP_API;
 
 const accountSchema = yup.object().shape({
     accountName: yup.string().required(),
@@ -16,7 +17,7 @@ const accountSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     const { user, token } = useContext(AuthContext);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const {accountName, description} = props.data
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
@@ -36,7 +37,7 @@ const NewTrade = (props) => {
         };
         try {
             const response = await sendRequest(
-                `http://localhost:3000/api/user/accounts/${accountId}`,
+                `${API}/api/user/accounts/${accountId}`,
                 'PATCH',
                 JSON.stringify(formData),
                 {

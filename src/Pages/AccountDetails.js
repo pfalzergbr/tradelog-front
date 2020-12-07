@@ -6,15 +6,16 @@ import DeleteModal from '../Components/Modals/DeleteModal'
 import EditAccount from '../Components/Modals/EditAccount';
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
+const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
     const { token, user, removeAccount } = useContext(AuthContext);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [account, setAccount] = useState({});
-    const { isLoading, sendRequest } = useAxios();
-    const { userId, accountId } = useParams();
+    const { isLoading, sendRequest } = useRequest();
+    const { accountId } = useParams();
     const { accountName, balance, description, strategies } = account;
     const history = useHistory();
 
@@ -30,7 +31,7 @@ const AccountDetails = (props) => {
         const fetchAccount = async () => {
             try {
                 const response = await sendRequest(
-                    `http://localhost:3000/api/user/accounts/${accountId}`,
+                    `${API}/api/user/accounts/${accountId}`,
                     'GET',
                     {},
                     {

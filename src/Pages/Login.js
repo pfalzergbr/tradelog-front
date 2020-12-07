@@ -7,7 +7,8 @@ import * as yup from 'yup';
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
+const API = process.env.REACT_APP_API;
 
 const loginSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -16,7 +17,7 @@ const loginSchema = yup.object().shape({
 
 const Login = (props) => {
     const auth = useContext(AuthContext);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, watch, errors, formState } = useForm({
         resolver: yupResolver(loginSchema),
         mode: 'onChange',
@@ -28,7 +29,7 @@ const Login = (props) => {
     const onSubmit = async (data) => {
         try {
             const response = await sendRequest(
-                'http://localhost:3000/api/user/login',
+                `${API}/api/user/login`,
                 'POST',
                 JSON.stringify(data),
                 { 'Content-Type': 'application/json' },

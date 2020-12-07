@@ -9,7 +9,8 @@ import DeleteModal from '../Components/Modals/DeleteModal';
 import ErrorMessage from '../Components/UI/ErrorMessage';
 import Loading from '../Components/Loading';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
+const API = process.env.REACT_APP_API;
 
 const profileSchema = yup.object().shape({
     name: yup.string().required(),
@@ -26,12 +27,12 @@ const profileSchema = yup.object().shape({
 const Profile = (props) => {
     const { user, token, logout } = useContext(AuthContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const [userProfile, setUserProfile] = useState({});
     const { name, email } = userProfile;
     const history = useHistory();
 
-    const { register, handleSubmit, watch, errors, reset } = useForm({
+    const { register, handleSubmit, errors, reset } = useForm({
         resolver: yupResolver(profileSchema),
         mode: 'onTouched',
         defaultValues: {
@@ -55,7 +56,7 @@ const Profile = (props) => {
         const fetchUserProfile = async () => {
             try {
                 const response = await sendRequest(
-                    'http://localhost:3000/api/user/profile',
+                    `${API}/api/user/profile`,
                     'GET',
                     {},
                     {
@@ -69,7 +70,7 @@ const Profile = (props) => {
             }
         };
         fetchUserProfile();
-    }, []);
+    }, [ sendRequest, token ]);
 
     //Populates the form with data from user profile
     useEffect(() => {
@@ -115,7 +116,7 @@ const Profile = (props) => {
     const onSubmit = async (data) => {
         try {
             const response = await sendRequest(
-                `http://localhost:3000/api/user/profile/`,
+                `${API}/api/user/profile/`,
                 'PATCH',
                 JSON.stringify(data),
                 {

@@ -5,12 +5,13 @@ import Modal from 'react-modal';
 import Loading from '../Components/Loading';
 import DeleteModal from '../Components/Modals/DeleteModal';
 import { AuthContext } from '../Context/MainContext';
-import { useAxios } from '../Hooks/useAxios';
+import { useRequest } from '../Hooks/useRequest';
+const API = process.env.REACT_APP_API;
 
 const TradeDetails = (props) => {
     const { token, user } = useContext(AuthContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const { isLoading, sendRequest } = useAxios();
+    const { isLoading, sendRequest } = useRequest();
     const [ trade, setTrade] = useState({});
     const { tradeId } = useParams();
     const { symbol, outcome, amount } = trade;
@@ -31,7 +32,7 @@ const TradeDetails = (props) => {
         const fetchTrade = async () => {
             try {
                 const response = await sendRequest(
-                    `http://localhost:3000/api/trades/${tradeId}`,
+                    `${API}/api/trades/${tradeId}`,
                     'GET',
                     {},
                     {
@@ -46,7 +47,7 @@ const TradeDetails = (props) => {
         };
 
         fetchTrade();
-    }, []);
+    }, [sendRequest, token, tradeId]);
 
     //Sends a delete trade request to the API. Passed down and called in the Modal.
     const handleDelete = async () => {
