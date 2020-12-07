@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import { AuthContext } from '../Context/MainContext';
-import NewTrade from '../Pages/NewTrade';
+import NewTrade from './Modals/NewTrade';
 
 const Nav = (props) => {
     const links = props.data;

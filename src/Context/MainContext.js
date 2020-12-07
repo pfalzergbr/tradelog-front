@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useCallback } from 'react';
 import { useAuthentication } from '../Hooks/useAuthentication';
-import { tradeReducer } from '../Reducers/tradeReducer';
+import { tradeReducer } from '../Redux/Reducers/tradeReducer';
 
 export const CurrentTradesContext = createContext();
 export const AuthContext = createContext();

@@ -1,8 +1,7 @@
 import {
     createStore,
-    applyMiddleWare,
+    applyMiddleware,
     combineReducers,
-    createStore,
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
@@ -12,9 +11,7 @@ const logger = createLogger();
 
 const mainReducer = combineReducers({ authReducer });
 
-const store = createStore(
+export const store = createStore(
     mainReducer,
-    applyMiddleWare(thunkMiddleware, logger),
+    applyMiddleware(thunkMiddleware, logger),
 );
-
-export default store;

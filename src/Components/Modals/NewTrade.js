@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import Loading from '../Components/Loading';
-import { AuthContext } from '../Context/MainContext';
-import { useRequest } from '../Hooks/useRequest';
-import ErrorMessage from '../Components/UI/ErrorMessage';
+import Loading from '../Loading';
+import { AuthContext } from '../../Context/MainContext';
+import { useRequest } from '../../Hooks/useRequest';
+import ErrorMessage from '../UI/ErrorMessage';
 const API = process.env.REACT_APP_API;
 
 const basicTradeSchema = yup.object().shape({
