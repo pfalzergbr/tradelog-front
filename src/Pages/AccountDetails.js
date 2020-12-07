@@ -46,7 +46,7 @@ const AccountDetails = (props) => {
         };
 
         fetchAccount();
-    }, []);
+    }, [token, accountId, sendRequest]);
 
     const handleDelete = async () => {
         try {

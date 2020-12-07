@@ -80,7 +80,7 @@ const Profile = (props) => {
                 email,
             });
         }
-    }, [userProfile]);
+    }, [userProfile, email, name, reset]);
 
     // Sends a delete request to the API. This function is passed to the modal, executable from there. 
     const deleteUser = async () => {

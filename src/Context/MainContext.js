@@ -11,7 +11,7 @@ export const MainContextProvider = (props) => {
 
     const dispatch = useCallback((action) => {
         dispatchCurrentTrades(action);
-    });
+    }, []);
 
     return (
         <CurrentTradesContext.Provider value={{ currentTrades, dispatch }}>

@@ -18,7 +18,7 @@ const loginSchema = yup.object().shape({
 const Login = (props) => {
     const auth = useContext(AuthContext);
     const { isLoading, sendRequest } = useRequest();
-    const { register, handleSubmit, watch, errors, formState } = useForm({
+    const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(loginSchema),
         mode: 'onChange',
     });

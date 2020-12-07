@@ -33,7 +33,7 @@ const NewTrade = (props) => {
         };
         try {
             const response = await sendRequest(
-                `${API}/api/user/accounts`,
+                `${API}/api/accounts`,
                 'POST',
                 JSON.stringify(formData),
                 {

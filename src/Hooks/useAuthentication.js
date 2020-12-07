@@ -22,7 +22,7 @@ export const useAuthentication = () => {
         setUser(null);
         localStorage.removeItem('userData');
         history.push('/');
-    }, [history, token ]);
+    }, [history]);
     //Checking local storage on login for Token data, logs in if finds one.
 
     //Handles adding new accounts to a user, so the frontend can load basic account info without an API request.
@@ -56,7 +56,7 @@ export const useAuthentication = () => {
         if ( user ){
             localStorage.setItem('userData', JSON.stringify({ user, token }));
         }
-    }, [user])
+    }, [user, token])
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));

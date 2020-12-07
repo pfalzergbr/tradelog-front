@@ -23,7 +23,7 @@ const Accounts = (props) => {
                     {},
                     { Authorization: `Bearer ${token}` },
                 );
-                console.log(response.data.accounts)
+                console.log(response.data.accounts);
                 setAccounts(response.data.accounts);
             } catch (error) {
                 console.log(error);
@@ -59,7 +59,9 @@ const Accounts = (props) => {
                             </Link>
                         ))}
                     </ul>
-                    <button onClick={openModal} closeModal={closeModal}>Create Account</button>
+                    <button onClick={openModal} closeModal={closeModal}>
+                        Create Account
+                    </button>
                 </div>
             )}
         </React.Fragment>
