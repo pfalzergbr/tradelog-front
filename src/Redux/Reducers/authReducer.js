@@ -3,6 +3,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    LOAD_USER,
 } from '../Actions/constants';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
         userId: null,
     },
     token: null,
-    isLoading: false
+    isLoading: false,
 };
 
 export const authReducer = (state = initialState, action = {}) => {
@@ -26,6 +27,12 @@ export const authReducer = (state = initialState, action = {}) => {
                 user: action.payload.user,
                 token: action.payload.token,
                 isLoading: false,
+            };
+        case LOAD_USER:
+            return {
+                ...state,
+                user: action.payload.user,
+                token: action.payload.token,
             };
         case LOGOUT:
             return { ...initialState };

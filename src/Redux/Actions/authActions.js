@@ -1,4 +1,10 @@
-import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './constants';
+import {
+    LOGIN_PENDING,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
+    LOAD_USER,
+    LOGOUT,
+} from './constants';
 import { loginUser } from '../../Services/authService';
 
 export const login = (loginDetails, url) => async (dispatch) => {
@@ -14,12 +20,14 @@ export const login = (loginDetails, url) => async (dispatch) => {
 
     try {
         dispatch({ type: LOGIN_PENDING });
-        const result = await loginUser(loginDetails, url)
+        const result = await loginUser(loginDetails, url);
         return onSuccess(result.data);
     } catch (error) {
         return onError(error);
     }
 };
+
+export const loadUser = (userData) => ({ type: LOAD_USER, payload: userData });
 
 export const logout = () => ({
     type: LOGOUT,

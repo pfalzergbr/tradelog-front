@@ -5,7 +5,3 @@ export const storeUser = (userData) => {
 export const clearUser = () => {
     localStorage.removeItem('userData');
 }
-
-export const loadUser = () => {
-
-}

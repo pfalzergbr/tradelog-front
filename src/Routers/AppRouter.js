@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { loadUser } from '../Redux/Actions/authActions'
 import Nav from '../Components/Nav';
 import Dashboard from '../Pages/Dashboard';
 import Performance from '../Pages/Performance';
@@ -17,7 +18,8 @@ import AccountDetails from '../Pages/AccountDetails';
 import NotFound from '../Pages/NotFound';
 
 
-const App = (props) => {
+const AppRouter = (props) => {
+    const dispatch = useDispatch();
     const auth = useSelector(state => state.authReducer);
     const { token, user } = auth
 
@@ -89,6 +91,15 @@ const App = (props) => {
         </Switch>
     );
 
+    //Loading user from local storage, if any
+    useEffect(() => {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        console.log(userData)
+        if (userData && userData.user && userData.token) {
+            dispatch(loadUser(userData));
+        }
+    }, []);
+
     return (
         <div className="app">
             <Nav data={token && user ? authLinks : publicLinks} user={user} />
@@ -97,4 +108,4 @@ const App = (props) => {
     );
 };
 
-export default App;
+export default AppRouter;

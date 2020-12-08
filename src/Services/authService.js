@@ -1,6 +1,6 @@
 import axios from 'axios';
-const API = process.env.REACT_APP_API;
 
+// Handles both login and registration, the two endpoints return the same details.
 export const loginUser = async (loginData, url) => {
     const userData = await axios({
         method: 'post',
