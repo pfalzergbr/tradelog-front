@@ -1,24 +1,35 @@
-import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../Actions/constants';
+import {
+    LOGIN_PENDING,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL,
+    LOGOUT,
+} from '../Actions/constants';
 
 const initialState = {
     user: {
-        userName: 'user',
-        userId: null
-        },
-    token: null
-}
+        userName: null,
+        userId: null,
+    },
+    token: null,
+    isLoading: false
+};
 
 export const authReducer = (state = initialState, action = {}) => {
-    switch (action.type){
+    switch (action.type) {
         case LOGIN_PENDING:
-            return {...state, isLoading: true};
-        case LOGIN_SUCCESS:
-            return {};
+            return { ...state, isLoading: true };
         case LOGIN_FAIL:
-            return {...state, user: action.payload.user, token: action.payload.token, isLoading: false };
+            return { ...state, error: action.payload, isLoading: false };
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                user: action.payload.user,
+                token: action.payload.token,
+                isLoading: false,
+            };
         case LOGOUT:
-            return {...state, error: action.payload, isLoading: false}
-        default: 
+            return { ...state, isLoading: false };
+        default:
             return state;
     }
-}
+};

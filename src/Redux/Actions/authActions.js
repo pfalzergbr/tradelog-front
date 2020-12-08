@@ -1,7 +1,7 @@
 import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './constants';
-const API = process.env.REACT_APP_API;
+import { loginUser } from '../../Services/authService';
 
-export const login = () => async (dispatch) => {
+export const login = (loginDetails) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
         return userData;
@@ -14,7 +14,7 @@ export const login = () => async (dispatch) => {
 
     try {
         dispatch({ type: LOGIN_PENDING });
-        const result = await axios.get(`${API}/api/user/login`);
+        const result = await loginUser(loginDetails)
         return onSuccess(result.data);
     } catch (error) {
         return onError(error);

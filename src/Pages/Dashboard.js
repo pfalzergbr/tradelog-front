@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import {AuthContext} from '../Context/MainContext';
 
 
 const Dashboard = (props) => {
-    const auth = useContext(AuthContext);
+    const auth = useSelector(state => state.authReducer);
     const { userId } = useParams();
 
     return (

@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { AuthContext } from '../Context/MainContext';
 import Nav from '../Components/Nav';
 import Dashboard from '../Pages/Dashboard';
 import Performance from '../Pages/Performance';
@@ -18,7 +18,8 @@ import NotFound from '../Pages/NotFound';
 
 
 const App = (props) => {
-    const { token, user } = useContext(AuthContext);
+    const auth = useSelector(state => state.authReducer);
+    const { token, user } = auth
 
     //Links to display if there is no logged in user. Feeds into the Navbar components as props
     const publicLinks = [
