@@ -4,7 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Loading from '../Loading';
-import { AuthContext } from '../../Context/MainContext';
+import { useSelector } from 'react-redux';
+
 import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../UI/ErrorMessage';
 const API = process.env.REACT_APP_API;
@@ -21,7 +22,7 @@ const basicTradeSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token } = useContext(AuthContext);
+    const { user, token } = useSelector(state => state.authReducer);
     const { accounts } = user;
     const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, formState, errors} = useForm({

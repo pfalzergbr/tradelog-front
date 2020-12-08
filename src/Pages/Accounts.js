@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import Loading from '../Components/Loading';
 import { useRequest } from '../Hooks/useRequest';
-import { AuthContext } from '../Context/MainContext';
+import { useSelector } from 'react-redux';
 import NewAccount from '../Components/Modals/NewAccount';
 const API = process.env.REACT_APP_API;
 
 const Accounts = (props) => {
-    const { user, token } = useContext(AuthContext);
+    const { user, token } = useSelector(state => state.authReducer);
     const { isLoading, sendRequest } = useRequest();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [accounts, setAccounts] = useState([]);

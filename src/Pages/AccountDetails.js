@@ -1,16 +1,16 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import DeleteModal from '../Components/Modals/DeleteModal'
 import EditAccount from '../Components/Modals/EditAccount';
 import Loading from '../Components/Loading';
-import { AuthContext } from '../Context/MainContext';
+import { useSelector } from 'react-redux';
 import { useRequest } from '../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
-    const { token, user, removeAccount } = useContext(AuthContext);
+    const { token, user } = useSelector(state => state.authReducer);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [account, setAccount] = useState({});
@@ -39,7 +39,7 @@ const AccountDetails = (props) => {
                         Authorization: `Bearer ${token}`,
                     },
                 );
-                setAccount(response.data);
+                // setAccount(response.data);
             } catch (error) {
                 console.log(error);
             }
@@ -61,7 +61,7 @@ const AccountDetails = (props) => {
                 },
             );
             console.log(response)
-            removeAccount(response.data._id)
+            // removeAccount(response.data._id)
             closeDeleteModal()
             history.replace(`/${user.userId}/accounts/`);
         } catch (error) {

@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
 import Loading from '../Components/Loading';
 import DeleteModal from '../Components/Modals/DeleteModal';
-import { AuthContext } from '../Context/MainContext';
+import { useSelector } from 'react-redux';
 import { useRequest } from '../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const TradeDetails = (props) => {
-    const { token, user } = useContext(AuthContext);
+    const { token, user } = useSelector(state => state.authReducer);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const { isLoading, sendRequest } = useRequest();
     const [ trade, setTrade] = useState({});

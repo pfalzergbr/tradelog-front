@@ -1,8 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import {AuthContext} from '../Context/MainContext';
 
 
 const Dashboard = (props) => {

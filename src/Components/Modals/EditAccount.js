@@ -3,9 +3,9 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useSelector } from 'react-redux';
 
 import Loading from '../Loading';
-import { AuthContext } from '../../Context/MainContext';
 import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../UI/ErrorMessage';
 const API = process.env.REACT_APP_API;
@@ -16,7 +16,7 @@ const accountSchema = yup.object().shape({
 });
 
 const NewTrade = (props) => {
-    const { user, token } = useContext(AuthContext);
+    const { user, token } = useSelector(state => state.authReducer);
     const { isLoading, sendRequest } = useRequest();
     const {accountName, description} = props.data
     const { register, handleSubmit, formState, errors } = useForm({
@@ -27,7 +27,7 @@ const NewTrade = (props) => {
     });
     const { isValid } = formState;
     const history = useHistory();
-    const {userId, accountId} = useParams();
+    const { userId, accountId} = useParams();
 
 
     const onSubmit = async (data) => {

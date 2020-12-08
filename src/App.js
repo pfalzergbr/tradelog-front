@@ -9,12 +9,10 @@ import AppRouter from './Routers/AppRouter';
 const App = () => {
     return (
         //TODO - Remove contextprovider when ready
-        <MainContextProvider>
         <Provider store={store}>
             <ToastContainer />
             <AppRouter />
         </Provider>
-        </MainContextProvider>
     );
 };
 

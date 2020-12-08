@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useSelector } from 'react-redux'
 
 import Loading from '../Loading';
-import { AuthContext } from '../../Context/MainContext';
 import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../UI/ErrorMessage';
 const API = process.env.REACT_APP_API;
@@ -17,7 +17,7 @@ const accountSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token, addAccount } = useContext(AuthContext);
+    const { user, token, addAccount } = useSelector(state => state.authReducer);
     const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
@@ -41,7 +41,7 @@ const NewTrade = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
-            addAccount(response.data);
+            // addAccount(response.data);
 
             props.closeModal();
         } catch (error) {

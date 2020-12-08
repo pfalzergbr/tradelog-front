@@ -5,12 +5,12 @@ import { usePagination } from '../Hooks/usePagination';
 import Pagination from '../Components/UI/Pagination';
 
 import Loading from '../Components/Loading';
-import { AuthContext } from '../Context/MainContext';
+import { useSelector } from 'react-redux';
 import { useRequest } from '../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {
-    const { user, token } = useContext(AuthContext);
+    const { user, token } = useSelector(state => state.authReducer);
     const [ account, setAccount ] = useState( user.accounts[0]._id || null);
     const { isLoading, sendRequest } = useRequest();
     const { paginate, paginatedData, pageNumbers } = usePagination();

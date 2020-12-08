@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Modal from 'react-modal';
@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import DeleteModal from '../Components/Modals/DeleteModal';
 import ErrorMessage from '../Components/UI/ErrorMessage';
 import Loading from '../Components/Loading';
-import { AuthContext } from '../Context/MainContext';
+import { useSelector } from 'react-redux';
 import { useRequest } from '../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
@@ -25,7 +25,7 @@ const profileSchema = yup.object().shape({
 });
 
 const Profile = (props) => {
-    const { user, token, logout } = useContext(AuthContext);
+    const { user, token } = useSelector(state => state.authReducer);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const { isLoading, sendRequest } = useRequest();
     const [userProfile, setUserProfile] = useState({});
@@ -95,7 +95,7 @@ const Profile = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
-            logout();
+            // logout();
             history.replace(`/`);
         } catch (error) {
             console.log(error);
