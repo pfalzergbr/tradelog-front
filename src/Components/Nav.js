@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { AuthContext } from '../Context/MainContext';
+import { clearUser } from '../Services/storageService';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../Redux/Actions/authActions';
 import NewTrade from './Modals/NewTrade';
 
 const Nav = (props) => {
+    const history = useHistory();
     const links = props.data;
-    const { token, logout } = useContext(AuthContext);
+    const auth = useSelector(state => state.authReducer);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -17,6 +21,14 @@ const Nav = (props) => {
     const closeModal = () => {
         setModalIsOpen(false);
     };
+
+    const logoutUser = () => {
+        dispatch(logout());
+        clearUser();
+        history.push('/')
+        
+
+    }
 
     return (
         <div className='main-navigation container'>
@@ -32,8 +44,8 @@ const Nav = (props) => {
                         {link.name}
                     </Link>
                 ))}
-                {token && <button className="main-navigation__btn" onClick={logout}>Logout</button>}
-                {token && <button className="main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
+                {auth.token && <button className="main-navigation__btn" onClick={logoutUser}>Logout</button>}
+                {auth.token && <button className="main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
             </div>
         </div>
     );

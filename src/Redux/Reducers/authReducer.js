@@ -28,7 +28,7 @@ export const authReducer = (state = initialState, action = {}) => {
                 isLoading: false,
             };
         case LOGOUT:
-            return { ...state, isLoading: false };
+            return { ...initialState };
         default:
             return state;
     }

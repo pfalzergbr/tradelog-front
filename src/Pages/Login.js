@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../Redux/Actions/authActions'
 
+import { storeUser } from '../Services/storageService'
+import { login } from '../Redux/Actions/authActions'
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
 
@@ -29,7 +30,7 @@ const Login = (props) => {
     const onSubmit = async (data) => {
         try {
             const response = await dispatch(login(data));
-        
+            storeUser(response);
 
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
