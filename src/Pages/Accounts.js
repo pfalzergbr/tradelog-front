@@ -2,35 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
+import { fetchAccounts } from '../Redux/Actions/accountActions'
 import Loading from '../Components/Loading';
-import { useRequest } from '../Hooks/useRequest';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NewAccount from '../Components/Modals/NewAccount';
 const API = process.env.REACT_APP_API;
 
-const Accounts = (props) => {
+const Accounts = () => {
+    const dispatch = useDispatch();
     const { user, token } = useSelector(state => state.authReducer);
-    const { isLoading, sendRequest } = useRequest();
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [accounts, setAccounts] = useState([]);
+    const { accounts, isLoading } = useSelector(state => state.accountReducer)
+    const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
     useEffect(() => {
-        const fetchAccounts = async () => {
+        const getAccountsData = async (token) => {
             try {
-                const response = await sendRequest(
-                    `${API}/api/user/accounts`,
-                    'GET',
-                    {},
-                    { Authorization: `Bearer ${token}` },
-                );
-                console.log(response.data.accounts);
-                setAccounts(response.data.accounts);
+                const response = await dispatch(fetchAccounts(token));
+                return response;
             } catch (error) {
                 console.log(error);
             }
-        };
-        fetchAccounts();
-    }, [sendRequest, token]);
+
+        }
+        getAccountsData(token);
+    }, [ token, dispatch ]);
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -53,9 +48,9 @@ const Accounts = (props) => {
                     <ul>
                         {accounts.map((account) => (
                             <Link
-                                key={account._id}
+                                key={account.account_id}
                                 to={`/${user.userId}/accounts/${account._id}`}>
-                                {account.accountName}
+                                {account.account_name}
                             </Link>
                         ))}
                     </ul>
