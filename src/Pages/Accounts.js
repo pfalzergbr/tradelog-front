@@ -24,7 +24,9 @@ const Accounts = () => {
             }
 
         }
-        getAccountsData(token);
+        if(accounts.length !== 0){
+            getAccountsData(token);
+        }
     }, [ token, dispatch ]);
 
     const openModal = () => {

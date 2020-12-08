@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { storeUser } from '../Services/storageService'
 import { login } from '../Redux/Actions/authActions'
+import { loadAccounts } from '../Redux/Actions/accountActions'
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
 const API = process.env.REACT_APP_API;
@@ -31,7 +32,9 @@ const Login = () => {
     const onSubmit = async (data) => {
         try {
             const response = await dispatch(login(data, `${API}/api/user/login`));
+            dispatch(loadAccounts(response));
             storeUser(response);
+
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);

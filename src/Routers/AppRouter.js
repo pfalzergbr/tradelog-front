@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { loadUser } from '../Redux/Actions/authActions'
+import { loadAccounts } from '../Redux/Actions/accountActions'
 import Nav from '../Components/Nav';
 import Dashboard from '../Pages/Dashboard';
 import Performance from '../Pages/Performance';
@@ -94,9 +95,9 @@ const AppRouter = (props) => {
     //Loading user from local storage, if any
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));
-        console.log(userData)
         if (userData && userData.user && userData.token) {
             dispatch(loadUser(userData));
+            dispatch(loadAccounts(userData));
         }
     }, []);
 

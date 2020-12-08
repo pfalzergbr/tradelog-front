@@ -8,6 +8,7 @@ import {
     DELETE_ACCOUNT_PENDING,
     DELETE_ACCOUNT_SUCCESS,
     DELETE_ACCOUNT_FAIL,
+    LOAD_ACCOUNTS
 } from '../Actions/constants';
 import { fetchAccountService } from '../../Services/accountService';
 
@@ -30,6 +31,10 @@ export const fetchAccounts = (token) => async (dispatch) => {
         return onError(error);
     }
 };
+
+export const loadAccounts = (accounts) => ({
+    type: LOAD_ACCOUNTS, payload: accounts
+})
 
 export const updateAccountDetails = () => {
     const onSuccess = (accountsData) => {};
