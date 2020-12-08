@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { storeUser } from '../Services/storageService'
+import { login } from '../Redux/Actions/authActions'
 import Loading from '../Components/Loading';
-import { AuthContext } from '../Context/MainContext';
-import { useRequest } from '../Hooks/useRequest';
 import ErrorMessage from '../Components/UI/ErrorMessage';
 const API = process.env.REACT_APP_API;
 
@@ -24,25 +25,20 @@ const registerSchema = yup.object().shape({
 });
 
 const Register = () => {
-    const auth = useContext(AuthContext);
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.authReducer);
     const history = useHistory();
-    const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(registerSchema),
         mode: 'onChange',
     });
 
-    //Submits a POST request for /api/user/register, returns a token and a user ID for auth context.
+    
     const onSubmit = async (data) => {
         try {
-            const response = await sendRequest(
-                `${API}/api/user/`,
-                'POST',
-                JSON.stringify(data),
-                { 'Content-Type': 'application/json' },
-            );
-            auth.login(response.data.user, response.data.token);
-            history.push(`/${response.data.user.userId}/dashboard`);
+            const response = await dispatch(login(data, `${API}/api/user/`));
+            storeUser(response);
+            history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);
         }
@@ -50,8 +46,8 @@ const Register = () => {
 
     return (
         <React.Fragment>
-            {isLoading && <Loading />}
-            {!isLoading && (
+            {auth.isLoading && <Loading />}
+            {!auth.isLoading && (
                 <div className='form-container'>
                     <form
                         className='form form--login'

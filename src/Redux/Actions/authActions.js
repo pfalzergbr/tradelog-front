@@ -1,7 +1,7 @@
 import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './constants';
 import { loginUser } from '../../Services/authService';
 
-export const login = (loginDetails) => async (dispatch) => {
+export const login = (loginDetails, url) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
         return userData;
@@ -14,7 +14,7 @@ export const login = (loginDetails) => async (dispatch) => {
 
     try {
         dispatch({ type: LOGIN_PENDING });
-        const result = await loginUser(loginDetails)
+        const result = await loginUser(loginDetails, url)
         return onSuccess(result.data);
     } catch (error) {
         return onError(error);

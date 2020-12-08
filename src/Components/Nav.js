@@ -26,8 +26,6 @@ const Nav = (props) => {
         dispatch(logout());
         clearUser();
         history.push('/')
-        
-
     }
 
     return (

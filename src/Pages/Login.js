@@ -9,13 +9,14 @@ import { storeUser } from '../Services/storageService'
 import { login } from '../Redux/Actions/authActions'
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
+const API = process.env.REACT_APP_API;
 
 const loginSchema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().required(),
 });
 
-const Login = (props) => {
+const Login = () => {
     const dispatch = useDispatch()
     const auth = useSelector(state => state.authReducer);
 
@@ -29,9 +30,8 @@ const Login = (props) => {
     // Submits a Post request for /api/user/login
     const onSubmit = async (data) => {
         try {
-            const response = await dispatch(login(data));
+            const response = await dispatch(login(data, `${API}/api/user/login`));
             storeUser(response);
-
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);
