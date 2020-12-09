@@ -51,7 +51,7 @@ const Accounts = () => {
                         {accounts.map((account) => (
                             <Link
                                 key={account.account_id}
-                                to={`/${user.userId}/accounts/${account._id}`}>
+                                to={`/${user.userId}/accounts/${account.account_id}`}>
                                 {account.account_name}
                             </Link>
                         ))}

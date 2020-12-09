@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import DeleteModal from '../Components/Modals/DeleteModal'
+import DeleteModal from '../Components/Modals/DeleteModal';
 import EditAccount from '../Components/Modals/EditAccount';
 import Loading from '../Components/Loading';
 import { useSelector } from 'react-redux';
@@ -10,39 +10,50 @@ import { useRequest } from '../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
-    const { token, user } = useSelector(state => state.authReducer);
+    const { token, user } = useSelector((state) => state.authReducer);
+    const { accountId } = useParams();
+    const account = useSelector((state) => state.accountReducer.accounts).find(
+        (account) => account.account_id === accountId,
+    );
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-    const [account, setAccount] = useState({});
+    // const [ account, setAccount ] = useState({});
     const { isLoading, sendRequest } = useRequest();
-    const { accountId } = useParams();
-    const { accountName, balance, description, strategies } = account;
+    const {
+        account_name: accountName,
+        balance,
+        description,
+        strategies,
+    } = account;
     const history = useHistory();
 
     //Data to pass in the Delete Modal
     const modalData = {
         header: `You are trying to delete your ${accountName} account.`,
-        message:  'You are trying to delete this account. Once it is deleted, this action cannot be reversed. All trades associated with this account will be permanently deleted.',
+        message:
+            'You are trying to delete this account. Once it is deleted, this action cannot be reversed. All trades associated with this account will be permanently deleted.',
         label: 'Yes, I am sure I want to delete this account.',
-        button: 'Delete'
-    }
+        button: 'Delete',
+    };
+
+    console.log(account);
 
     useEffect(() => {
         const fetchAccount = async () => {
-            try {
-                const response = await sendRequest(
-                    `${API}/api/user/accounts/${accountId}`,
-                    'GET',
-                    {},
-                    {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                );
-                // setAccount(response.data);
-            } catch (error) {
-                console.log(error);
-            }
+            // try {
+            //     const response = await sendRequest(
+            //         `${API}/api/user/accounts/${accountId}`,
+            //         'GET',
+            //         {},
+            //         {
+            //             'Content-Type': 'application/json',
+            //             Authorization: `Bearer ${token}`,
+            //         },
+            //     );
+            //     // setAccount(response.data);
+            // } catch (error) {
+            //     console.log(error);
+            // }
         };
 
         fetchAccount();
@@ -50,25 +61,23 @@ const AccountDetails = (props) => {
 
     const handleDelete = async () => {
         try {
-            const response = await sendRequest(
-                `http://localhost:3000/api/user/accounts/${accountId}`,
-                'DELETE',
-                {},
-
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            );
-            console.log(response)
-            // removeAccount(response.data._id)
-            closeDeleteModal()
-            history.replace(`/${user.userId}/accounts/`);
+            // const response = await sendRequest(
+            //     `http://localhost:3000/api/user/accounts/${accountId}`,
+            //     'DELETE',
+            //     {},
+            //     {
+            //         'Content-Type': 'application/json',
+            //         Authorization: `Bearer ${token}`,
+            //     },
+            // );
+            // console.log(response)
+            // // removeAccount(response.data._id)
+            // closeDeleteModal()
+            // history.replace(`/${user.userId}/accounts/`);
         } catch (error) {
             console.log(error);
         }
     };
-
 
     const openEditModal = () => {
         setEditModalIsOpen(true);

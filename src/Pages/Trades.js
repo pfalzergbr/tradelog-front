@@ -11,7 +11,8 @@ const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {
     const { user, token } = useSelector(state => state.authReducer);
-    const [ account, setAccount ] = useState( user.accounts[0]._id || null);
+    const { accounts } = useSelector(state => state.accountReducer);
+    const [ account, setAccount ] = useState( accounts[0].account_id || null);
     const { isLoading, sendRequest } = useRequest();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
@@ -42,7 +43,7 @@ const Trades = (props) => {
     return (
         <React.Fragment>
             { account ? <select value={account} onChange={changeAccount}>
-                {user.accounts.map(account => <option key={account._id} value={account._id}>{account.accountName}</option>)}
+                {accounts.map(account => <option key={account._id} value={account._id}>{account.accountName}</option>)}
             </select>
             : <div><p>You haven`t got any accounts yet</p><Link to={`/${user.userId}/accounts`}>Create one here</Link></div>}
             {isLoading && <Loading />}

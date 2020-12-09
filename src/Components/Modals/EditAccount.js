@@ -1,4 +1,4 @@
-import React, { useContext,} from 'react';
+import React from 'react';
 import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,7 +36,7 @@ const NewTrade = (props) => {
             trader: user.userId,
         };
         try {
-            const response = await sendRequest(
+            await sendRequest(
                 `${API}/api/user/accounts/${accountId}`,
                 'PATCH',
                 JSON.stringify(formData),

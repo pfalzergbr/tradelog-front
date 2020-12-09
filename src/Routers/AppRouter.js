@@ -99,7 +99,7 @@ const AppRouter = (props) => {
             dispatch(loadUser(userData));
             dispatch(loadAccounts(userData));
         }
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="app">
