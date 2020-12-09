@@ -2,27 +2,25 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loadUser } from '../Redux/Actions/authActions'
-import { loadAccounts } from '../Redux/Actions/accountActions'
-import Nav from '../Components/Nav';
-import Dashboard from '../Pages/Dashboard';
-import Performance from '../Pages/Performance';
-import Trades from '../Pages/Trades';
-import Landing from '../Pages/Landing';
-import TradeDetails from '../Pages/TradeDetails';
-import Login from '../Pages/Login';
-import Register from '../Pages/Register';
-import Profile from '../Pages/Profile';
-import Accounts from '../Pages/Accounts';
-import Strategies from '../Pages/Strategies';
-import AccountDetails from '../Pages/AccountDetails';
-import NotFound from '../Pages/NotFound';
-
+import { loadUser } from '../Redux/Actions/authActions';
+import { loadAccounts } from '../Redux/Actions/accountActions';
+import Nav from '../Pages/Shared/Nav';
+import Dashboard from '../Pages/Dashboard/Dashboard';
+import Trades from '../Pages/Trades/Trades';
+import Landing from '../Pages/Landing/Landing';
+import TradeDetails from '../Pages/Trades/TradeDetails';
+import Login from '../Pages/Login/Login';
+import Register from '../Pages/Register/Register';
+import Profile from '../Pages/Profile/Profile';
+import Accounts from '../Pages/Accounts/Accounts';
+import Strategies from '../Pages/Strategies/Strategies';
+import AccountDetails from '../Pages/Accounts/AccountDetails';
+import NotFound from '../Pages/Shared/NotFound';
 
 const AppRouter = (props) => {
     const dispatch = useDispatch();
-    const auth = useSelector(state => state.authReducer);
-    const { token, user } = auth
+    const auth = useSelector((state) => state.authReducer);
+    const { token, user } = auth;
 
     //Links to display if there is no logged in user. Feeds into the Navbar components as props
     const publicLinks = [
@@ -69,16 +67,13 @@ const AppRouter = (props) => {
                 <Profile />
             </Route>
             <Route path='/:userId/accounts/:accountId'>
-            <AccountDetails />
-        </Route>
+                <AccountDetails />
+            </Route>
             <Route path='/:userId/accounts'>
                 <Accounts />
             </Route>
             <Route path='/:userId/Strategies'>
                 <Strategies />
-            </Route>
-            <Route path='/:userId/performance'>
-                <Performance />
             </Route>
             <Route path='/:userId/trades/'>
                 <Trades />
@@ -93,6 +88,7 @@ const AppRouter = (props) => {
     );
 
     //Loading user from local storage, if any
+    // TODO - Make accounts and strategies load from the backend, only user info from local storage
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('userData'));
         if (userData && userData.user && userData.token) {
@@ -102,9 +98,11 @@ const AppRouter = (props) => {
     }, [dispatch]);
 
     return (
-        <div className="app">
+        <div className='app'>
             <Nav data={token && user ? authLinks : publicLinks} user={user} />
-            <div className="container main-container">{token && user ? authRoutes : publicRoutes}</div>
+            <div className='container main-container'>
+                {token && user ? authRoutes : publicRoutes}
+            </div>
         </div>
     );
 };

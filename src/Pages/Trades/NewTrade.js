@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import Loading from '../Loading';
+import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
 
 import { useRequest } from '../../Hooks/useRequest';
-import ErrorMessage from '../UI/ErrorMessage';
+import ErrorMessage from '../Shared/ErrorMessage';
 const API = process.env.REACT_APP_API;
 
 const basicTradeSchema = yup.object().shape({

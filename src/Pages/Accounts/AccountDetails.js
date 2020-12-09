@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import DeleteModal from '../Components/Modals/DeleteModal';
-import EditAccount from '../Components/Modals/EditAccount';
-import Loading from '../Components/Loading';
+import DeleteModal from '../Shared/DeleteModal';
+import EditAccount from './EditAccount';
+import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../Hooks/useRequest';
+import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {

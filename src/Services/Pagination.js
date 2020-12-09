@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 
-import PaginatedData from './PaginatedData'
+import PaginatedData from '../Pages/Shared/PaginatedData'
 
 const Pagination = (props) => {
     const { data, pageNumbers, userId} = props;

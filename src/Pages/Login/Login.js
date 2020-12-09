@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { storeUser } from '../Services/storageService'
-import { login } from '../Redux/Actions/authActions'
-import { loadAccounts } from '../Redux/Actions/accountActions'
-import Footer from '../Components/Footer';
-import Loading from '../Components/Loading';
+import { storeUser } from '../../Services/storageService'
+import { login } from '../../Redux/Actions/authActions'
+import { loadAccounts } from '../../Redux/Actions/accountActions'
+import Footer from '../Shared/Footer';
+import Loading from '../Shared/Loading';
 const API = process.env.REACT_APP_API;
 
 const loginSchema = yup.object().shape({

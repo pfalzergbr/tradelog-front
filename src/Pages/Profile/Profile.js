@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Modal from 'react-modal';
 
-import DeleteModal from '../Components/Modals/DeleteModal';
-import ErrorMessage from '../Components/UI/ErrorMessage';
-import Loading from '../Components/Loading';
+import DeleteModal from '../Shared/DeleteModal';
+import ErrorMessage from '../Shared/ErrorMessage';
+import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../Hooks/useRequest';
+import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const profileSchema = yup.object().shape({

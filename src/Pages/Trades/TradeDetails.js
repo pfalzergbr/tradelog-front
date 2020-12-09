@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import Loading from '../Components/Loading';
-import DeleteModal from '../Components/Modals/DeleteModal';
+import Loading from '../Shared/Loading';
+import DeleteModal from '../Shared/DeleteModal';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../Hooks/useRequest';
+import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const TradeDetails = (props) => {

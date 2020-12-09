@@ -17,7 +17,8 @@ const Dashboard = (props) => {
             <Link to={`/${userId}/accounts`}>Accounts</Link>
             <Link to={`/${userId}/trades`}>Trades</Link>
             {// <Link to={`/${userId}/performance`}>Performance</Link>}
-            }<Link to={`/${userId}/trades`}>Trades</Link>
+            // <Link to={`/${userId}/trades`}>Trades</Link>
+            }
         </div>
     );
 };

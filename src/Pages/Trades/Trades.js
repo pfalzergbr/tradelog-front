@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
-import { usePagination } from '../Hooks/usePagination';
-import Pagination from '../Components/UI/Pagination';
+import { usePagination } from '../../Hooks/usePagination';
+import Pagination from '../../Services/Pagination';
 
-import Loading from '../Components/Loading';
+import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../Hooks/useRequest';
+import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {

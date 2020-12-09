@@ -1,51 +1,49 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import Loading from '../Loading';
+import Loading from '../Shared/Loading';
 import { useRequest } from '../../Hooks/useRequest';
-import ErrorMessage from '../UI/ErrorMessage';
+import ErrorMessage from '../Shared/ErrorMessage';
 const API = process.env.REACT_APP_API;
 
 const accountSchema = yup.object().shape({
     accountName: yup.string().required(),
+    balance: yup.number().required(),
     description: yup.string().required(),
 });
 
 const NewTrade = (props) => {
-    const { user, token } = useSelector(state => state.authReducer);
+    //TODO: Basic form, or extended?
+    const { user, token, addAccount } = useSelector(state => state.authReducer);
     const { isLoading, sendRequest } = useRequest();
-    const {accountName, description} = props.data
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
-        mode: 'onChange', defaultValues: {
-            accountName, description
-        }
+        mode: 'onChange',
     });
     const { isValid } = formState;
-    const history = useHistory();
-    const { userId, accountId} = useParams();
-
+    //TODO: Get the id from the actual user
 
     const onSubmit = async (data) => {
         const formData = {
             ...data,
-            trader: user.userId,
+            userId: user.userId,
         };
         try {
-            await sendRequest(
-                `${API}/api/user/accounts/${accountId}`,
-                'PATCH',
+            const response = await sendRequest(
+                `${API}/api/accounts`,
+                'POST',
                 JSON.stringify(formData),
                 {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
             );
-            history.push(`/${userId}/accounts/${accountId}`)
+            // addAccount(response.data);
+
+            props.closeModal();
         } catch (error) {
             console.log(error);
         }
@@ -58,7 +56,7 @@ const NewTrade = (props) => {
                 <div>
                     <button onClick={props.closeModal}>X</button>
 
-                    <h1>Edit Account Details</h1>
+                    <h1>Create new account</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label htmlFor='accountName'>Account Name</label>
                         <input name='accountName' ref={register} />
@@ -66,6 +64,16 @@ const NewTrade = (props) => {
                             <ErrorMessage
                                 message={errors.accountName.message}
                             />
+                        )}
+                        <label htmlFor='balance'>Account Balance</label>
+                        <input
+                            name='balance'
+                            type='number'
+                            step='0.01'
+                            ref={register}
+                        />
+                        {errors.symbol && (
+                            <ErrorMessage message={errors.balance.message} />
                         )}
                         <label htmlFor='description'>Description</label>
                         <textarea name='description' ref={register} />

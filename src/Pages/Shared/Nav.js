@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { clearUser } from '../Services/storageService';
+import { clearUser } from '../../Services/storageService';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../Redux/Actions/authActions';
-import NewTrade from './Modals/NewTrade';
+import { logout } from '../../Redux/Actions/authActions';
+import NewTrade from '../Trades/NewTrade';
 
 const Nav = (props) => {
     const history = useHistory();

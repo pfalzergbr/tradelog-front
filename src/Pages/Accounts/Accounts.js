@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { fetchAccounts } from '../Redux/Actions/accountActions'
-import Loading from '../Components/Loading';
+import { fetchAccounts } from '../../Redux/Actions/accountActions'
+import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
-import NewAccount from '../Components/Modals/NewAccount';
+import NewAccount from './NewAccount';
 const API = process.env.REACT_APP_API;
 
 const Accounts = () => {
