@@ -9,7 +9,7 @@ import {
     // DELETE_STRATEGY_SUCCESS,
     // DELETE_STRATEGY_FAIL,
     LOAD_STRATEGIES,
-} from '../Actions/constants';
+} from '../constants';
 
 const initialState = { strategies: [], isLoading: false };
 

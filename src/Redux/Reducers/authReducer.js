@@ -4,7 +4,7 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     LOAD_USER,
-} from '../Actions/constants';
+} from '../constants';
 
 const initialState = {
     user: {

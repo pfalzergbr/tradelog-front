@@ -36,7 +36,7 @@ const Register = () => {
     
     const onSubmit = async (data) => {
         try {
-            const response = await dispatch(login(data, `${API}/api/user/`));
+            const response = await dispatch(login({method: 'post', url:`${API}/api/user/`, data}));
             storeUser(response);
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {

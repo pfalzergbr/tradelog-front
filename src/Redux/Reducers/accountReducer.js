@@ -9,7 +9,7 @@ import {
     DELETE_ACCOUNT_SUCCESS,
     DELETE_ACCOUNT_FAIL,
     LOAD_ACCOUNTS,
-} from '../Actions/constants';
+} from '../constants';
 
 const initialState = { accounts: [], isLoading: false };
 

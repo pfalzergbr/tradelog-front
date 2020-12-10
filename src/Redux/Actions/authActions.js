@@ -4,10 +4,10 @@ import {
     LOGIN_FAIL,
     LOAD_USER,
     LOGOUT,
-} from './constants';
-import { loginUser } from '../../Services/authService';
+} from '../constants';
+import { requestService } from '../../Services/requestService';
 
-export const login = (loginDetails, url) => async (dispatch) => {
+export const login = (data) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
         return userData;
@@ -20,7 +20,7 @@ export const login = (loginDetails, url) => async (dispatch) => {
 
     try {
         dispatch({ type: LOGIN_PENDING });
-        const result = await loginUser(loginDetails, url);
+        const result = await requestService(data);
         return onSuccess(result.data);
     } catch (error) {
         return onError(error);

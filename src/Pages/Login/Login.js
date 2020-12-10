@@ -5,9 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { storeUser } from '../../Services/storageService'
-import { login } from '../../Redux/Actions/authActions'
-import { loadAccounts } from '../../Redux/Actions/accountActions'
+import { storeUser } from '../../Services/storageService';
+import { login } from '../../Redux/Actions/authActions';
+import { loadAccounts } from '../../Redux/Actions/accountActions';
 import Footer from '../Shared/Footer';
 import Loading from '../Shared/Loading';
 const API = process.env.REACT_APP_API;
@@ -18,8 +18,8 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = () => {
-    const dispatch = useDispatch()
-    const auth = useSelector(state => state.authReducer);
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.authReducer);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(loginSchema),
@@ -31,7 +31,9 @@ const Login = () => {
     // Submits a Post request for /api/user/login
     const onSubmit = async (data) => {
         try {
-            const response = await dispatch(login(data, `${API}/api/user/login`));
+            const response = await dispatch(
+                login({method: 'post', url: `${API}/api/user/login`, data }),
+            );
             dispatch(loadAccounts(response));
             storeUser(response);
 
@@ -49,14 +51,14 @@ const Login = () => {
                     <form
                         className='form form--login'
                         onSubmit={handleSubmit(onSubmit)}>
-                        <h2 className="form__title">Login</h2>
+                        <h2 className='form__title'>Login</h2>
                         <label className='form__label' htmlFor='email'>
                             E-mail
                         </label>
                         <input
                             className='form__input'
                             name='email'
-                            placeholder="E-mail"
+                            placeholder='E-mail'
                             ref={register}
                         />
                         <label className='form__label' htmlFor='password'>
@@ -66,7 +68,7 @@ const Login = () => {
                             className='form__input'
                             type='password'
                             name='password'
-                            placeholder="Password"
+                            placeholder='Password'
                             ref={register}
                         />
                         <button
@@ -75,7 +77,9 @@ const Login = () => {
                             type='submit'>
                             Log in
                         </button>
-                        <Link className="form__link" to='/user/register'>Register here</Link>
+                        <Link className='form__link' to='/user/register'>
+                            Register here
+                        </Link>
                     </form>
                 </div>
             )}
