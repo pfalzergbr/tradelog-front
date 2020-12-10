@@ -1,7 +1,5 @@
 import {
     REQUEST_START, REQUEST_END,
-    // FETCH_ACCOUNTS_PENDING,
-    LOAD_STRATEGIES_SUCCESS,
     LOAD_ACCOUNTS_SUCCESS,
     LOAD_ACCOUNTS_FAIL,
     FETCH_ACCOUNTS_SUCCESS,
@@ -12,8 +10,8 @@ import {
     // DELETE_ACCOUNT_PENDING,
     // DELETE_ACCOUNT_SUCCESS,
     // DELETE_ACCOUNT_FAIL,
-
 } from '../constants';
+
 import { requestService } from '../../Services/requestService';
 
 export const fetchAccounts = (data) => async (dispatch) => {
@@ -37,30 +35,15 @@ export const fetchAccounts = (data) => async (dispatch) => {
     }
 };
 
-export const loadUserData = (data) => async (dispatch) => {
-    const onSuccess = (userData) => {
-        dispatch({ type: LOAD_ACCOUNTS_SUCCESS, payload: userData.accounts });
-        dispatch({ type: LOAD_STRATEGIES_SUCCESS, payload: userData.strategies });
-        dispatch({ type: REQUEST_END });
-        return userData;
-    };
+export const loadAccounts = (userData) => ({
+    type: LOAD_ACCOUNTS_SUCCESS,
+    payload: userData.accounts,
+});
 
-    const onError = (error) => {
-        dispatch({ type: LOAD_ACCOUNTS_FAIL, payload: error });
-        dispatch({ type: REQUEST_END });
-        return error;
-    };
-    try {
-        dispatch({type: REQUEST_START })
-        const result = await requestService(data)
-        return onSuccess(result.data);
-
-    } catch (error) {
-        return onError(error);
-    }
-};
-
-
+export const loadAccountsFail = (error) => ({
+    type: LOAD_ACCOUNTS_FAIL,
+    payload: error
+});
 
 export const updateAccountDetails = () => {
     const onSuccess = (accountsData) => {};

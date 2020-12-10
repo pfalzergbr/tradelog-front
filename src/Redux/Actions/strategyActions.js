@@ -8,27 +8,27 @@ import {
     // DELETE_STRATEGY_PENDING,
     // DELETE_STRATEGY_SUCCESS,
     // DELETE_STRATEGY_FAIL,
-    LOAD_STRATEGIES,
+    LOAD_STRATEGIES_SUCCESS,
 } from '../constants';
 // import { fetchStrategiesService } from '../../Services/strategiesService';
 
+export const loadStrategies = (userData) => ({
+    type: LOAD_STRATEGIES_SUCCESS,
+    payload: userData.strategies,
+});
 
-// export const loadStrategies = (strategies) => ({
-//     type: LOAD_STRATEGIES, payload: strategies
-// })
+// export const updateStrategyDetails = () => {
+//     const onSuccess = (strategyData) => {};
 
-export const updateStrategyDetails = () => {
-    const onSuccess = (strategyData) => {};
+//     const onError = (error) => {};
+//     try {
+//     } catch (error) {}
+// };
 
-    const onError = (error) => {};
-    try {
-    } catch (error) {}
-};
+// export const deleteAccount = () => {
+//     const onSuccess = (strategyData) => {};
 
-export const deleteAccount = () => {
-    const onSuccess = (strategyData) => {};
-
-    const onError = (error) => {};
-    try {
-    } catch (error) {}
-};
+//     const onError = (error) => {};
+//     try {
+//     } catch (error) {}
+// };

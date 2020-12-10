@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from '../Redux/Actions/authActions';
-import { loadUserData } from '../Redux/Actions/accountActions';
-import { loadStrategies } from '../Redux/Actions/strategyActions';
+import { loadUserData } from '../Redux/Actions/loadUserData';
 
 
 import Nav from '../Pages/Shared/Nav';
