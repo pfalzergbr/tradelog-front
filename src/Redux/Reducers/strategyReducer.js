@@ -8,25 +8,24 @@ import {
     // DELETE_STRATEGY_PENDING,
     // DELETE_STRATEGY_SUCCESS,
     // DELETE_STRATEGY_FAIL,
-    LOAD_STRATEGIES,
+    LOAD_STRATEGIES_SUCCESS,
 } from '../constants';
 
-const initialState = { strategies: [], isLoading: false };
+const initialState = { strategies: [] };
 
 export const strategyReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case FETCH_STRATEGIES_PENDING:
-            return { ...state, isLoading: true };
+            return { ...state};
         case FETCH_STRATEGIES_FAIL:
-            return { ...state, error: action.payload, isLoading: false };
+            return { ...state, error: action.payload};
         case FETCH_STRATEGIES_SUCCESS:
             return {
                 ...state,
-                STRATEGIES: action.payload.strategies,
-                isLoading: false,
+                strategies: action.payload.strategies,
             };
-        case LOAD_STRATEGIES:
-            return { ...state, strategies: action.payload.strategies };
+        case LOAD_STRATEGIES_SUCCESS:
+            return { ...state, strategies: action.payload };
         default:
             return state;
     }

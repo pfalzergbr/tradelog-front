@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { storeUser } from '../../Services/storageService';
 import { login } from '../../Redux/Actions/authActions';
-import { loadAccounts } from '../../Redux/Actions/accountActions';
+// import { loadAccounts } from '../../Redux/Actions/accountActions';
 import Footer from '../Shared/Footer';
 import Loading from '../Shared/Loading';
 const API = process.env.REACT_APP_API;
@@ -34,8 +34,8 @@ const Login = () => {
             const response = await dispatch(
                 login({method: 'post', url: `${API}/api/user/login`, data }),
             );
-            dispatch(loadAccounts(response));
-            storeUser(response);
+            // dispatch(loadAccounts(response));
+            storeUser({user: response.user, token: response.token});
 
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {

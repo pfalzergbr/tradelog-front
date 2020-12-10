@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { loadUser } from '../Redux/Actions/authActions';
-import { loadAccounts } from '../Redux/Actions/accountActions';
+import { loadUserData } from '../Redux/Actions/accountActions';
+import { loadStrategies } from '../Redux/Actions/strategyActions';
+
+
 import Nav from '../Pages/Shared/Nav';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import Trades from '../Pages/Trades/Trades';
@@ -16,6 +18,8 @@ import Accounts from '../Pages/Accounts/Accounts';
 import Strategies from '../Pages/Strategies/Strategies';
 import AccountDetails from '../Pages/Accounts/AccountDetails';
 import NotFound from '../Pages/Shared/NotFound';
+const API = process.env.REACT_APP_API;
+
 
 const AppRouter = (props) => {
     const dispatch = useDispatch();
@@ -90,12 +94,20 @@ const AppRouter = (props) => {
     //Loading user from local storage, if any
     // TODO - Make accounts and strategies load from the backend, only user info from local storage
     useEffect(() => {
+        const populateUserData = async (token) => {
+            try {
+                dispatch(loadUserData({url: `${API}/api/user/userData`, auth: {Authorization: `Bearer ${token}`}}));
+                // dispatch(loadStrategies(userData))
+            } catch (error) {
+                console.log(error);   
+            }
+        }
         const userData = JSON.parse(localStorage.getItem('userData'));
         if (userData && userData.user && userData.token) {
             dispatch(loadUser(userData));
-            dispatch(loadAccounts(userData));
+            populateUserData(token);
         }
-    }, [dispatch]);
+    }, [token, dispatch]);
 
     return (
         <div className='app'>

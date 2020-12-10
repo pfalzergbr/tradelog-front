@@ -9,32 +9,13 @@ import {
     // DELETE_STRATEGY_SUCCESS,
     // DELETE_STRATEGY_FAIL,
     LOAD_STRATEGIES,
-} from '../Actions/constants';
-import { fetchStrategiesService } from '../../Services/strategiesService';
+} from '../constants';
+// import { fetchStrategiesService } from '../../Services/strategiesService';
 
-// export const fetchAccounts = (token) => async (dispatch) => {
-//     const onSuccess = (strategyData) => {
-//         dispatch({ type: FETCH_STRATEGIES_SUCCESS, payload: strategyData });
-//         return strategyData;
-//     };
 
-//     const onError = (error) => {
-//         dispatch({ type: FETCH_STRATEGIES_FAIL, payload: error });
-//         return error;
-//     };
-//     try {
-//         dispatch({type: FETCH_STRATEGIES_PENDING })
-//         const result = await fetchStrategiesService(token)
-//         return onSuccess(result.data);
-
-//     } catch (error) {
-//         return onError(error);
-//     }
-// };
-
-export const loadStrategies = (strategies) => ({
-    type: LOAD_STRATEGIES, payload: strategies
-})
+// export const loadStrategies = (strategies) => ({
+//     type: LOAD_STRATEGIES, payload: strategies
+// })
 
 export const updateStrategyDetails = () => {
     const onSuccess = (strategyData) => {};

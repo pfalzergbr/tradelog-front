@@ -17,6 +17,7 @@ export const login = (data) => async (dispatch) => {
 
     const onError = (error) => {
         dispatch({ type: LOGIN_FAIL, payload: error });
+        dispatch({ type: REQUEST_END});
         return error;
     };
 
