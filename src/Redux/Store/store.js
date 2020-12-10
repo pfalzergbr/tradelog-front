@@ -13,9 +13,9 @@ import {requestReducer} from '../Reducers/requestReducer'
 
 const logger = createLogger();
 
-const mainReducer = combineReducers({ authReducer, accountReducer, strategyReducer, requestReducer });
+const rootReducer = combineReducers({ authReducer, accountReducer, strategyReducer, requestReducer });
 
 export const store = createStore(
-    mainReducer,
+    rootReducer,
     composeWithDevTools(applyMiddleware(thunkMiddleware, logger)), 
 );

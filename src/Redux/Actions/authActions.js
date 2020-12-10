@@ -1,28 +1,23 @@
-import {
-    REQUEST_START, REQUEST_END,
-    LOGIN_PENDING,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOAD_USER,
-    LOGOUT,
-} from '../constants';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOAD_USER, LOGOUT } from '../constants';
+
 import { requestService } from '../../Services/requestService';
+import { requestStart, requestEnd } from './requestActions';
 
 export const login = (data) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
-        dispatch({ type: REQUEST_END });
+        dispatch(requestEnd());
         return userData;
     };
 
     const onError = (error) => {
         dispatch({ type: LOGIN_FAIL, payload: error });
-        dispatch({ type: REQUEST_END});
+        dispatch(requestEnd());
         return error;
     };
 
     try {
-        dispatch({ type: REQUEST_START });
+        dispatch(requestStart());
         const result = await requestService(data);
         return onSuccess(result.data);
     } catch (error) {

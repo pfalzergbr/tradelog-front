@@ -15,21 +15,21 @@ const Accounts = () => {
     const { isLoading } = useSelector((state) => state.requestReducer);
     const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
-    useEffect(() => {
-        const getAccountsData = async (token) => {
-            try {
-                const response = await dispatch(fetchAccounts({url: `${API}/api/account`, auth: {Authorization: `Bearer ${token}`}}));
-                return response;
-            } catch (error) {
-                console.log(error);
-            }
+    // useEffect(() => {
+    //     const getAccountsData = async (token) => {
+    //         try {
+    //             const response = await dispatch(fetchAccounts({url: `${API}/api/account`, auth: {Authorization: `Bearer ${token}`}}));
+    //             return response;
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
 
-        }
-        if(!accounts){
-            console.log(accounts)
-            getAccountsData(token);
-        }
-    }, [ accounts, token, dispatch ]);
+    //     }
+    //     if(!accounts){
+    //         console.log(accounts)
+    //         getAccountsData(token);
+    //     }
+    // }, [ accounts, token, dispatch ]);
 
     const openModal = () => {
         setModalIsOpen(true);

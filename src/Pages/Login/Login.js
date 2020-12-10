@@ -34,9 +34,7 @@ const Login = () => {
             const response = await dispatch(
                 login({method: 'post', url: `${API}/api/user/login`, data }),
             );
-            // dispatch(loadAccounts(response));
             storeUser({user: response.user, token: response.token});
-
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
             console.log(error);

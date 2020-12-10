@@ -3,7 +3,7 @@ import { loadStrategies } from './strategyActions'
 import { loadAccounts, loadAccountsFail } from './accountActions'
 import { requestStart, requestEnd} from './requestActions'
 
-export const loadUserData = (data) => async (dispatch) => {
+export const loadUserData = (requestData) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch(loadAccounts(userData));
         dispatch(loadStrategies(userData));
@@ -18,7 +18,7 @@ export const loadUserData = (data) => async (dispatch) => {
     };
     try {
         dispatch(requestStart())
-        const result = await requestService(data)
+        const result = await requestService(requestData)
         return onSuccess(result.data);
 
     } catch (error) {
