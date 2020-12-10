@@ -26,7 +26,7 @@ const registerSchema = yup.object().shape({
 
 const Register = () => {
     const dispatch = useDispatch()
-    const auth = useSelector(state => state.authReducer);
+    const { isLoading } = useSelector((state) => state.requestReducer);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(registerSchema),
@@ -46,8 +46,8 @@ const Register = () => {
 
     return (
         <React.Fragment>
-            {auth.isLoading && <Loading />}
-            {!auth.isLoading && (
+            {isLoading && <Loading />}
+            {!isLoading && (
                 <div className='form-container'>
                     <form
                         className='form form--login'

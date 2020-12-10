@@ -1,4 +1,5 @@
 import {
+    REQUEST_START, REQUEST_END,
     FETCH_ACCOUNTS_PENDING,
     FETCH_ACCOUNTS_SUCCESS,
     FETCH_ACCOUNTS_FAIL,
@@ -15,6 +16,7 @@ import { requestService } from '../../Services/requestService';
 export const fetchAccounts = (data) => async (dispatch) => {
     const onSuccess = (accountsData) => {
         dispatch({ type: FETCH_ACCOUNTS_SUCCESS, payload: accountsData });
+        dispatch({type: REQUEST_END});
         return accountsData;
     };
 
@@ -23,7 +25,7 @@ export const fetchAccounts = (data) => async (dispatch) => {
         return error;
     };
     try {
-        dispatch({type: FETCH_ACCOUNTS_PENDING })
+        dispatch({type: REQUEST_START })
         const result = await requestService(data)
         return onSuccess(result.data);
 

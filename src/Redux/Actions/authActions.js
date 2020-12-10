@@ -1,4 +1,5 @@
 import {
+    REQUEST_START, REQUEST_END,
     LOGIN_PENDING,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -10,6 +11,7 @@ import { requestService } from '../../Services/requestService';
 export const login = (data) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
+        dispatch({ type: REQUEST_END });
         return userData;
     };
 
@@ -19,7 +21,7 @@ export const login = (data) => async (dispatch) => {
     };
 
     try {
-        dispatch({ type: LOGIN_PENDING });
+        dispatch({ type: REQUEST_START });
         const result = await requestService(data);
         return onSuccess(result.data);
     } catch (error) {

@@ -19,7 +19,7 @@ const loginSchema = yup.object().shape({
 
 const Login = () => {
     const dispatch = useDispatch();
-    const auth = useSelector((state) => state.authReducer);
+    const { isLoading } = useSelector((state) => state.requestReducer);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(loginSchema),
@@ -45,8 +45,8 @@ const Login = () => {
 
     return (
         <div className='login-page'>
-            {auth.isLoading && <Loading />}
-            {!auth.isLoading && (
+            {isLoading && <Loading />}
+            {!isLoading && (
                 <div className='form-container'>
                     <form
                         className='form form--login'

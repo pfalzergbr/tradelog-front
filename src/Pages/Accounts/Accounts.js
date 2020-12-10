@@ -11,7 +11,8 @@ const API = process.env.REACT_APP_API;
 const Accounts = () => {
     const dispatch = useDispatch();
     const { user, token } = useSelector(state => state.authReducer);
-    const { accounts, isLoading } = useSelector(state => state.accountReducer)
+    const { accounts } = useSelector(state => state.accountReducer)
+    const { isLoading } = useSelector((state) => state.requestReducer);
     const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
     useEffect(() => {

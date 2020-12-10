@@ -11,19 +11,18 @@ import {
     LOAD_ACCOUNTS,
 } from '../constants';
 
-const initialState = { accounts: [], isLoading: false };
+const initialState = { accounts: []};
 
 export const accountReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case FETCH_ACCOUNTS_PENDING:
-            return { ...state, isLoading: true };
+            return { ...state};
         case FETCH_ACCOUNTS_FAIL:
-            return { ...state, error: action.payload, isLoading: false };
+            return { ...state, error: action.payload};
         case FETCH_ACCOUNTS_SUCCESS:
             return {
                 ...state,
                 accounts: action.payload.accounts,
-                isLoading: false,
             };
         case LOAD_ACCOUNTS:
             return { ...state, accounts: action.payload.accounts };

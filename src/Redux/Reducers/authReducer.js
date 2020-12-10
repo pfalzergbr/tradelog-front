@@ -12,7 +12,6 @@ const initialState = {
         userId: null,
     },
     token: null,
-    isLoading: false,
 };
 
 export const authReducer = (state = initialState, action = {}) => {
@@ -20,13 +19,12 @@ export const authReducer = (state = initialState, action = {}) => {
         case LOGIN_PENDING:
             return { ...state, isLoading: true };
         case LOGIN_FAIL:
-            return { ...state, error: action.payload, isLoading: false };
+            return { ...state, error: action.payload };
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 user: action.payload.user,
                 token: action.payload.token,
-                isLoading: false,
             };
         case LOAD_USER:
             return {

@@ -9,10 +9,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { authReducer } from '../Reducers/authReducer';
 import { accountReducer } from '../Reducers/accountReducer';
 import { strategyReducer } from '../Reducers/strategyReducer';
+import {requestReducer} from '../Reducers/requestReducer'
 
 const logger = createLogger();
 
-const mainReducer = combineReducers({ authReducer, accountReducer, strategyReducer });
+const mainReducer = combineReducers({ authReducer, accountReducer, strategyReducer, requestReducer });
 
 export const store = createStore(
     mainReducer,
