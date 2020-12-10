@@ -1,3 +1,7 @@
+// Request and Load screen
+export const REQUEST_START = 'REQUEST_START' 
+export const REQUEST_END = 'REQUEST_END' 
+
 //Auth 
 export const LOGIN_PENDING = 'LOGIN_PENDING'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

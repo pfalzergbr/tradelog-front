@@ -17,17 +17,18 @@ const Accounts = () => {
     useEffect(() => {
         const getAccountsData = async (token) => {
             try {
-                const response = await dispatch(fetchAccounts(token));
+                const response = await dispatch(fetchAccounts({url: `${API}/api/account`, auth: {Authorization: `Bearer ${token}`}}));
                 return response;
             } catch (error) {
                 console.log(error);
             }
 
         }
-        if(accounts.length !== 0){
+        if(!accounts){
+            console.log(accounts)
             getAccountsData(token);
         }
-    }, [ token, dispatch ]);
+    }, [ accounts, token, dispatch ]);
 
     const openModal = () => {
         setModalIsOpen(true);

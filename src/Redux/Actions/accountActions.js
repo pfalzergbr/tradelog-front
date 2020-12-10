@@ -10,9 +10,9 @@ import {
     DELETE_ACCOUNT_FAIL,
     LOAD_ACCOUNTS
 } from '../constants';
-import { fetchAccountService } from '../../Services/accountService';
+import { requestService } from '../../Services/requestService';
 
-export const fetchAccounts = (token) => async (dispatch) => {
+export const fetchAccounts = (data) => async (dispatch) => {
     const onSuccess = (accountsData) => {
         dispatch({ type: FETCH_ACCOUNTS_SUCCESS, payload: accountsData });
         return accountsData;
@@ -24,7 +24,7 @@ export const fetchAccounts = (token) => async (dispatch) => {
     };
     try {
         dispatch({type: FETCH_ACCOUNTS_PENDING })
-        const result = await fetchAccountService(token)
+        const result = await requestService(data)
         return onSuccess(result.data);
 
     } catch (error) {
