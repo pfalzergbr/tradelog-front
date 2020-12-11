@@ -10,22 +10,22 @@ import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
-    const { token, user } = useSelector((state) => state.auth);
     const { accountId } = useParams();
+    const history = useHistory();
+    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
+    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+    //Selectors
+    const { token, user } = useSelector((state) => state.auth);
+    const { isLoading } = useSelector((state) => state.control);
+    const { strategies } = useSelector((state) => state.strategy);
     const account = useSelector((state) => state.account.accounts).find(
         (account) => account.account_id === accountId,
     );
-    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
-    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-    // const [ account, setAccount ] = useState({});
-    const { isLoading, sendRequest } = useRequest();
     const {
         account_name: accountName,
         balance,
         description,
-        strategies,
     } = account;
-    const history = useHistory();
 
     //Data to pass in the Delete Modal
     const modalData = {
@@ -116,7 +116,7 @@ const AccountDetails = (props) => {
                     <ul>
                         {strategies && strategies.length !== 0
                             ? strategies.map((strategy) => (
-                                  <li>{strategy.name}</li>
+                                  <li>{strategy.strategy_name}</li>
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>
