@@ -16,7 +16,7 @@ const accountSchema = yup.object().shape({
 });
 
 const NewTrade = (props) => {
-    const { user, token } = useSelector(state => state.authReducer);
+    const { user, token } = useSelector(state => state.authR);
     const { isLoading, sendRequest } = useRequest();
     const {accountName, description} = props.data
     const { register, handleSubmit, formState, errors } = useForm({

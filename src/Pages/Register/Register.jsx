@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { storeUser } from '../../Services/storageService'
-import { login } from '../../Redux/Actions/authActions'
+import { storeUser } from '../../Services/storageService';
+import { login } from '../../Redux/Actions/authActions';
 import Loading from '../Shared/Loading';
 import ErrorMessage from '../Shared/ErrorMessage';
 const API = process.env.REACT_APP_API;
@@ -25,18 +25,19 @@ const registerSchema = yup.object().shape({
 });
 
 const Register = () => {
-    const dispatch = useDispatch()
-    const { isLoading } = useSelector((state) => state.requestReducer);
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((state) => state.control);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(registerSchema),
         mode: 'onChange',
     });
 
-    
     const onSubmit = async (data) => {
         try {
-            const response = await dispatch(login({method: 'post', url:`${API}/api/user/`, data}));
+            const response = await dispatch(
+                login({ method: 'post', url: `${API}/api/user/`, data }),
+            );
             storeUser(response);
             history.push(`/${response.user.userId}/dashboard`);
         } catch (error) {
@@ -59,7 +60,7 @@ const Register = () => {
                         <input
                             className='form__input'
                             name='name'
-                            placeholder="Name"
+                            placeholder='Name'
                             ref={register}
                         />
                         {errors.name && (
@@ -71,7 +72,7 @@ const Register = () => {
                         <input
                             className='form__input'
                             name='email'
-                            placeholder="E-mail"
+                            placeholder='E-mail'
                             ref={register}
                         />
                         {errors.email && (
@@ -84,7 +85,7 @@ const Register = () => {
                             className='form__input'
                             type='password'
                             name='password'
-                            placeholder="Password"
+                            placeholder='Password'
                             ref={register}
                         />
                         {errors.password && (
@@ -97,7 +98,7 @@ const Register = () => {
                             className='form__input'
                             type='password'
                             name='verify'
-                            placeholder="Repeat your password"
+                            placeholder='Repeat your password'
                             ref={register}
                         />
                         {errors.verify && (

@@ -13,7 +13,7 @@ import {
 
 const initialState = { accounts: []};
 
-export const accountReducer = (state = initialState, action = {}) => {
+export const account = (state = initialState, action = {}) => {
     switch (action.type) {
         case FETCH_ACCOUNTS_PENDING:
             return { ...state};

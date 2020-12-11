@@ -10,7 +10,7 @@ import NewTrade from '../Trades/NewTrade';
 const Nav = (props) => {
     const history = useHistory();
     const links = props.data;
-    const auth = useSelector(state => state.authReducer);
+    const auth = useSelector(state => state.auth);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
 

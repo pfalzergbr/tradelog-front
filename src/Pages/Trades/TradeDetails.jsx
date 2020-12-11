@@ -9,10 +9,10 @@ import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const TradeDetails = (props) => {
-    const { token, user } = useSelector(state => state.authReducer);
+    const { token, user } = useSelector((state) => state.auth);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const { isLoading, sendRequest } = useRequest();
-    const [ trade, setTrade] = useState({});
+    const [trade, setTrade] = useState({});
     const { tradeId } = useParams();
     const { symbol, outcome, amount } = trade;
     const history = useHistory();
@@ -20,13 +20,12 @@ const TradeDetails = (props) => {
     //Modal Data passed in the Delete Modal.
     const modalData = {
         header: `Warning`,
-        message: ' Please only delete the trade if you had an input mistake. Deleting trades from your record changes your statistics, and distorts your real performance.',
+        message:
+            ' Please only delete the trade if you had an input mistake. Deleting trades from your record changes your statistics, and distorts your real performance.',
         note: 'Note: You cannot reverse this action once you deleted the trade',
         label: 'Yes, I want to delete this trade',
-        button: 'Delete'
-    }
-
-
+        button: 'Delete',
+    };
 
     useEffect(() => {
         const fetchTrade = async () => {
@@ -77,31 +76,32 @@ const TradeDetails = (props) => {
         setModalIsOpen(false);
     };
 
-
     return (
         <React.Fragment>
-            { isLoading && <Loading />}
-            { !isLoading && <div>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                    <DeleteModal
-                        closeModal={closeModal}
-                        onDelete={handleDelete}
-                        modalData={modalData}
-                    />
-                </Modal>
-                <h1>TradeDetails</h1>
-                <h2>{symbol}</h2>
-                <p>{outcome}</p>
-                <span>{amount}</span>
-                <button>Edit Details</button>
-                <button
-                    onClick={() => {
-                        history.go(-1);
-                    }}>
-                    Back
-                </button>
-                <button onClick={openModal}>Delete</button>
-            </div>}
+            {isLoading && <Loading />}
+            {!isLoading && (
+                <div>
+                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                        <DeleteModal
+                            closeModal={closeModal}
+                            onDelete={handleDelete}
+                            modalData={modalData}
+                        />
+                    </Modal>
+                    <h1>TradeDetails</h1>
+                    <h2>{symbol}</h2>
+                    <p>{outcome}</p>
+                    <span>{amount}</span>
+                    <button>Edit Details</button>
+                    <button
+                        onClick={() => {
+                            history.go(-1);
+                        }}>
+                        Back
+                    </button>
+                    <button onClick={openModal}>Delete</button>
+                </div>
+            )}
         </React.Fragment>
     );
 };

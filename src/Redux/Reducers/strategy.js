@@ -13,7 +13,7 @@ import {
 
 const initialState = { strategies: [] };
 
-export const strategyReducer = (state = initialState, action = {}) => {
+export const strategy = (state = initialState, action = {}) => {
     switch (action.type) {
         case FETCH_STRATEGIES_PENDING:
             return { ...state};

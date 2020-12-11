@@ -17,19 +17,20 @@ const basicTradeSchema = yup.object().shape({
     amount: yup.number().required(),
     account: yup.string().required(),
     notes: yup.string(),
-    date: yup.date().required()
+    date: yup.date().required(),
 });
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token } = useSelector(state => state.authReducer);
+    const { user, token } = useSelector((state) => state.auth);
     const { accounts } = user;
     const { isLoading, sendRequest } = useRequest();
-    const { register, handleSubmit, formState, errors} = useForm({
+    const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(basicTradeSchema),
-        mode: 'onChange', defaultValues: {
-            notes: ''
-        }
+        mode: 'onChange',
+        defaultValues: {
+            notes: '',
+        },
     });
     const { isValid } = formState;
 

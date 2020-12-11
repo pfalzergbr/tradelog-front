@@ -10,9 +10,9 @@ import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
-    const { token, user } = useSelector((state) => state.authReducer);
+    const { token, user } = useSelector((state) => state.auth);
     const { accountId } = useParams();
-    const account = useSelector((state) => state.accountReducer.accounts).find(
+    const account = useSelector((state) => state.account.accounts).find(
         (account) => account.account_id === accountId,
     );
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);

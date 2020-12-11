@@ -6,14 +6,14 @@ import {
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { authReducer } from '../Reducers/authReducer';
-import { accountReducer } from '../Reducers/accountReducer';
-import { strategyReducer } from '../Reducers/strategyReducer';
-import {requestReducer} from '../Reducers/requestReducer'
+import { auth } from '../Reducers/auth';
+import { account } from '../Reducers/account';
+import { strategy } from '../Reducers/strategy';
+import { control } from '../Reducers/control'
 
 const logger = createLogger();
 
-const rootReducer = combineReducers({ authReducer, accountReducer, strategyReducer, requestReducer });
+const rootReducer = combineReducers({ auth, account, strategy, control });
 
 export const store = createStore(
     rootReducer,

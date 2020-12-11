@@ -2,9 +2,10 @@ import { REQUEST_START, REQUEST_END } from '../constants';
 
 const initialState = {
     isLoading: false,
+    error: null
 };
 
-export const requestReducer = (state = initialState, actions = {}) => {
+export const control = (state = initialState, actions = {}) => {
     switch (actions.type) {
         case REQUEST_START:
             return { ...state, isLoading: true };

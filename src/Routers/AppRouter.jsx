@@ -22,7 +22,7 @@ const API = process.env.REACT_APP_API;
 
 const AppRouter = (props) => {
     const dispatch = useDispatch();
-    const auth = useSelector((state) => state.authReducer);
+    const auth = useSelector((state) => state.auth);
     const { token, user } = auth;
 
     //Links to display if there is no logged in user. Feeds into the Navbar components as props

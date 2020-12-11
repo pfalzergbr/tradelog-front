@@ -14,7 +14,7 @@ const initialState = {
     token: null,
 };
 
-export const authReducer = (state = initialState, action = {}) => {
+export const auth = (state = initialState, action = {}) => {
     switch (action.type) {
         case LOGIN_PENDING:
             return { ...state, isLoading: true };

@@ -1,4 +1,4 @@
-export const tradeReducer = (state, action) => {
+export const trade = (state, action) => {
     switch (action.type) {
         case 'GET_TRADES':
             return state;

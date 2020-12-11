@@ -17,7 +17,7 @@ const accountSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token, addAccount } = useSelector(state => state.authReducer);
+    const { user, token, addAccount } = useSelector(state => state.auth);
     const { isLoading, sendRequest } = useRequest();
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),

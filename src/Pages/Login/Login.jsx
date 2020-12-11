@@ -19,7 +19,7 @@ const loginSchema = yup.object().shape({
 
 const Login = () => {
     const dispatch = useDispatch();
-    const { isLoading } = useSelector((state) => state.requestReducer);
+    const { isLoading } = useSelector((state) => state.control);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(loginSchema),

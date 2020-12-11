@@ -10,15 +10,15 @@ import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {
-    const { user, token } = useSelector(state => state.authReducer);
-    const { isLoading } = useSelector(state => state.requestReducer);
-    const { accounts } = useSelector(state => state.accountReducer);
-    const [ account, setAccount ] = useState( accounts[0].account_id || null);
+    const { user, token } = useSelector((state) => state.auth);
+    const { isLoading } = useSelector((state) => state.control);
+    const { accounts } = useSelector((state) => state.account);
+    const [account, setAccount] = useState(accounts[0].account_id || null);
     // const { isLoading, sendRequest } = useRequest();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
 
-    console.log(account)
+    console.log(account);
     // useEffect(() => {
     //     const fetchTrades = async () => {
     //         try {
@@ -40,14 +40,26 @@ const Trades = (props) => {
 
     const changeAccount = (event) => {
         setAccount(event.target.value);
-    } 
+    };
 
     return (
         <React.Fragment>
-            { account ? <select value={account} onChange={changeAccount}>
-                {accounts.map(account => <option key={account.account_id} value={account.account_id}>{account.account_name}</option>)}
-            </select>
-            : <div><p>You haven`t got any accounts yet</p><Link to={`/${user.userId}/accounts`}>Create one here</Link></div>}
+            {account ? (
+                <select value={account} onChange={changeAccount}>
+                    {accounts.map((account) => (
+                        <option
+                            key={account.account_id}
+                            value={account.account_id}>
+                            {account.account_name}
+                        </option>
+                    ))}
+                </select>
+            ) : (
+                <div>
+                    <p>You haven`t got any accounts yet</p>
+                    <Link to={`/${user.userId}/accounts`}>Create one here</Link>
+                </div>
+            )}
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
