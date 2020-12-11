@@ -1,5 +1,4 @@
 import {
-    FETCH_STRATEGIES_PENDING,
     FETCH_STRATEGIES_SUCCESS,
     POPULATE_USER,
 } from '../constants';
@@ -8,8 +7,7 @@ const initialState = { strategies: [] };
 
 export const strategy = (state = initialState, action = {}) => {
     switch (action.type) {
-        case FETCH_STRATEGIES_PENDING:
-            return { ...state };
+
         case FETCH_STRATEGIES_SUCCESS:
             return {
                 ...state,

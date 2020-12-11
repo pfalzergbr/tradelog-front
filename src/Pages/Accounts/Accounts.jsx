@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { fetchAccounts } from '../../Redux/Actions/accountActions'
+// import { fetchAccounts } from '../../Redux/Actions/accountActions'
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
 import NewAccount from './NewAccount';
@@ -10,7 +10,7 @@ const API = process.env.REACT_APP_API;
 
 const Accounts = () => {
     const dispatch = useDispatch();
-    const { user, token } = useSelector(state => state.auth);
+    const { user } = useSelector(state => state.auth);
     const { accounts } = useSelector(state => state.account)
     const { isLoading } = useSelector((state) => state.control);
     const [ modalIsOpen, setModalIsOpen ] = useState(false);

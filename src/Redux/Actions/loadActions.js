@@ -2,7 +2,7 @@ import { POPULATE_USER, POPULATE_USER_FAIL } from '../constants';
 import { requestService } from '../../Services/requestService';
 import { requestStart } from './requestActions'
 
-const loadAccountStrats = (userData) => ({
+const populateUserSuccess = (userData) => ({
     type: POPULATE_USER, 
     payload: userData
 })
@@ -15,7 +15,7 @@ const populateUserFail = (error) => ({
 
 export const loadUserData = (requestData) => async (dispatch) => {
     const onSuccess = (userData) => {
-        dispatch(loadAccountStrats(userData));
+        dispatch(populateUserSuccess(userData));
         return userData;
     };
 

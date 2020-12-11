@@ -1,9 +1,11 @@
 import {
-    LOGIN_PENDING,
     LOGIN_FAIL,
+    POPULATE_USER,
     POPULATE_USER_FAIL,
     LOGIN_SUCCESS,
     REQUEST_START,
+    ADD_ACCOUNT,
+    ADD_ACCOUNT_FAIL,
 } from '../constants';
 
 const initialState = {
@@ -11,18 +13,22 @@ const initialState = {
     error: null,
 };
 
-export const control = (state = initialState, actions = {}) => {
-    switch (actions.type) {
+export const control = (state = initialState, action = {}) => {
+    switch (action.type) {
         case REQUEST_START:
             return { ...state, isLoading: true };
-        case LOGIN_PENDING:
-            return { ...state, isLoading: true };
-        case LOGIN_FAIL:
-            return { ...state, isLoading: false, error: actions.payload };
-        case POPULATE_USER_FAIL:
-            return { ...state, isLoading: false, error: actions.payload };
         case LOGIN_SUCCESS:
             return { ...state, isLoading: false };
+        case LOGIN_FAIL:
+            return { ...state, isLoading: false, error: action.payload };
+        case POPULATE_USER:
+            return { ...state, isLoading: false };
+        case POPULATE_USER_FAIL:
+            return { ...state, isLoading: false, error: action.payload };
+        case ADD_ACCOUNT:
+            return { ...state, isLoading: false };
+        case ADD_ACCOUNT_FAIL:
+            return { ...state, isLoading: false, error: action.payload };
         default:
             return state;
     }
