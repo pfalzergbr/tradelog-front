@@ -6,6 +6,8 @@ import {
     REQUEST_START,
     ADD_ACCOUNT,
     ADD_ACCOUNT_FAIL,
+    ADD_STRATEGY,
+    ADD_STRATEGY_FAIL,
 } from '../constants';
 
 const initialState = {
@@ -28,6 +30,10 @@ export const control = (state = initialState, action = {}) => {
         case ADD_ACCOUNT:
             return { ...state, isLoading: false };
         case ADD_ACCOUNT_FAIL:
+            return { ...state, isLoading: false, error: action.payload };
+        case ADD_STRATEGY:
+            return { ...state, isLoading: false };
+        case ADD_STRATEGY_FAIL:
             return { ...state, isLoading: false, error: action.payload };
         default:
             return state;

@@ -11,13 +11,7 @@ export const account = (state = initialState, action = {}) => {
             return { ...state, accounts: action.payload.accounts };
         case ADD_ACCOUNT:
             return {...state, accounts: [...state.accounts, action.payload.newAccount ]}
-        // case FETCH_ACCOUNTS_FAIL:
-        //     return { ...state, error: action.payload};
-        // case FETCH_ACCOUNTS_SUCCESS:
-        //     return {
-        //         ...state,
-        //         accounts: action.payload.accounts,
-        //     };
+
         default:
             return state;
     }

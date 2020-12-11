@@ -38,26 +38,26 @@ const AccountDetails = (props) => {
 
     console.log(account);
 
-    useEffect(() => {
-        const fetchAccount = async () => {
-            // try {
-            //     const response = await sendRequest(
-            //         `${API}/api/user/accounts/${accountId}`,
-            //         'GET',
-            //         {},
-            //         {
-            //             'Content-Type': 'application/json',
-            //             Authorization: `Bearer ${token}`,
-            //         },
-            //     );
-            //     // setAccount(response.data);
-            // } catch (error) {
-            //     console.log(error);
-            // }
-        };
+    // useEffect(() => {
+    //     const fetchAccount = async () => {
+    //         // try {
+    //         //     const response = await sendRequest(
+    //         //         `${API}/api/user/accounts/${accountId}`,
+    //         //         'GET',
+    //         //         {},
+    //         //         {
+    //         //             'Content-Type': 'application/json',
+    //         //             Authorization: `Bearer ${token}`,
+    //         //         },
+    //         //     );
+    //         //     // setAccount(response.data);
+    //         // } catch (error) {
+    //         //     console.log(error);
+    //         // }
+    //     };
 
-        fetchAccount();
-    }, [token, accountId, sendRequest]);
+    //     fetchAccount();
+    // }, [token, accountId, sendRequest]);
 
     const handleDelete = async () => {
         try {

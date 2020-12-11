@@ -21,3 +21,9 @@ export const FETCH_STRATEGIES_FAIL = 'FETCH_STRATEGIES_FAIL';
 
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const ADD_ACCOUNT_FAIL = 'ADD_ACCOUNT_FAIL';
+
+
+//Strategies
+
+export const ADD_STRATEGY = 'ADD_STRATEGY';
+export const ADD_STRATEGY_FAIL = 'ADD_STRATEGY_FAIL';
