@@ -16,7 +16,7 @@ export const strategy = (state = initialState, action = {}) => {
                 strategies: action.payload.strategies,
             };
         case POPULATE_USER:
-            return { ...state, accounts: action.payload.strategies };
+            return { ...state, strategies: action.payload.strategies };
         default:
             return state;
     }

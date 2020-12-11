@@ -28,13 +28,3 @@ export const fetchAccounts = (data) => async (dispatch) => {
         return onError(error);
     }
 };
-
-export const loadAccounts = (userData) => ({
-    type: LOAD_ACCOUNTS_SUCCESS,
-    payload: userData.accounts,
-});
-
-export const loadAccountsFail = (error) => ({
-    type: LOAD_ACCOUNTS_FAIL,
-    payload: error
-});
