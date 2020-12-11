@@ -8,6 +8,8 @@ import {
     ADD_ACCOUNT_FAIL,
     ADD_STRATEGY,
     ADD_STRATEGY_FAIL,
+    DELETE_ACCOUNT_FAIL,
+    DELETE_ACCOUNT
 } from '../constants';
 
 const initialState = {
@@ -30,6 +32,10 @@ export const control = (state = initialState, action = {}) => {
         case ADD_ACCOUNT:
             return { ...state, isLoading: false };
         case ADD_ACCOUNT_FAIL:
+            return { ...state, isLoading: false, error: action.payload };
+        case DELETE_ACCOUNT:
+            return { ...state, isLoading: false };
+        case DELETE_ACCOUNT_FAIL:
             return { ...state, isLoading: false, error: action.payload };
         case ADD_STRATEGY:
             return { ...state, isLoading: false };

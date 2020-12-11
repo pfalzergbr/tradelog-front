@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -6,7 +6,6 @@ import DeleteModal from '../Shared/DeleteModal';
 import EditAccount from './EditAccount';
 import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = (props) => {
