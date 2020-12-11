@@ -1,18 +1,16 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOAD_USER, LOGOUT } from '../constants';
 
 import { requestService } from '../../Services/requestService';
-import { requestStart, requestEnd } from './requestActions';
+import { requestStart } from './requestActions';
 
 export const login = (data) => async (dispatch) => {
     const onSuccess = (userData) => {
         dispatch({ type: LOGIN_SUCCESS, payload: userData });
-        dispatch(requestEnd());
         return userData;
     };
 
     const onError = (error) => {
         dispatch({ type: LOGIN_FAIL, payload: error });
-        dispatch(requestEnd());
         return error;
     };
 

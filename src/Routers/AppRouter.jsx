@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from '../Redux/Actions/authActions';
-import { loadUserData } from '../Redux/Actions/loadUserData';
+import { loadUserData } from '../Redux/Actions/loadActions';
 
 
 import Nav from '../Pages/Shared/Nav';
@@ -107,6 +107,10 @@ const AppRouter = (props) => {
             populateUserData(token);
         }
     }, [token, dispatch]);
+
+    useEffect(() => {
+
+    }, []) 
 
     return (
         <div className='app'>

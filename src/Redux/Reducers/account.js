@@ -2,12 +2,7 @@ import {
     FETCH_ACCOUNTS_PENDING,
     FETCH_ACCOUNTS_SUCCESS,
     FETCH_ACCOUNTS_FAIL,
-    // UPDATE_ACCOUNT_DETAILS_PENDING,
-    // UPDATE_ACCOUNT_DETAILS_SUCCES,
-    // UPDATE_ACCOUNT_DETAILS_FAIL,
-    // DELETE_ACCOUNT_PENDING,
-    // DELETE_ACCOUNT_SUCCESS,
-    // DELETE_ACCOUNT_FAIL,
+    POPULATE_USER,
     LOAD_ACCOUNTS_SUCCESS,
 } from '../constants';
 
@@ -24,8 +19,8 @@ export const account = (state = initialState, action = {}) => {
                 ...state,
                 accounts: action.payload.accounts,
             };
-        case LOAD_ACCOUNTS_SUCCESS:
-            return { ...state, accounts: action.payload };
+        case POPULATE_USER:
+            return { ...state, accounts: action.payload.accounts };
         default:
             return state;
     }

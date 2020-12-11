@@ -1,19 +1,26 @@
+import { POPULATE_USER, POPULATE_USER_FAIL } from '../constants';
 import { requestService } from '../../Services/requestService';
-import { loadStrategies } from './strategyActions'
-import { loadAccounts, loadAccountsFail } from './accountActions'
-import { requestStart, requestEnd} from './requestActions'
+import { requestStart } from './requestActions'
+
+const loadAccountStrats = (userData) => ({
+    type: POPULATE_USER, 
+    payload: userData
+})
+
+const populateUserFail = (error) => ({
+    type: POPULATE_USER_FAIL,
+    payload: error
+})
+
 
 export const loadUserData = (requestData) => async (dispatch) => {
     const onSuccess = (userData) => {
-        dispatch(loadAccounts(userData));
-        dispatch(loadStrategies(userData));
-        dispatch(requestEnd());
+        dispatch(loadAccountStrats(userData));
         return userData;
     };
 
     const onError = (error) => {
-        dispatch(loadAccountsFail());
-        dispatch(requestEnd());
+        dispatch(populateUserFail(error));
         return error;
     };
     try {
@@ -25,3 +32,5 @@ export const loadUserData = (requestData) => async (dispatch) => {
         return onError(error);
     }
 };
+
+

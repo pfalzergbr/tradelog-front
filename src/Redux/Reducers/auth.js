@@ -16,8 +16,6 @@ const initialState = {
 
 export const auth = (state = initialState, action = {}) => {
     switch (action.type) {
-        case LOGIN_PENDING:
-            return { ...state, isLoading: true };
         case LOGIN_FAIL:
             return { ...state, error: action.payload };
         case LOGIN_SUCCESS:

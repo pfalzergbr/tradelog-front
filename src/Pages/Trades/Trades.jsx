@@ -6,14 +6,13 @@ import Pagination from '../../Services/Pagination';
 
 import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const Trades = (props) => {
     const { user, token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
     const { accounts } = useSelector((state) => state.account);
-    const [account, setAccount] = useState(accounts[0].account_id || null);
+    const [ account, setAccount ] = useState(accounts[0].account_id || null);
     // const { isLoading, sendRequest } = useRequest();
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const history = useHistory();
