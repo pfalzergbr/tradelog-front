@@ -97,6 +97,7 @@ const Profile = (props) => {
             );
             // logout();
             history.replace(`/`);
+            return response
         } catch (error) {
             console.log(error);
         }
@@ -125,6 +126,7 @@ const Profile = (props) => {
                 },
             );
             history.push(`/${user.userId}/dashboard`)
+            return response;
         } catch (error) {
             console.log(error);
         }

@@ -69,11 +69,11 @@ const AppRouter = (props) => {
             <Route path='/:userId/profile'>
                 <Profile />
             </Route>
+            <Route exact path='/:userId/accounts'>
+                <Accounts />
+            </Route>
             <Route path='/:userId/accounts/:accountId'>
                 <AccountDetails />
-            </Route>
-            <Route path='/:userId/accounts'>
-                <Accounts />
             </Route>
             <Route path='/:userId/Strategies'>
                 <Strategies />

@@ -15,7 +15,7 @@ export const addAccountFail = (error) => ({
 
 export const deleteAccount = (accountData) => ({
     type: DELETE_ACCOUNT,
-    payload: {account_id: accountData.account_id}
+    payload: {account_id: accountData.deletedAccount.account_id}
 })
 
 export const deleteAccountFail = (error) => ({
@@ -46,3 +46,25 @@ export const addNewAccount = (data) => async (dispatch) => {
         return onError(error);
     }
 };
+
+export const removeAccount = (data) => async (dispatch) => {
+    const onSuccess = (accountData) => {
+        dispatch(deleteAccount(accountData));
+        return accountData;
+    };
+
+    const onError = (error) => {
+        dispatch(deleteAccountFail(error));
+        return error;
+    };
+
+    try {
+        dispatch(requestStart());
+        const response = await requestService(data);
+        const accountData = response.data;
+        console.log(accountData)
+        return onSuccess(accountData);
+    } catch (error) {
+        return onError(error);
+    }
+}

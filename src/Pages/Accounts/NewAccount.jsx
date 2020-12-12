@@ -18,7 +18,7 @@ const accountSchema = yup.object().shape({
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token } = useSelector((state) => state.auth);
+    const { token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
     const dispatch = useDispatch();
     const history = useHistory();

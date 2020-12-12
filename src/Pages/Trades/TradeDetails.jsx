@@ -62,6 +62,7 @@ const TradeDetails = (props) => {
                 },
             );
             history.replace(`/${user.userId}/trades/`);
+            return response;
         } catch (error) {
             console.log(error);
         }

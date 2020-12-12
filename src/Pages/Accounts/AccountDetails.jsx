@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Modal from 'react-modal';
 
+import { removeAccount } from '../../Redux/Actions/accountActions';
 import DeleteModal from '../Shared/DeleteModal';
 import EditAccount from './EditAccount';
 import Loading from '../Shared/Loading';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 const API = process.env.REACT_APP_API;
 
-const AccountDetails = (props) => {
+const AccountDetails = () => {
     const { accountId } = useParams();
     const history = useHistory();
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
@@ -16,16 +17,14 @@ const AccountDetails = (props) => {
     //Selectors
     const { token, user } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
-    const { strategies } = useSelector((state) => state.strategy);
+    const { strategies }  = useSelector((state) => state.strategy);
+    //Finds the account for the current page
     const account = useSelector((state) => state.account.accounts).find(
         (account) => account.account_id === accountId,
     );
-    const {
-        account_name: accountName,
-        balance,
-        description,
-    } = account;
-
+    const { account_name: accountName, balance, description } = account;
+    const currentStrategies = strategies.filter(strategy => strategy.account_id === account.account_id)
+    const dispatch = useDispatch();
     //Data to pass in the Delete Modal
     const modalData = {
         header: `You are trying to delete your ${accountName} account.`,
@@ -34,45 +33,20 @@ const AccountDetails = (props) => {
         label: 'Yes, I am sure I want to delete this account.',
         button: 'Delete',
     };
-
-    console.log(account);
-
-    // useEffect(() => {
-    //     const fetchAccount = async () => {
-    //         // try {
-    //         //     const response = await sendRequest(
-    //         //         `${API}/api/user/accounts/${accountId}`,
-    //         //         'GET',
-    //         //         {},
-    //         //         {
-    //         //             'Content-Type': 'application/json',
-    //         //             Authorization: `Bearer ${token}`,
-    //         //         },
-    //         //     );
-    //         //     // setAccount(response.data);
-    //         // } catch (error) {
-    //         //     console.log(error);
-    //         // }
-    //     };
-
-    //     fetchAccount();
-    // }, [token, accountId, sendRequest]);
+    console.log('WE ARE ON ACCOUNT DETAILS')
 
     const handleDelete = async () => {
         try {
-            // const response = await sendRequest(
-            //     `http://localhost:3000/api/user/accounts/${accountId}`,
-            //     'DELETE',
-            //     {},
-            //     {
-            //         'Content-Type': 'application/json',
-            //         Authorization: `Bearer ${token}`,
-            //     },
-            // );
-            // console.log(response)
-            // // removeAccount(response.data._id)
-            // closeDeleteModal()
-            // history.replace(`/${user.userId}/accounts/`);
+            const response = await dispatch(
+                removeAccount({
+                    method: 'delete',
+                    url: `${API}/api/account/${accountId}`,
+                    auth: { Authorization: `Bearer ${token}` },
+                }),
+            );
+            history.replace(`/${user.userId}/accounts/`);
+            closeDeleteModal();
+            return response;
         } catch (error) {
             console.log(error);
         }
@@ -113,9 +87,9 @@ const AccountDetails = (props) => {
                     <h2>${balance}</h2>
                     <p>{description}</p>
                     <ul>
-                        {strategies && strategies.length !== 0
-                            ? strategies.map((strategy) => (
-                                  <li>{strategy.strategy_name}</li>
+                        {currentStrategies && currentStrategies.length !== 0
+                            ? currentStrategies.map((strategy) => (
+                                  <li key={strategy.strategy_id}>{strategy.strategy_name}</li>
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>

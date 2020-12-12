@@ -1,5 +1,4 @@
 import {
-    LOGIN_PENDING,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
