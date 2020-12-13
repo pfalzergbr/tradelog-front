@@ -1,4 +1,4 @@
-import { ADD_ACCOUNT, ADD_ACCOUNT_FAIL, DELETE_ACCOUNT, DELETE_ACCOUNT_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL } from '../constants';
+import { ADD_ACCOUNT, DELETE_ACCOUNT, EDIT_ACCOUNT } from '../constants';
 import { handleThunk } from '../handleThunk';
 
 export const addAccount = (accountData) => ({

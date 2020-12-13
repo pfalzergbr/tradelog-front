@@ -1,7 +1,5 @@
 import {
-    LOGIN_FAIL,
     POPULATE_USER,
-    POPULATE_USER_FAIL,
     LOGIN_SUCCESS,
     REQUEST_START,
     REQUEST_FAIL,
@@ -24,12 +22,8 @@ export const control = (state = initialState, action = {}) => {
             return { ...state, isLoading: false, error: action.payload };
         case LOGIN_SUCCESS:
             return { ...state, isLoading: false };
-        case LOGIN_FAIL:
-            return { ...state, isLoading: false, error: action.payload };
         case POPULATE_USER:
             return { ...state, isLoading: false };
-        case POPULATE_USER_FAIL:
-            return { ...state, isLoading: false, error: action.payload };
         case ADD_ACCOUNT:
             return { ...state, isLoading: false };
         case DELETE_ACCOUNT:
