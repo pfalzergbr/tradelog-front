@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Landing Component 1`] = `
+<div
+  className="landing-page"
+>
+  <main
+    className="landing-page__main"
+  >
+    Track your trades. Find your edge. Grow your profits.
+  </main>
+  <Footer />
+  ;
+</div>
+`;

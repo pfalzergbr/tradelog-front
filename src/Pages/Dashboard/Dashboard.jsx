@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Dashboard = (props) => {
+const Dashboard = () => {
     const auth = useSelector((state) => state.auth);
     const { userId } = useParams();
 
