@@ -12,6 +12,5 @@ export const logout = () => ({
     type: LOGOUT,
 });
 
-export const login = (requestData) => {
-    return handleThunk(requestData, loginSuccess);
-};
+export const login = (requestData) => handleThunk(requestData, loginSuccess);
+

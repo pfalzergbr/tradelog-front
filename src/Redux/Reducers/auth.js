@@ -1,6 +1,5 @@
 import {
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
     LOGOUT,
     LOAD_USER,
 } from '../constants';
@@ -15,8 +14,6 @@ const initialState = {
 
 export const auth = (state = initialState, action = {}) => {
     switch (action.type) {
-        case LOGIN_FAIL:
-            return { ...state, error: action.payload };
         case LOGIN_SUCCESS:
             return {
                 ...state,
