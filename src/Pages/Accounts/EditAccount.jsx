@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { patchAccount } from '../../Redux/Actions/accountActions';
+import { updateAccount } from '../../Redux/Actions/accountActions';
 import Loading from '../Shared/Loading';
 import ErrorMessage from '../Shared/ErrorMessage';
 const API = process.env.REACT_APP_API;
@@ -35,7 +35,7 @@ const NewTrade = (props) => {
     const onSubmit = async (data) => {
         try {
             const response = await dispatch(
-                patchAccount({
+                updateAccount({
                     method: 'patch',
                     url: `${API}/api/account/${accountId}`,
                     data,

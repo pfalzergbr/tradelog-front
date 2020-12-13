@@ -1,6 +1,6 @@
 // Request and Load screen
 export const REQUEST_START = 'REQUEST_START';
-export const REQUEST_END = 'REQUEST_END';
+export const REQUEST_FAIL = 'REQUEST_FAIL';
 
 export const POPULATE_USER = 'POPULATE_USER';
 export const POPULATE_USER_FAIL = 'POPULATE_USER_FAIL';
@@ -13,21 +13,13 @@ export const LOAD_USER = 'LOAD_USER';
 
 //Accounts
 
-export const FETCH_ACCOUNTS_SUCCESS = 'FETCH_ACCOUNTS_SUCCESS';
-export const FETCH_ACCOUNTS_FAIL = 'FETCH_ACCOUNTS_FAIL';
-
-export const FETCH_STRATEGIES_SUCCESS = 'FETCH_STRATEGIES_SUCCESS';
-export const FETCH_STRATEGIES_FAIL = 'FETCH_STRATEGIES_FAIL';
-
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
-export const ADD_ACCOUNT_FAIL = 'ADD_ACCOUNT_FAIL';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
-export const DELETE_ACCOUNT_FAIL = 'DELETE_ACCOUNT_FAIL';
 export const EDIT_ACCOUNT = 'EDIT_ACCOUNT';
-export const EDIT_ACCOUNT_FAIL = 'EDIT_ACCOUNT_FAIL';
+
 
 
 //Strategies
 
 export const ADD_STRATEGY = 'ADD_STRATEGY';
-export const ADD_STRATEGY_FAIL = 'ADD_STRATEGY_FAIL';
+
