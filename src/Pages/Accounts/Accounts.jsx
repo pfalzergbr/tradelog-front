@@ -44,7 +44,7 @@ const Accounts = () => {
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>
-                    <h1>Accounts of {user.name}</h1>
+                    <h1>Accounts of {user.userName}</h1>
 
                     <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
                         <NewAccount closeModal={closeModal} />

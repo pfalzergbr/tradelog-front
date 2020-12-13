@@ -1,12 +1,12 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { patchAccount } from '../../Redux/Actions/accountActions';
 import Loading from '../Shared/Loading';
-import { useRequest } from '../../Hooks/useRequest';
 import ErrorMessage from '../Shared/ErrorMessage';
 const API = process.env.REACT_APP_API;
 
@@ -16,36 +16,37 @@ const accountSchema = yup.object().shape({
 });
 
 const NewTrade = (props) => {
-    const { user, token } = useSelector(state => state.authR);
-    const { isLoading, sendRequest } = useRequest();
-    const {accountName, description} = props.data
+    const dispatch = useDispatch();
+    const { token } = useSelector((state) => state.auth);
+    const { isLoading } = useSelector((state) => state.control);
+    // const { isLoading } = useSelector((state) => state.accounts);
+    const { account_name: accountName, account_id: accountId, description } = props.data;
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
-        mode: 'onChange', defaultValues: {
-            accountName, description
-        }
+        mode: 'onChange',
+        defaultValues: {
+            accountName,
+            description,
+        },
     });
     const { isValid } = formState;
     const history = useHistory();
-    const { userId, accountId} = useParams();
-
 
     const onSubmit = async (data) => {
-        const formData = {
-            ...data,
-            trader: user.userId,
-        };
         try {
-            await sendRequest(
-                `${API}/api/user/accounts/${accountId}`,
-                'PATCH',
-                JSON.stringify(formData),
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
+            const response = await dispatch(
+                patchAccount({
+                    method: 'patch',
+                    url: `${API}/api/account/${accountId}`,
+                    data,
+                    auth: { Authorization: `Bearer ${token}` },
+                }),
             );
-            history.push(`/${userId}/accounts/${accountId}`)
+            history.push(
+                `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
+            );
+            props.closeModal();
+
         } catch (error) {
             console.log(error);
         }
@@ -76,7 +77,7 @@ const NewTrade = (props) => {
                         )}
 
                         <button disabled={!isValid} type='submit'>
-                            Create Account
+                           Edit Account
                         </button>
                     </form>
                 </div>

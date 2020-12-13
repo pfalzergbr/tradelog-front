@@ -1,4 +1,4 @@
-import { ADD_ACCOUNT, ADD_ACCOUNT_FAIL, DELETE_ACCOUNT, DELETE_ACCOUNT_FAIL } from '../constants';
+import { ADD_ACCOUNT, ADD_ACCOUNT_FAIL, DELETE_ACCOUNT, DELETE_ACCOUNT_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL } from '../constants';
 import { requestStart } from './requestActions';
 
 import { requestService } from '../../Services/requestService';
@@ -10,6 +10,16 @@ export const addAccount = (accountData) => ({
 
 export const addAccountFail = (error) => ({
     type: ADD_ACCOUNT_FAIL,
+    payload: error,
+});
+
+export const editAccount = (accountData) => ({
+    type: EDIT_ACCOUNT,
+    payload: { updatedAccount: accountData.updatedAccount },
+});
+
+export const editAccountFail = (error) => ({
+    type: EDIT_ACCOUNT_FAIL,
     payload: error,
 });
 
@@ -47,6 +57,27 @@ export const addNewAccount = (data) => async (dispatch) => {
     }
 };
 
+export const patchAccount = (data) => async (dispatch) => {
+    const onSuccess = (accountData) => {
+        dispatch(editAccount(accountData));
+        return accountData;
+    };
+
+    const onError = (error) => {
+        dispatch(editAccountFail(error));
+        return error;
+    };
+
+    try {
+        dispatch(requestStart());
+        const response = await requestService(data);
+        const accountData = response.data;
+        return onSuccess(accountData);
+    } catch (error) {
+        return onError(error);
+    }
+};
+
 export const removeAccount = (data) => async (dispatch) => {
     const onSuccess = (accountData) => {
         dispatch(deleteAccount(accountData));
@@ -62,7 +93,6 @@ export const removeAccount = (data) => async (dispatch) => {
         dispatch(requestStart());
         const response = await requestService(data);
         const accountData = response.data;
-        console.log(accountData)
         return onSuccess(accountData);
     } catch (error) {
         return onError(error);

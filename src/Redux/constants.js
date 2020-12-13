@@ -23,6 +23,9 @@ export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const ADD_ACCOUNT_FAIL = 'ADD_ACCOUNT_FAIL';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const DELETE_ACCOUNT_FAIL = 'DELETE_ACCOUNT_FAIL';
+export const EDIT_ACCOUNT = 'EDIT_ACCOUNT';
+export const EDIT_ACCOUNT_FAIL = 'EDIT_ACCOUNT_FAIL';
+
 
 //Strategies
 
