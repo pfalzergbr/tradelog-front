@@ -42,7 +42,7 @@ const AppRouter = (props) => {
     //Routes to display if there is no logged in user.
     const publicRoutes = (
         <Switch>
-            <Route exact path='/'>
+            <Route exact={true} path='/'>
                 <Landing />
             </Route>
             <Route path='/user/register'>
@@ -60,7 +60,7 @@ const AppRouter = (props) => {
     //Routes if there is a user logged in.
     const authRoutes = (
         <Switch>
-            <Route exact path='/'>
+            <Route exact={true} path='/'>
                 <Landing />
             </Route>
             <Route path='/:userId/dashboard'>
@@ -69,7 +69,7 @@ const AppRouter = (props) => {
             <Route path='/:userId/profile'>
                 <Profile />
             </Route>
-            <Route exact path='/:userId/accounts'>
+            <Route exact={true} path='/:userId/accounts'>
                 <Accounts />
             </Route>
             <Route path='/:userId/accounts/:accountId'>

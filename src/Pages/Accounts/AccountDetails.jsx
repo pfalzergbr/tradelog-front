@@ -21,7 +21,7 @@ const AccountDetails = () => {
     //Finds the account for the current page
     const account = useSelector((state) => state.account.accounts).find(
         (account) => account.account_id === accountId,
-    );
+    ) || [];
     const { account_name: accountName, balance, description } = account;
     const currentStrategies = strategies.filter(strategy => strategy.account_id === account.account_id)
     const dispatch = useDispatch();
@@ -37,6 +37,7 @@ const AccountDetails = () => {
 
     const handleDelete = async () => {
         try {
+            history.replace(`/${user.userId}/accounts/`);
             const response = await dispatch(
                 removeAccount({
                     method: 'delete',
@@ -44,7 +45,6 @@ const AccountDetails = () => {
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );
-            history.replace(`/${user.userId}/accounts/`);
             closeDeleteModal();
             return response;
         } catch (error) {
@@ -70,10 +70,10 @@ const AccountDetails = () => {
 
     return (
         <React.Fragment>
-            <Modal isOpen={editModalIsOpen} onRequestClose={closeEditModal}>
+            <Modal appElement={document.getElementById('app')} isOpen={editModalIsOpen} onRequestClose={closeEditModal}>
                 <EditAccount data={account} closeModal={closeEditModal} />
             </Modal>
-            <Modal isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
+            <Modal appElement={document.getElementById('app')} isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
                 <DeleteModal
                     closeModal={closeDeleteModal}
                     onDelete={handleDelete}
