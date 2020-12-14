@@ -20,3 +20,6 @@ export const EDIT_ACCOUNT = 'EDIT_ACCOUNT';
 //Strategies
 export const ADD_STRATEGY = 'ADD_STRATEGY';
 
+//Modals 
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';

@@ -21,7 +21,7 @@ const NewTrade = (props) => {
             const response = await dispatch(
                 updateAccount({
                     method: 'patch',
-                    url: `${API}/api/account/${props.data.account_id}`,
+                    url: `${API}/api/account/${props.account.account_id}`,
                     data,
                     auth: { Authorization: `Bearer ${token}` },
                 }),

@@ -7,6 +7,7 @@ import DeleteModal from '../Shared/DeleteModal';
 import EditAccount from './EditAccount';
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
+import { openModal } from '../../Redux/Actions/modalActions'
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = () => {
@@ -14,6 +15,7 @@ const AccountDetails = () => {
     const history = useHistory();
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+    const [strategyModalIsOpen, setStrategyModalIsOpen] = useState(false);
     //Selectors
     const { token, user } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
@@ -56,10 +58,18 @@ const AccountDetails = () => {
     };
 
     const openEditModal = () => {
-        setEditModalIsOpen(true);
+        dispatch(openModal('editAccount', { account } ))
+        // setEditModalIsOpen(true);
     };
 
-    const closeEditModal = () => {
+    // const closeEditModal = () => {
+    //     setStrategyModalIsOpen(false);
+    // };
+    const openStrategyModal = () => {
+        setStrategyModalIsOpen(true);
+    };
+
+    const closeStrategyModal = () => {
         setEditModalIsOpen(false);
     };
 
@@ -73,11 +83,17 @@ const AccountDetails = () => {
 
     return (
         <React.Fragment>
-            <Modal
+            {// <Modal
+            //     appElement={document.getElementById('app')}
+            //     isOpen={editModalIsOpen}
+            //     onRequestClose={closeEditModal}>
+            //     <EditAccount data={account} closeModal={closeEditModal} />
+            // </Modal>
+            }<Modal
                 appElement={document.getElementById('app')}
-                isOpen={editModalIsOpen}
-                onRequestClose={closeEditModal}>
-                <EditAccount data={account} closeModal={closeEditModal} />
+                isOpen={strategyModalIsOpen}
+                onRequestClose={closeStrategyModal}>
+
             </Modal>
             <Modal
                 appElement={document.getElementById('app')}
@@ -104,6 +120,7 @@ const AccountDetails = () => {
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>
+                    <button onClick={openStrategyModal}>New Strategy</button>
                     <button onClick={openEditModal}>Edit</button>
                     <button onClick={openDeleteModal}>Delete</button>
                 </div>

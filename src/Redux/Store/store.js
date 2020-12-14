@@ -10,10 +10,11 @@ import { auth } from '../Reducers/auth';
 import { account } from '../Reducers/account';
 import { strategy } from '../Reducers/strategy';
 import { control } from '../Reducers/control'
-
+import { modal } from '../Reducers/modal';
+ 
 // const logger = createLogger();
 
-const rootReducer = combineReducers({ auth, account, strategy, control });
+const rootReducer = combineReducers({ auth, account, strategy, control, modal });
 
 export const store = createStore(
     rootReducer,
