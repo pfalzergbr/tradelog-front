@@ -10,7 +10,7 @@ const API = process.env.REACT_APP_API;
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
-    const { user, token } = useSelector((state) => state.auth);
+    const { token } = useSelector((state) => state.auth);
     const { accounts } = useSelector((state) => state.account);
     const { isLoading, sendRequest } = useRequest();
   

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Strategies = (props) => {
+const Strategies = () => {
     return ( <div>Strategies</div> );
 }
  
