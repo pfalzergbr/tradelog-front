@@ -17,13 +17,16 @@ const AccountDetails = () => {
     //Selectors
     const { token, user } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
-    const { strategies }  = useSelector((state) => state.strategy);
+    const { strategies } = useSelector((state) => state.strategy);
     //Finds the account for the current page
-    const account = useSelector((state) => state.account.accounts).find(
-        (account) => account.account_id === accountId,
-    ) || [];
+    const account =
+        useSelector((state) => state.account.accounts).find(
+            (account) => account.account_id === accountId,
+        ) || [];
     const { account_name: accountName, balance, description } = account;
-    const currentStrategies = strategies.filter(strategy => strategy.account_id === account.account_id)
+    const currentStrategies = strategies.filter(
+        (strategy) => strategy.account_id === account.account_id,
+    );
     const dispatch = useDispatch();
     //Data to pass in the Delete Modal
     const modalData = {
@@ -33,7 +36,7 @@ const AccountDetails = () => {
         label: 'Yes, I am sure I want to delete this account.',
         button: 'Delete',
     };
-    console.log('WE ARE ON ACCOUNT DETAILS')
+    console.log('WE ARE ON ACCOUNT DETAILS');
 
     const handleDelete = async () => {
         try {
@@ -70,10 +73,16 @@ const AccountDetails = () => {
 
     return (
         <React.Fragment>
-            <Modal appElement={document.getElementById('app')} isOpen={editModalIsOpen} onRequestClose={closeEditModal}>
+            <Modal
+                appElement={document.getElementById('app')}
+                isOpen={editModalIsOpen}
+                onRequestClose={closeEditModal}>
                 <EditAccount data={account} closeModal={closeEditModal} />
             </Modal>
-            <Modal appElement={document.getElementById('app')} isOpen={deleteModalIsOpen} onRequestClose={closeDeleteModal}>
+            <Modal
+                appElement={document.getElementById('app')}
+                isOpen={deleteModalIsOpen}
+                onRequestClose={closeDeleteModal}>
                 <DeleteModal
                     closeModal={closeDeleteModal}
                     onDelete={handleDelete}
@@ -89,7 +98,9 @@ const AccountDetails = () => {
                     <ul>
                         {currentStrategies && currentStrategies.length !== 0
                             ? currentStrategies.map((strategy) => (
-                                  <li key={strategy.strategy_id}>{strategy.strategy_name}</li>
+                                  <li key={strategy.strategy_id}>
+                                      {strategy.strategy_name}
+                                  </li>
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>

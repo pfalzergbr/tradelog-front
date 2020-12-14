@@ -10,7 +10,7 @@ import NewTrade from '../Trades/NewTrade';
 const Nav = (props) => {
     const history = useHistory();
     const links = props.data;
-    const auth = useSelector(state => state.auth);
+    const auth = useSelector((state) => state.auth);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const dispatch = useDispatch();
 
@@ -25,25 +25,42 @@ const Nav = (props) => {
     const logoutUser = () => {
         dispatch(logout());
         clearUser();
-        history.push('/')
-    }
+        history.push('/');
+    };
 
     return (
         <div className='main-navigation container'>
-        <div className="nav-navigation__logo-container">
-            <Link to="/" exact className="main-navigation__logo">TradeLog</Link>
-        </div>
+            <div className='nav-navigation__logo-container'>
+                <Link to='/' exact className='main-navigation__logo'>
+                    TradeLog
+                </Link>
+            </div>
             <div className='main-navigation__navlinks'>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                <Modal
+                    appElement={document.getElementById('app')}
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}>
                     <NewTrade closeModal={closeModal} />
                 </Modal>
                 {links.map((link) => (
-                    <Link key={link.to} exact to={link.to} className="navlink">
+                    <Link key={link.to} exact to={link.to} className='navlink'>
                         {link.name}
                     </Link>
                 ))}
-                {auth.token && <button className="main-navigation__btn" onClick={logoutUser}>Logout</button>}
-                {auth.token && <button className="main-navigation__btn main-navigation__btn--cta" onClick={openModal}>QuickTrade</button>}
+                {auth.token && (
+                    <button
+                        className='main-navigation__btn'
+                        onClick={logoutUser}>
+                        Logout
+                    </button>
+                )}
+                {auth.token && (
+                    <button
+                        className='main-navigation__btn main-navigation__btn--cta'
+                        onClick={openModal}>
+                        QuickTrade
+                    </button>
+                )}
             </div>
         </div>
     );

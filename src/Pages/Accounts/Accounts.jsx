@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 import NewAccount from './NewAccount';
 
 const Accounts = () => {
-    const { user } = useSelector(state => state.auth);
-    const { accounts } = useSelector(state => state.account)
+    const { user } = useSelector((state) => state.auth);
+    const { accounts } = useSelector((state) => state.account);
     const { isLoading } = useSelector((state) => state.control);
-    const [ modalIsOpen, setModalIsOpen ] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -27,7 +27,10 @@ const Accounts = () => {
                 <div>
                     <h1>Accounts of {user.userName}</h1>
 
-                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                    <Modal
+                        appElement={document.getElementById('app')}
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}>
                         <NewAccount closeModal={closeModal} />
                     </Modal>
                     <ul>
