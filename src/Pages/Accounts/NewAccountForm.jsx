@@ -11,7 +11,7 @@ const accountSchema = yup.object().shape({
 });
 
 
-const NewAccountForm = (props) => {
+const NewAccountForm = ({onSubmit}) => {
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
         mode: 'onChange',
