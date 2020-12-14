@@ -1,6 +1,6 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../constants';
 
-export const openModal = (modalName, modalData) => ({
+export const openModal = (modalName, modalData = {}) => ({
     type: OPEN_MODAL,
     payload: { modalName, modalData },
 });

@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import Modal from 'react-modal';
 
 import { removeAccount } from '../../Redux/Actions/accountActions';
-import DeleteModal from '../Shared/DeleteModal';
-import EditAccount from './EditAccount';
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
-import { openModal } from '../../Redux/Actions/modalActions'
+import { openModal, closeModal } from '../../Redux/Actions/modalActions'
 const API = process.env.REACT_APP_API;
 
 const AccountDetails = () => {
     const { accountId } = useParams();
     const history = useHistory();
-    const [editModalIsOpen, setEditModalIsOpen] = useState(false);
-    const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-    const [strategyModalIsOpen, setStrategyModalIsOpen] = useState(false);
     //Selectors
     const { token, user } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
@@ -31,14 +25,7 @@ const AccountDetails = () => {
     );
     const dispatch = useDispatch();
     //Data to pass in the Delete Modal
-    const modalData = {
-        header: `You are trying to delete your ${accountName} account.`,
-        message:
-            'You are trying to delete this account. Once it is deleted, this action cannot be reversed. All trades associated with this account will be permanently deleted.',
-        label: 'Yes, I am sure I want to delete this account.',
-        button: 'Delete',
-    };
-    console.log('WE ARE ON ACCOUNT DETAILS');
+
 
     const handleDelete = async () => {
         try {
@@ -50,7 +37,7 @@ const AccountDetails = () => {
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );
-            closeDeleteModal();
+            dispatch(closeModal);
             return response;
         } catch (error) {
             console.log(error);
@@ -59,52 +46,20 @@ const AccountDetails = () => {
 
     const openEditModal = () => {
         dispatch(openModal('editAccount', { account } ))
-        // setEditModalIsOpen(true);
     };
 
-    // const closeEditModal = () => {
-    //     setStrategyModalIsOpen(false);
-    // };
     const openStrategyModal = () => {
-        setStrategyModalIsOpen(true);
-    };
-
-    const closeStrategyModal = () => {
-        setEditModalIsOpen(false);
-    };
-
+    }
+    
     const openDeleteModal = () => {
-        setDeleteModalIsOpen(true);
+        dispatch(openModal('deleteAccount', {account, token }))
     };
 
-    const closeDeleteModal = () => {
-        setDeleteModalIsOpen(false);
-    };
+
 
     return (
         <React.Fragment>
-            {// <Modal
-            //     appElement={document.getElementById('app')}
-            //     isOpen={editModalIsOpen}
-            //     onRequestClose={closeEditModal}>
-            //     <EditAccount data={account} closeModal={closeEditModal} />
-            // </Modal>
-            }<Modal
-                appElement={document.getElementById('app')}
-                isOpen={strategyModalIsOpen}
-                onRequestClose={closeStrategyModal}>
 
-            </Modal>
-            <Modal
-                appElement={document.getElementById('app')}
-                isOpen={deleteModalIsOpen}
-                onRequestClose={closeDeleteModal}>
-                <DeleteModal
-                    closeModal={closeDeleteModal}
-                    onDelete={handleDelete}
-                    modalData={modalData}
-                />
-            </Modal>
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>

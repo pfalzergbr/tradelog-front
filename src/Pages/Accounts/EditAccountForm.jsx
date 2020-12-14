@@ -10,7 +10,7 @@ const accountSchema = yup.object().shape({
 });
 
 const EditAccountForm = ({ onSubmit, data }) => {
-    const { account_name: accountName, description } = data;
+    const { account_name: accountName, description } = data.account;
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
         mode: 'onChange',

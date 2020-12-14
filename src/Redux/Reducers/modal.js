@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL } from '../constants';
+import { OPEN_MODAL, CLOSE_MODAL, DELETE_ACCOUNT } from '../constants';
 
 const initialState = {
     isOpen: false,
@@ -11,6 +11,8 @@ export const modal = (state = initialState, action = {}) => {
         case OPEN_MODAL: 
             return { ...state, isOpen: true, modalName: action.payload.modalName, modalData: action.payload.modalData }
         case CLOSE_MODAL: 
+            return initialState;
+        case DELETE_ACCOUNT:
             return initialState;
         default:
             return state;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const DeleteTradeModal = (props) => {
-    const { closeModal, modalData, onDelete} = props;
-    const { header, message, note, label, button } = modalData
+    const { closeModal, data } = props;
+    const { header, message, note, label, button } = data
     const [ isChecked, setIsChecked ] = useState(false);
 
     const handleChange = (event) => {
@@ -26,7 +26,7 @@ const DeleteTradeModal = (props) => {
                     onChange={handleChange}
                 />
             </form>
-            <button disabled={!isChecked} onClick={onDelete}>
+            <button disabled={!isChecked} onClick={data.onDelete}>
                 {button}
             </button>
             <button onClick={closeModal}>Cancel</button>
