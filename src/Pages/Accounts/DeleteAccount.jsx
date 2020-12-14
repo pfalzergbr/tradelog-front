@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { removeAccount } from '../../Redux/Actions/accountActions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 
 const DeleteAccount = (props) => {
@@ -26,7 +26,7 @@ const DeleteAccount = (props) => {
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );
-            dispatch(closeModal);
+            closeModal()
             return response;
         } catch (error) {
             console.log(error);

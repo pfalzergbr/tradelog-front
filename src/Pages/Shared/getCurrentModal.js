@@ -1,6 +1,7 @@
 import React from 'react';
 import EditAccount from '../Accounts/EditAccount';
 import DeleteAccount from '../Accounts/DeleteAccount';
+import NewTrade from '../Trades/NewTrade';
 
 export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
     switch (modalName) {
@@ -12,6 +13,10 @@ export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
             return (
                 <DeleteAccount data={modalData} closeModal={handleCloseModal} />
             );
+        case 'newTrade':
+            return (
+                <NewTrade closeModal={handleCloseModal} />
+            )
         default:
             return <div></div>;
     }

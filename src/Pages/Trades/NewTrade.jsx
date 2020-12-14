@@ -16,21 +16,16 @@ const NewTrade = (props) => {
   
 
     const onSubmit = async (data) => {
-        const formData = {
-            ...data,
-            trader: user.userId,
-        };
         try {
             const response = await sendRequest(
                 `${API}/api/trades/`,
                 'POST',
-                JSON.stringify(formData),
+                JSON.stringify(data),
                 {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
             );
-            console.log(response);
         } catch (error) {
             console.log(error);
         }

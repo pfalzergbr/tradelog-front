@@ -10,6 +10,8 @@ const ModalController = () => {
         (state) => state.modal,
     );
 
+    Modal.setAppElement=document.getElementById('app');
+
     const handleCloseModal = () => {
         dispatch(closeModal());
     };

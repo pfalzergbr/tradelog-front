@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Modal from 'react-modal';
 
 import { clearUser } from '../../Services/storageService';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../Redux/Actions/authActions';
-import NewTrade from '../Trades/NewTrade';
+import { openModal } from '../../Redux/Actions/modalActions'
 
 const Nav = (props) => {
     const history = useHistory();
     const links = props.data;
     const auth = useSelector((state) => state.auth);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+
     const dispatch = useDispatch();
 
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalIsOpen(false);
+    const handleOpenModal = () => {
+        dispatch(openModal('newTrade', {}))
     };
 
     const logoutUser = () => {
@@ -31,19 +26,13 @@ const Nav = (props) => {
     return (
         <div className='main-navigation container'>
             <div className='nav-navigation__logo-container'>
-                <Link to='/' exact className='main-navigation__logo'>
+                <Link to='/' className='main-navigation__logo'>
                     TradeLog
                 </Link>
             </div>
             <div className='main-navigation__navlinks'>
-                <Modal
-                    appElement={document.getElementById('app')}
-                    isOpen={modalIsOpen}
-                    onRequestClose={closeModal}>
-                    <NewTrade closeModal={closeModal} />
-                </Modal>
                 {links.map((link) => (
-                    <Link key={link.to} exact to={link.to} className='navlink'>
+                    <Link key={link.to} to={link.to} className='navlink'>
                         {link.name}
                     </Link>
                 ))}
@@ -57,7 +46,7 @@ const Nav = (props) => {
                 {auth.token && (
                     <button
                         className='main-navigation__btn main-navigation__btn--cta'
-                        onClick={openModal}>
+                        onClick={handleOpenModal}>
                         QuickTrade
                     </button>
                 )}

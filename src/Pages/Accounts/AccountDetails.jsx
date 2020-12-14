@@ -1,17 +1,14 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { removeAccount } from '../../Redux/Actions/accountActions';
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
-import { openModal, closeModal } from '../../Redux/Actions/modalActions'
-const API = process.env.REACT_APP_API;
+import { openModal } from '../../Redux/Actions/modalActions'
 
 const AccountDetails = () => {
     const { accountId } = useParams();
-    const history = useHistory();
     //Selectors
-    const { token, user } = useSelector((state) => state.auth);
+    const { token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
     const { strategies } = useSelector((state) => state.strategy);
     //Finds the account for the current page
@@ -25,24 +22,6 @@ const AccountDetails = () => {
     );
     const dispatch = useDispatch();
     //Data to pass in the Delete Modal
-
-
-    const handleDelete = async () => {
-        try {
-            history.replace(`/${user.userId}/accounts/`);
-            const response = await dispatch(
-                removeAccount({
-                    method: 'delete',
-                    url: `${API}/api/account/${accountId}`,
-                    auth: { Authorization: `Bearer ${token}` },
-                }),
-            );
-            dispatch(closeModal);
-            return response;
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     const openEditModal = () => {
         dispatch(openModal('editAccount', { account } ))

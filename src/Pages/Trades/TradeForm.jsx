@@ -73,7 +73,7 @@ const TradeForm = ({ onSubmit, accounts }) => {
                     <ErrorMessage message={errors.amount.message} />
                 )}
                 <label htmlFor='notes'>Notes</label>
-                <textArea
+                <textarea
                     name='notes'
                     ref={register}
                     placeholder='Optional notes'
