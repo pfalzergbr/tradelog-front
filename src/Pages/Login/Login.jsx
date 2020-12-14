@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { storeUser } from '../../Services/storageService';
 import { login } from '../../Redux/Actions/authActions';
-// import { loadAccounts } from '../../Redux/Actions/accountActions';
 import Footer from '../Shared/Footer';
 import Loading from '../Shared/Loading';
 const API = process.env.REACT_APP_API;

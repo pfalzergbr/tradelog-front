@@ -26,7 +26,7 @@ const profileSchema = yup.object().shape({
 
 const Profile = (props) => {
     const { user, token } = useSelector(state => state.auth);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [ modalIsOpen, setModalIsOpen] = useState(false);
     const { isLoading, sendRequest } = useRequest();
     const [userProfile, setUserProfile] = useState({});
     const { name, email } = userProfile;

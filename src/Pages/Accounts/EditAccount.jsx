@@ -19,7 +19,6 @@ const NewTrade = (props) => {
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
-    // const { isLoading } = useSelector((state) => state.accounts);
     const { account_name: accountName, account_id: accountId, description } = props.data;
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(accountSchema),
