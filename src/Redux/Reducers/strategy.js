@@ -29,3 +29,10 @@ export const strategy = (state = initialState, action = {}) => {
             return state;
     }
 };
+
+
+export const selectAccountStrategies = (state, accountId) => {
+    return state.strategy.strategies.filter(
+        (strategy) => strategy.account_id === accountId,
+    );
+};

@@ -4,6 +4,9 @@ import { useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
+import { selectAccount } from '../../Redux/Reducers/account'
+import { selectAccountStrategies } from '../../Redux/Reducers/strategy'
+
 
 const AccountDetails = () => {
     const { accountId } = useParams();
@@ -13,13 +16,10 @@ const AccountDetails = () => {
     const { strategies } = useSelector((state) => state.strategy);
     //Finds the account for the current page
     const account =
-        useSelector((state) => state.account.accounts).find(
-            (account) => account.account_id === accountId,
+        useSelector((state) => selectAccount(state, accountId)
         ) || [];
     const { account_name: accountName, balance, description } = account;
-    const currentStrategies = strategies.filter(
-        (strategy) => strategy.account_id === account.account_id,
-    );
+    const currentStrategies = useSelector(state => selectAccountStrategies(state, accountId))
     const dispatch = useDispatch();
     //Data to pass in the Delete Modal
 

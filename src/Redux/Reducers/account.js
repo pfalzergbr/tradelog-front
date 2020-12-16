@@ -1,4 +1,9 @@
-import { POPULATE_USER, ADD_ACCOUNT, DELETE_ACCOUNT, EDIT_ACCOUNT } from '../constants';
+import {
+    POPULATE_USER,
+    ADD_ACCOUNT,
+    DELETE_ACCOUNT,
+    EDIT_ACCOUNT,
+} from '../constants';
 
 const initialState = { accounts: [] };
 
@@ -30,4 +35,8 @@ export const account = (state = initialState, action = {}) => {
         default:
             return state;
     }
+};
+
+export const selectAccount = (state, accountId) => {
+    return state.account.accounts.find((account) => account.account_id === accountId);
 };
