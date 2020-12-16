@@ -3,9 +3,8 @@ import { handleThunk } from '../handleThunk';
 
 export const addStrategy = (strategyData) => ({
     type: ADD_STRATEGY,
-    payload: { newStrategy: strategyData },
+    payload: { newStrategy: strategyData.strategy },
 });
-
 
 const editStrategy = (strategyData) => ({
     type: EDIT_STRATEGY,
@@ -14,10 +13,12 @@ const editStrategy = (strategyData) => ({
 
 const deleteStrategy = (strategyData) => ({
     type: DELETE_STRATEGY,
-    payload: {strategy_id: strategyData.deletedStrategy.strategy_id}
-})
+    payload: { strategy_id: strategyData.deletedStrategy.strategy_id },
+});
 
-export const addNewStrategy = (requestData) => handleThunk(requestData, addStrategy);
-export const updateStrategy = (requestData) => handleThunk(requestData, editStrategy);
-export const removeStrategy = (requestData) => handleThunk(requestData, deleteStrategy);
-
+export const addNewStrategy = (requestData) =>
+    handleThunk(requestData, addStrategy);
+export const updateStrategy = (requestData) =>
+    handleThunk(requestData, editStrategy);
+export const removeStrategy = (requestData) =>
+    handleThunk(requestData, deleteStrategy);

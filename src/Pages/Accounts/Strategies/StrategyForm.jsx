@@ -43,6 +43,9 @@ const StrategyForm = (props) => {
                 {errors.notes && (
                     <ErrorMessage message={errors.notes.message} />
                 )}
+                <button disabled={!isValid} type='submit'>
+                New Strategy
+            </button>
             </form>
         </div>
     );

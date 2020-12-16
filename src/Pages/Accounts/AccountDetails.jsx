@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
-import { openModal } from '../../Redux/Actions/modalActions'
+import { openModal } from '../../Redux/Actions/modalActions';
 
 const AccountDetails = () => {
     const { accountId } = useParams();
@@ -24,22 +24,19 @@ const AccountDetails = () => {
     //Data to pass in the Delete Modal
 
     const openEditModal = () => {
-        dispatch(openModal('editAccount', { account } ))
+        dispatch(openModal('editAccount', { account }));
     };
 
     const openStrategyModal = () => {
-        dispatch(openModal('newAccount', {}))
-    } 
-    
-    const openDeleteModal = () => {
-        dispatch(openModal('deleteAccount', {account, token }))
+        dispatch(openModal('newStrategy', { accountId }));
     };
 
-
+    const openDeleteModal = () => {
+        dispatch(openModal('deleteAccount', { account, token }));
+    };
 
     return (
         <React.Fragment>
-
             {isLoading && <Loading />}
             {!isLoading && (
                 <div>

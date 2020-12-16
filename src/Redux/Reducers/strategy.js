@@ -7,7 +7,8 @@ export const strategy = (state = initialState, action = {}) => {
         case POPULATE_USER:
             return { ...state, strategies: action.payload.strategies };
         case ADD_STRATEGY:
-            return { ...state, strategies: action.payload.strategies };
+            const newStrategy = action.payload.newStrategy;
+            return { ...state, strategies: [...state.strategies, newStrategy]};
         case EDIT_STRATEGY:
             const updatedStrategy = action.payload.updatedStrategy;
             const updatedStrategies = state.strategies.map((strategy) =>

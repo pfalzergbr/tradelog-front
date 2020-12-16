@@ -25,7 +25,7 @@ export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
             )
         case 'newStrategy':
             return (
-                <NewStrategy closeModal={handleCloseModal} />
+                <NewStrategy data={modalData} closeModal={handleCloseModal} />
             )
         default:
             return <div></div>;
