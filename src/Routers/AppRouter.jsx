@@ -14,7 +14,7 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import Profile from '../Pages/Profile/Profile';
 import Accounts from '../Pages/Accounts/Accounts';
-import Strategies from '../Pages/Strategies/Strategies';
+import Strategies from '../Pages/Accounts/Strategies/Strategies';
 import AccountDetails from '../Pages/Accounts/AccountDetails';
 import NotFound from '../Pages/Shared/NotFound';
 const API = process.env.REACT_APP_API;
@@ -75,7 +75,7 @@ const AppRouter = (props) => {
             <Route path='/:userId/accounts/:accountId'>
                 <AccountDetails />
             </Route>
-            <Route path='/:userId/Strategies'>
+            <Route path='/:userId/strategies'>
                 <Strategies />
             </Route>
             <Route path='/:userId/trades/'>

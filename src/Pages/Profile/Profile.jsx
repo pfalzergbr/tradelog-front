@@ -3,13 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../../Hooks/useRequest';
 import ProfileForm from './ProfileForm';
 const API = process.env.REACT_APP_API;
 
 const Profile = (props) => {
     const { user, token } = useSelector(state => state.auth);
-    const { isLoading, sendRequest } = useRequest();
+    const { isLoading } = useSelector(state => state.control);
     const history = useHistory();
 
 

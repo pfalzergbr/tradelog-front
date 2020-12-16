@@ -1,4 +1,4 @@
-import { ADD_STRATEGY, POPULATE_USER } from '../constants';
+import { ADD_STRATEGY, POPULATE_USER, EDIT_STRATEGY, DELETE_STRATEGY } from '../constants';
 
 const initialState = { strategies: [] };
 
@@ -8,6 +8,22 @@ export const strategy = (state = initialState, action = {}) => {
             return { ...state, strategies: action.payload.strategies };
         case ADD_STRATEGY:
             return { ...state, strategies: action.payload.strategies };
+        case EDIT_STRATEGY:
+            const updatedStrategy = action.payload.updatedStrategy;
+            const updatedStrategies = state.strategies.map((strategy) =>
+                strategy.strategy_id === updatedStrategy.strategy_id
+                    ? updatedStrategy
+                    : strategy,
+            );
+            return {
+                ...state,
+                strategies: updatedStrategies,
+            };
+        case DELETE_STRATEGY:
+            const filteredStrategies = state.strategies.filter(
+                (strategy) => strategy.strategy_id !== action.payload.strategy_id,
+            );
+            return { ...state, strategies: filteredStrategies };
         default:
             return state;
     }

@@ -26,7 +26,7 @@ const DeleteProfile = (props) => {
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );
-            closeModal()
+            // closeModal()
             return response;
         } catch (error) {
             console.log(error);

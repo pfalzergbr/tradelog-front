@@ -15,10 +15,10 @@ export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const EDIT_ACCOUNT = 'EDIT_ACCOUNT';
 
-
-
 //Strategies
 export const ADD_STRATEGY = 'ADD_STRATEGY';
+export const DELETE_STRATEGY = 'ADD_STRATEGY';
+export const EDIT_STRATEGY = 'ADD_STRATEGY';
 
 //Modals 
 export const OPEN_MODAL = 'OPEN_MODAL';

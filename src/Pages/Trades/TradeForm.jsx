@@ -81,7 +81,7 @@ const TradeForm = ({ onSubmit, accounts }) => {
                 {errors.notes && (
                     <ErrorMessage message={errors.notes.message} />
                 )}
-                <label htmlFor='date'>Notes</label>
+                <label htmlFor='date'>Date</label>
                 <input type='date' name='date' ref={register}></input>
                 {errors.date && <ErrorMessage message={errors.date.message} />}
                 <button disabled={!isValid} type='submit'>

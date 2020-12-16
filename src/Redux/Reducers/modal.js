@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, DELETE_ACCOUNT, EDIT_ACCOUNT, ADD_STRATEGY } from '../constants';
+import { OPEN_MODAL, CLOSE_MODAL, DELETE_ACCOUNT, EDIT_ACCOUNT, ADD_STRATEGY, DELETE_STRATEGY, EDIT_STRATEGY, ADD_ACCOUNT } from '../constants';
 
 const initialState = {
     isOpen: false,
@@ -14,9 +14,15 @@ export const modal = (state = initialState, action = {}) => {
             return initialState;
         case DELETE_ACCOUNT:
             return initialState;
+        case ADD_ACCOUNT:
+            return initialState;
         case EDIT_ACCOUNT:
             return initialState;
         case ADD_STRATEGY:
+            return initialState;
+        case DELETE_STRATEGY:
+            return initialState;
+        case EDIT_STRATEGY:
             return initialState;
         default:
             return state;

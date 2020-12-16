@@ -28,7 +28,8 @@ const AccountDetails = () => {
     };
 
     const openStrategyModal = () => {
-    }
+        dispatch(openModal('newAccount', {}))
+    } 
     
     const openDeleteModal = () => {
         dispatch(openModal('deleteAccount', {account, token }))
