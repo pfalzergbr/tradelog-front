@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,9 +11,8 @@ import { selectAccountStrategies } from '../../Redux/Reducers/strategy'
 const AccountDetails = () => {
     const { accountId } = useParams();
     //Selectors
-    const { token } = useSelector((state) => state.auth);
+    const { user, token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
-    const { strategies } = useSelector((state) => state.strategy);
     //Finds the account for the current page
     const account =
         useSelector((state) => selectAccount(state, accountId)
@@ -46,9 +45,9 @@ const AccountDetails = () => {
                     <ul>
                         {currentStrategies && currentStrategies.length !== 0
                             ? currentStrategies.map((strategy) => (
-                                  <li key={strategy.strategy_id}>
+                                  <Link to={`/${user.userId}/strategies/${strategy.strategy_id}`}><li key={strategy.strategy_id}>
                                       {strategy.strategy_name}
-                                  </li>
+                                  </li></Link>
                               ))
                             : 'Cannot find any strategies for this account'}
                     </ul>

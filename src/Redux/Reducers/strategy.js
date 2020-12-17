@@ -36,3 +36,8 @@ export const selectAccountStrategies = (state, accountId) => {
         (strategy) => strategy.account_id === accountId,
     );
 };
+
+
+export const selectStrategy = (state, strategyId) => {
+    return state.strategy.strategies.find(strategy => strategy.strategy_id === strategyId);
+}
