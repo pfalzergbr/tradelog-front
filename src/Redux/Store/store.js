@@ -1,7 +1,7 @@
 import {
     createStore,
     applyMiddleware,
-    combineReducers,
+    combineReducers
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 // import { createLogger } from 'redux-logger';
@@ -18,5 +18,5 @@ const rootReducer = combineReducers({ auth, account, strategy, control, modal })
 
 export const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(thunkMiddleware /*, logger*/)), 
+    composeWithDevTools(applyMiddleware(thunkMiddleware, /*logger*/)), 
 );

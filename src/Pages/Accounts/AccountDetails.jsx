@@ -45,7 +45,7 @@ const AccountDetails = () => {
                     <ul>
                         {currentStrategies && currentStrategies.length !== 0
                             ? currentStrategies.map((strategy) => (
-                                  <Link to={`/${user.userId}/strategies/${strategy.strategy_id}`}><li key={strategy.strategy_id}>
+                                  <Link key={strategy.strategy_id} to={`/${user.userId}/strategies/${strategy.strategy_id}`}><li >
                                       {strategy.strategy_name}
                                   </li></Link>
                               ))

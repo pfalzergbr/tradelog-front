@@ -3,6 +3,7 @@ import { requestService } from '../Services/requestService';
 
 export const handleThunk = (requestData, successHandler) => async (dispatch) => {
     const onSuccess = (data) => {
+        console.log(data)
         dispatch(successHandler(data));
         return data;
     };
