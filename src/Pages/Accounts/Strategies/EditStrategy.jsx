@@ -2,14 +2,14 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
-import { addNewStrategy } from '../../../Redux/Actions/strategyActions';
+import { updateStrategy } from '../../../Redux/Actions/strategyActions';
 import Loading from '../../Shared/Loading';
 import { useHistory } from 'react-router-dom';
+
 const API = process.env.REACT_APP_API;
 
 const NewStrategy = (props) => {
-    const { accountId } = props.data
-    const { token } = useSelector((state) => state.auth);
+    const { strategy, token } = props.data
     const { isLoading } = useSelector((state) => state.control);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -17,15 +17,15 @@ const NewStrategy = (props) => {
 
     const onSubmit = async (data) => {
         try {
-            const newStrategyData = {
-                ...data,
-                accountId,
-            };
+            // const newStrategyData = {
+            //     ...data,
+            //     accountId,
+            // };
             const response = await dispatch(
-                addNewStrategy({
-                    method: 'post',
-                    url: `${API}/api/strategy`,
-                    data: newStrategyData,
+                updateStrategy({
+                    method: 'patch',
+                    url: `${API}/api/strategy/${strategy.strategy_id}`,
+                    data: data,
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );
@@ -44,7 +44,7 @@ const NewStrategy = (props) => {
             {!isLoading && (
                 <div>
                     <button onClick={props.closeModal}>X</button>
-                    <StrategyForm onSubmit={onSubmit} />
+                    <StrategyForm strategyData={strategy} button='Edit Strategy' onSubmit={onSubmit} />
                 </div>
             )}
         </React.Fragment>

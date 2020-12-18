@@ -7,7 +7,8 @@ import {
     ADD_STRATEGY,
     DELETE_ACCOUNT,
     EDIT_ACCOUNT,
-    DELETE_STRATEGY
+    DELETE_STRATEGY,
+    EDIT_STRATEGY
 } from '../constants';
 
 const initialState = {
@@ -34,6 +35,8 @@ export const control = (state = initialState, action = {}) => {
         case ADD_STRATEGY:
             return { ...state, isLoading: false };
         case DELETE_STRATEGY:
+            return { ...state, isLoading: false };
+        case EDIT_STRATEGY:
             return { ...state, isLoading: false };
         default:
             return state;

@@ -13,9 +13,14 @@ const Strategy = () => {
         useSelector((state) => selectStrategy(state, strategyId)) || {};
     const { strategy_name, description } = strategy;
     const dispatch = useDispatch();
+
     const openDeleteModal = () => {
         dispatch(openModal('deleteStrategy', { strategy, token }));
     };
+
+    const openEditModal = () => {
+        dispatch(openModal('editStrategy', { strategy, token }))
+    }
 
     return (
         <React.Fragment>
@@ -24,7 +29,7 @@ const Strategy = () => {
                 <div>
                     <h1>{strategy_name}</h1>
                     <p>{description}</p>
-                    <button>Edit Strategy</button>
+                    <button onClick={openEditModal}>Edit Strategy</button>
                     <button onClick={openDeleteModal}>Delete Strategy</button>
                 </div>
             )}

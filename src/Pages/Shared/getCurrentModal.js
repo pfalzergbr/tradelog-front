@@ -4,6 +4,7 @@ import DeleteAccount from '../Accounts/DeleteAccount';
 import DeleteStrategy from '../Accounts/Strategies/DeleteStrategy';
 import NewAccount from '../Accounts/NewAccount';
 import NewStrategy from '../Accounts/Strategies/NewStrategy';
+import EditStrategy from '../Accounts/Strategies/EditStrategy';
 import NewTrade from '../Trades/NewTrade';
 
 export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
@@ -31,6 +32,10 @@ export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
         case 'newStrategy':
             return (
                 <NewStrategy data={modalData} closeModal={handleCloseModal} />
+            )
+        case 'editStrategy':
+            return (
+                <EditStrategy data={modalData} closeModal={handleCloseModal} />
             )
         default:
             return <div></div>;

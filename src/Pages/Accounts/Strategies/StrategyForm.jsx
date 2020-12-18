@@ -11,16 +11,17 @@ const strategySchema = yup.object().shape({
 });
 
 const StrategyForm = (props) => {
+    const { strategyData = {}, button} = props
     const { onSubmit } = props;
     const { register, handleSubmit, formState, errors } = useForm({
         resolver: yupResolver(strategySchema),
         mode: 'onChange',
         defaultValues: {
-            notes: '',
+            strategyName: strategyData.strategy_name,
+            description: strategyData.description,
         },
     });
     const { isValid } = formState;
-
     return (
         <div className='form-container'>
             <h1>New Strategy</h1>
@@ -44,7 +45,7 @@ const StrategyForm = (props) => {
                     <ErrorMessage message={errors.notes.message} />
                 )}
                 <button disabled={!isValid} type='submit'>
-                New Strategy
+                {button || 'New Strategy'}
             </button>
             </form>
         </div>
