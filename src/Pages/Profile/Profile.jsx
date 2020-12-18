@@ -1,15 +1,15 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
 import ProfileForm from './ProfileForm';
-const API = process.env.REACT_APP_API;
+// const API = process.env.REACT_APP_API;
 
 const Profile = (props) => {
-    const { user, token } = useSelector(state => state.auth);
+    const { user } = useSelector(state => state.auth);
     const { isLoading } = useSelector(state => state.control);
-    const history = useHistory();
+    // const history = useHistory();
 
 
     

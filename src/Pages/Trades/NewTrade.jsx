@@ -26,6 +26,7 @@ const NewTrade = (props) => {
                     Authorization: `Bearer ${token}`,
                 },
             );
+            return response;
         } catch (error) {
             console.log(error);
         }

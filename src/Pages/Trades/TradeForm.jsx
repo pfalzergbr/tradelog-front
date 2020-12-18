@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 
 import ErrorMessage from '../Shared/ErrorMessage';
@@ -12,13 +13,14 @@ const basicTradeSchema = yup.object().shape({
     bias: yup.string().required(),
     amount: yup.number().required(),
     account: yup.string().required(),
+    strategy: yup.string().required(),
     notes: yup.string(),
     date: yup.date().required(),
 });
 
 
 const TradeForm = ({ onSubmit, accounts }) => {
-    const { register, handleSubmit, formState, errors } = useForm({
+    const { register, handleSubmit, formState, errors, watch } = useForm({
         resolver: yupResolver(basicTradeSchema),
         mode: 'onChange',
         defaultValues: {
@@ -26,7 +28,11 @@ const TradeForm = ({ onSubmit, accounts }) => {
         },
     });
     const { isValid } = formState;
-    
+    const strategies = useSelector(state => state.strategy.strategies) || []
+    const watchAccount = watch("account")
+    const accountStrategies = strategies.filter(strategy => strategy.account_id === watchAccount)
+    console.log(accountStrategies)
+
     return (
         <div className='form-container'>
             <h1>New Trade</h1>
@@ -49,6 +55,14 @@ const TradeForm = ({ onSubmit, accounts }) => {
                             </option>
                         ))}
                 </select>
+                <select name='strategy' ref={register}>
+                    {accountStrategies &&
+                        accountStrategies.map((strategy) => (
+                            <option key={strategy.strategy_id} value={strategy.strategy_id}>
+                                {strategy.strategy_name}
+                            </option>
+                        ))}
+                    </select> 
                 <label htmlFor='outcome'>Outcome</label>
                 <select name='outcome' ref={register}>
                     <option value='breakeven'>Breakeven</option>
