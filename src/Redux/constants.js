@@ -23,3 +23,11 @@ export const EDIT_STRATEGY = 'EDIT_STRATEGY';
 //Modals 
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+
+//Trades
+
+export const GET_TRADES = 'GET_TRADES'
+export const ADD_TRADE = 'ADD_TRADE';
+export const EDIT_TRADE = 'ADD_TRADE';
+export const DELETE_TRADE = 'ADD_TRADE';

@@ -1,32 +1,30 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addNewTrade } from '../../Redux/Actions/tradeActions';
 import Loading from '../Shared/Loading';
-import { useSelector } from 'react-redux';
-import { useRequest } from '../../Hooks/useRequest';
-
-import TradeForm from './TradeForm'
+import TradeForm from './TradeForm';
 const API = process.env.REACT_APP_API;
-
-
 
 const NewTrade = (props) => {
     //TODO: Basic form, or extended?
+
     const { token } = useSelector((state) => state.auth);
+    const { isLoading } = useSelector((state) => state.control);
     const { accounts } = useSelector((state) => state.account);
-    const { isLoading, sendRequest } = useRequest();
-  
+    const dispatch = useDispatch();
 
     const onSubmit = async (data) => {
         try {
-            const response = await sendRequest(
-                `${API}/api/trades/`,
-                'POST',
-                JSON.stringify(data),
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
+            const response = await dispatch(
+                addNewTrade({
+                    method: 'post',
+                    url: `${API}/api/trades`,
+                    data,
+                    auth: { Authorization: `Bearer ${token}` },
+                }),
             );
-            return response;
+            // history.push(`/${response.user_id}/accounts/${response.trade_id}`);
         } catch (error) {
             console.log(error);
         }

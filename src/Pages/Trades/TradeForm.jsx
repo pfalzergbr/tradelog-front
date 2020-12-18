@@ -31,7 +31,6 @@ const TradeForm = ({ onSubmit, accounts }) => {
     const strategies = useSelector(state => state.strategy.strategies) || []
     const watchAccount = watch("account")
     const accountStrategies = strategies.filter(strategy => strategy.account_id === watchAccount)
-    console.log(accountStrategies)
 
     return (
         <div className='form-container'>
