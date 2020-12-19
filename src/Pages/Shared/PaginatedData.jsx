@@ -11,7 +11,7 @@ const PaginatedData = (props) => {
             <h1>Trades</h1>
             {pageData &&
                 pageData.map((item) => (
-                    <Link key={item._id} to={`/${itemType}/${item._id}`}>
+                    <Link key={item.trade_id} to={`/${itemType}/${item.trade_id}`}>
                         <TradeItem data={item} />
                     </Link>
                 ))}

@@ -21,6 +21,7 @@ const deleteTrade = (tradeData) => ({
     payload: { trade_id: tradeData.deletedTrade.trade_id },
 });
 
+export const fetchTradesByAccount = (requestData ) => handleThunk(requestData, getTrades);
 export const addNewTrade = (requestData) => handleThunk(requestData, addTrade);
 export const updateTrade = (requestData) => handleThunk(requestData, editTrade);
 export const removeTrade = (requestData) => handleThunk(requestData, deleteTrade);

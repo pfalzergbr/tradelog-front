@@ -7,7 +7,7 @@ import { loadUserData } from '../Redux/Actions/loadActions';
 
 import Nav from '../Pages/Shared/Nav';
 import Dashboard from '../Pages/Dashboard/Dashboard';
-import Trades from '../Pages/Trades/Trades';
+import TradesByAccounts from '../Pages/Trades/TradesByAccounts';
 import Landing from '../Pages/Landing/Landing';
 import TradeDetails from '../Pages/Trades/TradeDetails';
 import Login from '../Pages/Login/Login';
@@ -83,7 +83,7 @@ const AppRouter = (props) => {
                 <Strategy />
             </Route>
             <Route path='/:userId/trades/'>
-                <Trades />
+                <TradesByAccounts />
             </Route>
             <Route path='/trade/:tradeId'>
                 <TradeDetails />

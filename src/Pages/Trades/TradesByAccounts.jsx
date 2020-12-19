@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { usePagination } from '../../Hooks/usePagination';
 import Pagination from '../../Services/Pagination';
-
+import {fetchTradesByAccount} from '../../Redux/Actions/tradeActions';
 import Loading from '../Shared/Loading';
-import { useSelector } from 'react-redux';
 const API = process.env.REACT_APP_API;
 
-const Trades = (props) => {
+const TradesByAccounts = (props) => {
     const { user, token } = useSelector((state) => state.auth);
     const { isLoading } = useSelector((state) => state.control);
     const { accounts } = useSelector((state) => state.account);
-    const [ account, setAccount ] = useState(accounts[0].account_id || null);
-    // const { isLoading, sendRequest } = useRequest();
+    const { trades } = useSelector((state) => state.trade);
+    const [account, setAccount] = useState(accounts[0].account_id || null);
     const { paginate, paginatedData, pageNumbers } = usePagination();
+    const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(account);
+    useEffect(() => {
+        const fetchTrades = async (token, account) => {
+            try {
+                dispatch(
+                    fetchTradesByAccount({
+                        url: `${API}/api/trades/account/${account}`,
+                        auth: { Authorization: `Bearer ${token}` },
+                    }),
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchTrades(token, account);
+    }, [token, account]);
+
+    useEffect(() => {
+        paginate(trades, 10);
+    }, [trades] )
     // useEffect(() => {
     //     const fetchTrades = async () => {
     //         try {
@@ -40,6 +59,8 @@ const Trades = (props) => {
     const changeAccount = (event) => {
         setAccount(event.target.value);
     };
+
+    console.log(paginatedData)
 
     return (
         <React.Fragment>
@@ -74,4 +95,4 @@ const Trades = (props) => {
     );
 };
 
-export default Trades;
+export default TradesByAccounts;

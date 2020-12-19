@@ -25,6 +25,7 @@ const NewTrade = (props) => {
                 }),
             );
             // history.push(`/${response.user_id}/accounts/${response.trade_id}`);
+            return response
         } catch (error) {
             console.log(error);
         }
