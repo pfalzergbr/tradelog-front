@@ -15,12 +15,14 @@ const NewTrade = (props) => {
     const dispatch = useDispatch();
 
     const onSubmit = async (data) => {
+        const tradeData = data;
+        console.log(tradeData)
         try {
             const response = await dispatch(
                 addNewTrade({
                     method: 'post',
                     url: `${API}/api/trades`,
-                    data,
+                    data: tradeData,
                     auth: { Authorization: `Bearer ${token}` },
                 }),
             );

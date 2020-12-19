@@ -9,7 +9,8 @@ export const trade = (state = initialState, action) => {
         case GET_TRADES:
             return {...state, trades: action.payload.trades};
         case ADD_TRADE:
-            return state;
+            const trades = [...state.trades, action.payload.newTrade]
+            return {...state, trades}
         case EDIT_TRADE:
             return state;
         case DELETE_TRADE:

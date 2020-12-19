@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -17,6 +17,7 @@ const TradesByAccounts = (props) => {
     const { paginate, paginatedData, pageNumbers } = usePagination();
     const dispatch = useDispatch();
     const history = useHistory();
+
 
     useEffect(() => {
         const fetchTrades = async (token, account) => {
