@@ -5,7 +5,7 @@ import TradeItem from '../Trades/TradeItem';
 
 const PaginatedData = (props) => {
     const { pageData, itemType } = props;
-
+    
     return (
         <div>
             <h1>Trades</h1>

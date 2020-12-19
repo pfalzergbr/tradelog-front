@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { usePagination } from '../../Hooks/usePagination';
 import Pagination from '../../Services/Pagination';
-import {fetchTradesByAccount} from '../../Redux/Actions/tradeActions';
+import { fetchTradesByAccount } from '../../Redux/Actions/tradeActions';
 import Loading from '../Shared/Loading';
 const API = process.env.REACT_APP_API;
 
@@ -32,35 +32,16 @@ const TradesByAccounts = (props) => {
             }
         };
         fetchTrades(token, account);
-    }, [token, account]);
+    }, [token, account, dispatch]);
 
     useEffect(() => {
         paginate(trades, 10);
-    }, [trades] )
-    // useEffect(() => {
-    //     const fetchTrades = async () => {
-    //         try {
-    //             const response = await sendRequest(
-    //                 `${API}/api/trades/account/${account}`,
-    //                 'GET',
-    //                 {},
-    //                 { Authorization: `Bearer ${token}` },
-    //             );
-
-    //             paginate(response.data, 5);
-    //             history.push(`/${user.userId}/trades/page-1`);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-    //     fetchTrades();
-    // }, [account, history, paginate, sendRequest, token, user.userId]);
+        history.push(`/${user.userId}/trades/page-1`)
+    }, [ user, history, trades ]);
 
     const changeAccount = (event) => {
         setAccount(event.target.value);
     };
-
-    console.log(paginatedData)
 
     return (
         <React.Fragment>

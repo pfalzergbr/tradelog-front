@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import { closeModal } from '../../Redux/Actions/modalActions';
@@ -15,15 +15,12 @@ const ModalController = () => {
         dispatch(closeModal());
     };
     
-    useEffect(() => {
-        Modal.setAppElement(document.getElementById('app'));
-    }, [isOpen])
 
     const currentModal = getCurrentModal(modalName, modalData, handleCloseModal);
 
     return (
         <Modal
-            // appElement={document.getElementById('app')}
+            appElement={document.getElementById('root')}
             isOpen={isOpen}
             onRequestClose={handleCloseModal}>
             {currentModal}

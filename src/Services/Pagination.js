@@ -9,7 +9,7 @@ const Pagination = (props) => {
         <div>
             <Switch>
                 {pageNumbers.map((pageNumber) => (
-                    <Route path={`/${userId}/trades/page-${pageNumber}`}>
+                    <Route key={pageNumber} path={`/${userId}/trades/page-${pageNumber}`}>
                         <PaginatedData
                             pageData={data[pageNumber - 1]}
                             itemType={'trade'}
