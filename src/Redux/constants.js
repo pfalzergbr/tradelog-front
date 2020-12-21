@@ -14,6 +14,7 @@ export const LOAD_USER = 'LOAD_USER';
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const EDIT_ACCOUNT = 'EDIT_ACCOUNT';
+export const LOAD_ACCOUNT_STATS = 'LOAD_ACCOUNT_STATS';
 
 //Strategies
 export const ADD_STRATEGY = 'ADD_STRATEGY';

@@ -1,4 +1,4 @@
-import { ADD_ACCOUNT, DELETE_ACCOUNT, EDIT_ACCOUNT } from '../constants';
+import { ADD_ACCOUNT, DELETE_ACCOUNT, EDIT_ACCOUNT, LOAD_ACCOUNT_STATS } from '../constants';
 import { handleThunk } from '../handleThunk';
 
 const addAccount = (accountData) => ({
@@ -16,6 +16,12 @@ const deleteAccount = (accountData) => ({
     payload: {account_id: accountData.deletedAccount.account_id}
 })
 
+const loadAccountStats = (accountStats) => ({
+    type: LOAD_ACCOUNT_STATS,
+    payload: accountStats
+})
+
 export const updateAccount = (requestData) => handleThunk(requestData, editAccount);
 export const addNewAccount = (requestData) => handleThunk(requestData, addAccount);
 export const removeAccount = (requestData) => handleThunk(requestData, deleteAccount);
+export const fetchAccountStats = (requestData) => handleThunk(requestData, loadAccountStats)

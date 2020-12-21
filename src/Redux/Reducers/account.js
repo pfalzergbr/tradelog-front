@@ -3,9 +3,10 @@ import {
     ADD_ACCOUNT,
     DELETE_ACCOUNT,
     EDIT_ACCOUNT,
+    LOAD_ACCOUNT_STATS
 } from '../constants';
 
-const initialState = { accounts: [] };
+const initialState = { accounts: [], accountStats: [] };
 
 export const account = (state = initialState, action = {}) => {
     switch (action.type) {
@@ -32,6 +33,8 @@ export const account = (state = initialState, action = {}) => {
                 (account) => account.account_id !== action.payload.account_id,
             );
             return { ...state, accounts: filteredAccounts };
+        case LOAD_ACCOUNT_STATS:
+            return {...state, accountStats: action.payload.accountStats}
         default:
             return state;
     }
@@ -40,3 +43,8 @@ export const account = (state = initialState, action = {}) => {
 export const selectAccount = (state, accountId) => {
     return state.account.accounts.find((account) => account.account_id === accountId);
 };
+
+
+export const selectAccountsWithData = (state) => {
+    const accounts = state.map(account => {});
+}

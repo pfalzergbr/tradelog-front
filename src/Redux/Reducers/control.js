@@ -10,7 +10,8 @@ import {
     DELETE_STRATEGY,
     EDIT_STRATEGY,
     GET_TRADES,
-    ADD_TRADE
+    ADD_TRADE,
+    LOAD_ACCOUNT_STATS,
 } from '../constants';
 
 const initialState = {
@@ -43,6 +44,8 @@ export const control = (state = initialState, action = {}) => {
         case GET_TRADES:
             return { ...state, isLoading: false };
         case ADD_TRADE:
+            return { ...state, isLoading: false };
+        case LOAD_ACCOUNT_STATS:
             return { ...state, isLoading: false };
         default:
             return state;
