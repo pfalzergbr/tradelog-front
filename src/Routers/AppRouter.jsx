@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadUser } from '../Redux/Actions/authActions';
-import { loadUserData } from '../Redux/Actions/loadActions';
+
 
 import Nav from '../Pages/Shared/Nav';
 import Dashboard from '../Pages/Dashboard/Dashboard';
@@ -18,7 +17,6 @@ import NotFound from '../Pages/Shared/NotFound';
 import Strategy from '../Pages/Accounts/Strategies/Strategy';
 
 const AppRouter = props => {
-  const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const { token, user } = auth;
 
@@ -85,33 +83,6 @@ const AppRouter = props => {
       </Route>
     </Switch>
   );
-
-  // Loading user from local storage, if any
-  useEffect(() => {
-    const populateUserData = async token => {
-      try {
-        dispatch(
-          loadUserData({
-            url: `${process.env.REACT_APP_API}/api/user/userData`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (token) {
-      populateUserData(token);
-    }
-  }, [token, dispatch]);
-
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('userData'));
-    if (userData && userData.user && userData.token) {
-      dispatch(loadUser(userData));
-    }
-  }, [dispatch]);
 
   return (
     <div className='app'>

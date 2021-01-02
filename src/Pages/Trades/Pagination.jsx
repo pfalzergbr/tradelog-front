@@ -11,12 +11,10 @@ const Pagination = ({ data }) => {
   const pageNumbers = generatePageNumbers(paginatedData);
   const [currentPage, setCurrentPage] = useState(1);
   const pageData = paginatedData[currentPage - 1];
-  console.log(paginatedData, pageNumbers);
 
   const handlePageChange = e => {
     setCurrentPage(e.target.value);
   };
-  console.log('pageData', pageData);
 
   return (
     <div>
