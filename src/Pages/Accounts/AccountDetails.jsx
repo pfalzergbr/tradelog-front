@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectAccount } from '../../Redux/Reducers/account';
+
+import { fetchTradesByAccount } from '../../Redux/Actions/tradeActions';
 // import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
-import {fetchStrategyStats} from '../../Redux/Actions/strategyActions';
+import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
+import TradeList from './TradeList';
 import Loading from '../Shared/Loading';
 import StrategyCardList from './Strategies/StrategyCardList';
 
@@ -15,6 +18,7 @@ const AccountDetails = () => {
   const { user, token } = useSelector(state => state.auth);
   const { isLoading } = useSelector(state => state.control);
   const { strategyStats } = useSelector(state => state.strategy);
+  const { trades } = useSelector(state => state.trade);
   //Finds the account for the current page
   const account = useSelector(state => selectAccount(state, accountId)) || {};
   const { account_name: accountName, balance, description } = account;
@@ -50,8 +54,24 @@ const AccountDetails = () => {
         console.log(error);
       }
     };
-    if (account.account_id){
+
+    const fetchTrades = async (token, account) => {
+      try {
+        const response = await dispatch(
+          fetchTradesByAccount({
+            url: `${process.env.REACT_APP_API}/api/trades/account/${account.account_id}`,
+            auth: { Authorization: `Bearer ${token}` },
+          }),
+        );
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (account.account_id) {
       loadStrategyStats(token, account);
+      const trades = fetchTrades(token, account);
     }
   }, [dispatch, account, token]);
 
@@ -69,6 +89,7 @@ const AccountDetails = () => {
             <button onClick={openEditModal}>Edit</button>
             <button onClick={openDeleteModal}>Delete</button>
           </div>
+          <TradeList trades={trades} />
         </div>
       )}
     </React.Fragment>

@@ -1,5 +1,5 @@
 import React from 'react';
-import StrategyCard from './StrategyCard'
+import StrategyCard from './StrategyCard';
 import { Link } from 'react-router-dom';
 
 const StrategyCardList = ({ currentStrategies, user }) => {

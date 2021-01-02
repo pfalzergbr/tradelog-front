@@ -5,13 +5,11 @@ import Modal from 'react-modal';
 import Loading from '../Shared/Loading';
 import DeleteModal from '../Shared/DeleteModal';
 import { useSelector } from 'react-redux';
-import { useRequest } from '../../Hooks/useRequest';
 const API = process.env.REACT_APP_API;
 
 const TradeDetails = (props) => {
     const { token, user } = useSelector((state) => state.auth);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const { isLoading, sendRequest } = useRequest();
     const [trade, setTrade] = useState({});
     const { tradeId } = useParams();
     const { symbol, outcome, amount } = trade;
@@ -27,46 +25,46 @@ const TradeDetails = (props) => {
         button: 'Delete',
     };
 
-    useEffect(() => {
-        const fetchTrade = async () => {
-            try {
-                const response = await sendRequest(
-                    `${API}/api/trades/${tradeId}`,
-                    'GET',
-                    {},
-                    {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                );
-                setTrade(response.data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchTrade = async () => {
+    //         try {
+    //             const response = await sendRequest(
+    //                 `${API}/api/trades/${tradeId}`,
+    //                 'GET',
+    //                 {},
+    //                 {
+    //                     'Content-Type': 'application/json',
+    //                     Authorization: `Bearer ${token}`,
+    //                 },
+    //             );
+    //             setTrade(response.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     };
 
-        fetchTrade();
-    }, [sendRequest, token, tradeId]);
+    //     fetchTrade();
+    // }, [sendRequest, token, tradeId]);
 
     //Sends a delete trade request to the API. Passed down and called in the Modal.
-    const handleDelete = async () => {
-        try {
-            const response = await sendRequest(
-                `http://localhost:3000/api/trades/${tradeId}`,
-                'DELETE',
-                {},
+    // const handleDelete = async () => {
+    //     try {
+    //         const response = await sendRequest(
+    //             `http://localhost:3000/api/trades/${tradeId}`,
+    //             'DELETE',
+    //             {},
 
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            );
-            history.replace(`/${user.userId}/trades/`);
-            return response;
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    //             {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         );
+    //         history.replace(`/${user.userId}/trades/`);
+    //         return response;
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     //Modal Open-Close Handlers
     const openModal = () => {
@@ -77,34 +75,34 @@ const TradeDetails = (props) => {
         setModalIsOpen(false);
     };
 
-    return (
-        <React.Fragment>
-            {isLoading && <Loading />}
-            {!isLoading && (
-                <div>
-                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                        <DeleteModal
-                            closeModal={closeModal}
-                            onDelete={handleDelete}
-                            modalData={modalData}
-                        />
-                    </Modal>
-                    <h1>TradeDetails</h1>
-                    <h2>{symbol}</h2>
-                    <p>{outcome}</p>
-                    <span>{amount}</span>
-                    <button>Edit Details</button>
-                    <button
-                        onClick={() => {
-                            history.go(-1);
-                        }}>
-                        Back
-                    </button>
-                    <button onClick={openModal}>Delete</button>
-                </div>
-            )}
-        </React.Fragment>
-    );
+    // return (
+    //     <React.Fragment>
+    //         {isLoading && <Loading />}
+    //         {!isLoading && (
+    //             <div>
+    //                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+    //                     <DeleteModal
+    //                         closeModal={closeModal}
+    //                         onDelete={handleDelete}
+    //                         modalData={modalData}
+    //                     />
+    //                 </Modal>
+    //                 <h1>TradeDetails</h1>
+    //                 <h2>{symbol}</h2>
+    //                 <p>{outcome}</p>
+    //                 <span>{amount}</span>
+    //                 <button>Edit Details</button>
+    //                 <button
+    //                     onClick={() => {
+    //                         history.go(-1);
+    //                     }}>
+    //                     Back
+    //                 </button>
+    //                 <button onClick={openModal}>Delete</button>
+    //             </div>
+    //         )}
+    //     </React.Fragment>
+    // );
 };
 
 export default TradeDetails;

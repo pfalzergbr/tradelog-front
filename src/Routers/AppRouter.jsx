@@ -92,7 +92,6 @@ const AppRouter = props => {
   );
 
   // Loading user from local storage, if any
-  // TODO - Make accounts and strategies load from the backend, only user info from local storage
   useEffect(() => {
     const populateUserData = async token => {
       try {
@@ -102,8 +101,7 @@ const AppRouter = props => {
             auth: { Authorization: `Bearer ${token}` },
           }),
         );
-        // dispatch(loadStrategies(userData))
-        // console.log('populated')
+
       } catch (error) {
         console.log(error);
       }

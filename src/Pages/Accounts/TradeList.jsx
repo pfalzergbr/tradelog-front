@@ -1,45 +1,30 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { fetchTradesByAccount } from '../../Redux/Actions/tradeActions';
 import { usePagination } from '../../Hooks/usePagination';
+import TradeItem from '../Trades/TradeItem'
 import Pagination from '../../Services/Pagination';
 import Loading from '../Shared/Loading';
 
-const TradeList = ({ account }) => {
+const TradeList = ({ trades }) => {
   const { isLoading } = useSelector(state => state.control);
-  const { user, token } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
   const { paginate, paginatedData, pageNumbers } = usePagination();
-
-  useEffect(() => {
-    const fetchTrades = async (token, account) => {
-      try {
-        await dispatch(
-          fetchTradesByAccount({
-            url: `${process.env.REACT_APP_API}/api/trades/account/${account}`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    const trades = fetchTrades(token, account);
-    paginate(trades, 10);
-  }, [token, paginate, account, dispatch]);
+  
+  console.log(trades)
+  // console.log(isLoading)
 
   return (
     <React.Fragment>
       {isLoading && <Loading />}
       {!isLoading && (
         <div>
-          <Pagination
-            data={paginatedData}
-            pageNumbers={pageNumbers}
-            userId={user.userId}
-            itemType={'trade'}
-          />
+          <h1>TradeList</h1>
+          <ul>
+          { trades && trades.map(trade => 
+            <TradeItem data={trade} key={trade.id} />
+          )}
+        </ul>
         </div>
       )}
     </React.Fragment>
