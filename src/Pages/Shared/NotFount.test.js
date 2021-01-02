@@ -3,5 +3,5 @@ import NotFound from './NotFound';
 import React from 'react';
 
 it('should render NotFound Component', () => {
-    expect(shallow(<NotFound />)).toMatchSnapshot();
-})
+  expect(shallow(<NotFound />)).toMatchSnapshot();
+});

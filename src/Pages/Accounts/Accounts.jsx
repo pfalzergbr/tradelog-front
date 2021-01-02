@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
-import { fetchAccountStats } from '../../Redux/Actions/accountActions'
+import { fetchAccountStats } from '../../Redux/Actions/accountActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
 
@@ -39,7 +39,7 @@ const Accounts = () => {
       {!isLoading && (
         <div>
           <h1>Accounts of {user.userName}</h1>
-            <AccountCardList accountStats={accountStats} user={user} />
+          <AccountCardList accountStats={accountStats} user={user} />
 
           <button onClick={openNewAccountModal}>Create Account</button>
         </div>

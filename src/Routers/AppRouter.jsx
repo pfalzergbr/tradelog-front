@@ -16,7 +16,6 @@ import Strategies from '../Pages/Accounts/Strategies/Strategies';
 import AccountDetails from '../Pages/Accounts/AccountDetails';
 import NotFound from '../Pages/Shared/NotFound';
 import Strategy from '../Pages/Accounts/Strategies/Strategy';
-const API = process.env.REACT_APP_API;
 
 const AppRouter = props => {
   const dispatch = useDispatch();
@@ -93,7 +92,7 @@ const AppRouter = props => {
       try {
         dispatch(
           loadUserData({
-            url: `${API}/api/user/userData`,
+            url: `${process.env.REACT_APP_API}/api/user/userData`,
             auth: { Authorization: `Bearer ${token}` },
           }),
         );

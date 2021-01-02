@@ -6,7 +6,6 @@ import Loading from '../Shared/Loading';
 
 const TradeList = ({ trades }) => {
   const { isLoading } = useSelector(state => state.control);
-  const { user } = useSelector(state => state.auth);
 
   return (
     <React.Fragment>

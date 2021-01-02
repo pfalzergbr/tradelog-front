@@ -6,8 +6,6 @@ import RegisterForm from './RegisterForm';
 import { storeUser } from '../../Services/storageService';
 import { login } from '../../Redux/Actions/authActions';
 import Loading from '../Shared/Loading';
-const API = process.env.REACT_APP_API;
-
 
 const Register = () => {
     const dispatch = useDispatch();
@@ -17,7 +15,7 @@ const Register = () => {
     const onSubmit = async (data) => {
         try {
             const response = await dispatch(
-                login({ method: 'post', url: `${API}/api/user/`, data }),
+                login({ method: 'post', url: `${process.env.REACT_APP_API}/api/user/`, data }),
             );
             storeUser(response);
             history.push(`/${response.user.userId}/dashboard`);

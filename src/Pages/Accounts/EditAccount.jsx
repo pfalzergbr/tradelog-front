@@ -6,49 +6,46 @@ import EditAccountForm from './EditAccountForm';
 import { updateAccount } from '../../Redux/Actions/accountActions';
 import Loading from '../Shared/Loading';
 
-const API = process.env.REACT_APP_API;
 
 
+const NewTrade = props => {
+  const dispatch = useDispatch();
+  const { token } = useSelector(state => state.auth);
+  const { isLoading } = useSelector(state => state.control);
+  const history = useHistory();
 
-const NewTrade = (props) => {
-    const dispatch = useDispatch();
-    const { token } = useSelector((state) => state.auth);
-    const { isLoading } = useSelector((state) => state.control);
-    const history = useHistory();
+  console.log(props);
 
-    console.log(props);
+  const onSubmit = async data => {
+    try {
+      const response = await dispatch(
+        updateAccount({
+          method: 'patch',
+          url: `${process.env.REACT_APP_API}/api/account/${props.data.account.account_id}`,
+          data,
+          auth: { Authorization: `Bearer ${token}` },
+        }),
+      );
+      history.push(
+        `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
+      );
+      // props.closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const onSubmit = async (data) => {
-        try {
-            const response = await dispatch(
-                updateAccount({
-                    method: 'patch',
-                    url: `${API}/api/account/${props.data.account.account_id}`,
-                    data,
-                    auth: { Authorization: `Bearer ${token}` },
-                }),
-            );
-            history.push(
-                `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
-            );
-            // props.closeModal();
-
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    return (
-        <React.Fragment>
-            {isLoading && <Loading />}
-            {!isLoading && (
-                <div>
-                    <button onClick={props.closeModal}>X</button>
-                    <EditAccountForm onSubmit={onSubmit} data={props.data} />
-                </div>
-            )}
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      {isLoading && <Loading />}
+      {!isLoading && (
+        <div>
+          <button onClick={props.closeModal}>X</button>
+          <EditAccountForm onSubmit={onSubmit} data={props.data} />
+        </div>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default NewTrade;

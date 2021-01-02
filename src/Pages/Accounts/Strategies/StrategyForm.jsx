@@ -6,50 +6,44 @@ import ErrorMessage from '../../Shared/ErrorMessage';
 import * as yup from 'yup';
 
 const strategySchema = yup.object().shape({
-    strategyName: yup.string().required(),
-    description: yup.string().required(),
+  strategyName: yup.string().required(),
+  description: yup.string().required(),
 });
 
-const StrategyForm = (props) => {
-    const { strategyData = {}, button} = props
-    const { onSubmit } = props;
-    const { register, handleSubmit, formState, errors } = useForm({
-        resolver: yupResolver(strategySchema),
-        mode: 'onChange',
-        defaultValues: {
-            strategyName: strategyData.strategy_name,
-            description: strategyData.description,
-        },
-    });
-    const { isValid } = formState;
-    return (
-        <div className='form-container'>
-            <h1>New Strategy</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='strategyName'>Strategy Name</label>
-                <input
-                    name='strategyName'
-                    ref={register}
-                    placeholder='Strategy name'
-                />
-                {errors.strategyName && (
-                    <ErrorMessage message={errors.strategyName.message} />
-                )}
-                <label htmlFor='description'>Description</label>
-                <textarea
-                    name='description'
-                    ref={register}
-                    placeholder='Brief description of the strategy'
-                />
-                {errors.notes && (
-                    <ErrorMessage message={errors.notes.message} />
-                )}
-                <button disabled={!isValid} type='submit'>
-                {button || 'New Strategy'}
-            </button>
-            </form>
-        </div>
-    );
+const StrategyForm = props => {
+  const { strategyData = {}, button } = props;
+  const { onSubmit } = props;
+  const { register, handleSubmit, formState, errors } = useForm({
+    resolver: yupResolver(strategySchema),
+    mode: 'onChange',
+    defaultValues: {
+      strategyName: strategyData.strategy_name,
+      description: strategyData.description,
+    },
+  });
+  const { isValid } = formState;
+  return (
+    <div className='form-container'>
+      <h1>New Strategy</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor='strategyName'>Strategy Name</label>
+        <input name='strategyName' ref={register} placeholder='Strategy name' />
+        {errors.strategyName && (
+          <ErrorMessage message={errors.strategyName.message} />
+        )}
+        <label htmlFor='description'>Description</label>
+        <textarea
+          name='description'
+          ref={register}
+          placeholder='Brief description of the strategy'
+        />
+        {errors.notes && <ErrorMessage message={errors.notes.message} />}
+        <button disabled={!isValid} type='submit'>
+          {button || 'New Strategy'}
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default StrategyForm;
