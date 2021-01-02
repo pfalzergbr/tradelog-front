@@ -71,7 +71,7 @@ const AccountDetails = () => {
 
     if (account.account_id) {
       loadStrategyStats(token, account);
-      const trades = fetchTrades(token, account);
+      fetchTrades(token, account);
     }
   }, [dispatch, account, token]);
 

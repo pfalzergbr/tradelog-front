@@ -32,4 +32,4 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const GET_TRADES = 'GET_TRADES'
 export const ADD_TRADE = 'ADD_TRADE';
 export const EDIT_TRADE = 'ADD_TRADE';
-export const DELETE_TRADE = 'ADD_TRADE';
+export const DELETE_TRADE = 'DELETE_TRADE';

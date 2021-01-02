@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 
 import Nav from '../Pages/Shared/Nav';
 import Dashboard from '../Pages/Dashboard/Dashboard';
@@ -16,7 +15,7 @@ import AccountDetails from '../Pages/Accounts/AccountDetails';
 import NotFound from '../Pages/Shared/NotFound';
 import Strategy from '../Pages/Accounts/Strategies/Strategy';
 
-const AppRouter = props => {
+const AppRouter = () => {
   const auth = useSelector(state => state.auth);
   const { token, user } = auth;
 

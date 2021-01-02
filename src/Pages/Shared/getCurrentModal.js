@@ -2,6 +2,7 @@ import React from 'react';
 import EditAccount from '../Accounts/EditAccount';
 import DeleteAccount from '../Accounts/DeleteAccount';
 import DeleteStrategy from '../Accounts/Strategies/DeleteStrategy';
+import DeleteTrade from '../Trades/DeleteTrade';
 import NewAccount from '../Accounts/NewAccount';
 import NewStrategy from '../Accounts/Strategies/NewStrategy';
 import EditStrategy from '../Accounts/Strategies/EditStrategy';
@@ -17,6 +18,8 @@ export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
       return <DeleteAccount data={modalData} closeModal={handleCloseModal} />;
     case 'deleteStrategy':
       return <DeleteStrategy data={modalData} closeModal={handleCloseModal} />;
+    case 'deleteTrade':
+      return <DeleteTrade data={modalData} closeModal={handleCloseModal} />;
     case 'newTrade':
       return <NewTrade closeModal={handleCloseModal} />;
     case 'newStrategy':
