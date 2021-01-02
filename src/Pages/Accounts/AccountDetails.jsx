@@ -79,15 +79,17 @@ const AccountDetails = () => {
     <React.Fragment>
       {isLoading && <Loading />}
       {!isLoading && (
-        <div>
-          <h1>{accountName}</h1>
-          <h2>${balance}</h2>
-          <p>{description}</p>
-          <StrategyCardList currentStrategies={strategyStats} user={user} />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-            <button onClick={openStrategyModal}>New Strategy</button>
-            <button onClick={openEditModal}>Edit</button>
-            <button onClick={openDeleteModal}>Delete</button>
+            <h1>{accountName}</h1>
+            <h2>${balance}</h2>
+            <p>{description}</p>
+            <StrategyCardList currentStrategies={strategyStats} user={user} />
+            <div>
+              <button onClick={openStrategyModal}>New Strategy</button>
+              <button onClick={openEditModal}>Edit</button>
+              <button onClick={openDeleteModal}>Delete</button>
+            </div>
           </div>
           <TradeList trades={trades} />
         </div>

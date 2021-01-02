@@ -34,7 +34,6 @@ const AppRouter = props => {
   const authLinks = [
     { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
     { to: `/${user && user.userId}/accounts`, name: 'Accounts' },
-    //{ to: `/${user && user.userId}/trades`, name: 'Trades' },
   ];
 
   //Routes to display if there is no logged in user.
@@ -79,9 +78,6 @@ const AppRouter = props => {
       <Route path='/:userId/strategies/:strategyId'>
         <Strategy />
       </Route>
-      {/* <Route path='/:userId/trades/'>
-               <TradesByAccounts />
-    </Route> */}
       <Route path='/trade/:tradeId'>
         <TradeDetails />
       </Route>
@@ -101,7 +97,6 @@ const AppRouter = props => {
             auth: { Authorization: `Bearer ${token}` },
           }),
         );
-
       } catch (error) {
         console.log(error);
       }
