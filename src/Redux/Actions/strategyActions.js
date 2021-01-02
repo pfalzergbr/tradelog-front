@@ -1,4 +1,4 @@
-import { ADD_STRATEGY, EDIT_STRATEGY, DELETE_STRATEGY } from '../constants';
+import { ADD_STRATEGY, EDIT_STRATEGY, DELETE_STRATEGY, LOAD_STRATEGY_STATS } from '../constants';
 import { handleThunk } from '../handleThunk';
 
 const addStrategy = (strategyData) => ({
@@ -16,6 +16,12 @@ const deleteStrategy = (strategyData) => ({
     payload: { strategy_id: strategyData.deletedStrategy.strategy_id },
 });
 
+const loadStrategyStats = (strategyStats) => ({
+    type: LOAD_STRATEGY_STATS,
+    payload: strategyStats
+})
+
+
 export const addNewStrategy = (requestData) =>
     handleThunk(requestData, addStrategy);
 
@@ -24,3 +30,5 @@ export const updateStrategy = (requestData) =>
 
 export const removeStrategy = (requestData) =>
     handleThunk(requestData, deleteStrategy);
+
+    export const fetchStrategyStats = (requestData) => handleThunk(requestData, loadStrategyStats)

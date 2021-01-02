@@ -20,6 +20,7 @@ export const LOAD_ACCOUNT_STATS = 'LOAD_ACCOUNT_STATS';
 export const ADD_STRATEGY = 'ADD_STRATEGY';
 export const DELETE_STRATEGY = 'DELETE_STRATEGY';
 export const EDIT_STRATEGY = 'EDIT_STRATEGY';
+export const LOAD_STRATEGY_STATS = 'LOAD_STRATEGY_STATS';
 
 //Modals 
 export const OPEN_MODAL = 'OPEN_MODAL';

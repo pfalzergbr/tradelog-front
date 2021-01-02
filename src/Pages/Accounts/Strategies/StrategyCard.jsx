@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { calcWinPercentage } from "../../Services/statService";
-const AccountCard = (props) => {
+const StrategyCard = (props) => {
     const {
         account_name,
         balance,
@@ -23,4 +24,4 @@ const AccountCard = (props) => {
     );
 };
 
-export default AccountCard;
+export default StrategyCard;
