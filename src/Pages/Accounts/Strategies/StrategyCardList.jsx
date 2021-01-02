@@ -1,4 +1,5 @@
 import React from 'react';
+import StrategyCard from './StrategyCard'
 import { Link } from 'react-router-dom';
 
 const StrategyCardList = ({ currentStrategies, user }) => {
@@ -9,7 +10,7 @@ const StrategyCardList = ({ currentStrategies, user }) => {
             <Link
               key={strategy.strategy_id}
               to={`/${user.userId}/strategies/${strategy.strategy_id}`}>
-              <li>{strategy.strategy_name}</li>
+              <StrategyCard strategyData={strategy} />
             </Link>
           ))
         : 'Cannot find any strategies for this account'}

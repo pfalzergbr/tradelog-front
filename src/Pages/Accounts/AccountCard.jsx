@@ -5,8 +5,8 @@ const AccountCard = (props) => {
         account_name,
         balance,
         total_pnl,
-        average_profit,
-        average_loss,
+        // average_profit,
+        // average_loss,
         num_of_profit,
         num_of_loss
     } = props.accountData;

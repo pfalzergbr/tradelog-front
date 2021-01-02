@@ -8,7 +8,6 @@ import Loading from '../Shared/Loading';
 import AccountCardList from './AccountCardList';
 
 const Accounts = () => {
-  const API = process.env.REACT_APP_API;
   const dispatch = useDispatch();
   const { user, token } = useSelector(state => state.auth);
   const { accountStats } = useSelector(state => state.account);
@@ -22,7 +21,7 @@ const Accounts = () => {
       try {
         const response = await dispatch(
           fetchAccountStats({
-            url: `${API}/api/account/stats`,
+            url: `${process.env.REACT_APP_API}/api/account/stats`,
             auth: { Authorization: `Bearer ${token}` },
           }),
         );
@@ -32,7 +31,7 @@ const Accounts = () => {
       }
     };
     loadAccountStats(token);
-  }, [fetchAccountStats, token, API]);
+  }, [dispatch, token]);
 
   return (
     <React.Fragment>

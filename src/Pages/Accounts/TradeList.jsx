@@ -6,20 +6,18 @@ import { usePagination } from '../../Hooks/usePagination';
 import Pagination from '../../Services/Pagination';
 import Loading from '../Shared/Loading';
 
-const TradeList = ({account}) => {
-  const API = process.env.REACT_APP_API;
+const TradeList = ({ account }) => {
   const { isLoading } = useSelector(state => state.control);
   const { user, token } = useSelector(state => state.auth);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { paginate, paginatedData, pageNumbers } = usePagination();
-
 
   useEffect(() => {
     const fetchTrades = async (token, account) => {
       try {
         await dispatch(
           fetchTradesByAccount({
-            url: `${API}/api/trades/account/${account}`,
+            url: `${process.env.REACT_APP_API}/api/trades/account/${account}`,
             auth: { Authorization: `Bearer ${token}` },
           }),
         );
@@ -27,21 +25,23 @@ const TradeList = ({account}) => {
         console.log(error);
       }
     };
-        const trades = fetchTrades(token, account);
-        paginate(trades, 10);
-  }, [ token, account, dispatch]);
-  
+    const trades = fetchTrades(token, account);
+    paginate(trades, 10);
+  }, [token, paginate, account, dispatch]);
+
   return (
     <React.Fragment>
       {isLoading && <Loading />}
-      {!isLoading && <div>
-        <Pagination
-          data={paginatedData}
-          pageNumbers={pageNumbers}
-          userId={user.userId}
-          itemType={'trade'}
-        />
-      </div>}
+      {!isLoading && (
+        <div>
+          <Pagination
+            data={paginatedData}
+            pageNumbers={pageNumbers}
+            userId={user.userId}
+            itemType={'trade'}
+          />
+        </div>
+      )}
     </React.Fragment>
   );
 };

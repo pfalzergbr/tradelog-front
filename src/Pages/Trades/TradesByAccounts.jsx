@@ -42,7 +42,7 @@ const TradesByAccounts = () => {
   useEffect(() => {
     paginate(trades, 10);
     history.push(`/${user.userId}/trades/page-1`);
-  }, [user, history, trades]);
+  }, [paginate, user, history, trades]);
 
   const changeAccount = event => {
     setAccount(event.target.value);
