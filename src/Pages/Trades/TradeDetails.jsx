@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { format } from 'date-fns';
 
-import { fetchTrade } from '../../Redux/Actions/tradeActions'
+import { fetchTrade } from '../../Redux/Actions/tradeActions';
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
 import Loading from '../Shared/Loading';
@@ -13,15 +14,14 @@ const TradeDetails = () => {
   const { tradeId } = useParams();
   const history = useHistory();
   const trade = useSelector(state => selectTrade(state, tradeId) || {});
-  const { symbol, outcome, amount } = trade;
+  const { symbol, outcome, amount, date } = trade;
   const dispatch = useDispatch();
-  
+
   const openDeleteModal = () => {
     dispatch(openModal('deleteTrade', { trade, token }));
   };
-  
+
   useEffect(() => {
-    console.log('useEffect runs')
     const fetchTradeById = async (token, tradeId) => {
       try {
         const response = await dispatch(
@@ -36,8 +36,9 @@ const TradeDetails = () => {
       }
     };
     fetchTradeById(token, tradeId);
-  }, [token, tradeId, dispatch])
+  }, [token, tradeId, dispatch]);
 
+  //TODO - Do Edit trade
   return (
     <React.Fragment>
       {isLoading && <Loading />}
@@ -46,6 +47,7 @@ const TradeDetails = () => {
           <h1>TradeDetails</h1>
           <h2>{symbol}</h2>
           <p>{outcome}</p>
+          <p>{format(new Date(date),'dd-MM-yyyy')}</p>
           <span>{amount}</span>
           <button>Edit Details</button>
           <button

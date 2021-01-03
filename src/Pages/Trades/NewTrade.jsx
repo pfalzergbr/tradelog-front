@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import {history, useHistory} from 'react-router-dom';
 import { addNewTrade } from '../../Redux/Actions/tradeActions';
 import Loading from '../Shared/Loading';
 import TradeForm from './TradeForm';
 
 const NewTrade = props => {
   //TODO: Basic form, or extended?
-
+  const history = useHistory();
   const { token } = useSelector(state => state.auth);
   const { isLoading } = useSelector(state => state.control);
   const { accounts } = useSelector(state => state.account);
@@ -15,7 +15,7 @@ const NewTrade = props => {
 
   const onSubmit = async data => {
     const tradeData = data;
-    console.log(tradeData);
+
     try {
       const response = await dispatch(
         addNewTrade({
@@ -25,7 +25,7 @@ const NewTrade = props => {
           auth: { Authorization: `Bearer ${token}` },
         }),
       );
-      // history.push(`/${response.user_id}/accounts/${response.trade_id}`);
+      history.push(`/trade/${response.trade.trade_id}`);
       return response;
     } catch (error) {
       console.log(error);
