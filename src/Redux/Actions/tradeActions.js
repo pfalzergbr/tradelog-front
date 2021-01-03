@@ -1,5 +1,10 @@
-import { GET_TRADES, ADD_TRADE, EDIT_TRADE, DELETE_TRADE } from '../constants';
+import { GET_TRADES, ADD_TRADE, EDIT_TRADE, DELETE_TRADE, GET_SINGLE_TRADE } from '../constants';
 import { handleThunk } from '../handleThunk';
+
+const getSingleTrade = (trade) => ({
+    type: GET_SINGLE_TRADE,
+    payload: {trade}
+});
 
 const getTrades = (trades) => ({
     type: GET_TRADES,
@@ -25,3 +30,4 @@ export const fetchTradesByAccount = (requestData) => handleThunk(requestData, ge
 export const addNewTrade = (requestData) => handleThunk(requestData, addTrade);
 export const updateTrade = (requestData) => handleThunk(requestData, editTrade);
 export const removeTrade = (requestData) => handleThunk(requestData, deleteTrade);
+export const fetchTrade = (requestData) => handleThunk(requestData, getSingleTrade);

@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-
-import Loading from '../Shared/Loading';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchTrade } from '../../Redux/Actions/tradeActions'
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
+import Loading from '../Shared/Loading';
 
 const TradeDetails = () => {
   const { token } = useSelector(state => state.auth);
   const { isLoading } = useSelector(state => state.control);
   const { tradeId } = useParams();
   const history = useHistory();
-  //Todo - implement fetching if there are no trades in redux
   const trade = useSelector(state => selectTrade(state, tradeId) || {});
   const { symbol, outcome, amount } = trade;
   const dispatch = useDispatch();
-
+  
   const openDeleteModal = () => {
     dispatch(openModal('deleteTrade', { trade, token }));
   };
+  
+  useEffect(() => {
+    console.log('useEffect runs')
+    const fetchTradeById = async (token, tradeId) => {
+      try {
+        const response = await dispatch(
+          fetchTrade({
+            url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
+            auth: { Authorization: `Bearer ${token}` },
+          }),
+        );
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchTradeById(token, tradeId);
+  }, [token, tradeId, dispatch])
 
   return (
     <React.Fragment>
