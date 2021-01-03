@@ -13,7 +13,6 @@ const TradeList = ({ trades }) => {
       {!isLoading && (
         <div>
           <div>
-            <h1>Pagination Version</h1>
             <Pagination data={trades} />
           </div>
         </div>

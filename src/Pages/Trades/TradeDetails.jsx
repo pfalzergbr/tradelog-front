@@ -47,7 +47,7 @@ const TradeDetails = () => {
           <h1>TradeDetails</h1>
           <h2>{symbol}</h2>
           <p>{outcome}</p>
-          <p>{format(new Date(date),'dd-MM-yyyy')}</p>
+          <p>{date && format(new Date(date),'Mo MMMM, yyyy')}</p>
           <span>{amount}</span>
           <button>Edit Details</button>
           <button

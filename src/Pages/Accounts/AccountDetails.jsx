@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectAccount } from '../../Redux/Reducers/account';
 
-import { fetchTradesByAccount } from '../../Redux/Actions/tradeActions';
+import { fetchTrades } from '../../Redux/Actions/tradeActions';
 // import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
 import TradeList from './TradeList';
@@ -55,10 +55,10 @@ const AccountDetails = () => {
       }
     };
 
-    const fetchTrades = async (token, account) => {
+    const fetchTradesByAccount = async (token, account) => {
       try {
         const response = await dispatch(
-          fetchTradesByAccount({
+          fetchTrades({
             url: `${process.env.REACT_APP_API}/api/trades/account/${account.account_id}`,
             auth: { Authorization: `Bearer ${token}` },
           }),
@@ -71,7 +71,7 @@ const AccountDetails = () => {
 
     if (account.account_id) {
       loadStrategyStats(token, account);
-      fetchTrades(token, account);
+      fetchTradesByAccount(token, account);
     }
   }, [dispatch, account, token]);
 

@@ -7,7 +7,7 @@ import {
 import PaginatedData from './PaginatedData';
 
 const Pagination = ({ data }) => {
-  const paginatedData = paginate(data, 2);
+  const paginatedData = paginate(data, 5);
   const pageNumbers = generatePageNumbers(paginatedData);
   const [currentPage, setCurrentPage] = useState(1);
   const pageData = paginatedData[currentPage - 1];
