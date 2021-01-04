@@ -20,7 +20,7 @@ const DeleteTrade = props => {
 
   const handleDelete = async () => {
     try {
-      history.replace(`/${user_id}/accounts/`);
+      
       const response = await dispatch(
         removeTrade({
           method: 'delete',
@@ -28,8 +28,8 @@ const DeleteTrade = props => {
           auth: { Authorization: `Bearer ${token}` },
         }),
       );
+      history.replace(`/${user_id}/accounts/`);
       closeModal();
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);

@@ -25,7 +25,7 @@ const NewTrade = props => {
           auth: { Authorization: `Bearer ${token}` },
         }),
       );
-      history.push(`/trade/${response.trade.trade_id}`);
+      history.push(`/${response.trade.user_id}/accounts`);
       return response;
     } catch (error) {
       console.log(error);

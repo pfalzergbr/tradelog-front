@@ -14,6 +14,7 @@ const Register = () => {
 
     const onSubmit = async (data) => {
         try {
+            console.log(data)
             const response = await dispatch(
                 login({ method: 'post', url: `${process.env.REACT_APP_API}/api/user/`, data }),
             );
