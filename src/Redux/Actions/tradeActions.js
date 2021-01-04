@@ -13,7 +13,7 @@ const getTrades = (trades) => ({
 
 const addTrade = (tradeData) => ({
     type: ADD_TRADE,
-    payload: { newTrade: tradeData.trade },
+    payload: { newTrade: tradeData.trade, accountUpdate: tradeData.account},
 });
 
 const editTrade = (tradeData) => ({

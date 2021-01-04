@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-
-import { fetchAccountStats } from '../../Redux/Actions/accountActions';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
 
 import Loading from '../Shared/Loading';
+import { fetchAccountStats } from '../../Redux/Actions/accountActions';
 import AccountCardList from './AccountCardList';
 
 const Accounts = () => {

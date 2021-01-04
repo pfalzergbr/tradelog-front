@@ -42,7 +42,9 @@ const Strategy = () => {
         console.log(error);
       }
     };
-    fetchTradesByStrategy(token, strategy);
+    if (strategy){
+      fetchTradesByStrategy(token, strategy);
+    }
   }, [token, strategy, dispatch, fetchTrades]);
 
   return (

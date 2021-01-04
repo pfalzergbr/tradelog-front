@@ -4,6 +4,7 @@ import {
   DELETE_ACCOUNT,
   EDIT_ACCOUNT,
   LOAD_ACCOUNT_STATS,
+  ADD_TRADE,
 } from '../constants';
 
 const initialState = { accounts: [], accountStats: [] };
@@ -35,6 +36,18 @@ export const account = (state = initialState, action = {}) => {
       return { ...state, accounts: filteredAccounts };
     case LOAD_ACCOUNT_STATS:
       return { ...state, accountStats: action.payload.accountStats };
+    case ADD_TRADE:
+
+        const updatedStats = state.accountStats.map(stat =>
+          stat.account_id === action.payload.accountUpdate.account_id
+            ? { ...stat, balance: action.payload.accountUpdate.balance }
+            : stat,
+        );
+        return {
+          ...state,
+          accountStats: updatedStats,
+        };
+   
     default:
       return state;
   }

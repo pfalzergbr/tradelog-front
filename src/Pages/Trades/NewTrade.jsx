@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {history, useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { addNewTrade } from '../../Redux/Actions/tradeActions';
 import Loading from '../Shared/Loading';
 import TradeForm from './TradeForm';

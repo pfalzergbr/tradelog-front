@@ -4,7 +4,6 @@ import { calcWinPercentage } from '../../../Services/statService';
 const StrategyCard = props => {
   const {
     strategy_name,
-    balance,
     total_pnl,
     // average_profit,
     // average_loss,
@@ -17,7 +16,6 @@ const StrategyCard = props => {
   return (
     <div>
       <h2>{strategy_name}</h2>
-      <h3>Balance:</h3> <span>{balance}</span>
       <h3>P&L:</h3> <span>{total_pnl}</span>
       <h3>Win%:</h3> <span>{winPercentage}%</span>
     </div>
