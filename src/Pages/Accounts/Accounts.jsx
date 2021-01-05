@@ -37,7 +37,7 @@ const Accounts = () => {
       {isLoading && <Loading />}
       {!isLoading && (
         <div>
-          <h1>Accounts of {user.userName}</h1>
+          {/*<h1>Accounts of {user.userName}</h1>*/}
           <AccountCardList accounts={accounts} user={user} />
 
           <button onClick={openNewAccountModal}>Create Account</button>

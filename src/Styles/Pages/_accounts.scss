@@ -1,0 +1,64 @@
+.card-container{
+  margin-top: 5rem;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+
+}
+
+.account-card {
+  margin-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
+  height: 25rem;
+  width: 35rem;
+  border-radius: 8px;
+
+
+  &__header {
+    display: flex;
+    // border: 1px solid red;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: .5rem 2rem;
+
+    & h2 {
+      display: inline-block;
+      color: $color-blue-dark;
+      font-size: 2.4rem;
+      font-weight: 400;
+    }
+
+    & span {
+      display: inline-block;
+      color: $color-blue-medium;
+      font-weight: 400;
+      font-size: 1.6rem;
+
+    }
+    & .card-balance {
+      font-weight: bold;
+    }
+    & .card-relative-gain {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.account-stats {
+  padding: 1.5rem 2rem;
+
+  & h4 {
+    display: inline-block
+  }
+
+  & .green{
+    color: green;
+  }
+
+  & .red {
+    color: red;
+  }
+}

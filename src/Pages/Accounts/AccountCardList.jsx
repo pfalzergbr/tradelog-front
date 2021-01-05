@@ -4,7 +4,7 @@ import AccountCard from './AccountCard';
 
 const AccountCardList = ({ accounts, user }) => {
   return (
-    <ul>
+    <ul className="card-container">
       {accounts.map(account => (
         <Link
           key={account.account_id}
