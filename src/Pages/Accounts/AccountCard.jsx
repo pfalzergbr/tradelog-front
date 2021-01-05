@@ -5,23 +5,13 @@ import { selectAccountStats } from '../../Redux/Reducers/account';
 
 const AccountCard = props => {
   const { account_id } = props.accountData;
-  console.log(account_id);
   const currentAccountStats = useSelector(state =>
     selectAccountStats(state, account_id),
   );
-  console.log(currentAccountStats);
 
-  const {
-    account_name,
-    balance,
-    total_pnl,
-    // average_profit,
-    // average_loss,
-    num_of_profit,
-    num_of_loss,
-  } = props.accountData;
+  const { account_name, balance } = props.accountData;
 
-  const winPercentage = calcWinPercentage(num_of_profit, num_of_loss);
+  // const winPercentage = ;
 
   return (
     <div className='account-card'>
@@ -31,8 +21,8 @@ const AccountCard = props => {
       {currentAccountStats ? (
         <div>
           <h3>Balance:</h3> <span>{balance}</span>
-          <h3>P&L:</h3> <span>{total_pnl}</span>
-          <h3>Win%:</h3> <span>{winPercentage}%</span>
+          <h3>P&L:</h3> <span>{currentAccountStats.total_pnl}</span>
+          <h3>Win%:</h3> <span>{calcWinPercentage(currentAccountStats.num_of_profit, currentAccountStats.num_of_loss)}%</span>
         </div>
       ) : (
         <div>
