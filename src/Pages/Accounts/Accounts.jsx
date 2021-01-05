@@ -9,7 +9,7 @@ import AccountCardList from './AccountCardList';
 const Accounts = () => {
   const dispatch = useDispatch();
   const { user, token } = useSelector(state => state.auth);
-  const { accountStats } = useSelector(state => state.account);
+  const { accountStats, accounts } = useSelector(state => state.account);
   const { isLoading } = useSelector(state => state.control);
   const openNewAccountModal = () => {
     dispatch(openModal('newAccount', {}));
@@ -38,7 +38,7 @@ const Accounts = () => {
       {!isLoading && (
         <div>
           <h1>Accounts of {user.userName}</h1>
-          <AccountCardList accountStats={accountStats} user={user} />
+          <AccountCardList accounts={accounts} user={user} />
 
           <button onClick={openNewAccountModal}>Create Account</button>
         </div>

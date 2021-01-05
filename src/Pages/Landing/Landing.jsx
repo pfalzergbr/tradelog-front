@@ -6,7 +6,7 @@ const Landing = props => {
   return (
     <div className='landing-page'>
       <main className='landing-page__main'>
-        Track your trades. Find your edge. Grow your profits.
+        <h3>Track your trades. Find your edge. Grow your profits.</h3>
       </main>
       <Footer />;
     </div>

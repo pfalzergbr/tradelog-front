@@ -16,6 +16,8 @@
     align-items: center;
     margin: 0 auto;
     text-align: center;
+    // background: linear-gradient(135deg, $color-blue-medium, $color-blue-light);
+    // background-size: 100%;
     background-color: $color-blue-medium;
     color: #fff;
     padding: 3rem 0 5rem;
@@ -49,13 +51,14 @@
         border-radius: 5px;
         outline: none;
         padding: .5em 1em;
-        background-color: lighten($color-blue-medium, 20%);
+        background-color: lighten($color-blue-medium, 10%);
+        // background: rgba(0, 0, 0, 0.025);
         margin-bottom: 1.5em;
         text-align: center;
         color: $color-blue-dark;
 
         &::placeholder {
-            color: $color-grey-light;
+            color: lighten($color-blue-dark, 10%);
         }
     }
 

@@ -13,7 +13,7 @@ const Dashboard = () => {
 
       <Link to={`/${userId}/profile`}>Profile</Link>
       <Link to={`/${userId}/accounts`}>Accounts</Link>
-      <Link to={`/${userId}/trades`}>Trades</Link>
+
     </div>
   );
 };

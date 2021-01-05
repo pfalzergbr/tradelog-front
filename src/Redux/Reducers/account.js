@@ -4,7 +4,7 @@ import {
   DELETE_ACCOUNT,
   EDIT_ACCOUNT,
   LOAD_ACCOUNT_STATS,
-  ADD_TRADE,
+  // ADD_TRADE,
 } from '../constants';
 
 const initialState = { accounts: [], accountStats: [] };
@@ -57,3 +57,9 @@ export const selectAccount = (state, accountId) => {
     account => account.account_id === accountId,
   );
 };
+
+export const selectAccountStats = (state, accountId) => {
+  return state.account.accountStats.find(
+    account => account.account_id === accountId,
+  );
+}

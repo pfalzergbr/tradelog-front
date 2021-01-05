@@ -16,6 +16,7 @@ a {
 
 
 body {
+    // background: linear-gradient(135deg, $color-blue-medium, $color-blue-light);
     background-color: $color-white;
 }
 
@@ -26,7 +27,7 @@ button {
     margin: 0;
     outline: none;
     border: none;
-    background-color: $color-white;
+    background-color: transparent;
 }
 
 .container {
