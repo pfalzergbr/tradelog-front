@@ -32,7 +32,7 @@ const AccountCard = props => {
         <h2 className='card-title'>{account_name}</h2>
         <div>
           <span className='card-balance'>$ {balance}</span>
-          <span className='card-relative-gain'>{relativeGain}</span>
+          <span className='card-relative-gain'>{relativeGain}%</span>
         </div>
       </div>
       {currentAccountStats ? (
