@@ -9,7 +9,7 @@ import AccountCardList from './AccountCardList';
 const Accounts = () => {
   const dispatch = useDispatch();
   const { user, token } = useSelector(state => state.auth);
-  const { accountStats, accounts } = useSelector(state => state.account);
+  const { accounts } = useSelector(state => state.account);
   const { isLoading } = useSelector(state => state.control);
   const openNewAccountModal = () => {
     dispatch(openModal('newAccount', {}));

@@ -10,7 +10,7 @@ const Footer = () => {
         invest at your own risk. The creator of this site does not take any
         responsibility for your trading losses in any way.{' '}
       </p>
-      <p className='footer__trademark'>TradeLog 2020</p>
+      <p className='footer__trademark'>TradeLog 2021</p>
     </footer>
   );
 };

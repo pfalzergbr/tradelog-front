@@ -1,6 +1,6 @@
 export const calcWinPercentage = (numOfWins = 0, numOfLoss = 0) => {
   const totalTrades = numOfWins + numOfLoss;
-  const winPercentage = ((numOfWins / totalTrades) * 100).toFixed(2);
+  const winPercentage = ((numOfWins / totalTrades) * 100).toFixed(0);
   if (winPercentage === 'NaN'){
     return 0
   }

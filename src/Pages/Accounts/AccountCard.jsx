@@ -31,8 +31,8 @@ const AccountCard = props => {
       <div className='account-card__header'>
         <h2 className='account-card-title'>{account_name}</h2>
         <div>
-          <span className='account-card__balance'>{balance}$</span>
-          <span className='account-card__relative-gain'>{relativeGain}%</span>
+          <span className={`account-card__balance`}>{balance}$</span>
+          <span className={`account-card__relative-gain ${relativeGain >= 0 ? 'green' : 'red'}`}>{relativeGain}%</span>
         </div>
       </div>
       {currentAccountStats ? (
@@ -45,14 +45,14 @@ const AccountCard = props => {
                   className={
                     currentAccountStats.total_pnl >= 0 ? 'green' : 'red'
                   }>
-                  {currentAccountStats.total_pnl || 0} $
+                  {currentAccountStats.total_pnl || 0}$
                 </span>
               </div>
             </div>
 
             <div className='stat-container'>
               <h4>Win Percentage:</h4>
-              <span>{winPercentage} %</span>
+              <span>{winPercentage}%</span>
             </div>
             <div className='stat-container'>
               <h4>Number of Trades:</h4>
