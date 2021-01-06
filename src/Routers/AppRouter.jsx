@@ -29,7 +29,7 @@ const AppRouter = () => {
   //Links to display if the user is logged in. Feeds into the Navbar components as props
   const authLinks = [
     { to: `/${user && user.userId}/dashboard`, name: 'Dashboard' },
-    { to: `/${user && user.userId}/accounts`, name: 'Accounts' },
+    // { to: `/${user && user.userId}/accounts`, name: 'Accounts' },
   ];
 
   //Routes to display if there is no logged in user.
@@ -57,14 +57,14 @@ const AppRouter = () => {
         <Landing />
       </Route>
       <Route path='/:userId/dashboard'>
-        <Dashboard />
+        <Accounts />
       </Route>
       <Route path='/:userId/profile'>
         <Profile />
       </Route>
-      <Route exact={true} path='/:userId/accounts'>
+      {/*<Route exact={true} path='/:userId/accounts'>
         <Accounts />
-      </Route>
+      </Route>*/}
       <Route path='/:userId/accounts/:accountId'>
         <AccountDetails />
       </Route>
