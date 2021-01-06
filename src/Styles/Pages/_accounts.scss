@@ -1,13 +1,20 @@
 .card-container{
-  margin-top: 5rem;
+  margin-top: 3rem;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: flex-start;
-
+  align-items: center;
+  
+  @media (min-width: 800px) {
+    flex-direction: row;
+  }
 }
 
 .account-card {
-  margin-right: 5rem;
+  margin-top: 5rem;
+  background: white;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
@@ -15,6 +22,17 @@
   width: 35rem;
   border-radius: 8px;
 
+  @media (min-width: 800px) {
+    margin-top: 0;
+    margin-right: 5rem;
+  }
+
+  &__balance {
+    font-weight: bold;
+  }
+  &__relative-gain {
+    margin-left: 1rem;
+  }
 
   &__header {
     display: flex;
@@ -38,27 +56,29 @@
       font-size: 1.6rem;
 
     }
-    & .card-balance {
-      font-weight: bold;
+
+  }
+
+  &__stats {
+    padding: 1.5rem 2rem;
+    color: $color-grey-medium;
+  
+    & h4 {
+      display: inline-block
     }
-    & .card-relative-gain {
-      margin-left: 1rem;
+  
+    & .green{
+      color: green;
+    }
+  
+    & .red {
+      color: red;
+    }
+  
+    & .stat-container {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }
 
-.account-stats {
-  padding: 1.5rem 2rem;
-
-  & h4 {
-    display: inline-block
-  }
-
-  & .green{
-    color: green;
-  }
-
-  & .red {
-    color: red;
-  }
-}

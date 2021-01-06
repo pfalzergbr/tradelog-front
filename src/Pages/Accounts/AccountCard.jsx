@@ -8,8 +8,8 @@ import { selectAccountStats } from '../../Redux/Reducers/account';
 
 const AccountCard = props => {
   const { account_id } = props.accountData;
-  const currentAccountStats = useSelector(state =>
-    selectAccountStats(state, account_id) || {},
+  const currentAccountStats = useSelector(
+    state => selectAccountStats(state, account_id) || {},
   );
 
   const { account_name, balance } = props.accountData;
@@ -17,48 +17,47 @@ const AccountCard = props => {
   const relativeGain =
     calcRelativeGain(
       currentAccountStats.opening_balance,
-      currentAccountStats.balance, 
+      currentAccountStats.balance,
     ) || 0;
 
-  const winPercentage = calcWinPercentage(
-    currentAccountStats.num_of_profit,
-    currentAccountStats.num_of_loss,
-  ) || 0;
-
+  const winPercentage =
+    calcWinPercentage(
+      currentAccountStats.num_of_profit,
+      currentAccountStats.num_of_loss,
+    ) || 0;
 
   return (
     <div className='account-card'>
       <div className='account-card__header'>
-        <h2 className='card-title'>{account_name}</h2>
+        <h2 className='account-card-title'>{account_name}</h2>
         <div>
-          <span className='card-balance'>$ {balance}</span>
-          <span className='card-relative-gain'>{relativeGain}%</span>
+          <span className='account-card__balance'>{balance}$</span>
+          <span className='account-card__relative-gain'>{relativeGain}%</span>
         </div>
       </div>
       {currentAccountStats ? (
         <React.Fragment>
-          <div className='account-stats'>
+          <div className='account-card__stats'>
             <div>
               <div className='stat-container'>
-                <h4>Profit / Loss:</h4>{' '}
+                <h4>Profit / Loss:</h4>
                 <span
                   className={
                     currentAccountStats.total_pnl >= 0 ? 'green' : 'red'
                   }>
-                  $ {currentAccountStats.total_pnl || 0}
+                  {currentAccountStats.total_pnl || 0} $
                 </span>
               </div>
             </div>
 
-            <div className=''>
+            <div className='stat-container'>
               <h4>Win Percentage:</h4>
-              <span>
-                {winPercentage}
-                %
-              </span>
+              <span>{winPercentage} %</span>
             </div>
-            <h4>Number of Trades:</h4>
-            <span> {currentAccountStats.num_of_trades}</span>
+            <div className='stat-container'>
+              <h4>Number of Trades:</h4>
+              <span> {currentAccountStats.num_of_trades}</span>
+            </div>
           </div>
         </React.Fragment>
       ) : (
