@@ -14,10 +14,21 @@ const StrategyCard = props => {
   const winPercentage = calcWinPercentage(num_of_profit, num_of_loss);
 
   return (
-    <div>
-      <h2>{strategy_name}</h2>
-      <h3>P&L:</h3> <span>{total_pnl}</span>
-      <h3>Win%:</h3> <span>{winPercentage}%</span>
+    <div className='card'>
+      <div className='card__header'>
+        <h2>{strategy_name}</h2>
+        <span className={`card__balance ${total_pnl > 0 ? 'green' : 'red'} `}>
+          {total_pnl}
+        </span>
+      </div>
+      <div className='card__stats'>
+        <div className='stat-container'>
+          <h3>P&L:</h3> <span>{total_pnl}</span>
+        </div>
+        <div className='stat-container'>
+          <h3>Win%:</h3> <span>{winPercentage}%</span>
+        </div>
+      </div>
     </div>
   );
 };

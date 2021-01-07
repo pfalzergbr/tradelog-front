@@ -27,17 +27,22 @@ const AccountCard = props => {
     ) || 0;
 
   return (
-    <div className='account-card'>
-      <div className='account-card__header'>
-        <h2 className='account-card-title'>{account_name}</h2>
+    <div className='card'>
+      <div className='card__header'>
+        <h2 className='card-title'>{account_name}</h2>
         <div>
-          <span className={`account-card__balance`}>{balance}$</span>
-          <span className={`account-card__relative-gain ${relativeGain >= 0 ? 'green' : 'red'}`}>{relativeGain}%</span>
+          <span className={`card__balance`}>{balance}$</span>
+          <span
+            className={`card__relative-gain ${
+              relativeGain >= 0 ? 'green' : 'red'
+            }`}>
+            {relativeGain}%
+          </span>
         </div>
       </div>
       {currentAccountStats ? (
         <React.Fragment>
-          <div className='account-card__stats'>
+          <div className='card__stats'>
             <div>
               <div className='stat-container'>
                 <h4>Profit / Loss:</h4>

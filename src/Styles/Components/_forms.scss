@@ -16,8 +16,6 @@
     align-items: center;
     margin: 0 auto;
     text-align: center;
-    // background: linear-gradient(135deg, $color-blue-medium, $color-blue-light);
-    // background-size: 100%;
     background-color: $color-blue-medium;
     color: #fff;
     padding: 3rem 0 5rem;
@@ -64,11 +62,12 @@
 
     &__btn {
         background-color: darken($color-blue-medium, 20%);
-        color: $color-white;
+        color: white;
         margin-bottom: 1.5rem;
         transition: all .1s ease-in;
-
+        
         &:disabled {
+            color: white;
             opacity: .5;
         }
         &:hover:not(:disabled),

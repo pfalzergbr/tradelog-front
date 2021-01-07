@@ -40,7 +40,7 @@ const LoginForm = ({ onSubmit }) => {
           ref={register}
         />
         <button
-          className='btn form__btn btn--primary'
+          className='btn btn--primary form__btn '
           disabled={!isValid}
           type='submit'>
           Log in
