@@ -80,16 +80,26 @@ const AccountDetails = () => {
       {isLoading && <Loading />}
       {!isLoading && (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div>
-            <h1>{accountName}</h1>
-            <h2>${balance}</h2>
-            <p>{description}</p>
-            <StrategyCardList currentStrategies={strategyStats} user={user} />
-            <div>
-              <button onClick={openStrategyModal}>New Strategy</button>
-              <button onClick={openEditModal}>Edit</button>
-              <button onClick={openDeleteModal}>Delete</button>
+          <div className='accounts'>
+            <div className='accounts__header'>
+              <h1 className='accounts__title'>{accountName}</h1>
+              <h2>${balance}</h2>
+              <p className='accounts__paragraph'>{description}</p>
+              <div className='accounts__button-container'>
+                <button
+                  className='btn btn--primary'
+                  onClick={openStrategyModal}>
+                  New Strategy
+                </button>
+                <button className='btn btn--secondary' onClick={openEditModal}>
+                  Edit
+                </button>
+                <button className='btn btn--secondary' onClick={openDeleteModal}>
+                  Delete
+                </button>
+              </div>
             </div>
+            <StrategyCardList currentStrategies={strategyStats} user={user} />
           </div>
           <TradeList trades={trades} />
         </div>

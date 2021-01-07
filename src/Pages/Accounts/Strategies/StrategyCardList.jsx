@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const StrategyCardList = ({ currentStrategies, user }) => {
   return (
-    <ul>
+    <ul className="card-container">
       {currentStrategies
         ? currentStrategies.map(strategy => (
             <Link
