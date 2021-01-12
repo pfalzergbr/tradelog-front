@@ -5,13 +5,13 @@ import {
 } from '../../Services/statService';
 import { useSelector } from 'react-redux';
 import { selectAccountStats } from '../../Redux/Reducers/account';
+import StatContainer from './StatContainer';
 
 const AccountCard = props => {
   const { account_id } = props.accountData;
   const currentAccountStats = useSelector(
     state => selectAccountStats(state, account_id) || {},
   );
-
   const { account_name, balance } = props.accountData;
 
   const relativeGain =
@@ -41,30 +41,32 @@ const AccountCard = props => {
         </div>
       </div>
       {currentAccountStats ? (
-        <React.Fragment>
           <div className='card__stats'>
-            <div>
-              <div className='stat-container'>
-                <h4>Profit / Loss:</h4>
-                <span
-                  className={
-                    currentAccountStats.total_pnl >= 0 ? 'green' : 'red'
-                  }>
-                  {currentAccountStats.total_pnl || 0}$
-                </span>
-              </div>
-            </div>
-
-            <div className='stat-container'>
-              <h4>Win Percentage:</h4>
-              <span>{winPercentage}%</span>
-            </div>
-            <div className='stat-container'>
-              <h4>Number of Trades:</h4>
-              <span> {currentAccountStats.num_of_trades}</span>
-            </div>
+            <StatContainer
+              text='Profit / Loss'
+              value={currentAccountStats.total_pnl}
+              type='amount'
+            />
+            <StatContainer
+              text='Win Percentage'
+              value={winPercentage}
+              type='percentage'
+            />
+            <StatContainer
+              text='Number of Trades'
+              value={currentAccountStats.num_of_trades}
+            />
+            <StatContainer
+              text='Average Profit'
+              value={currentAccountStats.average_profit}
+              type="amount"
+            />
+            <StatContainer
+              text='Average Loss'
+              value={currentAccountStats.average_loss}
+              type="amount"
+            />
           </div>
-        </React.Fragment>
       ) : (
         <div className='account-stats'>
           <div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Shared/ui/Button';
 
 const AccountsHeader = ({ userName, openNewAccountModal }) => {
   return (
@@ -10,9 +11,9 @@ const AccountsHeader = ({ userName, openNewAccountModal }) => {
         stragegies!
       </p>
       <div className='accounts__button-container'>
-        <button className='btn btn--primary' onClick={openNewAccountModal}>
+        <Button type='primary' onClick={openNewAccountModal}>
           Create Account
-        </button>
+        </Button>
       </div>
     </div>
   );
