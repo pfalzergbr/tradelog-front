@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StatContainer = ({ text, value = 0, type }) => {
+const CardStatContainer = ({ text, value = 0, type }) => {
   const getResultColor = (type, value) => {
     if (type === 'amount') {
       return value < 0 ? 'red' : 'green';
@@ -31,4 +31,4 @@ const StatContainer = ({ text, value = 0, type }) => {
   );
 };
 
-export default StatContainer;
+export default CardStatContainer;

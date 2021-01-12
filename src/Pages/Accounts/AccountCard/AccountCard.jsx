@@ -2,10 +2,14 @@ import React from 'react';
 import {
   calcWinPercentage,
   calcRelativeGain,
-} from '../../Services/statService';
+} from '../../../Services/statService';
 import { useSelector } from 'react-redux';
-import { selectAccountStats } from '../../Redux/Reducers/account';
-import StatContainer from './StatContainer';
+
+import { selectAccountStats } from '../../../Redux/Reducers/account';
+
+import StatContainer from './CardStatContainer';
+import Card from './Card';
+import CardHeader from './HeaderContainer';
 
 const AccountCard = props => {
   const { account_id } = props.accountData;
@@ -27,21 +31,15 @@ const AccountCard = props => {
     ) || 0;
 
   return (
-    <div className='card'>
-      <div className='card__header'>
-        <h2 className='card-title'>{account_name}</h2>
-        <div>
-          <span className={`card__balance`}>{balance}$</span>
-          <span
-            className={`card__relative-gain ${
-              relativeGain >= 0 ? 'green' : 'red'
-            }`}>
-            {relativeGain}%
-          </span>
-        </div>
-      </div>
+    <Card>
+      <CardHeader accountName={account_name} relativeGain={relativeGain} />
       {currentAccountStats ? (
           <div className='card__stats'>
+            <StatContainer
+              text='Balance'
+              value={balance}
+              type='amount'
+            />
             <StatContainer
               text='Profit / Loss'
               value={currentAccountStats.total_pnl}
@@ -75,7 +73,7 @@ const AccountCard = props => {
           </div>
         </div>
       )}
-    </div>
+    </Card>
   );
 };
 

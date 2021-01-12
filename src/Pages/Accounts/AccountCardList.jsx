@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AccountCard from './AccountCard';
+import AccountCard from './AccountCard/AccountCard';
+
+// Add check if cards exist. 
 
 const AccountCardList = ({ accounts, user }) => {
   return (
