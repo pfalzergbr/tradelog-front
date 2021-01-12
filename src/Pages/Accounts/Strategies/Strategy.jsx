@@ -6,7 +6,7 @@ import { openModal } from '../../../Redux/Actions/modalActions';
 import { fetchTrades } from '../../../Redux/Actions/tradeActions';
 import { selectStrategy } from '../../../Redux/Reducers/strategy';
 
-import TradeList from '../TradeList';
+import TradeList from '../../Trades/TradeList';
 import LoadingGroup from '../../Shared/LoadingGroup';
 
 const Strategy = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import TradeItem from '../Trades/TradeItem';
+import TradeItem from '../Table/TradeItem';
 
 const PaginatedData = ({ pageData }) => {
   return (

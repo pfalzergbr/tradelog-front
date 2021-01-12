@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import {
   paginate,
   generatePageNumbers,
-} from '../../Services/paginationService';
+} from '../../../Services/paginationService';
 import PaginatedData from './PaginatedData';
+import PaginationPages from './PaginationPages';
 
 const Pagination = ({ data }) => {
   const paginatedData = paginate(data, 5);
@@ -19,13 +20,10 @@ const Pagination = ({ data }) => {
   return (
     <div>
       <PaginatedData pageData={pageData} />
-      <ul>
-        {pageNumbers.map(page => (
-          <button onClick={handlePageChange} key={page} value={page}>
-            {page}
-          </button>
-        ))}
-      </ul>
+      <PaginationPages
+        handlePageChange={handlePageChange}
+        pageNumbers={pageNumbers}
+      />
     </div>
   );
 };

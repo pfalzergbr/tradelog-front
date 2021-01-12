@@ -7,7 +7,7 @@ import { selectAccount } from '../../Redux/Reducers/account';
 import { fetchTrades } from '../../Redux/Actions/tradeActions';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
 
-import TradeList from './TradeList';
+import TradeList from '../Trades/TradeList';
 import StrategyCardList from './Strategies/StrategyCardList';
 import LoadingGroup from '../Shared/LoadingGroup';
 
@@ -71,7 +71,7 @@ const AccountDetails = () => {
       <LoadingGroup>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className='accounts'>
-            <div className='accounts__header'>
+            {/*<div className='accounts__header'>
               <h1 className='accounts__title'>{accountName}</h1>
               <h2>${balance}</h2>
               <p className='accounts__paragraph'>{description}</p>
@@ -88,7 +88,7 @@ const AccountDetails = () => {
                   Delete
                 </button>
               </div>
-            </div>
+            </div>*/}
             <StrategyCardList currentStrategies={strategyStats} user={user} />
           </div>
           <TradeList trades={trades} />

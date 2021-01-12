@@ -1,14 +1,15 @@
 import React from 'react';
 
-const AccordionMenu = ({item, active, setActive}) => {
+// TODO - Build the whole menu for the actual app
 
+const AccordionMenu = ({item, active, setActive}) => {
   const activate = () => {
     setActive(item.title);
   }
 
   return (
     <div className='accordion' >
-      <div style={{height: '5rem', backgroundColor: 'grey'}} className='accordionHeading' onClick={activate}>
+      <div className='accordionHeading' onClick={activate}>
         <div className='container'>
           <p>{item.title}</p>
           <span>X</span>
