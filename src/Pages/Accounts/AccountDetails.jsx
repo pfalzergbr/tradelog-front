@@ -7,7 +7,7 @@ import { selectAccount } from '../../Redux/Reducers/account';
 import { fetchTrades } from '../../Redux/Actions/tradeActions';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
 
-import TradeList from '../Trades/TradeList';
+import TradeList from '../Trades/Table/TradeList';
 import StrategyCardList from './Strategies/StrategyCardList';
 import LoadingGroup from '../Shared/LoadingGroup';
 
