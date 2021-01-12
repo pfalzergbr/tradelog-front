@@ -5,6 +5,7 @@ import { openModal } from '../../Redux/Actions/modalActions';
 import { fetchAccountStats } from '../../Redux/Actions/accountActions';
 import AccountCardList from './AccountCardList';
 import LoadingGroup from '../Shared/LoadingGroup';
+import AccountsHeader from './AccountsHeader';
 
 const Accounts = () => {
   const dispatch = useDispatch();
@@ -28,27 +29,17 @@ const Accounts = () => {
         console.log(error);
       }
     };
+
     loadAccountStats(token);
   }, [dispatch, token]);
 
   return (
     <LoadingGroup>
       <div className='accounts'>
-        <div className='accounts__header'>
-          <h2 className='accounts__title'>Welcome, {user.userName}!</h2>
-          {accounts.length > 0 && (
-            <p className='accounts__paragraph'>
-              Manage your trading accounts to keep track of your gains, losses,
-              and over-all trade statistics. Click on cards to see your trades
-              and stragegies!
-            </p>
-          )}
-          <div className='accounts__button-container'>
-            <button className='btn btn--primary' onClick={openNewAccountModal}>
-              Create Account
-            </button>
-          </div>
-        </div>
+        <AccountsHeader
+          userName={user.userName}
+          openNewAccountModal={openNewAccountModal}
+        />
         <AccountCardList accounts={accounts} user={user} />
       </div>
     </LoadingGroup>
