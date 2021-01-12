@@ -1,6 +1,8 @@
 import React from 'react';
 
-const CardHeader = ({accountName, relativeGain}) => {
+//TODO: Add icons and extract green-red logic.
+
+const CardHeader = ({ accountName, relativeGain }) => {
   return (
     <div className='card__header'>
       <h2 className='card-title'>{accountName}</h2>
