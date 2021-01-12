@@ -4,11 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import NewAccountForm from './NewAccountForm';
 import { addNewAccount } from '../../Redux/Actions/accountActions';
-import Loading from '../Shared/Loading';
+
 
 const NewAccount = props => {
   const { token } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,15 +28,11 @@ const NewAccount = props => {
   };
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div>
-          <button onClick={props.closeModal}>X</button>
-          <NewAccountForm onSubmit={onSubmit} />
-        </div>
-      )}
-    </React.Fragment>
+
+      <div>
+        <button onClick={props.closeModal}>X</button>
+        <NewAccountForm onSubmit={onSubmit} />
+      </div>
   );
 };
 

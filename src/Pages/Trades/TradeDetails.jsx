@@ -6,11 +6,10 @@ import { format } from 'date-fns';
 import { fetchTrade } from '../../Redux/Actions/tradeActions';
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
-import Loading from '../Shared/Loading';
+import LoadingGroup from '../Shared/LoadingGroup';
 
 const TradeDetails = () => {
   const { token } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
   const { tradeId } = useParams();
   const history = useHistory();
   const trade = useSelector(state => selectTrade(state, tradeId) || {});
@@ -40,26 +39,23 @@ const TradeDetails = () => {
 
   //TODO - Do Edit trade
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div>
-          <h1>TradeDetails</h1>
-          <h2>{symbol}</h2>
-          <p>{outcome}</p>
-          <p>{date && format(new Date(date),'Mo MMMM, yyyy')}</p>
-          <span>{amount}</span>
-          <button>Edit Details</button>
-          <button
-            onClick={() => {
-              history.go(-1);
-            }}>
-            Back
-          </button>
-          <button onClick={openDeleteModal}>Delete</button>
-        </div>
-      )}
-    </React.Fragment>
+    <LoadingGroup>
+      <div>
+        <h1>TradeDetails</h1>
+        <h2>{symbol}</h2>
+        <p>{outcome}</p>
+        <p>{date && format(new Date(date), 'Mo MMMM, yyyy')}</p>
+        <span>{amount}</span>
+        <button>Edit Details</button>
+        <button
+          onClick={() => {
+            history.go(-1);
+          }}>
+          Back
+        </button>
+        <button onClick={openDeleteModal}>Delete</button>
+      </div>
+    </LoadingGroup>
   );
 };
 

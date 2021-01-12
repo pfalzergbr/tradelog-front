@@ -1,13 +1,11 @@
 import React from 'react';
-// import { useHistory } from 'react-router-dom';
-
-import Loading from '../Shared/Loading';
 import { useSelector } from 'react-redux';
+import LoadingGroup from '../Shared/LoadingGroup';
 import ProfileForm from './ProfileForm';
 
-const Profile = props => {
+const Profile = () => {
   const { user } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
+
   // const history = useHistory();
 
   // Modal Data to pass down.
@@ -65,15 +63,11 @@ const Profile = props => {
   const openModal = () => {};
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <React.Fragment>
-          <ProfileForm user={user} />
+    <LoadingGroup>
+    <ProfileForm user={user} />
           <button onClick={openModal}>Delete</button>
-        </React.Fragment>
-      )}
-    </React.Fragment>
+    </LoadingGroup>
+    
   );
 };
 

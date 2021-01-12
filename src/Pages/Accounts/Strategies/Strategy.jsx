@@ -7,11 +7,10 @@ import { fetchTrades } from '../../../Redux/Actions/tradeActions';
 import { selectStrategy } from '../../../Redux/Reducers/strategy';
 
 import TradeList from '../TradeList';
-import Loading from '../../Shared/Loading';
+import LoadingGroup from '../../Shared/LoadingGroup';
 
 const Strategy = () => {
   const { strategyId } = useParams();
-  const { isLoading } = useSelector(state => state.control);
   const { token } = useSelector(state => state.auth);
   const strategy =
     useSelector(state => selectStrategy(state, strategyId)) || {};
@@ -42,28 +41,25 @@ const Strategy = () => {
         console.log(error);
       }
     };
-    if (strategy){
+    if (strategy) {
       fetchTradesByStrategy(token, strategy);
     }
   }, [token, strategy, dispatch, fetchTrades]);
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <LoadingGroup>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <h1>{strategy_name}</h1>
+          <p>{description}</p>
           <div>
-            <h1>{strategy_name}</h1>
-            <p>{description}</p>
-            <div>
-              <button onClick={openEditModal}>Edit Strategy</button>
-              <button onClick={openDeleteModal}>Delete Strategy</button>
-            </div>
+            <button onClick={openEditModal}>Edit Strategy</button>
+            <button onClick={openDeleteModal}>Delete Strategy</button>
           </div>
-          <TradeList trades={trades}/>
         </div>
-      )}
-    </React.Fragment>
+        <TradeList trades={trades} />
+      </div>
+    </LoadingGroup>
   );
 };
 

@@ -4,29 +4,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectAccount } from '../../Redux/Reducers/account';
-
 import { fetchTrades } from '../../Redux/Actions/tradeActions';
-// import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
+
 import TradeList from './TradeList';
-import Loading from '../Shared/Loading';
 import StrategyCardList from './Strategies/StrategyCardList';
+import LoadingGroup from '../Shared/LoadingGroup';
 
 const AccountDetails = () => {
   const { accountId } = useParams();
-  //Selectors
   const { user, token } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
   const { strategyStats } = useSelector(state => state.strategy);
   const { trades } = useSelector(state => state.trade);
-  //Finds the account for the current page
   const account = useSelector(state => selectAccount(state, accountId)) || {};
   const { account_name: accountName, balance, description } = account;
-  // const currentStrategies = useSelector(state =>
-  //   selectAccountStrategies(state, accountId),
-  // );
   const dispatch = useDispatch();
-  //Data to pass in the Delete Modal
 
   const openEditModal = () => {
     dispatch(openModal('editAccount', { account }));
@@ -75,11 +67,9 @@ const AccountDetails = () => {
     }
   }, [dispatch, account, token]);
 
-  return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    return (
+      <LoadingGroup>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className='accounts'>
             <div className='accounts__header'>
               <h1 className='accounts__title'>{accountName}</h1>
@@ -103,9 +93,8 @@ const AccountDetails = () => {
           </div>
           <TradeList trades={trades} />
         </div>
-      )}
-    </React.Fragment>
-  );
+      </LoadingGroup>
+    )
 };
 
 export default AccountDetails;

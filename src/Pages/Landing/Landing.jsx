@@ -2,7 +2,7 @@ import React from 'react';
 
 import Footer from '../Shared/Footer';
 
-const Landing = props => {
+const Landing = () => {
   return (
     <div className='landing-page'>
       <main className='landing-page__main'>

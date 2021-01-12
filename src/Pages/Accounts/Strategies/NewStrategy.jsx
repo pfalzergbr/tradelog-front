@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
 import { addNewStrategy } from '../../../Redux/Actions/strategyActions';
-import Loading from '../../Shared/Loading';
 import { useHistory } from 'react-router-dom';
 
 const NewStrategy = props => {
   const { accountId } = props.data;
   const { token } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,15 +35,10 @@ const NewStrategy = props => {
   };
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div>
-          <button onClick={props.closeModal}>X</button>
-          <StrategyForm onSubmit={onSubmit} />
-        </div>
-      )}
-    </React.Fragment>
+    <div>
+      <button onClick={props.closeModal}>X</button>
+      <StrategyForm onSubmit={onSubmit} />
+    </div>
   );
 };
 

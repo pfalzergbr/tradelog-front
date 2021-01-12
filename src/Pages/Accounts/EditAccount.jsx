@@ -4,14 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import EditAccountForm from './EditAccountForm';
 import { updateAccount } from '../../Redux/Actions/accountActions';
-import Loading from '../Shared/Loading';
-
-
+import LoadingGroup from '../Shared/LoadingGroup';
 
 const NewTrade = props => {
   const dispatch = useDispatch();
   const { token } = useSelector(state => state.auth);
-  const { isLoading } = useSelector(state => state.control);
   const history = useHistory();
 
   console.log(props);
@@ -29,22 +26,18 @@ const NewTrade = props => {
       history.push(
         `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
       );
-      // props.closeModal();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div>
-          <button onClick={props.closeModal}>X</button>
-          <EditAccountForm onSubmit={onSubmit} data={props.data} />
-        </div>
-      )}
-    </React.Fragment>
+    <LoadingGroup>
+      <div>
+        <button onClick={props.closeModal}>X</button>
+        <EditAccountForm onSubmit={onSubmit} data={props.data} />
+      </div>
+    </LoadingGroup>
   );
 };
 

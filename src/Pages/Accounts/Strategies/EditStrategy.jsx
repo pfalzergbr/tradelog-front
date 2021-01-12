@@ -1,23 +1,17 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
 import { updateStrategy } from '../../../Redux/Actions/strategyActions';
-import Loading from '../../Shared/Loading';
 import { useHistory } from 'react-router-dom';
 
 const NewStrategy = props => {
   const { strategy, token } = props.data;
-  const { isLoading } = useSelector(state => state.control);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const onSubmit = async data => {
     try {
-      // const newStrategyData = {
-      //     ...data,
-      //     accountId,
-      // };
       const response = await dispatch(
         updateStrategy({
           method: 'patch',
@@ -36,19 +30,14 @@ const NewStrategy = props => {
   };
 
   return (
-    <React.Fragment>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div>
-          <button onClick={props.closeModal}>X</button>
-          <StrategyForm
-            strategyData={strategy}
-            button='Edit Strategy'
-            onSubmit={onSubmit}
-          />
-        </div>
-      )}
-    </React.Fragment>
+    <div>
+      <button onClick={props.closeModal}>X</button>
+      <StrategyForm
+        strategyData={strategy}
+        button='Edit Strategy'
+        onSubmit={onSubmit}
+      />
+    </div>
   );
 };
 
