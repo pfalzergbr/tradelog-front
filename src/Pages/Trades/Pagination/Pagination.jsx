@@ -4,6 +4,7 @@ import {
   paginate,
   generatePageNumbers,
 } from '../../../Services/paginationService';
+import TradeListHeader from '../Table/TradeListHeader';
 import PaginatedData from './PaginatedData';
 import PaginationPages from './PaginationPages';
 
@@ -19,11 +20,16 @@ const Pagination = ({ data }) => {
 
   return (
     <React.Fragment>
-      <PaginatedData pageData={pageData} />
+    <div>
+      <table className='table-container'>
+        <TradeListHeader />
+        <PaginatedData pageData={pageData} />
+      </table>
       <PaginationPages
         handlePageChange={handlePageChange}
         pageNumbers={pageNumbers}
       />
+      </div>
     </React.Fragment>
   );
 };

@@ -7,10 +7,7 @@ import TradeListHeader from './TradeListHeader';
 const TradeList = ({ trades }) => {
   return (
     <LoadingGroup>
-      <table className="table-container">
-        <TradeListHeader />
         <Pagination data={trades} />
-      </table>
     </LoadingGroup>
   );
 };
