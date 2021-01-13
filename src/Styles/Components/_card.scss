@@ -1,0 +1,86 @@
+.card {
+  width: 28rem;
+  height: 34rem;
+  display: flex;
+  flex-direction: column;
+  background: $color-dark;
+  box-shadow: $shadow-light;
+  color: $color-purple-light;
+  border-radius: 20px;
+}
+
+.card-header {
+  display: flex;
+  height: 60px;
+  border-radius: 20px 20px 0 0;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+  
+  // &__container {
+  //   display: flex;
+  //   width: 90%;
+  //   flex-direction: row;
+  // }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: inline-block;
+  }
+  &__value-group {
+    vertical-align: center;
+    display: flex;
+  }
+  &__value {
+    font-family: 'Roboto', sans-serif;
+    margin-left: .4rem;
+  }
+
+  &__arrow-icon{
+    vertical-align: center;
+
+    &--red{
+      color: $color-red;
+    }
+    &--green{
+      color: $color-green;
+    }
+  }
+}
+
+.card-body {
+  border-top: 1px solid $color-purple-dark;
+  padding-top: 1.6rem;
+
+  &__title {
+    font-family: 'Roboto', sans-serif;
+    color: $color-off-white;
+    font-weight: 400;
+  }
+  &__value {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.card-footer {
+  width: 80%;
+  margin: 3rem auto 0;
+
+  &__paragraph{
+    font-size: $font-size-small;
+    font-family: 'Lato', sans-serif;
+    color: $color-purple-medium;
+  }
+}
+
+
+.stat-container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+

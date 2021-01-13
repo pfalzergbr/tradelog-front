@@ -34,37 +34,41 @@ const AccountCard = props => {
     <Card>
       <CardHeader accountName={account_name} relativeGain={relativeGain} />
       {currentAccountStats ? (
-          <div className='card__stats'>
-            <StatContainer
-              text='Balance'
-              value={balance}
-              type='amount'
-            />
-            <StatContainer
-              text='Profit / Loss'
-              value={currentAccountStats.total_pnl}
-              type='amount'
-            />
-            <StatContainer
-              text='Win Percentage'
-              value={winPercentage}
-              type='percentage'
-            />
-            <StatContainer
-              text='Number of Trades'
-              value={currentAccountStats.num_of_trades}
-            />
-            <StatContainer
-              text='Average Profit'
-              value={currentAccountStats.average_profit}
-              type="amount"
-            />
-            <StatContainer
-              text='Average Loss'
-              value={currentAccountStats.average_loss}
-              type="amount"
-            />
+        <div className='card-body'>
+        <StatContainer
+          text='Total Profit'
+          value={currentAccountStats.total_pnl}
+          type='amount'
+        />
+          <StatContainer text='Balance' value={balance} type='amount' />
+          <StatContainer
+            text='Win Percentage'
+            value={winPercentage}
+            type='percentage'
+          />
+          <StatContainer
+            text='Number of Trades'
+            value={currentAccountStats.num_of_trades}
+          />
+          <StatContainer
+            text='Average Profit'
+            value={currentAccountStats.average_profit}
+            type='amount'
+          />
+          <StatContainer
+            text='Average Loss'
+            value={currentAccountStats.average_loss}
+            type='amount'
+          />
+          <StatContainer
+            text='Number of Strategies'
+            value={'Todo!'}
+            type='number'
+          />
+          <div className="card-footer">
+            <p className="card-footer__paragraph">Click for trades and Strategies</p>
           </div>
+        </div>
       ) : (
         <div className='account-stats'>
           <div>

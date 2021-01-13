@@ -1,4 +1,4 @@
-* {
+h1, h2, h3, h4, p {
   color: $color-off-white;
 }
 
@@ -26,8 +26,22 @@ h3 {
   font-size: $font-size-header-3;
 }
 
+h4 {
+  font-size: $font-size-regular;
+  font-weight: 700;
+}
+
 p,
 a,
 button {
   font-size: 1.6rem;
+}
+
+
+.green {
+  color: $color-green;
+}
+
+.red {
+  color: $color-red;
 }

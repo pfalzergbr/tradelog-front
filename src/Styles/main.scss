@@ -3,11 +3,17 @@
 @import './Base/typography';
 @import './Base/base';
 
-@import './Components/nav';
-@import './Components/buttons';
+@import './Layout/nav';
+@import './Layout/footer';
 
 @import './Pages/landing';
-@import './Components/footer';
+@import './Pages/accounts';
+
+@import './Components/buttons';
+@import './Components/Accounts/accounts-header';
+@import './Components/card';
+@import './Components/card-list';
+
 
 
 

@@ -25,8 +25,10 @@ const CardStatContainer = ({ text, value = 0, type }) => {
   // Todo - Fix nulls from server side, and remove edge case
   return (
     <div className='stat-container'>
-      <h4>{text}</h4>
-      <span className={resultColor}>{`${value || 0}${unit}`}</span>
+      <h4 className='card-body__title'>{text}</h4>
+      <span className={`card-body__value ${resultColor}`}>{`${unit}${
+        Math.round(value) || 0
+      }`}</span>
     </div>
   );
 };
