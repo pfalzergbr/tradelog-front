@@ -1,10 +1,9 @@
-
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -16,7 +15,7 @@ a {
 }
 
 body {
-  background-color: $color-white;
+  background-color: $color-darkest;
 }
 
 button {
@@ -29,14 +28,7 @@ button {
   background-color: transparent;
 }
 
-.container {
-  display: flex;
-  min-width: 90%;
-  margin: 0 auto;
-}
-
 .app {
-  // position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;

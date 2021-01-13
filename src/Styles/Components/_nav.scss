@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  height: 10rem;
+  background-color: $color-purple-dark;
+  align-items: center;
+
+  &__container {
+    @include centered-container;
+    justify-content: space-between;
+  }
+  &__link-container {
+    display: flex;
+
+    & > .btn {
+      margin-left: 1.6rem;
+    }
+  }
+}
+
+.logo {
+  font-family: 'Open-sans', sans-serif;
+  font-weight: 700;
+  font-size: $font-size-header-3;
+  color: $color-purple-light;
+}

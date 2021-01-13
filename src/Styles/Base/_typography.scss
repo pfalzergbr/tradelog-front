@@ -1,0 +1,33 @@
+* {
+  color: $color-off-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+}
+
+span {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: $font-size-header-3;
+}
+
+h3 {
+  font-size: $font-size-header-3;
+}
+
+p,
+a,
+button {
+  font-size: 1.6rem;
+}

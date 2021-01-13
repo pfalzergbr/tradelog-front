@@ -1,0 +1,5 @@
+@mixin centered-container {
+  display: flex;
+  min-width: 90%;
+  margin: 0 auto;
+}

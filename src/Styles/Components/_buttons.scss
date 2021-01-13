@@ -1,0 +1,22 @@
+.btn
+{
+  font-family: 'Open-sans', sans-serif;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  color: $color-purple-light;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .15);
+  outline: none;
+
+  &--primary {
+    border: 1px solid $color-purple-light;
+    background: $color-purple-light;
+    color: $color-darkest;
+  }
+
+  &--outline {
+    border: 1px solid $color-purple-light;
+  }
+}

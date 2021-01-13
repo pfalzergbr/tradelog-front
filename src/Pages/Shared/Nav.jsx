@@ -24,32 +24,32 @@ const Nav = props => {
   };
 
   return (
-    <div className='main-navigation container'>
-      <div className='nav-navigation__logo-container'>
-        <Link to='/' className='main-navigation__logo'>
-          TradeLog
-        </Link>
-      </div>
-      <div className='main-navigation__navlinks'>
-        {links.map(link => (
-          <Link key={link.to} to={link.to} className='navlink'>
-            {link.name}
+    <nav className='nav'>
+      <div className='nav__container'>
+        <div className='nav__logo-container'>
+          <Link to='/' className='logo'>
+            <h3>TradeLog</h3>
           </Link>
-        ))}
-        {auth.token && (
-          <button className='main-navigation__btn' onClick={logoutUser}>
-            Logout
-          </button>
-        )}
-        {auth.token && (
-          <button
-            className='main-navigation__btn main-navigation__btn--cta'
-            onClick={handleOpenModal}>
-            QuickTrade
-          </button>
-        )}
+        </div>
+        <div className='nav__link-container'>
+          {links.map(link => (
+            <Link key={link.to} to={link.to} className='btn btn--outline'>
+              {link.name}
+            </Link>
+          ))}
+          {auth.token && (
+            <button className='btn btn--outline' onClick={logoutUser}>
+              Logout
+            </button>
+          )}
+          {auth.token && (
+            <button className='btn btn--primary' onClick={handleOpenModal}>
+              QuickTrade
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
