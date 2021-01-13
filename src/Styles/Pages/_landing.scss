@@ -1,3 +1,62 @@
 .landing-page {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
   @include centered-container;
+  // border: 1px solid red;
+  justify-content: center;
+  
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    // border: 1px solid green;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 45%;
+    // height: 100%;
+    // margin-bottom: 8rem;
+  }
+
+  &__graphic-column {
+    width: 40%;
+    // border: 1px solid red;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    margin-bottom: 2.4rem;
+  }
+
+  &__subtitle {
+    margin-bottom: 4.8rem;
+  }
+}
+
+.graphic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  // border: 1px solid red;
+  height: 100%;
+
+  &--background {
+    position: absolute;
+    stroke: #fff;
+    right: 104px;
+  }
+  &--front {
+    position: absolute;
+    stroke: #fff;
+  }
 }
