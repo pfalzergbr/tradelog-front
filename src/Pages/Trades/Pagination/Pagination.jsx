@@ -18,13 +18,13 @@ const Pagination = ({ data }) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <PaginatedData pageData={pageData} />
       <PaginationPages
         handlePageChange={handlePageChange}
         pageNumbers={pageNumbers}
       />
-    </div>
+    </React.Fragment>
   );
 };
 
