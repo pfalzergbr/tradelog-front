@@ -1,3 +1,4 @@
+
 *,
 *::after,
 *::before {
@@ -12,11 +13,9 @@ html {
 
 a {
   text-decoration: none;
-  color: $color-grey-dark;
 }
 
 body {
-  // background: linear-gradient(135deg, $color-blue-medium, $color-blue-light);
   background-color: $color-white;
 }
 
@@ -37,34 +36,8 @@ button {
 }
 
 .app {
-  position: relative;
+  // position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-
-.main-container {
-  flex-direction: column;
-  flex: 1;
-  width: 90%;
-}
-
-// TEST
-
-.green {
-  color: green;
-}
-
-.red {
-  color: red;
-}
-
-.column {
-  font-size: 1.6rem;
-  display: inline-block;
-  width: 10rem;
-}
-
-.trade-item {
-  display: flex;
 }

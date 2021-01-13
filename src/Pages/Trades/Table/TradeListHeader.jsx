@@ -3,7 +3,7 @@ import React from 'react';
 
 //TODO - implement a loop to build columns automatically.
 //TODO - Build in Sorting
-const TradeListHeader = (props) => {
+const TradeListHeader = (columns) => {
   return ( <div>
       <span className="column">Symbol</span>
       <span className="column">Strategy</span>
