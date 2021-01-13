@@ -26,7 +26,7 @@ const CardStatContainer = ({ text, value = 0, type }) => {
   return (
     <div className='stat-container'>
       <h4 className='card-body__title'>{text}</h4>
-      <span className={`card-body__value ${resultColor}`}>{`${unit}${
+      <span className={`card-body__value ${value !== 0 ? resultColor : null}`}>{`${unit}${
         Math.round(value) || 0
       }`}</span>
     </div>

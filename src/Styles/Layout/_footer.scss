@@ -6,7 +6,7 @@
   text-align: center;
 
   &__disclaimer{
-    font-size: $font-size-small;
+    font-size: 1rem;
     color: $color-grey-light;
     margin-bottom: 1.2rem;
   }
@@ -14,7 +14,7 @@
   &__trademark {
     margin-bottom: 1.8rem;
     color: $color-off-white;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
 }
