@@ -28,7 +28,6 @@ const TradeItem = props => {
     history.push(`/trade/${trade_id}`);
   }
 
-  // const { _id, symbol, outcome, amount, date, description, strategy, accountId, userId, createdAt} = props.data
   return (
     <tr className='trade-item' onClick={linkToTrade}>
 

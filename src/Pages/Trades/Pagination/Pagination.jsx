@@ -28,6 +28,7 @@ const Pagination = ({ data }) => {
       <PaginationPages
         handlePageChange={handlePageChange}
         pageNumbers={pageNumbers}
+        currentPage={currentPage}
       />
       </div>
     </React.Fragment>

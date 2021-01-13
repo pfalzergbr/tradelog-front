@@ -10,7 +10,13 @@ table {
 
 tbody {
   background: $color-dark;
+
+  &:first-child > t {
+    padding-top: 1.6rem;
+    border: 1px solid red;
+  }
 }
+
 
 th, td {
   padding: .8rem;
@@ -29,7 +35,7 @@ th, td {
     color: $color-off-white;
 
     &--active {
-
+      color: $color-purple-medium;
     }
   }
 }
@@ -42,15 +48,18 @@ th, td {
   background: $color-purple-dark;
   border-radius:0 0 10px 10px;
   
-  &__btn-container {
+  // &__btn-container {
 
-  }
+  // }
+
   &__btn {
     font-family: 'Roboto';
     font-size: 1.2rem;
     color: $color-off-white;
     padding: .8rem 2rem;
+
     &--active {
+      color: $color-purple-medium;
     }
   }
 }
