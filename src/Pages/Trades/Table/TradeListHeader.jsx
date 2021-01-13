@@ -4,8 +4,8 @@ import React from 'react';
 //TODO - Build in Sorting
 const TradeListHeader = () => {
   return (
-    <thead>
-      <tr className='table-header'>
+    <thead className='table-header'>
+      <tr className='table-header__row'>
         <th className='table-header__column'>Symbol</th>
         <th className='table-header__column'>Strategy</th>
         <th className='table-header__column'>Bias</th>

@@ -70,7 +70,7 @@ const AccountDetails = () => {
     return (
       <LoadingGroup>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div className='accounts'>
+          {/*<div className='accounts'>
             {/*<div className='accounts__header'>
               <h1 className='accounts__title'>{accountName}</h1>
               <h2>${balance}</h2>
@@ -89,8 +89,8 @@ const AccountDetails = () => {
                 </button>
               </div>
             </div>*/}
-            {/*<StrategyCardList currentStrategies={strategyStats} user={user} />*/}
-          </div>
+            {/*<StrategyCardList currentStrategies={strategyStats} user={user} />
+          </div> */}
           <TradeList trades={trades} />
         </div>
       </LoadingGroup>

@@ -1,23 +1,29 @@
 table {
+  margin: 20rem auto;
   border-collapse: collapse;
+  border-spacing: 0;
+  width: 400px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: $shadow-light;
+}
+
+tbody {
+  background: $color-dark;
 }
 
 th, td {
   padding: .8rem;
+  text-align: center;
 }
 
 .table-container {
   font-family: 'Roboto';
   font-size: 1.2rem;
-
-
-  
 }
 
 .table-header {
   background: $color-purple-dark;
-
-
 
   &__column {
     color: $color-off-white;
@@ -28,22 +34,22 @@ th, td {
   }
 }
 
-.table-body {
 
-}
 
-.trade-item {
-
-  &__column {
-
-  }
-
-}
 
 .table-pagination {
+  width: 100%;
+  background: $color-purple-dark;
+  border-radius:0 0 10px 10px;
+  
   &__btn-container {
+
   }
   &__btn {
+    font-family: 'Roboto';
+    font-size: 1.2rem;
+    color: $color-off-white;
+    padding: 0.8rem 1.6rem;
     &--active {
     }
   }
