@@ -1,0 +1,47 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  font-family: 'Roboto';
+  font-size: 1.2rem;
+  margin: 0 auto;
+  
+}
+
+.table-header {
+  background: $color-purple-dark;
+
+
+
+  &__column {
+    display: inline-block;
+    width: 5rem;
+    color: $color-off-white;
+    margin-right: 2.5rem;
+
+    &--active {
+
+    }
+  }
+}
+
+.table-body {
+
+}
+
+.trade-item {
+
+  &__column {
+
+  }
+
+}
+
+.table-pagination {
+  &__btn-container {
+  }
+  &__btn {
+    &--active {
+    }
+  }
+}

@@ -5,7 +5,7 @@ import TradeItem from '../Table/TradeItem';
 
 const PaginatedData = ({ pageData }) => {
   return (
-    <div>
+    <div className="table-body">
       {pageData &&
         pageData.map(item => (
           <Link key={item.trade_id} to={`/trade/${item.trade_id}`}>
