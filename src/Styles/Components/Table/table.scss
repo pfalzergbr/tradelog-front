@@ -10,11 +10,6 @@ table {
 
 tbody {
   background: $color-dark;
-
-  &:first-child > t {
-    padding-top: 1.6rem;
-    border: 1px solid red;
-  }
 }
 
 
