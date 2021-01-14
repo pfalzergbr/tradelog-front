@@ -12,7 +12,7 @@ const Landing = () => {
             Analyse your accounts. Find your most profitable trading strategies.
             Repeat.
           </h3>
-          <button className='btn btn--primary'>Sign up for free</button>
+          <button className='btn btn--primary btn--cta'>Sign up for free</button>
         </main>
         <div className='landing-page__graphic-column'>
           <div className='graphic'>

@@ -9,6 +9,7 @@ import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
 
 import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
+import AccordionMenu from './Strategies/Menu/AccordionMenu';
 
 const AccountDetails = () => {
   const { accountId } = useParams();
@@ -69,8 +70,9 @@ const AccountDetails = () => {
     //Add Accordion menu
     return (
       <LoadingGroup>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/*<div className='accounts'>
+      <div className="account-details">
+          <div className='strategies-column'>
+          <AccordionMenu account={account} />
             {/*<div className='accounts__header'>
               <h1 className='accounts__title'>{accountName}</h1>
               <h2>${balance}</h2>
@@ -89,9 +91,11 @@ const AccountDetails = () => {
                 </button>
               </div>
             </div>*/}
-            {/*<StrategyCardList currentStrategies={strategyStats} user={user} />
-          </div> */}
-          <TradeList trades={trades} />
+            {/*<StrategyCardList currentStrategies={strategyStats} user={user} />*/}
+          </div> 
+          <div className="trades-column">
+            <TradeList trades={trades} />
+          </div>
         </div>
       </LoadingGroup>
     )

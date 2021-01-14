@@ -1,0 +1,22 @@
+.account-details {
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid red;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 15rem;
+}
+
+.trades-column {
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid green;
+  justify-content: center;
+
+}
+
+.strategies-column {
+  display: flex;
+  align-items: center;
+  // border: 1px solid blue;
+}

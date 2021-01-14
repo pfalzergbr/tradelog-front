@@ -20,7 +20,6 @@ const Pagination = ({ data }) => {
 
   return (
     <React.Fragment>
-    <div>
       <table className='table-container'>
         <TradeListHeader />
         <PaginatedData pageData={pageData} />
@@ -30,7 +29,6 @@ const Pagination = ({ data }) => {
         pageNumbers={pageNumbers}
         currentPage={currentPage}
       />
-      </div>
     </React.Fragment>
   );
 };
