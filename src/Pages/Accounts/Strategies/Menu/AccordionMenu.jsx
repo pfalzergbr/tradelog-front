@@ -1,42 +1,36 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectAccountStats } from '../../../../Redux/Reducers/account';
+
 import MenuItem from './MenuItem';
 
-const AccordionMenu = ({ account }) => {
-  const [activeItem, setActiveItem] = useState('1');
 
+const AccordionMenu = ({ account = {}, strategies = [] }) => {
+  console.log(account)
+  const [activeItem, setActiveItem] = useState('1');
+  const accountStats = useSelector(state => selectAccountStats(state, account.accoun_id) || {});
   const setActive = title => {
     setActiveItem(title);
   };
 
-  const dummyItems = [
-    {
-      title: 'Strategy 1',
-      id: 1,
-      text: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus
-  hic magni itaque culpa in animi ducimus ipsam odio nisi, voluptate
-  soluta maxime corrupti laudantium suscipit totam illum nam modi.`,
-    },
-    {
-      title: 'Strategy 2',
-      id: 2,
-      text: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus
-  hic magni itaque culpa in animi ducimus ipsam odio nisi, voluptate
-  soluta maxime corrupti laudantium suscipit totam illum nam modi.`,
-    },
-    {
-      title: 'Strategy 3',
-      id: 3,
-      text: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus
-  hic magni itaque culpa in animi ducimus ipsam odio nisi, voluptate
-  soluta maxime corrupti laudantium suscipit totam illum nam modi.`,
-    },
-  ];
+  // const currentAccount = {
+  // strategy_name: ,
+  // total_pnl,
+  // winPercentage,
+  // strategy_id,
+  // average_profit,
+  // average_loss,
+  // num_of_profit,
+  // num_of_loss,
+  // num_of_trades
+  
+  // }
 
   return (
     <div className='accordion'>
-      {/*<MenuItem item={account} active={activeItem} setActive={setActive} />*/}
-      {dummyItems.map(item => (
-        <MenuItem key={item.id} item={item} active={activeItem} setActive={setActive} />
+        {/*<MenuItem item={account} active={activeItem} setActive={setActive} />*/}
+      { strategies && strategies.map(item => (
+        <MenuItem key={item.strategy_id} item={item} active={activeItem} setActive={setActive} />
       ))}
     </div>
   );

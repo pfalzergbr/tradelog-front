@@ -5,7 +5,7 @@ const StatContainer = ({
   value = 0,
   type,
   variant = 'card-body',
-  container = 'stat-container',
+  containerClass = 'stat-container',
 }) => {
   const getResultColor = (type, value) => {
     if (type === 'amount') {
@@ -30,7 +30,7 @@ const StatContainer = ({
   //TODO - Add currencies and +/- signs. Add a div around the span for styling
   // Todo - Fix nulls from server side, and remove edge case
   return (
-    <div className={container}>
+    <div className={containerClass}>
       <h4 className={`${variant}__title`}>{text}</h4>
       <span
         className={`${variant}__value ${
