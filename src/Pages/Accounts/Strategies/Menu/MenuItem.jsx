@@ -1,4 +1,5 @@
 import React from 'react';
+import StatContainer from '../../AccountCard/StatContainer';
 
 // TODO - Build the whole menu for the actual app
 
@@ -23,6 +24,7 @@ const MenuItem = ({ item, active, setActive }) => {
 
       <div className={`${active === id ? 'accordion-content--show' : 'accordion-content--hide'} accordion-content`}>
         <div className='item-container'>
+          <StatContainer />  
           <p>{text}</p>
         </div>
       </div>

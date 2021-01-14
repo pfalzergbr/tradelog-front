@@ -48,6 +48,15 @@
 
 .accordion-content {
   overflow: hidden;
+
+  &__title {
+
+  }
+  
+  &__value{
+  
+  }
+
   &--show {
     height: 100%;
   }
@@ -56,3 +65,5 @@
     height: 0;
   }
 }
+
+

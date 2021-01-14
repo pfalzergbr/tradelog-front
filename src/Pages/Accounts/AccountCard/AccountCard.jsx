@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 import { selectAccountStats } from '../../../Redux/Reducers/account';
 
-import StatContainer from './CardStatContainer';
+import StatContainer from './StatContainer';
 import Card from './Card';
 import CardHeader from './HeaderContainer';
 
