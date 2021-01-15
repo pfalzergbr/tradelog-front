@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
+import Button from '../Shared/ui/Button';
 
 import ErrorMessage from '../Shared/ErrorMessage';
 
@@ -34,62 +35,84 @@ const TradeForm = ({ onSubmit, accounts }) => {
 
   return (
     <div className='form-container'>
-      <h1>New Trade</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor='symbol'>Symbol</label>
-        <input
-          name='symbol'
-          ref={register}
-          placeholder='Trade symbol or ticker'
-        />
-        {errors.symbol && <ErrorMessage message={errors.symbol.message} />}
-        <label htmlFor='account'>Account</label>
-        <select name='account' ref={register}>
-          {accounts &&
-            accounts.map(account => (
-              <option key={account.account_id} value={account.account_id}>
-                {account.account_name}
-              </option>
-            ))}
-        </select>
-        <select name='strategy' ref={register}>
-          {accountStrategies &&
-            accountStrategies.map(strategy => (
-              <option key={strategy.strategy_id} value={strategy.strategy_id}>
-                {strategy.strategy_name}
-              </option>
-            ))}
-        </select>
-        <label htmlFor='outcome'>Outcome</label>
-        <select name='outcome' ref={register}>
-          <option value='breakeven'>Breakeven</option>
-          <option value='profit'>Profit</option>
-          <option value='loss'>Loss</option>
-        </select>
-        <label htmlFor='bias'>Bias</label>
-        <select name='bias' ref={register}>
-          <option value='bullish'>Bullish</option>
-          <option value='bearish'>Bearish</option>
-        </select>
-
-        <label htmlFor='amount'>Amount</label>
-        <input
-          type='number'
-          step='0.01'
-          name='amount'
-          ref={register}
-          placeholder='Profit or loss value'
-        />
-        {errors.amount && <ErrorMessage message={errors.amount.message} />}
-        <label htmlFor='notes'>Notes</label>
-        <textarea name='notes' ref={register} placeholder='Optional notes' />
-        {errors.notes && <ErrorMessage message={errors.notes.message} />}
-        <label htmlFor='date'>Date</label>
-        <input type='date' name='date' ref={register}></input>
-        {errors.date && <ErrorMessage message={errors.date.message} />}
-        <button disabled={!isValid} type='submit'>
+      <form onSubmit={handleSubmit(onSubmit)} className='form form--trade'>
+        <h1 className='form__title'>New Trade</h1>
+        <div className='form__items'>
+          <div className='form-control'>
+            <label htmlFor='symbol'>Symbol</label>
+            <input
+              name='symbol'
+              ref={register}
+              placeholder='Trade symbol or ticker'
+            />
+            {errors.symbol && <ErrorMessage message={errors.symbol.message} />}
+          </div>
+          <div className='form-control'>
+            <label htmlFor='account'>Account</label>
+            <select name='account' ref={register}>
+              {accounts &&
+                accounts.map(account => (
+                  <option key={account.account_id} value={account.account_id}>
+                    {account.account_name}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <div className='form-control'>
+            <label htmlFor='strategy'>Strategy</label>
+            <select name='strategy' ref={register}>
+              {accountStrategies &&
+                accountStrategies.map(strategy => (
+                  <option
+                    key={strategy.strategy_id}
+                    value={strategy.strategy_id}>
+                    {strategy.strategy_name}
+                  </option>
+                ))}
+            </select>
+            <label htmlFor='outcome'>Outcome</label>
+            <select name='outcome' ref={register}>
+              <option value='breakeven'>Breakeven</option>
+              <option value='profit'>Profit</option>
+              <option value='loss'>Loss</option>
+            </select>
+          </div>
+          <div className='form-control'>
+            <label htmlFor='bias'>Bias</label>
+            <select name='bias' ref={register}>
+              <option value='bullish'>Bullish</option>
+              <option value='bearish'>Bearish</option>
+            </select>
+          </div>
+          <div className='form-control'>
+            <label htmlFor='amount'>Amount</label>
+            <input
+              type='number'
+              step='0.01'
+              name='amount'
+              ref={register}
+              placeholder='Profit or loss value'
+            />
+            {errors.amount && <ErrorMessage message={errors.amount.message} />}
+          </div>
+          <div className='form-control'>
+            <label htmlFor='notes'>Notes</label>
+            <textarea
+              name='notes'
+              ref={register}
+              placeholder='Optional notes'
+            />
+            {errors.notes && <ErrorMessage message={errors.notes.message} />}
+          </div>
+          <div className='form-control'>
+            <label htmlFor='date'>Date</label>
+            <input type='date' name='date' ref={register}></input>
+            {errors.date && <ErrorMessage message={errors.date.message} />}
+          </div>
+        </div>
+        <Button disabled={!isValid} buttonStyle='primary' type='submit'>
           New Trade
-        </button>
+        </Button>
       </form>
     </div>
   );

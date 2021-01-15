@@ -44,11 +44,11 @@
 
   }
 
-  &__label {
+  & label {
     padding: 1em;
   }
   
-  &__input {
+  & input, select, textarea {
     padding: .8rem;
     width: 100%;
     border-radius: 1rem;

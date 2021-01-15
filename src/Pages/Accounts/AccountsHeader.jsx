@@ -11,7 +11,7 @@ const AccountsHeader = ({ userName, openNewAccountModal }) => {
         stragegies!
       </p>
       <div className='accounts-header__button-container'>
-        <Button type='primary' onClick={openNewAccountModal}>
+        <Button buttonStyle='primary' onClick={openNewAccountModal}>
           Create Account
         </Button>
       </div>
