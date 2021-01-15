@@ -36,7 +36,7 @@ const TradeForm = ({ onSubmit, accounts }) => {
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit(onSubmit)} className='form form--trade'>
-        <h1 className='form__title'>New Trade</h1>
+        <h2 className='form__title'>New Trade</h2>
         <div className='form__items'>
           <div className='form-control'>
             <label htmlFor='symbol'>Symbol</label>
@@ -110,9 +110,11 @@ const TradeForm = ({ onSubmit, accounts }) => {
             {errors.date && <ErrorMessage message={errors.date.message} />}
           </div>
         </div>
-        <Button disabled={!isValid} buttonStyle='primary' type='submit'>
-          New Trade
-        </Button>
+        <div className='form__button-container'>
+          <Button disabled={!isValid} buttonStyle='primary' type='submit'>
+            New Trade
+          </Button>
+        </div>
       </form>
     </div>
   );

@@ -39,7 +39,7 @@
   }
 
   &__title {
-    font-size: $font-size-header-1;
+    font-size: 4.1rem;
     margin-bottom: 2.5rem;
 
   }
@@ -48,11 +48,13 @@
     padding: 1em;
   }
   
-  & input, select, textarea {
-    padding: .8rem;
+  & input, select, option, textarea {
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    padding-left: 2.5rem;
     width: 100%;
     border-radius: 1rem;
-    text-align: center;
+    // text-align: center;
     background-color: $color-purple-dark;
     outline: none;
     border: none;
@@ -60,8 +62,23 @@
     font-family: 'Lato';
     letter-spacing: 1px;
     color: $color-off-white;
-  ;
   }
+
+  & input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
+  
+  input[type=number] {
+      -moz-appearance:textfield; /* Firefox */
+  }
+
+  &__input {
+    text-align: center;
+  }
+
 
   &__button-container {
     display: flex;
