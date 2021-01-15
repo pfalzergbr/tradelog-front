@@ -30,8 +30,7 @@ const NewAccount = props => {
   return (
 
       <div>
-        <button onClick={props.closeModal}>X</button>
-        <NewAccountForm onSubmit={onSubmit} />
+        <NewAccountForm onSubmit={onSubmit} closeModa={props.closeModal}/>
       </div>
   );
 };

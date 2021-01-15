@@ -8,15 +8,18 @@
 .form-control {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
 
 
 
   &--checkbox {
+    align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: row;
     margin-top: 2.5rem;
+  
+    
   }
 }
 
@@ -66,17 +69,12 @@
 
   & input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
-      /* display: none; <- Crashes Chrome on hover */
       -webkit-appearance: none;
-      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      margin: 0; 
   }
   
   input[type=number] {
-      -moz-appearance:textfield; /* Firefox */
-  }
-
-  &__input {
-    text-align: center;
+      -moz-appearance:textfield;
   }
 
 
@@ -84,22 +82,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 
     & > button, a, p {
       margin-bottom: .5em;
+      width: 100%;
+      text-align: center;
     }
   }
 
   // &__message {
-
+  //   text-align: center;
   // }
 
   &__link {
     color: $color-purple-medium;
+    display: block;
   }
 
 }
 
 input[type=checkbox] {
-  margin-right: 1em;
+  width: auto;
 }

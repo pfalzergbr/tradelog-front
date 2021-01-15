@@ -35,8 +35,7 @@ const NewTrade = props => {
   return (
     <LoadingGroup>
       <div>
-        <button onClick={props.closeModal}>X</button>
-        <TradeForm onSubmit={onSubmit} accounts={accounts} />
+        <TradeForm onSubmit={onSubmit} accounts={accounts} closeModal={props.closeModal}/>
       </div>
     </LoadingGroup>
   );

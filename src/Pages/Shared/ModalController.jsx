@@ -13,9 +13,26 @@ const ModalController = () => {
   };
 
   const currentModal = getCurrentModal(modalName, modalData, handleCloseModal);
-
+  const modalStyles = {
+    content: {
+      boxSizing: 'border-box',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+      border: 'none',
+      padding: '0',
+      overflow: 'hidden',
+      backgroundColor: 'rgba(0, 0, 0, 0.85)'
+    },
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.85)'
+    }
+  };
   return (
     <Modal
+      style={modalStyles}
       appElement={document.getElementById('root')}
       isOpen={isOpen}
       onRequestClose={handleCloseModal}>
