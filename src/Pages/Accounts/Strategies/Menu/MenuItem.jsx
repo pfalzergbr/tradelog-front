@@ -6,13 +6,12 @@ import { selectStrategyStat } from '../../../../Redux/Reducers/strategy';
 
 // TODO - Build the whole menu for the actual app
 
-const MenuItem = ({ item, active, setActive }) => {
+const MenuItem = ({ item, active, setActive, setFilter }) => {
   const strategyStats =
     useSelector(state => selectStrategyStat(state, item.strategy_id)) || {};
   const {
     total_pnl,
     winPercentage,
-    strategy_id,
     average_profit,
     average_loss,
     num_of_profit,
@@ -22,6 +21,7 @@ const MenuItem = ({ item, active, setActive }) => {
 
   const activate = () => {
     setActive(item.strategy_id);
+    setFilter(item.strategy_id)
   };
 
   return (

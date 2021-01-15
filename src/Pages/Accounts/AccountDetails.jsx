@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,6 +11,8 @@ import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 import { loadStrategyStats } from '../../Services/Requests/strategyRequests';
 import { loadAccountStats } from '../../Services/Requests/accountRequests';
 import { fetchTradesByAccount } from '../../Services/Requests/tradeRequests';
+
+import { tradeFilter } from '../../Services/filterService';
 
 import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
@@ -27,6 +29,8 @@ const AccountDetails = () => {
   const dispatch = useDispatch();
   const accountStrategies =
     useSelector(state => selectAccountStrategies(state, accountId)) || {};
+  const [filter, setFilter] = useState(null);
+  const filteredTrades = tradeFilter(trades, 'strategy_id', filter);
 
   useEffect(() => {
     loadAccountStats(token, dispatch);
@@ -53,10 +57,11 @@ const AccountDetails = () => {
             <AccordionMenu
               account={accountStats}
               strategies={accountStrategies}
+              setFilter={setFilter}
             />
           </div>
           <div className='trades-column'>
-            <TradeList trades={trades} />
+            <TradeList trades={filteredTrades} />
           </div>
         </div>
       </div>

@@ -1,3 +1,6 @@
 export const tradeFilter = (trades, filterType, filter) => {
-  trades.filter(trade => trade[filterType] === filter)
+  if (filter){
+    return trades.filter(trade => trade[filterType] === filter)
+  }
+  return trades
 }
