@@ -19,35 +19,47 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <div className='form-container'>
       <form className='form form--login' onSubmit={handleSubmit(onSubmit)}>
-        <h2 className='form__title'>Login</h2>
-        <label className='form__label' htmlFor='email'>
-          E-mail
-        </label>
-        <input
-          className='form__input'
-          name='email'
-          placeholder='E-mail'
-          ref={register}
-        />
-        <label className='form__label' htmlFor='password'>
-          Password
-        </label>
-        <input
-          className='form__input'
-          type='password'
-          name='password'
-          placeholder='Password'
-          ref={register}
-        />
-        <button
-          className='btn btn--primary form__btn '
-          disabled={!isValid}
-          type='submit'>
-          Log in
-        </button>
-        <Link className='form__link' to='/user/register'>
-          Register here
-        </Link>
+        <h1 className='form__title'>Login</h1>
+        <div className='form__items'>
+          <div className='form-control'>
+            <label className='form__label' htmlFor='email'>
+              E-mail
+            </label>
+            <input
+              className='form__input'
+              name='email'
+              placeholder='E-mail'
+              ref={register}
+            />
+          </div>
+          <div className='form-control'>
+            <label className='form__label' htmlFor='password'>
+              Password
+            </label>
+            <input
+              className='form__input'
+              type='password'
+              name='password'
+              placeholder='Password'
+              ref={register}
+            />
+          </div>
+          <div className='form-control form-control--checkbox'>
+            <input name='keepLoggedIn' type='checkbox' ref={register} />
+            <label htmlFor='keepLoggedIn'>Keep me logged in</label>
+          </div>
+        </div>
+        <div className='form__button-container'>
+          <button
+            className='btn btn--primary form__btn '
+            disabled={!isValid}
+            type='submit'>
+            Log in
+          </button>
+          <Link className='form__link' to='/user/register'>
+            Register here
+          </Link>
+        </div>
       </form>
     </div>
   );

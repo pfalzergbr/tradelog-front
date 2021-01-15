@@ -1,0 +1,88 @@
+.form-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+
+  &--checkbox {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.5rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  font-size: $font-size-regular;
+  color: $color-grey-light;
+  background: $color-dark;
+  padding: 2.5rem 4.8rem; 
+  border-radius: 3.2rem;
+  font-family: 'Lato';
+  box-shadow: $shadow-light;
+
+  &__items {
+    width: 28rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__title {
+    font-size: $font-size-header-1;
+    margin-bottom: 2.5rem;
+
+  }
+
+  &__label {
+    padding: 1em;
+  }
+  
+  &__input {
+    padding: .8rem;
+    width: 100%;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: $color-purple-dark;
+    outline: none;
+    border: none;
+    box-shadow: $shadow-light;
+    font-family: 'Lato';
+    letter-spacing: 1px;
+    color: $color-off-white;
+  ;
+  }
+
+  &__button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > button, a, p {
+      margin-bottom: .5em;
+    }
+  }
+
+  // &__message {
+
+  // }
+
+  &__link {
+    color: $color-purple-medium;
+  }
+
+}
+
+input[type=checkbox] {
+  margin-right: 1em;
+}
