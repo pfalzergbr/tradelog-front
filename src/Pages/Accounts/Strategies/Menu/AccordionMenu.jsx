@@ -17,6 +17,7 @@ const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
         item={account}
         active={activeItem}
         setActive={setActive}
+        setFilter={setFilter}
       />
       {strategies &&
         strategies.map(item => (

@@ -5,7 +5,7 @@ import StatContainer from '../../AccountCard/StatContainer';
 
 // TODO - Build the whole menu for the actual app
 
-const MenuItemAccount = ({ item, active, setActive }) => {
+const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
   const {
     account_name,
     total_pnl,
@@ -26,6 +26,7 @@ const MenuItemAccount = ({ item, active, setActive }) => {
 
   const activate = () => {
     setActive(account_id);
+    setFilter(null);
   };
 
   return (
