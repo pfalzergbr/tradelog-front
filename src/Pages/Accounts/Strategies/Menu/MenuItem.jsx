@@ -1,11 +1,15 @@
 import React from 'react';
 import StatContainer from '../../AccountCard/StatContainer';
 
+import { useSelector } from 'react-redux';
+import { selectStrategyStat } from '../../../../Redux/Reducers/strategy';
+
 // TODO - Build the whole menu for the actual app
 
 const MenuItem = ({ item, active, setActive }) => {
+  const strategyStats =
+    useSelector(state => selectStrategyStat(state, item.strategy_id)) || {};
   const {
-    strategy_name,
     total_pnl,
     winPercentage,
     strategy_id,
@@ -14,23 +18,23 @@ const MenuItem = ({ item, active, setActive }) => {
     num_of_profit,
     num_of_loss,
     num_of_trades,
-  } = item;
+  } = strategyStats;
 
   const activate = () => {
-    setActive(strategy_id);
+    setActive(item.strategy_id);
   };
 
   return (
     <div className='menu-item'>
       <div
         className={`accordion-heading ${
-          active === strategy_id
+          active === item.strategy_id
             ? 'accordion-heading--active'
             : 'accordion-heading-inactive'
         }`}
         onClick={activate}>
         <StatContainer
-          text={strategy_name}
+          text={item.strategy_name}
           value={total_pnl}
           type='amount'
           variant='accordion-heading'
@@ -40,7 +44,7 @@ const MenuItem = ({ item, active, setActive }) => {
 
       <div
         className={`${
-          active === strategy_id
+          active === item.strategy_id
             ? 'accordion-content--show'
             : 'accordion-content--hide'
         } accordion-content`}>
@@ -68,7 +72,7 @@ const MenuItem = ({ item, active, setActive }) => {
         <StatContainer
           text='Number of Trades'
           value={num_of_trades}
-          type="value"
+          type='value'
           variant='accordion-content'
           containerClass='item-container'
         />
@@ -86,8 +90,8 @@ const MenuItem = ({ item, active, setActive }) => {
           variant='accordion-content'
           containerClass='item-container'
         />
-        <div className="item-container">
-          <p className="accordion__link">Strategy Details</p>
+        <div className='item-container'>
+          <p className='accordion__link'>Strategy Details</p>
         </div>
       </div>
     </div>
