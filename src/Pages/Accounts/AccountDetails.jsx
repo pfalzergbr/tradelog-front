@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectAccount, selectAccountStats } from '../../Redux/Reducers/account';
-import { fetchTrades } from '../../Redux/Actions/tradeActions';
-import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
-import { fetchAccountStats } from '../../Redux/Actions/accountActions';
+
+import { loadStrategyStats } from '../../Services/Requests/strategyRequests';
+import { loadAccountStats } from '../../Services/Requests/accountRequests';
+import { fetchTradesByAccount } from '../../Services/Requests/tradeRequests';
 
 import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
@@ -36,60 +37,20 @@ const AccountDetails = () => {
 
   
   useEffect(() => {
-    const loadAccountStats = async token => {
-      try {
-        const response = await dispatch(
-          fetchAccountStats({
-            url: `${process.env.REACT_APP_API}/api/account/stats`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
     //Add selectors to check if it is already fetched.
-    loadAccountStats(token);
+    loadAccountStats(token, dispatch);
   }, [dispatch, token]);
 
   useEffect(() => {
-    const loadStrategyStats = async (token, account) => {
-      try {
-        const response = await dispatch(
-          fetchStrategyStats({
-            url: `${process.env.REACT_APP_API}/api/strategy/stats/${account.account_id}`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     if (account.account_id) {
-      loadStrategyStats(token, account);
+      loadStrategyStats(token, account, dispatch);
 
     }
   }, [dispatch, account, token]);
 
   useEffect(() => {
-    const fetchTradesByAccount = async (token, account) => {
-      try {
-        const response = await dispatch(
-          fetchTrades({
-            url: `${process.env.REACT_APP_API}/api/trades/account/${account.account_id}`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
     if (account.account_id) {
-      fetchTradesByAccount(token, account);
+      fetchTradesByAccount(token, account, dispatch);
     }
   }, [dispatch, account, token])
 
