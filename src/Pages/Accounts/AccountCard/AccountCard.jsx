@@ -46,10 +46,7 @@ const AccountCard = props => {
             value={winPercentage}
             type='percentage'
           />
-          <StatContainer
-            text='Number of Trades'
-            value={currentAccountStats.num_of_trades}
-          />
+ 
           <StatContainer
             text='Average Profit'
             value={currentAccountStats.average_profit}
@@ -59,6 +56,10 @@ const AccountCard = props => {
             text='Average Loss'
             value={currentAccountStats.average_loss}
             type='amount'
+          />
+          <StatContainer
+          text='Number of Trades'
+          value={currentAccountStats.num_of_trades}
           />
           <StatContainer
             text='Number of Strategies'

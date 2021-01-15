@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { openModal } from '../../Redux/Actions/modalActions';
-import { selectAccount } from '../../Redux/Reducers/account';
+import { selectAccount, selectAccountStats } from '../../Redux/Reducers/account';
 import { fetchTrades } from '../../Redux/Actions/tradeActions';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
 import { fetchAccountStats } from '../../Redux/Actions/accountActions';
@@ -18,6 +18,7 @@ const AccountDetails = () => {
   const { strategyStats } = useSelector(state => state.strategy);
   const { trades } = useSelector(state => state.trade);
   const account = useSelector(state => selectAccount(state, accountId)) || {};
+  const accountStats = useSelector(state => selectAccountStats(state, accountId)) || {};
   const { account_name: accountName, balance, description } = account;
   const dispatch = useDispatch();
 
@@ -48,7 +49,7 @@ const AccountDetails = () => {
         console.log(error);
       }
     };
-
+    //Add selectors to check if it is already fetched.
     loadAccountStats(token);
   }, [dispatch, token]);
 
@@ -98,7 +99,7 @@ const AccountDetails = () => {
       <LoadingGroup>
       <div className="account-details">
           <div className='strategies-column'>
-          <AccordionMenu account={account} strategies={strategyStats} />
+          <AccordionMenu account={accountStats} strategies={strategyStats} />
             {/*<div className='accounts__header'>
               <h1 className='accounts__title'>{accountName}</h1>
               <h2>${balance}</h2>
