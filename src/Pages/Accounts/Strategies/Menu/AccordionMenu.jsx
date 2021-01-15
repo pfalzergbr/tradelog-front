@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectAccountStats } from '../../../../Redux/Reducers/account';
+// import { useSelector } from 'react-redux';
+// import { selectAccountStats } from '../../../../Redux/Reducers/account';
 
 import MenuItem from './MenuItem';
 
 
 const AccordionMenu = ({ account = {}, strategies = [] }) => {
-  console.log(account)
   const [activeItem, setActiveItem] = useState('1');
-  const accountStats = useSelector(state => selectAccountStats(state, account.accoun_id) || {});
+  // const accountStats = useSelector(state => selectAccountStats(state, account.accoun_id) || {});
   const setActive = title => {
     setActiveItem(title);
   };

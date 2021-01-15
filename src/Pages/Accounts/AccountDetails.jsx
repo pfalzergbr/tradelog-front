@@ -6,6 +6,7 @@ import { openModal } from '../../Redux/Actions/modalActions';
 import { selectAccount } from '../../Redux/Reducers/account';
 import { fetchTrades } from '../../Redux/Actions/tradeActions';
 import { fetchStrategyStats } from '../../Redux/Actions/strategyActions';
+import { fetchAccountStats } from '../../Redux/Actions/accountActions';
 
 import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
@@ -32,6 +33,25 @@ const AccountDetails = () => {
     dispatch(openModal('deleteAccount', { account, token }));
   };
 
+  
+  useEffect(() => {
+    const loadAccountStats = async token => {
+      try {
+        const response = await dispatch(
+          fetchAccountStats({
+            url: `${process.env.REACT_APP_API}/api/account/stats`,
+            auth: { Authorization: `Bearer ${token}` },
+          }),
+        );
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadAccountStats(token);
+  }, [dispatch, token]);
+
   useEffect(() => {
     const loadStrategyStats = async (token, account) => {
       try {
@@ -47,6 +67,13 @@ const AccountDetails = () => {
       }
     };
 
+    if (account.account_id) {
+      loadStrategyStats(token, account);
+
+    }
+  }, [dispatch, account, token]);
+
+  useEffect(() => {
     const fetchTradesByAccount = async (token, account) => {
       try {
         const response = await dispatch(
@@ -60,12 +87,11 @@ const AccountDetails = () => {
         console.log(error);
       }
     };
-
     if (account.account_id) {
-      loadStrategyStats(token, account);
       fetchTradesByAccount(token, account);
     }
-  }, [dispatch, account, token]);
+  }, [dispatch, account, token])
+
 
     //Add Accordion menu
     return (

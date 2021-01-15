@@ -17,10 +17,12 @@ const Landing = () => {
         <div className='landing-page__graphic-column'>
           <div className='graphic'>
             <object
+              aria-label='Light graphic background of finance related illustrations'
               className='graphic--background'
               type='image/svg+xml'
               data='./svg/icon-group.svg'></object>
             <object
+              aria-label='Bright graphic background of finance related illustrations'
               className='graphic--front'
               type='image/svg+xml'
               data='./svg/icon-group2.svg'></object>

@@ -6,12 +6,12 @@ import {
   LOAD_STRATEGY_STATS,
 } from '../constants';
 
-const initialState = { strategies: [] };
+const initialState = { strategies: [], strategyStats: [], isLoaded: { strategies: false, strategyStats: false} };
 
 export const strategy = (state = initialState, action = {}) => {
   switch (action.type) {
     case POPULATE_USER:
-      return { ...state, strategies: action.payload.strategies };
+      return { ...state, strategies: action.payload.strategies, isLoaded: {...state.isLoaded, strategies: true} };
     case ADD_STRATEGY:
       const newStrategy = action.payload.newStrategy;
       return { ...state, strategies: [...state.strategies, newStrategy] };
@@ -32,7 +32,7 @@ export const strategy = (state = initialState, action = {}) => {
       );
       return { ...state, strategies: filteredStrategies };
     case LOAD_STRATEGY_STATS:
-      return { ...state, strategyStats: action.payload.strategyStats };
+      return { ...state, strategyStats: action.payload.strategyStats,isLoaded: {...state.isLoaded, strategyStats: true} };
     default:
       return state;
   }

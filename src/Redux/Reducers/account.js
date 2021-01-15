@@ -7,12 +7,12 @@ import {
   // ADD_TRADE,
 } from '../constants';
 
-const initialState = { accounts: [], accountStats: [] };
+const initialState = { accounts: [], accountStats: [], isLoaded: { accounts: false, accountStats: false}};
 
 export const account = (state = initialState, action = {}) => {
   switch (action.type) {
     case POPULATE_USER:
-      return { ...state, accounts: action.payload.accounts };
+      return { ...state, accounts: action.payload.accounts, isLoaded: {...state.isLoaded, accounts: true} };
     case ADD_ACCOUNT:
       return {
         ...state,
@@ -35,7 +35,7 @@ export const account = (state = initialState, action = {}) => {
       );
       return { ...state, accounts: filteredAccounts };
     case LOAD_ACCOUNT_STATS:
-      return { ...state, accountStats: action.payload.accountStats };
+      return { ...state, accountStats: action.payload.accountStats, isLoaded: {...state.isLoaded, accountStats: true} };
     // case ADD_TRADE:
 
     //     const updatedStats = state.accountStats.map(stat =>

@@ -44,7 +44,7 @@ const Strategy = () => {
     if (strategy) {
       fetchTradesByStrategy(token, strategy);
     }
-  }, [token, strategy, dispatch, fetchTrades]);
+  }, [token, strategy, dispatch]);
 
   return (
     <LoadingGroup>
