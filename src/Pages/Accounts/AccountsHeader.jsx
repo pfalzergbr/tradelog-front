@@ -3,16 +3,22 @@ import Button from '../Shared/ui/Button';
 
 const AccountsHeader = ({ userName, openNewAccountModal }) => {
   return (
-    <div className='accounts-header'>
-      <h2 className='accounts-header__title'>Welcome, {userName}!</h2>
-      <p className='accounts-header__paragraph'>
+    <div className='page-header'>
+      <div className='page-header__title-container'>
+        <h3 className='page-header__title'>Welcome, {userName}!</h3>
+      </div>
+      <p className='page-header__paragraph'>
         Manage your trading accounts to keep track of your gains, losses, and
         over-all trade statistics. Click on cards to see your trades and
         stragegies!
       </p>
-      <div className='accounts-header__button-container'>
+      <div className='page-header__button-container'>
         <Button buttonStyle='primary' onClick={openNewAccountModal}>
-          Create Account
+          Create New Account
+        </Button>
+
+        <Button buttonStyle='outline' onClick={openNewAccountModal}>
+          Manage Profile
         </Button>
       </div>
     </div>

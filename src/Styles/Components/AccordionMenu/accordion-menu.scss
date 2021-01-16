@@ -25,7 +25,7 @@
 .menu-item {
   display: flex;
   flex-direction: column;
-  padding: .4rem 0;
+  padding: $space-4 0;
 }
 
 .item-container {
@@ -33,7 +33,6 @@
   display: flex;
   width: 80%;
   padding: 0.4rem 0;
-  // border: 1px solid red;
   justify-content: space-between;
 }
 .accordion-heading {
@@ -42,8 +41,6 @@
   height: 4.2rem;
   align-items: center;
   color: $color-purple-light;
-
-  // justify-content: center;
 
   &--active {
     background: $color-purple-dark;
@@ -58,8 +55,8 @@
 
     font-size: $font-size-medium;
   }
-  &__arrow {
-  }
+  // &__arrow {
+  // }
 }
 
 .accordion-content {
@@ -74,9 +71,9 @@
     font-weight: 400;
   }
   
-  &__value{
+  // &__value{
   
-  }
+  // }
 
   &--show {
     height: 100%;

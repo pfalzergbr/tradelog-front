@@ -7,12 +7,13 @@
 
   &__disclaimer{
     font-size: 1rem;
+    line-height: 1.5;
     color: $color-grey-light;
-    margin-bottom: 1.2rem;
+    margin-bottom: $space-8 rem;
   }
 
   &__trademark {
-    margin-bottom: 1.8rem;
+    margin-bottom: $space-16;
     color: $color-off-white;
     font-size: 1rem;
   }

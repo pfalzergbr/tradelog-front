@@ -1,14 +1,38 @@
-// .accounts-header {
+.page-header {
+  width: 100%;
+  min-width: 42rem;
+  max-width: 72rem;
+  background: $color-dark;
+  border-radius: 2.6rem;
+  margin-bottom: $space-32;
+  margin-top: $space-32;
+  
+  
+  &__title-container {
+    display: flex;
+    align-items: center;
+    height: 8rem;
+  }
+  &__title {
+    padding-left: $space-40;
+    padding-right: $space-40;
+  }
+  
+  &__paragraph {
+    padding-left: $space-40;
+    padding-right: $space-40;
+    margin-bottom: $space-8;
 
-//   &__title {
+  }
 
-//   }
+  &__button-container {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    padding-left: $space-40;
 
-//   &__paragraph {
-
-//   }
-
-//   &__button-container {
-    
-//   }
-// }
+    & .btn {
+      margin-right: $space-16;
+    }
+  }
+}

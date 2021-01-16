@@ -3,7 +3,6 @@
   flex-direction: column;
   height: 90vh;
   @include centered-container;
-  // border: 1px solid red;
   justify-content: center;
   
 
@@ -12,7 +11,6 @@
     flex-direction: row;
     justify-content: space-between;
     height: 100%;
-    // border: 1px solid green;
   }
 
   &__main {
@@ -21,22 +19,26 @@
     align-items: flex-start;
     justify-content: center;
     width: 45%;
-    // height: 100%;
-    // margin-bottom: 8rem;
   }
 
   &__graphic-column {
     width: 40%;
-    // border: 1px solid red;
     align-items: center;
     justify-content: center;
   }
 
   &__title {
+    color: $color-off-white;
+    font-size: $font-size-header-1;
+    line-height: 6.4rem;
+    font-weight: 700;
     margin-bottom: 2.4rem;
   }
 
   &__subtitle {
+    font-size: $font-size-header-3;
+    line-height: 4.1rem;
+    font-weight:500;
     margin-bottom: 4.8rem;
   }
 }
@@ -51,7 +53,6 @@
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  // border: 1px solid red;
   height: 100%;
 
   &--background {
