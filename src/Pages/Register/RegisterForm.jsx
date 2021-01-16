@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ErrorMessage from '../Shared/ErrorMessage';
+import Button from '../Shared/ui/Button';
 
 const registerSchema = yup.object().shape({
   name: yup.string().required(),
@@ -82,14 +83,14 @@ const RegisterForm = ({ onSubmit }) => {
             {errors.verify && <ErrorMessage message={errors.verify.message} />}
           </div>
           <div className='form-control form-control--checkbox'>
-            <input name='keepLoggedIn' type='checkbox' ref={register}/>
+            <input name='keepLoggedIn' type='checkbox' ref={register} />
             <label htmlFor='keepLoggedIn'>Keep me logged in</label>
           </div>
         </div>
         <div className='form__button-container'>
-          <button className='btn btn--primary form__btn' type='submit'>
-            Sign up now
-          </button>
+          <Button buttonStyle='btn btn--primary form__btn' type='submit'>
+            Sign up Now
+          </Button>
           <p className='form__message'>Already have an account? </p>
           <Link className='form__link' to={'/user/login'}>
             Log in here.

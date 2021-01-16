@@ -42,11 +42,11 @@ const NewAccountForm = ({ onSubmit }) => {
               <ErrorMessage message={errors.description.message} />
             )}
           </div>
-        </div>
-        <div className='form__button-container'>
-          <Button disabled={!isValid} buttonStyle='primary' type='submit'>
-            New Account
-          </Button>
+          <div className='form__button-container'>
+            <Button disabled={!isValid} buttonStyle='primary' type='submit'>
+              New Account
+            </Button>
+          </div>
         </div>
       </form>
     </div>
