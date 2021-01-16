@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
+import ErrorMessage from '../../ErrorMessage';
 
-const InputText = ({ label, placeholder, name, register }) => {
+const InputText = ({ label, type = 'text', placeholder, name, register, errors }) => {
   const placeHolderText = placeholder ? placeholder : label;
   // const registerRef = useRef();
 
@@ -11,10 +12,12 @@ const InputText = ({ label, placeholder, name, register }) => {
       </label>
       <input
         className='form__input'
+        type={type}
         name={name}
         placeholder={placeHolderText}
         ref={register}
       />
+      {errors && errors.name && <ErrorMessage message={errors.name.message} />}
     </div>
   );
 };

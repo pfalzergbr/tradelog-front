@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ErrorMessage from '../Shared/ErrorMessage';
 import Button from '../Shared/ui/Button';
+import InputText from '../Shared/ui/formControl/InputText';
 
 const registerSchema = yup.object().shape({
   name: yup.string().required(),
@@ -30,6 +31,17 @@ const RegisterForm = ({ onSubmit }) => {
       <form className='form form--login' onSubmit={handleSubmit(onSubmit)}>
         <h1 className='form__title'>Sign up</h1>
         <div className='form__items'>
+          <InputText
+            name='name'
+            placeholder='Display Name'
+            label='Name'
+            register={register}
+          />
+          <InputText
+            name='email'
+            label="E-mail"
+            register={register}
+          />
           <div className='form-control'>
             <label className='form__label' htmlFor='name'>
               Name
