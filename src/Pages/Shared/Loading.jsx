@@ -1,9 +1,10 @@
 import React from 'react';
+import LoadingSpinner from '../../assets/animations/loading-spinner.gif';
 
 const Loading = props => {
   return (
     <div>
-      <h1>Loading...</h1>
+      <img className="loading-spinner" src={LoadingSpinner}alt="Animated loading spinner"/>
     </div>
   );
 };
