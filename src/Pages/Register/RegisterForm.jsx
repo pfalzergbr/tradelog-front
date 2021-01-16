@@ -36,6 +36,7 @@ const RegisterForm = ({ onSubmit }) => {
             placeholder='Display Name'
             label='Name'
             register={register}
+            errors={errors}
           />
           <InputText name='email' label='E-mail' register={register} />
           <InputText
@@ -43,6 +44,7 @@ const RegisterForm = ({ onSubmit }) => {
             label='Password'
             type='password'
             register={register}
+            errors={errors}
           />
           <InputText
             name='verify'
@@ -50,13 +52,14 @@ const RegisterForm = ({ onSubmit }) => {
             placeholder='Repeat your password'
             type='password'
             register={register}
+            errors={errors}
+          />
+          <CheckBox
+            name='keepLoggedIn'
+            label='Keep me logged in'
+            register={register}
           />
         </div>
-        <CheckBox
-          name='keepLoggedIn'
-          label='Keep me logged in'
-          register={register}
-        />
         <div className='form__button-container'>
           <Button buttonStyle='btn btn--primary form__btn' type='submit'>
             Sign up Now

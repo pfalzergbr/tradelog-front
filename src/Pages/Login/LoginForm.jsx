@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Button from '../Shared/ui/Button';
 import InputText from '../Shared/ui/formControl/InputText';
 
-
 const loginSchema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().required(),
@@ -26,6 +25,7 @@ const LoginForm = ({ onSubmit }) => {
         <div className='form__items'>
           <InputText name={'email'} label={'E-mail'} register={register} />
           <InputText
+            type='password'
             name={'password'}
             label={'Password'}
             register={register}

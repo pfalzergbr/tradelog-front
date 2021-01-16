@@ -4,6 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ErrorMessage from '../../Shared/ErrorMessage';
 
 import * as yup from 'yup';
+import InputText from '../../Shared/ui/formControl/InputText';
+import TextArea from '../../Shared/ui/formControl/TextArea';
+import Button from '../../Shared/ui/Button';
 
 const strategySchema = yup.object().shape({
   strategyName: yup.string().required(),
@@ -24,23 +27,29 @@ const StrategyForm = props => {
   const { isValid } = formState;
   return (
     <div className='form-container'>
-      <h1>New Strategy</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor='strategyName'>Strategy Name</label>
-        <input name='strategyName' ref={register} placeholder='Strategy name' />
-        {errors.strategyName && (
-          <ErrorMessage message={errors.strategyName.message} />
-        )}
-        <label htmlFor='description'>Description</label>
-        <textarea
-          name='description'
-          ref={register}
-          placeholder='Brief description of the strategy'
+      <form className='form' onSubmit={handleSubmit(onSubmit)}>
+        <h1 className='form__title'>New Strategy</h1>
+        <div className='form__items'>
+        <InputText
+          name='strategyName'
+          label='Register'
+          register={register}
+          errors={errors}
         />
-        {errors.notes && <ErrorMessage message={errors.notes.message} />}
-        <button disabled={!isValid} type='submit'>
+        <TextArea
+          placeholder='Brief description of the strategy'
+          name='strategyName'
+          label='Register'
+          register={register}
+          errors={errors}
+          isValid={isValid}
+        />
+        </div>
+        <div className='form__button-container'>
+        <Button buttonStyle='primary' type='submit' disabled={!isValid}>
           {button || 'New Strategy'}
-        </button>
+        </Button>
+        </div>
       </form>
     </div>
   );
