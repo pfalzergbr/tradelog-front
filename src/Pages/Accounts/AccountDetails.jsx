@@ -50,7 +50,7 @@ const AccountDetails = () => {
 
   return (
     <LoadingGroup>
-      <div>
+      <div className="accounts">
         <AccountDetailsHeader account={account} token={token} />
         <div className='account-details'>
           <div className='strategies-column'>

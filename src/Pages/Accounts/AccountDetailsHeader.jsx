@@ -20,9 +20,11 @@ const AccountDetailsHeader = ({account, token}) => {
   };
 
   return (
-    <div className='page__header'>
-      <h1 className='page-header__title'>{accountName}</h1>
-      <h2>${balance}</h2>
+    <div className='page-header'>
+      <div className="page-header__title-container">
+        <h3 className='page-header__title'>{accountName}</h3>
+        <h4 className='page-header__value'>${balance}</h4>
+      </div>
       <p className='page-header__paragraph'>{description}</p>
       <div className='page-header__button-container'>
         <button className='btn btn--primary' onClick={openStrategyModal}>

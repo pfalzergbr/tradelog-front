@@ -41,10 +41,15 @@
   height: 4.2rem;
   align-items: center;
   color: $color-purple-light;
+  cursor: pointer;
 
   &--active {
     background: $color-purple-dark;
     margin-bottom: .8rem;
+  }
+
+  &:hover, &:active , &:focus {
+    background: $color-purple-dark;
   }
 
   &__title {
@@ -63,7 +68,7 @@
   overflow: hidden;
   color: $color-purple-light;
   font-size: $font-size-small;
-  font-family: 'Roboto';
+  font-family: 'Roboto';  
 
 
   &__title {

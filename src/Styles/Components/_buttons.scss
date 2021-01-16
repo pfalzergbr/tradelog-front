@@ -9,14 +9,25 @@
   color: $color-purple-light;
   box-shadow: $shadow-light;
   outline: none;
+  cursor: pointer;
 
   &--primary {
     border: 1px solid $color-purple-light;
     background: $color-purple-light;
     color: $color-darkest;
+
+    &:hover, &:active , &:focus {
+      background: $color-off-white;
+      border-color: $color-off-white;
+    }
   }
 
   &--outline {
     border: 1px solid $color-purple-light;
+
+    &:hover, &:active , &:focus {
+      border-color: $color-off-white;
+      color: $color-off-white;
+    }
   }
 }

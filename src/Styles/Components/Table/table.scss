@@ -19,6 +19,13 @@ th, td {
   color: $color-off-white;
 }
 
+tr {
+  cursor: pointer;
+  &:hover, &:active , &:focus {
+    background: $color-purple-dark;
+  }
+}
+
 .table-container {
   font-family: 'Roboto';
   font-size: $font-size-small;
