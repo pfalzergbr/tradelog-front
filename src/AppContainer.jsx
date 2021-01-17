@@ -20,7 +20,6 @@ const AppContainer = () => {
   }, [token, dispatch]);
 
   useEffect(() => {
-
     const userData = JSON.parse(localStorage.getItem('userData'));
     if (userData && userData.user && userData.token) {
       dispatch(loadUser(userData));

@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 
 export const loginUser = async (data, dispatch) => {
   try {
-    console.log(data)
     const response = await dispatch(
       login({
         method: 'post',
@@ -16,7 +15,6 @@ export const loginUser = async (data, dispatch) => {
     return response;
   } catch (error) {
     toast.error('Cannot log in. Please try again');
-    console.log(error);
   }
 };
 
