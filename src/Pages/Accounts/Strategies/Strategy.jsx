@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { openModal } from '../../../Redux/Actions/modalActions';
-import { fetchTrades } from '../../../Redux/Actions/tradeActions';
 import { selectStrategy } from '../../../Redux/Reducers/strategy';
 
 import TradeList from '../../Trades/Table/TradeList';
 import LoadingGroup from '../../Shared/LoadingGroup';
+import { fetchTradesByStrategy } from '../../../Services/Requests/tradeRequests';
 
 const Strategy = () => {
   const { strategyId } = useParams();
@@ -28,21 +28,8 @@ const Strategy = () => {
   };
 
   useEffect(() => {
-    const fetchTradesByStrategy = async (token, strategy) => {
-      try {
-        const response = await dispatch(
-          fetchTrades({
-            url: `${process.env.REACT_APP_API}/api/trades/strategy/${strategy.strategy_id}`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-        );
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
     if (strategy) {
-      fetchTradesByStrategy(token, strategy);
+      fetchTradesByStrategy(token, strategy, dispatch);
     }
   }, [token, strategy, dispatch]);
 

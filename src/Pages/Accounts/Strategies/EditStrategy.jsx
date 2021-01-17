@@ -2,31 +2,17 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
-import { updateStrategy } from '../../../Redux/Actions/strategyActions';
-import { useHistory } from 'react-router-dom';
+import { editStrategy } from '../../../Services/Requests/strategyRequests';
 
 const NewStrategy = props => {
   const { strategy, token } = props.data;
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const onSubmit = async data => {
-    try {
-      const response = await dispatch(
-        updateStrategy({
-          method: 'patch',
-          url: `${process.env.REACT_APP_API}/api/strategy/${strategy.strategy_id}`,
-          data: data,
-          auth: { Authorization: `Bearer ${token}` },
-        }),
-      );
-      history.push(
-        `/${response.strategy.user_id}/strategies/${response.strategy.strategy_id}`,
-      );
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
+    await editStrategy(data, strategy.strategy_id, token, dispatch);
+    // history.push(
+    //   `/${response.strategy.user_id}/strategies/${response.strategy.strategy_id}`,
+    // );
   };
 
   return (

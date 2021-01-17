@@ -11,7 +11,7 @@ const NewTrade = props => {
 
   const onSubmit = async data => {
     const accountId = props.data.account.account_id;
-    editAccount(data, accountId, token, dispatch);
+    await editAccount(data, accountId, token, dispatch);
     // history.push(
     //   `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
     // );

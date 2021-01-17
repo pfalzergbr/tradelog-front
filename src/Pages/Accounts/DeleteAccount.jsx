@@ -15,7 +15,7 @@ const DeleteAccount = props => {
     setIsChecked(event.target.checked);
   };
   const handleDelete = async () => {
-    deleteAccount(accountId, token, dispatch);
+    await deleteAccount(accountId, token, dispatch);
     history.replace(`/${userId}/accounts/`);
     closeModal();
   };

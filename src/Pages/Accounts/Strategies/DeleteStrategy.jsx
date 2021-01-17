@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { removeStrategy } from '../../../Redux/Actions/strategyActions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { deleteStrategy } from '../../../Services/Requests/strategyRequests';
 
 const DeleteStrategy = props => {
   const { closeModal, data } = props;
-  const { strategy_id, strategy_name, user_id, account_id } = data.strategy;
+  const { strategy_id: strategyId, strategy_name, user_id, account_id } = data.strategy;
   const { token } = data;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
@@ -16,20 +17,9 @@ const DeleteStrategy = props => {
   };
 
   const handleDelete = async () => {
-    try {
-      const response = await dispatch(
-        removeStrategy({
-          method: 'delete',
-          url: `${process.env.REACT_APP_API}/api/strategy/${strategy_id}`,
-          auth: { Authorization: `Bearer ${token}` },
-        }),
-      );
-      history.replace(`/${user_id}/accounts/${account_id}`);
-      closeModal();
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
+    await deleteStrategy(strategyId, token, dispatch);
+    history.replace(`/${user_id}/accounts/${account_id}`);
+    closeModal();
   };
 
   return (

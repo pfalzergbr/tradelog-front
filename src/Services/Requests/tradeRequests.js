@@ -11,9 +11,25 @@ export const fetchTradesByAccount = async (token, account, dispatch) => {
     );
     return response;
   } catch (error) {
-    console.log(error);
+    toast.error(`Cannot fetch data. Please try again!`)
   }
 };
+
+export const fetchTradesByStrategy = async (token, strategy, dispatch) => {
+  try {
+    const response = await dispatch(
+      fetchTrades({
+        url: `${process.env.REACT_APP_API}/api/trades/strategy/${strategy.strategy_id}`,
+        auth: { Authorization: `Bearer ${token}` },
+      }),
+    );
+    return response;
+  } catch (error) {
+    toast.error(`Cannot fetch data. Please try again!`)
+  }
+};
+
+
 
 
 export const addTrade = async (data, token, dispatch) => {

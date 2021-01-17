@@ -48,9 +48,10 @@ export const editAccount = async (data, accountId, token, dispatch) => {
         auth: { Authorization: `Bearer ${token}` },
       }),
     );
+    toast(`Account edited`);
     return response;
   } catch (error) {
-    console.log(error);
+    toast.error('Something went wrong. Please try again later');
   }
 };
 
@@ -64,8 +65,9 @@ export const deleteAccount = async (accountId, token, dispatch) => {
         auth: { Authorization: `Bearer ${token}` },
       }),
     );
+    toast(`Account deleted.`);
     return response;
   } catch (error) {
-    console.log(error);
+    toast.error('Something went wrong. Please try again later');
   }
 }

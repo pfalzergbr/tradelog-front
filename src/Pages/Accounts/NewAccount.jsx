@@ -10,7 +10,7 @@ const NewAccount = props => {
   const dispatch = useDispatch();
 
   const onSubmit = async data => {
-    addAccount(data, token, dispatch);
+    await addAccount(data, token, dispatch);
     // history.push(`/${response.user_id}/accounts/${response.account_id}`);
   };
 
