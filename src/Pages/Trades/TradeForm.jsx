@@ -6,6 +6,9 @@ import * as yup from 'yup';
 import Button from '../Shared/ui/Button';
 
 import ErrorMessage from '../Shared/ErrorMessage';
+import InputText from '../Shared/ui/formControl/InputText';
+import TextArea from '../Shared/ui/formControl/TextArea';
+import Select from '../Shared/ui/formControl/Select';
 
 const basicTradeSchema = yup.object().shape({
   symbol: yup.string().required(),
@@ -33,82 +36,84 @@ const TradeForm = ({ onSubmit, accounts }) => {
     strategy => strategy.account_id === watchAccount,
   );
 
+  const outcomeOptions = [
+    { optionValue: 'breakeven', optionName: 'Breakeven' },
+    { optionValue: 'profit', optionName: 'Profit' },
+    { optionValue: 'loss', optionName: 'Loss' },
+  ];
+
+  const biasOptions = [
+    { optionValue: 'neutral', optionName: 'Neutral' },
+    { optionValue: 'bullish', optionName: 'Bullish' },
+    { optionValue: 'bearish', optionName: 'Bearish' },
+  ];
+
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit(onSubmit)} className='form form--trade'>
         <h2 className='form__title'>New Trade</h2>
         <div className='form__items'>
-          <div className='form-control'>
-            <label htmlFor='symbol'>Symbol</label>
-            <input
-              name='symbol'
-              ref={register}
-              placeholder='Trade symbol or ticker'
-            />
-            {errors.symbol && <ErrorMessage message={errors.symbol.message} />}
-          </div>
-          <div className='form-control'>
-            <label htmlFor='account'>Account</label>
-            <select name='account' ref={register}>
-              {accounts &&
-                accounts.map(account => (
-                  <option key={account.account_id} value={account.account_id}>
-                    {account.account_name}
-                  </option>
-                ))}
-            </select>
-          </div>
-          <div className='form-control'>
-            <label htmlFor='strategy'>Strategy</label>
-            <select name='strategy' ref={register}>
-              {accountStrategies &&
-                accountStrategies.map(strategy => (
-                  <option
-                    key={strategy.strategy_id}
-                    value={strategy.strategy_id}>
-                    {strategy.strategy_name}
-                  </option>
-                ))}
-            </select>
-            <label htmlFor='outcome'>Outcome</label>
-            <select name='outcome' ref={register}>
-              <option value='breakeven'>Breakeven</option>
-              <option value='profit'>Profit</option>
-              <option value='loss'>Loss</option>
-            </select>
-          </div>
-          <div className='form-control'>
-            <label htmlFor='bias'>Bias</label>
-            <select name='bias' ref={register}>
-              <option value='bullish'>Bullish</option>
-              <option value='bearish'>Bearish</option>
-            </select>
-          </div>
-          <div className='form-control'>
-            <label htmlFor='amount'>Amount</label>
-            <input
-              type='number'
-              step='0.01'
-              name='amount'
-              ref={register}
-              placeholder='Profit or loss value'
-            />
-            {errors.amount && <ErrorMessage message={errors.amount.message} />}
-          </div>
-          <div className='form-control'>
-            <label htmlFor='notes'>Notes</label>
-            <textarea
-              name='notes'
-              ref={register}
-              placeholder='Optional notes'
-            />
-            {errors.notes && <ErrorMessage message={errors.notes.message} />}
-          </div>
-          <div className='form-control'>
-            <label htmlFor='date'>Date</label>
-            <input type='date' name='date' ref={register}></input>
-            {errors.date && <ErrorMessage message={errors.date.message} />}
-          </div>
+          <InputText
+            label='Symbol'
+            placeholder='Trade symbol or ticker'
+            name='symbol'
+            register={register}
+            errors={errors}
+          />
+          <Select
+            name='account'
+            label='Account'
+            optionsArray={accounts}
+            register={register}
+            optionValue='account_id'
+            optionName='account_name'
+          />
+          <Select
+            name='strategy'
+            label='Strategy'
+            optionsArray={accountStrategies}
+            register={register}
+            optionValue='strategy_id'
+            optionName='strategy_name'
+          />
+          <Select
+            name='outcome'
+            label='Trade Outcome'
+            optionsArray={outcomeOptions}
+            register={register}
+            optionValue='optionValue'
+            optionName='optionName'
+          />
+          <Select
+            name='bias'
+            label='Trade Bias'
+            optionsArray={biasOptions}
+            register={register}
+            optionValue='optionValue'
+            optionName='optionName'
+          />
+          <InputText
+            label='Amount'
+            placeholder='Profit or loss value'
+            name='amount'
+            type='number'
+            register={register}
+            errors={errors}
+          />
+          <TextArea
+            label='Notes'
+            placeholder='Optional notes'
+            name='notes'
+            register={register}
+            errors={errors}
+          />
+          <InputText
+            label='Date'
+            name='date'
+            type='date'
+            register={register}
+            errors={errors}
+          />
         </div>
         <div className='form__button-container'>
           <Button disabled={!isValid} buttonStyle='primary' type='submit'>

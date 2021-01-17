@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import ErrorMessage from '../../ErrorMessage';
 
 const InputText = ({ label, type = 'text', placeholder, name, register, errors, step}) => {
   const placeHolderText = placeholder ? placeholder : label;
-  // const registerRef = useRef();
 
   return (
     <div className='form-control'>
