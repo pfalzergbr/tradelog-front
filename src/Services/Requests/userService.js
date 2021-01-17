@@ -1,8 +1,10 @@
 import { login } from '../../Redux/Actions/authActions';
+import { loadUserData } from '../../Redux/Actions/loadActions';
 import { toast } from 'react-toastify';
 
 export const loginUser = async (data, dispatch) => {
   try {
+    console.log(data)
     const response = await dispatch(
       login({
         method: 'post',
@@ -31,5 +33,18 @@ export const registerUser = async (data, dispatch) => {
     return response;
   } catch (error) {
     toast.error('Cannot log in. Please try again');
+  }
+};
+
+export const populateUserData = async (token, dispatch) => {
+  try {
+    dispatch(
+      loadUserData({
+        url: `${process.env.REACT_APP_API}/api/user/userData`,
+        auth: { Authorization: `Bearer ${token}` },
+      }),
+    );
+  } catch (error) {
+    toast.error('Cannot fetch data. Please try again');
   }
 };

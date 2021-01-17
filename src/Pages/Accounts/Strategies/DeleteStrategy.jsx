@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { removeStrategy } from '../../../Redux/Actions/strategyActions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteStrategy } from '../../../Services/Requests/strategyRequests';

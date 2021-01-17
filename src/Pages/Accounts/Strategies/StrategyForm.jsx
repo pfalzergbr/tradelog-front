@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import ErrorMessage from '../../Shared/ErrorMessage';
 
 import * as yup from 'yup';
 import InputText from '../../Shared/ui/formControl/InputText';

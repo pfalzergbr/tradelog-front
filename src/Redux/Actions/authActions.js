@@ -6,11 +6,10 @@ export const loginSuccess = (userData) => ({
     payload: userData,
 });
 
-export const loadUser = (userData) => ({ type: LOAD_USER, payload: userData });
-
 export const logout = () => ({
     type: LOGOUT,
 });
 
+export const loadUser = (userData) => ({ type: LOAD_USER, payload: userData });
 export const login = (requestData) => handleThunk(requestData, loginSuccess);
 
