@@ -1,4 +1,5 @@
-import { fetchTrades } from '../../Redux/Actions/tradeActions';
+import { fetchTrades, addNewTrade } from '../../Redux/Actions/tradeActions';
+import { toast } from 'react-toastify';
 
 export const fetchTradesByAccount = async (token, account, dispatch) => {
   try {
@@ -13,3 +14,23 @@ export const fetchTradesByAccount = async (token, account, dispatch) => {
     console.log(error);
   }
 };
+
+
+export const addTrade = async (data, token, dispatch) => {
+  const tradeData = data;
+
+  try {
+    const response = await dispatch(
+      addNewTrade({
+        method: 'post',
+        url: `${process.env.REACT_APP_API}/api/trades`,
+        data: tradeData,
+        auth: { Authorization: `Bearer ${token}` },
+      }),
+    );
+    toast(`New trade added - ${response.trade.symbol} `)
+    return response;
+  } catch (error) {
+    toast.error(`Something went wrong. Please try again!`)
+  }
+}

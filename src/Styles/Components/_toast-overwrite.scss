@@ -1,0 +1,12 @@
+.Toastify__toast {
+  font-size: $font-size-small;
+
+  &--default {
+    background: $color-dark;
+    color: $color-off-white;
+  }
+
+  // &--error {
+
+  // }
+}

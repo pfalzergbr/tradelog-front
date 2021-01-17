@@ -41,7 +41,12 @@ const AppContainer = () => {
 
   return (
     <React.Fragment>
-      <ToastContainer />
+      <ToastContainer
+        position='bottom-right'
+        hideProgressBar
+        closeOnClick
+        autoClose={5000}
+      />
       <ModalController />
       <AppRouter />
     </React.Fragment>
