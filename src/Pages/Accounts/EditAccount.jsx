@@ -1,34 +1,20 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import EditAccountForm from './EditAccountForm';
-import { updateAccount } from '../../Redux/Actions/accountActions';
 import LoadingGroup from '../Shared/LoadingGroup';
+import { editAccount } from '../../Services/Requests/accountRequests';
 
 const NewTrade = props => {
   const dispatch = useDispatch();
   const { token } = useSelector(state => state.auth);
-  const history = useHistory();
-
-  console.log(props);
 
   const onSubmit = async data => {
-    try {
-      const response = await dispatch(
-        updateAccount({
-          method: 'patch',
-          url: `${process.env.REACT_APP_API}/api/account/${props.data.account.account_id}`,
-          data,
-          auth: { Authorization: `Bearer ${token}` },
-        }),
-      );
-      history.push(
-        `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
-      );
-    } catch (error) {
-      console.log(error);
-    }
+    const accountId = props.data.account.account_id;
+    editAccount(data, accountId, token, dispatch);
+    // history.push(
+    //   `/${response.updatedAccount.user_id}/accounts/${response.updatedAccount.account_id}`,
+    // );
   };
 
   return (

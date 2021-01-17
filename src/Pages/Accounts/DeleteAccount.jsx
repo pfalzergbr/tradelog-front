@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { removeAccount } from '../../Redux/Actions/accountActions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { deleteAccount } from '../../Services/Requests/accountRequests';
 
 const DeleteAccount = props => {
   const { closeModal, data } = props;
-  const { account_id, user_id, account_name } = data.account;
+  const { account_id: accountId, user_id: userId, account_name } = data.account;
   const { token } = data;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
@@ -14,22 +14,10 @@ const DeleteAccount = props => {
   const handleChange = event => {
     setIsChecked(event.target.checked);
   };
-
   const handleDelete = async () => {
-    try {
-      history.replace(`/${user_id}/accounts/`);
-      const response = await dispatch(
-        removeAccount({
-          method: 'delete',
-          url: `${process.env.REACT_APP_API}/api/account/${account_id}`,
-          auth: { Authorization: `Bearer ${token}` },
-        }),
-      );
-      closeModal();
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
+    deleteAccount(accountId, token, dispatch);
+    history.replace(`/${userId}/accounts/`);
+    closeModal();
   };
 
   return (
