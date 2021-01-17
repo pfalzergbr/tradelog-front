@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 import Button from '../Shared/ui/Button';
 import InputText from '../Shared/ui/formControl/InputText';
+import CheckBox from '../Shared/ui/formControl/CheckBox';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -28,6 +29,11 @@ const LoginForm = ({ onSubmit }) => {
             type='password'
             name={'password'}
             label={'Password'}
+            register={register}
+          />
+          <CheckBox
+            name='keepLoggedIn'
+            label='Keep me logged in'
             register={register}
           />
         </div>

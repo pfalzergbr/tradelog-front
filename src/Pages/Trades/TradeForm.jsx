@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import Button from '../Shared/ui/Button';
 
-import ErrorMessage from '../Shared/ErrorMessage';
 import InputText from '../Shared/ui/formControl/InputText';
 import TextArea from '../Shared/ui/formControl/TextArea';
 import Select from '../Shared/ui/formControl/Select';
