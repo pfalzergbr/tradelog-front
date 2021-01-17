@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { removeTrade } from '../../Redux/Actions/tradeActions';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { deleteTrade } from '../../Services/Requests/tradeRequests';
 
 const DeleteTrade = props => {
   const { closeModal, data } = props;
-  const { trade_id, user_id, symbol } = data.trade;
+  const { trade_id: tradeId, user_id, symbol } = data.trade;
   const { token } = data;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
@@ -15,25 +15,10 @@ const DeleteTrade = props => {
     setIsChecked(event.target.checked);
   };
 
-  console.log(data.trade);
-
-
   const handleDelete = async () => {
-    try {
-      
-      const response = await dispatch(
-        removeTrade({
-          method: 'delete',
-          url: `${process.env.REACT_APP_API}/api/trades/${trade_id}`,
-          auth: { Authorization: `Bearer ${token}` },
-        }),
-      );
-      history.replace(`/${user_id}/accounts/`);
-      closeModal();
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
+    await deleteTrade(tradeId, token, dispatch)
+    closeModal();
+    history.replace(`/${user_id}/accounts/`);
   };
 
   return (

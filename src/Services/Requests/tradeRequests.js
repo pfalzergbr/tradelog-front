@@ -1,4 +1,4 @@
-import { fetchTrades, addNewTrade } from '../../Redux/Actions/tradeActions';
+import { fetchTrades, addNewTrade, removeTrade } from '../../Redux/Actions/tradeActions';
 import { toast } from 'react-toastify';
 
 export const fetchTradesByAccount = async (token, account, dispatch) => {
@@ -29,9 +29,6 @@ export const fetchTradesByStrategy = async (token, strategy, dispatch) => {
   }
 };
 
-
-
-
 export const addTrade = async (data, token, dispatch) => {
   const tradeData = data;
 
@@ -48,5 +45,21 @@ export const addTrade = async (data, token, dispatch) => {
     return response;
   } catch (error) {
     toast.error(`Something went wrong. Please try again!`)
+  }
+}
+
+export const deleteTrade = async (tradeId, token, dispatch) => {
+  try { 
+    const response = await dispatch(
+      removeTrade({
+        method: 'delete',
+        url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
+        auth: { Authorization: `Bearer ${token}` },
+      }),
+    );
+    toast('Trade successfully deleted.')
+    return response;
+  } catch (error) {
+    toast.error(`Cannot delete this trade. Please try again later`)
   }
 }
