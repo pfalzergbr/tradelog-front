@@ -1,6 +1,6 @@
 .nav {
   grid-area: nav-start / 1 / nav-end / -1;
-  display: flex;
+  @include grid-colums-3;
   height: 10rem;
   background-color: $color-purple-dark;
   align-items: center;
@@ -8,7 +8,8 @@
 
 
   &__container {
-    @include centered-container;
+    @include centered-in-grid-3;
+    display: flex;
     justify-content: space-between;
     flex-direction: column;
 

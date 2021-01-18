@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({children}) => {
   return (
     <footer className='footer'>
       <p className='footer__disclaimer'>
@@ -9,6 +9,7 @@ const Footer = () => {
         portfolio, does not provide invesment advice in any way. Please only
         invest at your own risk. The creator of this site does not take any
         responsibility for your trading losses in any way.
+        <div>{children}</div>
         <a
         className='attribution'
         href='https://www.vecteezy.com/free-vector/finance'>

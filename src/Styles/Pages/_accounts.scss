@@ -1,8 +1,14 @@
 .accounts {
-  @include centered-container;
-
+  @include centered-in-grid-3;
   display: grid;
-  grid-gap: $space-12;
-  grid-template-columns: repeat(4, 32rem);
+  grid-gap: $space-24;
+  grid-template-columns: repeat(3, 32rem) 1fr;
   grid-template-rows: 1fr 42rem;
+}
+
+.account-details {
+  @include centered-container;
+  display: grid;
+  grid-gap: $space-24;
+  
 }
