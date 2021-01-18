@@ -50,19 +50,17 @@ const AccountDetails = () => {
 
   return (
     <LoadingGroup>
-      <div className="account-details">
+      <div className='details'>
         <AccountDetailsHeader account={account} token={token} />
-        <div className='account-details'>
-          <div className='strategies-column'>
-            <AccordionMenu
-              account={accountStats}
-              strategies={accountStrategies}
-              setFilter={setFilter}
-            />
-          </div>
-          <div className='trades-column'>
-            <TradeList trades={filteredTrades} />
-          </div>
+        <div className='strategies-column'>
+          <AccordionMenu
+            account={accountStats}
+            strategies={accountStrategies}
+            setFilter={setFilter}
+          />
+        </div>
+        <div className='trades-column'>
+          <TradeList trades={filteredTrades} />
         </div>
       </div>
     </LoadingGroup>

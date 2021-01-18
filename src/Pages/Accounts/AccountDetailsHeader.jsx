@@ -20,7 +20,7 @@ const AccountDetailsHeader = ({account, token}) => {
   };
 
   return (
-    <div className='page-header'>
+    <div className='page-header page-header--details'>
       <div className="page-header__title-container">
         <h3 className='page-header__title'>{accountName}</h3>
         <h4 className='page-header__value'>${balance}</h4>
