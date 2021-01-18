@@ -36,12 +36,13 @@ export const registerUser = async (data, dispatch) => {
 
 export const populateUserData = async (token, dispatch) => {
   try {
-    dispatch(
+    const response = await dispatch(
       loadUserData({
         url: `${process.env.REACT_APP_API}/api/user/userData`,
         auth: { Authorization: `Bearer ${token}` },
       }),
     );
+    return response;
   } catch (error) {
     toast.error('Cannot fetch data. Please try again');
   }

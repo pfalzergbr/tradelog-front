@@ -8,7 +8,7 @@ import AccountCardList from './AccountCardList';
 import LoadingGroup from '../Shared/LoadingGroup';
 import AccountsHeader from './AccountsHeader';
 
-const Accounts = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const { user, token } = useSelector(state => state.auth);
   const { accounts } = useSelector(state => state.account);
@@ -33,4 +33,4 @@ const Accounts = () => {
   );
 };
 
-export default Accounts;
+export default Dashboard;

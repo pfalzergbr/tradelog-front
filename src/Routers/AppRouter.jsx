@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Nav from '../Pages/Shared/Nav';
 import Landing from '../Pages/Landing/Landing';
-import TradeDetails from '../Pages/Trades/TradeDetails';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
-import Profile from '../Pages/Profile/Profile';
-import Accounts from '../Pages/Accounts/Accounts';
-import AccountDetails from '../Pages/Accounts/AccountDetails';
 import NotFound from '../Pages/Shared/NotFound';
-import Strategy from '../Pages/Accounts/Strategies/Strategy';
+import Loading from '../Pages/Shared/Loading';
+
+const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
+const Profile = lazy(() => import('../Pages/Profile/Profile'))
+const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'))
+const Strategy = lazy(() => import('../Pages/Accounts/Strategies/Strategy'))
+const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'))
 
 const AppRouter = () => {
   const auth = useSelector(state => state.auth);
@@ -50,34 +52,36 @@ const AppRouter = () => {
   //Routes if there is a user logged in.
   const authRoutes = (
     <Switch>
-      <Route exact={true} path='/'>
-        <Landing />
-      </Route>
-      <Route path='/:userId/dashboard'>
-        <Accounts />
-      </Route>
-      <Route path='/:userId/profile'>
-        <Profile />
-      </Route>
-      <Route path='/:userId/accounts/:accountId'>
-        <AccountDetails />
-      </Route>
-      <Route path='/:userId/strategies/:strategyId'>
-        <Strategy />
-      </Route>
-      <Route path='/trade/:tradeId'>
-        <TradeDetails />
-      </Route>
-      <Route>
-        <NotFound />
-      </Route>
+      <Suspense fallback={<Loading />}>
+        <Route exact={true} path='/'>
+          <Landing />
+        </Route>
+        <Route path='/:userId/dashboard'>
+          <Dashboard />
+        </Route>
+        <Route path='/:userId/profile'>
+          <Profile />
+        </Route>
+        <Route path='/:userId/accounts/:accountId'>
+          <AccountDetails />
+        </Route>
+        <Route path='/:userId/strategies/:strategyId'>
+          <Strategy />
+        </Route>
+        <Route path='/trade/:tradeId'>
+          <TradeDetails />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Suspense>
     </Switch>
   );
 
   return (
     <div className='app'>
       <Nav data={token && user ? authLinks : publicLinks} user={user} />
-        <div className='container main-container'>
+      <div className='container main-container'>
         {token && user ? authRoutes : publicRoutes}
       </div>
     </div>
