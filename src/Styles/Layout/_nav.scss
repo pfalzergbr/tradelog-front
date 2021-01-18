@@ -4,13 +4,22 @@
   height: 10rem;
   background-color: $color-purple-dark;
   align-items: center;
+  justify-content: center;
+
 
   &__container {
     @include centered-container;
     justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 800px) {
+      flex-direction: row;
+    }
+
   }
   &__link-container {
     display: flex;
+    justify-content: center;
 
     & > .btn {
       margin-left: $space-16;
@@ -19,8 +28,14 @@
 }
 
 .logo {
+  display: none;
   font-family: 'Open-sans', sans-serif;
   font-weight: 700;
   font-size: $font-size-header-3;
   color: $color-purple-light;
+  justify-content: center;
+
+  @media (min-width: 800px) {
+    display: flex;
+  }
 }

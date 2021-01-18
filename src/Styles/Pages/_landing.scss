@@ -45,22 +45,28 @@
 
   &__title {
     color: $color-off-white;
-    font-size: $font-size-header-1;
-    line-height: 6.4rem;
+    font-size: $font-size-header-2;
+    line-height: 5.1rem;
     font-weight: 700;
-    margin-bottom: 2.4rem;
+    margin-bottom: $space-24;
+    
+    @media (min-width: 600px) {
+      font-size: $font-size-header-1;
+      line-height: 6.4rem;
+    }
   }
 
   &__subtitle {
-    font-size: $font-size-header-3;
-    line-height: 4.1rem;
+    font-size: $font-size-regular;
+    line-height: 2.6rem;
     font-weight: 300;
-    margin-bottom: 4.8rem;
+    margin-bottom: $space-48;
+    
+    @media (min-width: 600px) {
+      font-size: $font-size-header-3;
+      line-height: 4.1rem;
+    }
   }
-}
-
-.btn--cta {
-  margin-bottom: 5rem;
 }
 
 .graphic {
@@ -82,6 +88,7 @@
     position: absolute;
     height: 75%;
     stroke: #fff;
+    opacity: 0.6
   }
 
   // @media (min-width: 1200px){
