@@ -1,4 +1,8 @@
 .accounts {
   @include centered-container;
-  flex-direction: column;
+
+  display: grid;
+  grid-gap: $space-12;
+  grid-template-columns: repeat(4, 32rem);
+  grid-template-rows: 1fr 42rem;
 }

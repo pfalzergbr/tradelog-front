@@ -1,5 +1,7 @@
 .card-list {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: $space-12;
+  grid-template-columns: repeat(auto-fit, 32rem);
+  grid-row: 2 / 3;
+  grid-column: 1 / -1;
 }

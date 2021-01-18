@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Nav from '../Pages/Shared/Nav';
@@ -69,7 +69,6 @@ const AppRouter = () => {
         <Route path='/trade/:tradeId'>
           <TradeDetails />
         </Route>
-
       </Suspense>
     </Switch>
   );
