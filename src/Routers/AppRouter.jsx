@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Nav from '../Pages/Shared/Nav';
@@ -8,12 +8,13 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import NotFound from '../Pages/Shared/NotFound';
 import Loading from '../Pages/Shared/Loading';
+import Footer from '../Pages/Shared/Footer';
 
 const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
-const Profile = lazy(() => import('../Pages/Profile/Profile'))
-const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'))
-const Strategy = lazy(() => import('../Pages/Accounts/Strategies/Strategy'))
-const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'))
+const Profile = lazy(() => import('../Pages/Profile/Profile'));
+const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'));
+const Strategy = lazy(() => import('../Pages/Accounts/Strategies/Strategy'));
+const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'));
 
 const AppRouter = () => {
   const auth = useSelector(state => state.auth);
@@ -43,9 +44,6 @@ const AppRouter = () => {
       <Route path='/user/login'>
         <Login />
       </Route>
-      <Route>
-        <NotFound />
-      </Route>
     </Switch>
   );
 
@@ -71,9 +69,7 @@ const AppRouter = () => {
         <Route path='/trade/:tradeId'>
           <TradeDetails />
         </Route>
-        <Route>
-          <NotFound />
-        </Route>
+
       </Suspense>
     </Switch>
   );
@@ -84,6 +80,7 @@ const AppRouter = () => {
       <div className='container main-container'>
         {token && user ? authRoutes : publicRoutes}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,8 +1,7 @@
 .nav {
+  grid-area: nav-start / 1 / nav-end / -1;
   display: flex;
-  height: 10vh;
-  min-height: 6rem;
-  max-height: 10rem;
+  height: 10rem;
   background-color: $color-purple-dark;
   align-items: center;
 
