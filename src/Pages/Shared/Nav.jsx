@@ -27,9 +27,9 @@ const Nav = props => {
     <nav className='nav'>
       <div className='nav__container'>
         <div className='nav__logo-container'>
-          <Link to='/' className='logo'>
+
             <h3>TradeLog</h3>
-          </Link>
+ 
         </div>
         <div className='nav__link-container'>
           {links.map(link => (

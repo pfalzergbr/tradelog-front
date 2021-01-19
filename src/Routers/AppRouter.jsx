@@ -8,7 +8,6 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import NotFound from '../Pages/Shared/NotFound';
 import Loading from '../Pages/Shared/Loading';
-import Footer from '../Pages/Shared/Footer';
 
 const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
 const Profile = lazy(() => import('../Pages/Profile/Profile'));
@@ -79,7 +78,6 @@ const AppRouter = () => {
       <div className='container main-container'>
         {token && user ? authRoutes : publicRoutes}
       </div>
-      <Footer />
     </div>
   );
 };

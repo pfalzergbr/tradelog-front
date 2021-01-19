@@ -31,14 +31,14 @@ const StrategyForm = props => {
         <div className='form__items'>
         <InputText
           name='strategyName'
-          label='Register'
+          label='Strategy Name'
           register={register}
           errors={errors}
         />
         <TextArea
           placeholder='Brief description of the strategy'
-          name='strategyName'
-          label='Register'
+          name='description'
+          label='Description'
           register={register}
           errors={errors}
           isValid={isValid}

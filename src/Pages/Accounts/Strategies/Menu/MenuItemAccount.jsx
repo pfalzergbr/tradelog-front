@@ -1,22 +1,27 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
+import { selectAccountStats } from '../../../../Redux/Reducers/account';
 import { calcWinPercentage } from '../../../../Services/statService';
 import StatContainer from '../../AccountCard/StatContainer';
 
 // TODO - Build the whole menu for the actual app
 
 const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
+  const accountStats = useSelector(state => selectAccountStats(state, item.account_id)) || {};
+
   const {
     account_name,
-    total_pnl,
     balance,
     account_id,
+  } = item;
+  const {
+    total_pnl,
     average_profit,
     average_loss,
     num_of_profit,
     num_of_loss,
     num_of_trades,
-  } = item;
+  } = accountStats;
 
   // const riskReward = (profit, loss) => {
   //   return profit / -loss

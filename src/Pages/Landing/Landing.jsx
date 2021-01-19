@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Footer from '../Shared/Footer';
 
 const Landing = () => {
+
   return (
     <div className='landing-page'>
       <div className='landing-page__container'>
@@ -10,7 +13,7 @@ const Landing = () => {
             Analyse your accounts. Find your most profitable trading strategies.
             Repeat.
           </h3>
-          <button className='btn btn--primary btn--cta'>Sign up for free</button>
+          <Link className='btn btn--primary btn--cta' to='/user/register'>Sign up for free</Link>
         </main>
         <div className='landing-page__graphic-column'>
           <div className='graphic'>
@@ -27,6 +30,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

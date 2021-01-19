@@ -17,7 +17,7 @@ const AccountsHeader = ({ userName, openNewAccountModal }) => {
           Create New Account
         </Button>
 
-        <Button buttonStyle='outline' onClick={openNewAccountModal}>
+        <Button buttonStyle='outline'>
           Manage Profile
         </Button>
       </div>

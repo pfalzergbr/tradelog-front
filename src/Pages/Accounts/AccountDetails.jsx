@@ -24,8 +24,8 @@ const AccountDetails = () => {
   const { token } = useSelector(state => state.auth);
   const { trades } = useSelector(state => state.trade);
   const account = useSelector(state => selectAccount(state, accountId)) || {};
-  const accountStats =
-    useSelector(state => selectAccountStats(state, accountId)) || {};
+  // const accountStats =
+  //   useSelector(state => selectAccountStats(state, accountId)) || {};
   const dispatch = useDispatch();
   const accountStrategies =
     useSelector(state => selectAccountStrategies(state, accountId)) || {};
@@ -54,7 +54,7 @@ const AccountDetails = () => {
         <AccountDetailsHeader account={account} token={token} />
         <div className='strategies-column'>
           <AccordionMenu
-            account={accountStats}
+            account={account}
             strategies={accountStrategies}
             setFilter={setFilter}
           />
