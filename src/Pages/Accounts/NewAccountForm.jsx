@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import Button from '../Shared/ui/Button';
 import InputText from '../Shared/ui/formControl/InputText';
 import TextArea from '../Shared/ui/formControl/TextArea';
+import Select from '../Shared/ui/formControl/Select';
 
 const accountSchema = yup.object().shape({
   accountName: yup.string().required(),
@@ -19,6 +20,13 @@ const NewAccountForm = ({ onSubmit }) => {
   });
   const { isValid } = formState;
 
+  const currencyOptions = [
+    {optionValue: 'usd', optionName: 'USD - $'},
+    {optionValue: 'gbp', optionName: 'GBP - £'},
+    {optionValue: 'eur', optionName: 'EUR - €'},
+    {optionValue: 'jpy', optionName: 'JPY - ¥'}
+  ]
+
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
@@ -30,6 +38,13 @@ const NewAccountForm = ({ onSubmit }) => {
             register={register}
             errors={errors}
           />
+          <Select
+            name='currency'
+            label='Account Currency'
+            optionsArray={currencyOptions}
+            register={register}
+            errors={errors}
+            />
           <InputText
             name='balance'
             label='Opening Balance'

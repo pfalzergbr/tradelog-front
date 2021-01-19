@@ -4,11 +4,10 @@ import MenuItem from './MenuItem';
 import MenuItemAccount from './MenuItemAccount';
 
 const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
-  const [activeItem, setActiveItem] = useState('1');
+  const [activeItem, setActiveItem] = useState(account.account_id);
   const setActive = title => {
     setActiveItem(title);
   };
-
 
   // VERY_VERY hacky, but at least it works. Fint a more elegant way to refactor in a reusable way
   // Major refactor needed from the backend? Swap the SQL join logic? Merge strategyies and strategystats?

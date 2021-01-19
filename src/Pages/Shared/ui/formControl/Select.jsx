@@ -1,6 +1,7 @@
 import React from 'react';
+import ErrorMessage from '../../ErrorMessage';
 
-const Select = ({name, label, optionsArray, register, optionValue, optionName}) => {
+const Select = ({name, label, optionsArray, register, optionValue = 'optionValue', optionName = 'optionName', errors}) => {
   return (
     <div className='form-control'>
       <label htmlFor={name}>{label}</label>
@@ -12,6 +13,7 @@ const Select = ({name, label, optionsArray, register, optionValue, optionName}) 
             </option>
           ))}
       </select>
+      {errors && errors.name && <ErrorMessage message={errors.name.message} />}
     </div>
   );
 };
