@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   paginate,
@@ -17,6 +17,11 @@ const Pagination = ({ data }) => {
   const handlePageChange = e => {
     setCurrentPage(e.target.value);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data])
+
 
   return (
     <React.Fragment>
