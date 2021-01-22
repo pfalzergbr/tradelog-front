@@ -101,6 +101,10 @@
   &__link {
     color: $color-purple-medium;
     display: block;
+
+    &:hover , &:active {
+      color: $color-purple-light;
+    }
   }
 
 }

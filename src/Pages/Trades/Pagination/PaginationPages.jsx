@@ -9,7 +9,7 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
         {pageNumbers.map(page => (
           <button
             className={`table-pagination__btn ${
-              currentPage === page ? 'table-pagination__btn--active' : null
+              currentPage === page ? 'table-pagination__btn--active' : ''
             } `}
             onClick={handlePageChange}
             key={page}

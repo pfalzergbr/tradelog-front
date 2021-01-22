@@ -22,7 +22,9 @@ const Register = () => {
 
   return (
     <LoadingGroup>
-      <RegisterForm onSubmit={onSubmit} />
+      <div className="register-page">
+        <RegisterForm onSubmit={onSubmit} />
+      </div>
     </LoadingGroup>
   );
 };
