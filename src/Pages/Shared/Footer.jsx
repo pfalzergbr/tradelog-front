@@ -9,7 +9,6 @@ const Footer = ({children}) => {
         portfolio, does not provide invesment advice in any way. Please only
         invest at your own risk. The creator of this site does not take any
         responsibility for your trading losses in any way.
-        <div>{children}</div>
         <a
         className='attribution'
         href='https://www.vecteezy.com/free-vector/finance'>
