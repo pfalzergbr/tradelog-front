@@ -1,11 +1,11 @@
 import React from 'react';
 import EditAccount from '../Accounts/EditAccount';
 import DeleteAccount from '../Accounts/DeleteAccount';
-import DeleteStrategy from '../Accounts/Strategies/DeleteStrategy';
+import DeleteStrategy from '../Strategies/DeleteStrategy';
 import DeleteTrade from '../Trades/DeleteTrade';
 import NewAccount from '../Accounts/NewAccount';
-import NewStrategy from '../Accounts/Strategies/NewStrategy';
-import EditStrategy from '../Accounts/Strategies/EditStrategy';
+import NewStrategy from '../Strategies/NewStrategy';
+import EditStrategy from '../Strategies/EditStrategy';
 import NewTrade from '../Trades/NewTrade';
 
 export const getCurrentModal = (modalName, modalData, handleCloseModal) => {

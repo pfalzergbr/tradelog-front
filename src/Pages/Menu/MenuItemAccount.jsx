@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectAccountStats } from '../../../../Redux/Reducers/account';
-import { calcWinPercentage } from '../../../../Services/statService';
-import StatContainer from '../../AccountCard/StatContainer';
+import { selectAccountStats } from '../../Redux/Reducers/account';
+import { calcWinPercentage } from '../../Services/statService';
+import StatContainer from '../Accounts/AccountCard/StatContainer';
 
 // TODO - Build the whole menu for the actual app
 

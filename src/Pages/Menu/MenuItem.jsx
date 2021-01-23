@@ -1,8 +1,8 @@
 import React from 'react';
-import StatContainer from '../../AccountCard/StatContainer';
+import StatContainer from '../Accounts/AccountCard/StatContainer';
 
 import { useSelector } from 'react-redux';
-import { selectStrategyStat } from '../../../../Redux/Reducers/strategy';
+import { selectStrategyStat } from '../../Redux/Reducers/strategy';
 
 // TODO - Build the whole menu for the actual app
 

@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import * as yup from 'yup';
-import InputText from '../../Shared/ui/formControl/InputText';
-import TextArea from '../../Shared/ui/formControl/TextArea';
-import Button from '../../Shared/ui/Button';
+import InputText from '../Shared/ui/formControl/InputText';
+import TextArea from '../Shared/ui/formControl/TextArea';
+import Button from '../Shared/ui/Button';
 
 const strategySchema = yup.object().shape({
   strategyName: yup.string().required(),

@@ -8,7 +8,7 @@ import InputText from '../Shared/ui/formControl/InputText';
 import CheckBox from '../Shared/ui/formControl/CheckBox';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
+  email: yup.string().email('This must be a valid E-mail address').required('E-mail address is required.'),
   password: yup.string().required(),
 });
 

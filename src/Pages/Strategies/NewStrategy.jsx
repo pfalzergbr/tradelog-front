@@ -1,15 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
-import { editStrategy } from '../../../Services/Requests/strategyRequests';
+import { newStrategy } from '../../Services/Requests/strategyRequests';
 
 const NewStrategy = props => {
-  const { strategy, token } = props.data;
+  const { accountId } = props.data;
+  const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   const onSubmit = async data => {
-    await editStrategy(data, strategy.strategy_id, token, dispatch);
+    await newStrategy(data, accountId, token, dispatch);
     // history.push(
     //   `/${response.strategy.user_id}/strategies/${response.strategy.strategy_id}`,
     // );
@@ -18,11 +19,7 @@ const NewStrategy = props => {
   return (
     <div>
       <button onClick={props.closeModal}>X</button>
-      <StrategyForm
-        strategyData={strategy}
-        button='Edit Strategy'
-        onSubmit={onSubmit}
-      />
+      <StrategyForm onSubmit={onSubmit} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { deleteStrategy } from '../../../Services/Requests/strategyRequests';
+import { deleteStrategy } from '../../Services/Requests/strategyRequests';
 
 const DeleteStrategy = props => {
   const { closeModal, data } = props;

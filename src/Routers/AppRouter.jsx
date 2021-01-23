@@ -12,7 +12,7 @@ import Loading from '../Pages/Shared/Loading';
 const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
 const Profile = lazy(() => import('../Pages/Profile/Profile'));
 const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'));
-const Strategy = lazy(() => import('../Pages/Accounts/Strategies/Strategy'));
+const Strategy = lazy(() => import('../Pages/Strategies/Strategy'));
 const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'));
 
 const AppRouter = () => {

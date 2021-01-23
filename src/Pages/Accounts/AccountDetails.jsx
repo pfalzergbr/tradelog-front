@@ -16,7 +16,7 @@ import { tradeFilter } from '../../Services/filterService';
 
 import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
-import AccordionMenu from './Strategies/Menu/AccordionMenu';
+import AccordionMenu from '../Menu/AccordionMenu';
 import AccountDetailsHeader from './AccountDetailsHeader';
 
 const AccountDetails = () => {

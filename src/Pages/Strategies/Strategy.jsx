@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { openModal } from '../../../Redux/Actions/modalActions';
-import { selectStrategy } from '../../../Redux/Reducers/strategy';
+import { openModal } from '../../Redux/Actions/modalActions';
+import { selectStrategy } from '../../Redux/Reducers/strategy';
 
-import TradeList from '../../Trades/Table/TradeList';
-import LoadingGroup from '../../Shared/LoadingGroup';
-import { fetchTradesByStrategy } from '../../../Services/Requests/tradeRequests';
+import TradeList from '../Trades/Table/TradeList';
+import LoadingGroup from '../Shared/LoadingGroup';
+import { fetchTradesByStrategy } from '../../Services/Requests/tradeRequests';
 
 const Strategy = () => {
   const { strategyId } = useParams();
