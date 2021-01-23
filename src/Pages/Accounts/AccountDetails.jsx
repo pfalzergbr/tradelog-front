@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {
   selectAccount,
-  selectAccountStats,
 } from '../../Redux/Reducers/account';
 import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 

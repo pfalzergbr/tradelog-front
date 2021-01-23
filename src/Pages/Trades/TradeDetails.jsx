@@ -21,20 +21,22 @@ const TradeDetails = () => {
   };
 
   useEffect(() => {
-    const fetchTradeById = async (token, tradeId) => {
-      try {
-        const response = await dispatch(
-          fetchTrade({
-            url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
+    if (!trade.symbol) {
+      const fetchTradeById = async (token, tradeId) => {
+        try {
+          const response = await dispatch(
+            fetchTrade({
+              url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
             auth: { Authorization: `Bearer ${token}` },
           }),
-        );
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchTradeById(token, tradeId);
+          );
+          return response;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchTradeById(token, tradeId);
+    }
   }, [token, tradeId, dispatch]);
 
   //TODO - Do Edit trade

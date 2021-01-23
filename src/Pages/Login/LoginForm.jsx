@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,7 +12,7 @@ const loginSchema = yup.object().shape({
     .string()
     .email('This must be a valid E-mail address')
     .required('E-mail address is required.'),
-  password: yup.string().required(),
+  password: yup.string().required('Password is required.').min(7, 'Password must be at least 7 characters'),
 });
 
 const LoginForm = ({ onSubmit }) => {
@@ -23,8 +23,6 @@ const LoginForm = ({ onSubmit }) => {
   });
   const { isValid } = formState;
 
-  console.log(errors)
-  
   return (
     <div className='form-container'>
       <form className='form form--login' onSubmit={handleSubmit(onSubmit)}>
