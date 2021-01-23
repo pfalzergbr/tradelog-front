@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,28 +8,40 @@ import InputText from '../Shared/ui/formControl/InputText';
 import CheckBox from '../Shared/ui/formControl/CheckBox';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email('This must be a valid E-mail address').required('E-mail address is required.'),
+  email: yup
+    .string()
+    .email('This must be a valid E-mail address')
+    .required('E-mail address is required.'),
   password: yup.string().required(),
 });
 
 const LoginForm = ({ onSubmit }) => {
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(loginSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onChange'
   });
   const { isValid } = formState;
 
+  console.log(errors)
+  
   return (
     <div className='form-container'>
       <form className='form form--login' onSubmit={handleSubmit(onSubmit)}>
         <h1 className='form__title'>Login</h1>
         <div className='form__items'>
-          <InputText name={'email'} label={'E-mail'} register={register} />
+          <InputText
+            name={'email'}
+            label={'E-mail'}
+            register={register}
+            errors={errors}
+          />
           <InputText
             type='password'
             name={'password'}
             label={'Password'}
             register={register}
+            errors={errors}
           />
           <CheckBox
             name='keepLoggedIn'

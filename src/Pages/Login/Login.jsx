@@ -8,6 +8,7 @@ import Footer from '../Shared/Footer';
 
 import LoadingGroup from '../Shared/LoadingGroup';
 import { loginUser } from '../../Services/Requests/userService';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,11 +16,16 @@ const Login = () => {
 
   // Submits a Post request for /api/user/login
   const onSubmit = async data => {
-    const response = await loginUser(data, dispatch);
-    if (data.keepLoggedIn) {
-      storeUser({ user: response.user, token: response.token });
+    try {
+      const response = await loginUser(data, dispatch);
+      if (data.keepLoggedIn) {
+        storeUser({ user: response.user, token: response.token });
+      }
+      history.push(`/${response.user.userId}/dashboard`);
+      toast('Logged in successfully! Welcome back!');
+    } catch (error){
+      toast.error('Cannot log in. Please try again');
     }
-    history.push(`/${response.user.userId}/dashboard`);
   };
 
   return (

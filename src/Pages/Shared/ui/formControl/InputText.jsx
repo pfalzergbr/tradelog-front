@@ -16,7 +16,7 @@ const InputText = ({ label, type = 'text', placeholder, name, register, errors, 
         placeholder={placeHolderText}
         ref={register}
       />
-      {errors && errors.name && <ErrorMessage message={errors.name.message} />}
+      {errors && errors[name] && <ErrorMessage message={errors[name].message} />}
     </div>
   );
 };

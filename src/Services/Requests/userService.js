@@ -3,7 +3,7 @@ import { loadUserData } from '../../Redux/Actions/loadActions';
 import { toast } from 'react-toastify';
 
 export const loginUser = async (data, dispatch) => {
-  try {
+  // try {
     const response = await dispatch(
       login({
         method: 'post',
@@ -11,11 +11,11 @@ export const loginUser = async (data, dispatch) => {
         data,
       }),
     );
-    toast('Logged in successfully! Welcome back!');
+    // toast('Logged in successfully! Welcome back!');
     return response;
-  } catch (error) {
-    toast.error('Cannot log in. Please try again');
-  }
+  // } catch (error) {
+  //   // toast.error('Cannot log in. Please try again');
+  // }
 };
 
 export const registerUser = async (data, dispatch) => {
