@@ -4,7 +4,7 @@ import TradeColumn from './TradeColumn';
 import { useHistory } from 'react-router-dom';
 
 const TradeItem = props => {
-  const { symbol, amount, date, bias, outcome, trade_id } = props.data;
+  const { symbol, amount, date, bias, outcome, trade_id, strategy_name } = props.data;
   const history = useHistory()
 
 
@@ -32,7 +32,7 @@ const TradeItem = props => {
     <tr className='trade-item' onClick={linkToTrade}>
 
         <TradeColumn color={color} text={symbol} />
-        <TradeColumn color={color} text='Strategy' />
+        <TradeColumn color={color} text={strategy_name} />
         <TradeColumn color={color} text={bias} />
         <TradeColumn color={color} text={formattedAmount} />
         <TradeColumn color={color} text={formattedDate} />
