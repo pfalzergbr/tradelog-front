@@ -6,7 +6,7 @@ import { selectStrategyStat } from '../../Redux/Reducers/strategy';
 
 // TODO - Build the whole menu for the actual app
 
-const MenuItem = ({ item, active, setActive, setFilter }) => {
+const MenuItem = ({ item, active, setActive, setFilter, currency }) => {
   const strategyStats =
     useSelector(state => selectStrategyStat(state, item.strategy_id)) || {};
   const {
@@ -21,8 +21,9 @@ const MenuItem = ({ item, active, setActive, setFilter }) => {
 
   const activate = () => {
     setActive(item.strategy_id);
-    setFilter(item.strategy_id)
+    setFilter(item.strategy_id);
   };
+
 
   return (
     <div className='menu-item'>
@@ -39,6 +40,7 @@ const MenuItem = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-heading'
           containerClass='item-container'
+          currency={currency}
         />
       </div>
 
@@ -61,6 +63,7 @@ const MenuItem = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={currency}
         />
         <StatContainer
           text='Average Loss'
@@ -68,6 +71,7 @@ const MenuItem = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={currency}
         />
         <StatContainer
           text='Number of Trades'

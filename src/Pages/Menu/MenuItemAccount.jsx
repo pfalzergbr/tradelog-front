@@ -6,7 +6,7 @@ import StatContainer from '../Accounts/AccountCard/StatContainer';
 
 // TODO - Build the whole menu for the actual app
 
-const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
+const MenuItemAccount = ({ item, active, setActive, setFilter, currency }) => {
   const accountStats =
     useSelector(state => selectAccountStats(state, item.account_id)) || {};
   const { account_name, balance, account_id } = item;
@@ -41,6 +41,7 @@ const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-heading'
           containerClass='item-container'
+          currency={currency}
         />
       </div>
 
@@ -56,6 +57,7 @@ const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={item.currency}
         />
         <StatContainer
           text='Balance'
@@ -63,6 +65,7 @@ const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={item.currency}
         />
         <StatContainer
           text='Win Percentage'
@@ -77,6 +80,7 @@ const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={item.currency}
         />
         {/*<StatContainer
           text='Average Risk-Reward'
@@ -91,6 +95,7 @@ const MenuItemAccount = ({ item, active, setActive, setFilter }) => {
           type='amount'
           variant='accordion-content'
           containerClass='item-container'
+          currency={item.currency}
         />
         <StatContainer
           text='Number of Trades'

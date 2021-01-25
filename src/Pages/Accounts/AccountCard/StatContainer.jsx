@@ -6,6 +6,7 @@ const StatContainer = ({
   type,
   variant = 'card-body',
   containerClass = 'stat-container',
+  currency
 }) => {
   const getResultColor = (type, value) => {
     if (type === 'amount') {
@@ -13,10 +14,15 @@ const StatContainer = ({
     }
     return '';
   };
-
-  const getUnit = type => {
+  const getUnit = (type, currency) => {
+    const currencyMap = {
+      usd: '$',
+      gbp: '£',
+      eur: '€',
+      jpy: '¥'
+    }
     if (type === 'amount') {
-      return '$';
+      return currencyMap[currency];
     } else if (type === 'percentage') {
       return '%';
     } else {
@@ -25,7 +31,7 @@ const StatContainer = ({
   };
 
   const resultColor = getResultColor(type, value);
-  const unit = getUnit(type);
+  const unit = getUnit(type, currency);
 
   //TODO - Add currencies and +/- signs. Add a div around the span for styling
   // Todo - Fix nulls from server side, and remove edge case

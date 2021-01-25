@@ -18,6 +18,7 @@ const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
         active={activeItem}
         setActive={setActive}
         setFilter={setFilter}
+        currency={account.currency}
       />
       {strategies &&
         strategies.map(item => (
@@ -27,6 +28,7 @@ const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
             active={activeItem}
             setActive={setActive}
             setFilter={setFilter}
+            currency={account.currency}
           />
         ))}
     </div>

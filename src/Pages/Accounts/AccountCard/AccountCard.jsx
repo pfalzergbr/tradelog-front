@@ -16,7 +16,8 @@ const AccountCard = props => {
   const currentAccountStats = useSelector(
     state => selectAccountStats(state, account_id) || {},
   );
-  const { account_name, balance } = props.accountData;
+  const { account_name, balance, currency } = props.accountData;
+  console.log(props.accountData)
 
   const relativeGain =
     calcRelativeGain(
@@ -30,6 +31,7 @@ const AccountCard = props => {
       currentAccountStats.num_of_loss,
     ) || 0;
 
+
   return (
     <Card>
       <CardHeader accountName={account_name} relativeGain={relativeGain} />
@@ -39,8 +41,9 @@ const AccountCard = props => {
           text='Total Profit'
           value={currentAccountStats.total_pnl}
           type='amount'
+          currency={currency}
         />
-          <StatContainer text='Balance' value={balance} type='amount' />
+          <StatContainer text='Balance' value={balance} type='amount' currency={currency} />
           <StatContainer
             text='Win Percentage'
             value={winPercentage}
@@ -51,11 +54,13 @@ const AccountCard = props => {
             text='Average Profit'
             value={currentAccountStats.average_profit}
             type='amount'
+            currency={currency}
           />
           <StatContainer
             text='Average Loss'
             value={currentAccountStats.average_loss}
             type='amount'
+            currency={currency}
           />
           <StatContainer
           text='Number of Trades'
