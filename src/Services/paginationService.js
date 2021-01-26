@@ -20,3 +20,15 @@ export const generatePageNumbers = paginatedData => {
   }
   return pageNumbers;
 };
+
+
+export const fillPaginatedData = (pageData, itemPerPage) => {
+  console.log(pageData);
+  let i = pageData.length
+  let filledPageData = pageData;
+  while (i < itemPerPage) {
+    filledPageData.push({})
+    i++
+  }
+  return filledPageData
+}

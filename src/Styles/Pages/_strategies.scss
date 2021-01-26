@@ -9,7 +9,7 @@
 .details {
   @include centered-in-grid-3;
   display: grid;
-  grid-template-columns: 42rem 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 18rem 1fr;
   grid-gap: $space-24;
 }

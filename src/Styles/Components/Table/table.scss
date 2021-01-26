@@ -6,7 +6,6 @@ table {
   border-radius: 10px 10px 0 0;
   overflow: hidden;
   box-shadow: $shadow-light;
-  border: 1px solid red;
 }
 
 tbody {
@@ -22,10 +21,22 @@ td {
 
 tr {
   cursor: pointer;
+
   &:hover,
   &:active,
   &:focus {
     background: $color-purple-dark;
+  }
+}
+
+.trade-item--empty {
+  height: 3rem;
+  cursor: initial;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: inherit;
   }
 }
 

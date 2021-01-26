@@ -1,7 +1,7 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  width: 420px;
+  width: 100%;
 
   &
     > .menu-item:last-child
@@ -25,7 +25,7 @@
 .menu-item {
   display: flex;
   flex-direction: column;
-  padding: $space-4 0;
+  padding-bottom: $space-8;
 }
 
 .item-container {
@@ -38,14 +38,14 @@
 .accordion-heading {
   display: flex;
   background: $color-dark;
-  height: 4.2rem;
+  min-height: 4.2rem;
   align-items: center;
   color: $color-purple-light;
   cursor: pointer;
-
+  
   &--active {
     background: $color-purple-dark;
-    margin-bottom: .8rem;
+    // margin-bottom: .8rem;
   }
 
   &:hover, &:active , &:focus {
@@ -69,18 +69,19 @@
   color: $color-purple-light;
   font-size: $font-size-small;
   font-family: 'Roboto';  
-
-
+  
+  
   &__title {
     font-size: $font-size-small;
     font-weight: 400;
   }
   
   // &__value{
-  
-  // }
-
-  &--show {
+    
+    // }
+    
+    &--show {
+    padding-top: $space-8;
     height: 100%;
     opacity: 1;
   }

@@ -9,7 +9,8 @@ import PaginatedData from './PaginatedData';
 import PaginationPages from './PaginationPages';
 
 const Pagination = ({ data }) => {
-  const paginatedData = paginate(data, 15);
+  const itemPerPage = 15;
+  const paginatedData = paginate(data, itemPerPage);
   const pageNumbers = generatePageNumbers(paginatedData);
   const [currentPage, setCurrentPage] = useState(1);
   const pageData = paginatedData[currentPage - 1];
@@ -27,7 +28,7 @@ const Pagination = ({ data }) => {
     <React.Fragment>
       <table className='table-container'>
         <TradeListHeader />
-        <PaginatedData pageData={pageData} />
+        <PaginatedData pageData={pageData} itemPerPage={itemPerPage}/>
       </table>
       <PaginationPages
         handlePageChange={handlePageChange}
