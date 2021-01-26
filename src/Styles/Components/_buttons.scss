@@ -11,6 +11,10 @@
   outline: none;
   cursor: pointer;
 
+  &:hover, &:active , &:focus {
+    color: $color-off-white;
+  }
+
   &--primary {
     border: 1px solid $color-purple-light;
     background: $color-purple-light;
@@ -19,6 +23,7 @@
     &:hover, &:active , &:focus {
       background: $color-off-white;
       border-color: $color-off-white;
+      color: $color-darkest;
     }
   }
 
@@ -32,7 +37,11 @@
   }
 
   &--close {
+    position: absolute;
     color: $color-off-white;
+    top: 7.5%;
+    right: 5%;
+    cursor:pointer
   }
 
   &--danger{

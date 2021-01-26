@@ -1,4 +1,5 @@
 .modal {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -27,7 +28,7 @@
     margin-bottom: $space-24;
   }
 
-  &__paragraph {
+  // &__paragraph {
     
-  }
+  // }
 }
