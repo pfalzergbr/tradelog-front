@@ -17,18 +17,17 @@ import TradeList from '../Trades/Table/TradeList';
 import LoadingGroup from '../Shared/LoadingGroup';
 import AccordionMenu from '../Menu/AccordionMenu';
 import AccountDetailsHeader from './AccountDetailsHeader';
+import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
 
 const AccountDetails = () => {
+  const [filter, setFilter] = useState(null);
   const { accountId } = useParams();
   const { token } = useSelector(state => state.auth);
   const { trades } = useSelector(state => state.trade);
   const account = useSelector(state => selectAccount(state, accountId)) || {};
-  // const accountStats =
-  //   useSelector(state => selectAccountStats(state, accountId)) || {};
   const dispatch = useDispatch();
   const accountStrategies =
     useSelector(state => selectAccountStrategies(state, accountId)) || {};
-  const [filter, setFilter] = useState(null);
   const filteredTrades = tradeFilter(trades, 'strategy_id', filter);
 
   useEffect(() => {
@@ -57,6 +56,9 @@ const AccountDetails = () => {
             strategies={accountStrategies}
             setFilter={setFilter}
           />
+        </div>
+        <div className="strategy-details">
+          <StrategyDetailsHeader />
         </div>
         <div className='trades-column'>
           <TradeList trades={filteredTrades} />

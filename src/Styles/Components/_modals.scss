@@ -1,0 +1,33 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  font-size: $font-size-regular;
+  color: $color-grey-light;
+  background: $color-dark;
+  padding: $space-24 $space-48;
+  border-radius: 1rem;
+  font-family: 'Lato';
+  box-shadow: $shadow-light;
+
+  &__body {
+    margin-bottom: $space-24;
+  }
+
+
+  &__checkbox {
+    text-align: left;
+    justify-content: left;
+    & > input {
+      margin-right: 1rem;
+    }
+  }
+  &__title {
+    font-size: 4.1rem;
+    margin-bottom: $space-24;
+  }
+
+  &__paragraph {
+    
+  }
+}

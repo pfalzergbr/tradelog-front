@@ -30,4 +30,24 @@
       color: $color-off-white;
     }
   }
+
+  &--close {
+    color: $color-off-white;
+  }
+
+  &--danger{
+    border: 1px solid $color-red;
+    color: $color-red;
+  }
+
+}
+
+.buttons-container {
+  height: 8rem;
+  display: flex;
+  align-items: center;
+
+  & .btn {
+    margin-right: $space-16;
+  }
 }

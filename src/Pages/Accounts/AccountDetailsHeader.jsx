@@ -27,7 +27,7 @@ const AccountDetailsHeader = ({account, token}) => {
       </div>
       <p className='page-header__paragraph'>{description}</p>
       <div className='page-header__button-container'>
-        <button className='btn btn--primary' onClick={openStrategyModal}>
+        <button className='btn btn--outline' onClick={openStrategyModal}>
           New Strategy
         </button>
         <button className='btn btn--secondary' onClick={openEditModal}>

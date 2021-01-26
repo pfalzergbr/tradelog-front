@@ -28,7 +28,7 @@ const Nav = props => {
       <div className='nav__container'>
         <div className='nav__logo-container'>
 
-            <h3>TradeLog</h3>
+            <h3 className='logo'>TradeLog</h3>
  
         </div>
         <div className='nav__link-container'>
