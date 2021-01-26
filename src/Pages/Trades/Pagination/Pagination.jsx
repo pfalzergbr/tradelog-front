@@ -19,6 +19,14 @@ const Pagination = ({ data }) => {
     setCurrentPage(e.target.value);
   };
 
+  const changeSort = () => {
+
+  }
+
+  const sortTrades = () => {
+    
+  }
+
   useEffect(() => {
     setCurrentPage(1);
   }, [data])

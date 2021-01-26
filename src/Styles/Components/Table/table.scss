@@ -28,17 +28,24 @@ tr {
     background: $color-purple-dark;
   }
 }
+.trade-item {
 
-.trade-item--empty {
-  height: 3rem;
-  cursor: initial;
+  &__column {
+    padding-left: $space-24;
+  }
 
-  &:hover,
-  &:active,
-  &:focus {
-    background: inherit;
+  &--empty {
+    height: 3rem;
+    cursor: initial;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background: inherit;
+    }
   }
 }
+
 
 .table-container {
   font-family: 'Roboto';
@@ -51,6 +58,7 @@ tr {
   &__column {
     height: 4.2rem;
     color: $color-off-white;
+    padding-left: $space-24;
 
     &--active {
       color: $color-purple-medium;

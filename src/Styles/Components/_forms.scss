@@ -8,9 +8,6 @@
 .form-control {
   display: flex;
   flex-direction: column;
-  // align-items: center;
-
-
 
   &--checkbox {
     align-items: center;
@@ -18,8 +15,6 @@
     display: flex;
     flex-direction: row;
     margin-top: $space-24;
-  
-    
   }
 }
 
@@ -31,8 +26,8 @@
   font-size: $font-size-regular;
   color: $color-grey-light;
   background: $color-dark;
-  padding: $space-24 $space-48; 
-  border-radius: $space-24;
+  padding: $space-24 $space-48;
+  border-radius: 1rem;
   font-family: 'Lato';
   box-shadow: $shadow-light;
 
@@ -44,22 +39,47 @@
   &__title {
     font-size: 4.1rem;
     margin-bottom: $space-24;
-
   }
 
   & label {
     padding: $space-16 0 $space-12;
     margin-left: $space-24;
-    
   }
-  
-  & input, select, option, textarea {
+
+  // & input,
+  // select,
+  // option,
+  // textarea {
+  //   // padding-top: $space-8;
+  //   // padding-bottom: $space-8;
+  //   // padding-left: $space-24;
+  //   // width: 100%;
+  //   // border-radius: 1rem;
+  //   // background-color: $color-purple-dark;
+  //   // outline: none;
+  //   // border: none;
+  //   // box-shadow: $shadow-light;
+  //   // font-family: 'Lato';
+  //   // letter-spacing: 1px;
+  //   // color: $color-off-white;
+  // }
+
+  & input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  &__input {
     padding-top: $space-8;
     padding-bottom: $space-8;
     padding-left: $space-24;
     width: 100%;
     border-radius: 1rem;
-    // text-align: center;
     background-color: $color-purple-dark;
     outline: none;
     border: none;
@@ -67,18 +87,11 @@
     font-family: 'Lato';
     letter-spacing: 1px;
     color: $color-off-white;
-  }
 
-  & input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0; 
+    &--error {
+      border: 1px solid $color-red;
+    }
   }
-  
-  input[type=number] {
-      -moz-appearance:textfield;
-  }
-
 
   &__button-container {
     display: flex;
@@ -87,7 +100,9 @@
     justify-content: center;
     width: 100%;
 
-    & > button, a, p {
+    & > button,
+    a,
+    p {
       margin-bottom: $space-4;
       width: 100%;
       text-align: center;
@@ -102,13 +117,20 @@
     color: $color-purple-medium;
     display: block;
 
-    &:hover , &:active {
+    &:hover,
+    &:active {
       color: $color-purple-light;
     }
   }
-
 }
 
-input[type=checkbox] {
+input[type='checkbox'] {
   width: auto;
+}
+
+.error {
+  font-size: $font-size-small;
+  display: block;
+  color: $color-red;
+  margin-left: $space-24;
 }

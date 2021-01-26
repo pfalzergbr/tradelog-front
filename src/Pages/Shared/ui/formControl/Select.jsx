@@ -1,11 +1,19 @@
 import React from 'react';
 import ErrorMessage from '../../ErrorMessage';
 
-const Select = ({name, label, optionsArray, register, optionValue = 'optionValue', optionName = 'optionName', errors}) => {
+const Select = ({
+  name,
+  label,
+  optionsArray,
+  register,
+  optionValue = 'optionValue',
+  optionName = 'optionName',
+  errors,
+}) => {
   return (
     <div className='form-control'>
       <label htmlFor={name}>{label}</label>
-      <select name={name} ref={register}>
+      <select className='form__input' name={name} ref={register}>
         {optionsArray &&
           optionsArray.map(option => (
             <option key={option[optionValue]} value={option[optionValue]}>
@@ -13,7 +21,9 @@ const Select = ({name, label, optionsArray, register, optionValue = 'optionValue
             </option>
           ))}
       </select>
-      {errors && errors.name && <ErrorMessage message={errors.name.message} />}
+      {errors && errors[name] && (
+        <ErrorMessage message={errors[name].message} />
+      )}
     </div>
   );
 };
