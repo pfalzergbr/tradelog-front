@@ -7,8 +7,8 @@ import InputText from '../Shared/ui/formControl/InputText';
 import TextArea from '../Shared/ui/formControl/TextArea';
 
 const accountSchema = yup.object().shape({
-  accountName: yup.string().required(),
-  description: yup.string().required(),
+  accountName: yup.string().required('Account name is required'),
+  description: yup.string().required('Description is required'),
 });
 
 const EditAccountForm = ({ onSubmit, data }) => {

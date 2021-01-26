@@ -8,8 +8,8 @@ import TextArea from '../Shared/ui/formControl/TextArea';
 import Button from '../Shared/ui/Button';
 
 const strategySchema = yup.object().shape({
-  strategyName: yup.string().required(),
-  description: yup.string().required(),
+  strategyName: yup.string().required('Strategy name is required'),
+  description: yup.string().required('Description is required'),
 });
 
 const StrategyForm = props => {

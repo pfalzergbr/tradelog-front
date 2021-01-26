@@ -11,7 +11,7 @@ const accountSchema = yup.object().shape({
   accountName: yup.string().required('Account name is required'),
   currency: yup.string().required(),
   balance: yup.number().required('Opening balance is required'),
-  description: yup.string().required(),
+  description: yup.string().required('A short description is required'),
 });
 
 const NewAccountForm = ({ onSubmit }) => {

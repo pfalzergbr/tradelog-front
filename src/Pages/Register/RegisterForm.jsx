@@ -9,15 +9,21 @@ import CheckBox from '../Shared/ui/formControl/CheckBox';
 
 const registerSchema = yup.object().shape({
   name: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(6).required(),
+  email: yup
+    .string()
+    .email('This must be a valid E-mail address')
+    .required('E-mail address is required.'),
+  password: yup
+    .string('Password is required.')
+    .min(6)
+    .required('Password must be at least 6 characters'),
   verify: yup
     .string()
     .oneOf(
       [yup.ref('password'), null],
       'Confirmation has to match your password',
     )
-    .required(),
+    .required('Password verification is required'),
 });
 
 const RegisterForm = ({ onSubmit }) => {
