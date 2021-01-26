@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import EditAccountForm from './EditAccountForm';
 import LoadingGroup from '../Shared/LoadingGroup';
 import { editAccount } from '../../Services/Requests/accountRequests';
+import Button from '../Shared/ui/Button';
 
 const NewTrade = props => {
   const dispatch = useDispatch();
@@ -19,8 +20,10 @@ const NewTrade = props => {
 
   return (
     <LoadingGroup>
-      <div>
-        <button onClick={props.closeModal}>X</button>
+      <div className='modal'>
+        <Button buttonStyle='close' onClick={props.closeModal}>
+          x
+        </Button>
         <EditAccountForm onSubmit={onSubmit} data={props.data} />
       </div>
     </LoadingGroup>

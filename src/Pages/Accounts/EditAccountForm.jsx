@@ -27,7 +27,7 @@ const EditAccountForm = ({ onSubmit, data }) => {
     <React.Fragment>
       <div className='form-container'>
         <form className='form' onSubmit={handleSubmit(onSubmit)}>
-          <h1>Account Details</h1>
+          <h3 className='form__title'>Edit Account</h3>
           <div className='form__items'>
             <InputText
               name='accountName'
@@ -41,11 +41,11 @@ const EditAccountForm = ({ onSubmit, data }) => {
               register={register}
               errors={errors}
             />
-            <div className='form__button-container'>
-              <Button buttonStyle='primary' disabled={!isValid} type='submit'>
-                Edit Account
-              </Button>
-            </div>
+          </div>
+          <div className='form__button-container'>
+            <Button buttonStyle='primary' disabled={!isValid} type='submit'>
+              Edit Account
+            </Button>
           </div>
         </form>
       </div>

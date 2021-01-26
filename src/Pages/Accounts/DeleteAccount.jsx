@@ -23,9 +23,9 @@ const DeleteAccount = props => {
 
   return (
     <div className='modal'>
-      <button className='btn--close' onClick={closeModal}>
-        X
-      </button>
+      <Button buttonStyle='close' onClick={closeModal}>
+        x
+      </Button>
       <div className='modal__body'>
         <h3 className='modal__title'>{`You are trying to delete your ${account_name} account.`}</h3>
         <p className='modal__paragraph'>

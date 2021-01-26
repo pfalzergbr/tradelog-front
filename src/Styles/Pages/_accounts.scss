@@ -3,5 +3,6 @@
   display: grid;
   grid-gap: $space-24;
   grid-template-columns: repeat(auto-fit, 32rem);
-  grid-template-rows: 26rem 42rem;
+  grid-template-rows: 1fr 42rem;
+  justify-content: center;
 }
