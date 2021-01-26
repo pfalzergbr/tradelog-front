@@ -32,7 +32,7 @@ const StatContainer = ({
 
   const resultColor = getResultColor(type, value);
   const unit = getUnit(type, currency);
-
+  const formattedValue = value % 1 === 0 ? Math.round(value) : value
   //TODO - Add currencies and +/- signs. Add a div around the span for styling
   // Todo - Fix nulls from server side, and remove edge case
   return (
@@ -41,7 +41,7 @@ const StatContainer = ({
       <span
         className={`${variant}__value ${
           value !== 0 ? resultColor : null
-        }`}>{`${unit}${Math.round(value) || 0}`}</span>
+        }`}>{`${formattedValue || 0}${unit}`}</span>
     </div>
   );
 };

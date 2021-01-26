@@ -3,8 +3,8 @@ import { format } from 'date-fns';
 import TradeColumn from './TradeColumn';
 import { useHistory } from 'react-router-dom';
 
-const TradeItem = props => {
-  const { symbol, amount, date, bias, outcome, trade_id, strategy_name } = props.data;
+const TradeItem = ({data, currency}) => {
+  const { symbol, amount, date, bias, outcome, trade_id, strategy_name } = data;
   const history = useHistory()
 
 

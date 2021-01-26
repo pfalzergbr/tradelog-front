@@ -10,14 +10,14 @@ import TextArea from '../Shared/ui/formControl/TextArea';
 import Select from '../Shared/ui/formControl/Select';
 
 const basicTradeSchema = yup.object().shape({
-  symbol: yup.string().required(),
+  symbol: yup.string().required('Symbol is required'),
   outcome: yup.string().required(),
   bias: yup.string().required(),
-  amount: yup.number().required(),
+  amount: yup.number('Amount must be a number').required('Amount is required'),
   account: yup.string().required(),
   strategy: yup.string().required(),
   notes: yup.string(),
-  date: yup.date().required(),
+  date: yup.date().required('Date is required'),
 });
 
 const TradeForm = ({ onSubmit, accounts }) => {

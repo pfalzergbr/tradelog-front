@@ -63,3 +63,9 @@ export const selectAccountStats = (state, accountId) => {
     account => account.account_id === accountId,
   );
 }
+
+export const selectAccountCurrency = ( state, accountId ) => {
+  return (state.account.accounts.find(
+    account => account.account_id === accountId,
+  )).currency;
+}
