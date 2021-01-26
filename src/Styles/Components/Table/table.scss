@@ -1,28 +1,30 @@
 table {
   margin: 0 auto;
-  // height: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  width: 420px;
+  width: 100%;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
   box-shadow: $shadow-light;
+  border: 1px solid red;
 }
 
 tbody {
   background: $color-dark;
 }
 
-
-th, td {
-  padding: .8rem;
-  text-align: center;
+th,
+td {
+  padding: 0.8rem;
+  text-align: left;
   color: $color-off-white;
 }
 
 tr {
   cursor: pointer;
-  &:hover, &:active , &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     background: $color-purple-dark;
   }
 }
@@ -34,7 +36,7 @@ tr {
 
 .table-header {
   background: $color-purple-dark;
-  
+
   &__column {
     height: 4.2rem;
     color: $color-off-white;
@@ -45,17 +47,14 @@ tr {
   }
 }
 
-
-
-
 .table-pagination {
   display: flex;
   align-items: center;
   width: 100%;
   // height: 4.2rem;
   background: $color-purple-dark;
-  border-radius:0 0 10px 10px;
-  
+  border-radius: 0 0 10px 10px;
+
   // &__btn-container {
 
   // }
@@ -64,7 +63,7 @@ tr {
     font-family: 'Roboto';
     font-size: 1.4rem;
     color: $color-off-white;
-    padding: .8rem 2rem;
+    padding: 0.8rem 2rem;
 
     &--active {
       color: $color-purple-medium;

@@ -5,11 +5,3 @@
   grid-template-columns: repeat(auto-fit, 32rem);
   grid-template-rows: 26rem 42rem;
 }
-
-.details {
-  @include centered-in-grid-3;
-  display: grid;
-  grid-template-columns: repeat(3, 42rem) 1fr;
-  grid-template-rows: 26rem 42rem;
-  grid-gap: $space-12;
-}

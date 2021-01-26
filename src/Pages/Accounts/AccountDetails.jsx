@@ -51,7 +51,7 @@ const AccountDetails = () => {
     <LoadingGroup>
       <div className='details'>
         <AccountDetailsHeader account={account} token={token} />
-        <div className='strategies-column'>
+        <div className='menu-column'>
           <AccordionMenu
             account={account}
             strategies={accountStrategies}

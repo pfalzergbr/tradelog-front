@@ -21,7 +21,7 @@ const TradeItem = ({data, currency}) => {
     }
   };
   const color = setItemColor(outcome);
-  const formattedDate = format(new Date(date), 'dd/M');
+  const formattedDate = format(new Date(date), 'dd/M/Y');
   const formattedAmount = (amount >= 0 ? '+' : '') + amount + '$';
 
   const linkToTrade = () => {
@@ -34,6 +34,7 @@ const TradeItem = ({data, currency}) => {
         <TradeColumn color={color} text={symbol} />
         <TradeColumn color={color} text={strategy_name} />
         <TradeColumn color={color} text={bias} />
+        <TradeColumn color={color} text={outcome} />
         <TradeColumn color={color} text={formattedAmount} />
         <TradeColumn color={color} text={formattedDate} />
 
