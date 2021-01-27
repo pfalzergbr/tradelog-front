@@ -17,6 +17,7 @@ const Nav = props => {
     dispatch(openModal('newTrade', {}));
   };
 
+
   const logoutUser = () => {
     dispatch(logout());
     clearUser();

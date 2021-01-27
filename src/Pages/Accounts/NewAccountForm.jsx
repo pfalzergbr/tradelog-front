@@ -43,6 +43,7 @@ const NewAccountForm = ({ onSubmit }) => {
             name='currency'
             label='Account Currency'
             optionsArray={currencyOptions}
+            optionValue='optionValue'
             register={register}
             errors={errors}
             />
