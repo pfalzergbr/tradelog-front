@@ -12,6 +12,7 @@ const TradeItemPlaceholder = () => {
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
+    <TradeColumn color={color} text={text} />
 </tr>
    );
 }

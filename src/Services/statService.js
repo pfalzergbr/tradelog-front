@@ -16,3 +16,11 @@ export const calcRelativeGain = (openingBalance = 0, currentBalance = 0) => {
   }
   return relativeGain;
 }
+
+export const calcTradeGain = (snapshotBalance, tradeAmount) => {
+  const relativeGain = ((tradeAmount / snapshotBalance) * 100).toFixed(2)
+  if (relativeGain === 'NaN'){
+    return 0
+  }
+  return relativeGain;
+}

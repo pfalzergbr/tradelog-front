@@ -2,9 +2,10 @@ import React from 'react';
 import { format } from 'date-fns';
 import TradeColumn from './TradeColumn';
 import { useHistory } from 'react-router-dom';
+import { calcTradeGain } from '../../../Services/statService';
 
-const TradeItem = ({data, currency}) => {
-  const { symbol, amount, date, bias, outcome, trade_id, strategy_name } = data;
+const TradeItem = ({data }) => {
+  const { symbol, amount, date, bias, outcome, trade_id, strategy_name, snapshot_balance, currency } = data;
   const history = useHistory()
 
 
@@ -20,9 +21,11 @@ const TradeItem = ({data, currency}) => {
         return '';
     }
   };
+  
   const color = setItemColor(outcome);
   const formattedDate = format(new Date(date), 'dd/M/Y');
   const formattedAmount = (amount >= 0 ? '+' : '') + amount + '$';
+  const gainPercentage = calcTradeGain(snapshot_balance, amount) + '%';
 
   const linkToTrade = () => {
     history.push(`/trade/${trade_id}`);
@@ -34,6 +37,7 @@ const TradeItem = ({data, currency}) => {
         <TradeColumn color={color} text={strategy_name} />
         <TradeColumn color={color} text={bias} />
         <TradeColumn color={color} text={outcome} />
+        <TradeColumn color={color} text={gainPercentage}/>
         <TradeColumn color={color} text={formattedAmount}/>
         <TradeColumn color={color} text={formattedDate} />
     </tr>

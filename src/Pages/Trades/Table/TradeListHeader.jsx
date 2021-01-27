@@ -10,6 +10,7 @@ const TradeListHeader = () => {
         <th className='table-header__column'>Strategy</th>
         <th className='table-header__column'>Bias</th>
         <th className='table-header__column'>Outcome</th>
+        <th className='table-header__column'>Gain %</th>
         <th className='table-header__column'>Profit/Loss</th>
         <th className='table-header__column'>Date</th>
       </tr>
