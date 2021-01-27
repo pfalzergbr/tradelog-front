@@ -4,6 +4,7 @@ import {
   EDIT_STRATEGY,
   DELETE_STRATEGY,
   LOAD_STRATEGY_STATS,
+  ADD_ACCOUNT,
 } from '../constants';
 
 const initialState = { strategies: [], strategyStats: [], isLoaded: { strategies: false, strategyStats: false} };
@@ -15,6 +16,9 @@ export const strategy = (state = initialState, action = {}) => {
     case ADD_STRATEGY:
       const newStrategy = action.payload.newStrategy;
       return { ...state, strategies: [...state.strategies, newStrategy] };
+    case ADD_ACCOUNT:
+      const defaultStrategy = action.payload.newStrategy;
+      return { ...state, strategies: [...state.strategies, defaultStrategy] };
     case EDIT_STRATEGY:
       const updatedStrategy = action.payload.updatedStrategy;
       const updatedStrategies = state.strategies.map(strategy =>

@@ -3,7 +3,7 @@ import { handleThunk } from '../handleThunk';
 
 const addAccount = (accountData) => ({
     type: ADD_ACCOUNT,
-    payload: { newAccount: accountData },
+    payload: { newAccount: accountData.account, newStrategy: accountData.strategy },
 });
 
 const editAccount = (accountData) => ({
