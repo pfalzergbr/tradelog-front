@@ -34,7 +34,7 @@ const TradeItem = ({data, currency}) => {
         <TradeColumn color={color} text={strategy_name} />
         <TradeColumn color={color} text={bias} />
         <TradeColumn color={color} text={outcome} />
-        <TradeColumn color={color} text={formattedAmount} />
+        <TradeColumn color={color} text={formattedAmount}/>
         <TradeColumn color={color} text={formattedDate} />
     </tr>
   );

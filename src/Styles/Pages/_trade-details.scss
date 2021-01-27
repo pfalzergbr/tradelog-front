@@ -1,0 +1,15 @@
+.trade-details {
+  @include centered-in-grid-3;
+  display: flex;
+  flex-direction: column;
+  background: $color-dark;
+  max-width: 35rem;
+  border-radius: 1rem;
+  padding: $space-16 $space-40;
+  align-self: top;
+  // justify-self: top;
+
+  &__title {
+
+  }
+}

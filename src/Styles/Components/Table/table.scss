@@ -14,7 +14,7 @@ tbody {
 
 th,
 td {
-  padding: 0.8rem;
+  padding: $space-8;
   text-align: left;
   color: $color-off-white;
 }
@@ -32,6 +32,13 @@ tr {
 
   &__column {
     padding-left: $space-24;
+
+    &--right {
+      display: block;
+      width: 100%;
+      text-align: right;
+
+    }
   }
 
   &--empty {
@@ -59,6 +66,15 @@ tr {
     height: 4.2rem;
     color: $color-off-white;
     padding-left: $space-24;
+
+    &--right {
+      text-align: right;
+      width: 12rem;
+    }
+
+    &--outcome {
+      width: 8rem;
+    }
 
     &--active {
       color: $color-purple-medium;

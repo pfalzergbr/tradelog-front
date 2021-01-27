@@ -8,6 +8,7 @@ import NewStrategy from '../Strategies/NewStrategy';
 import EditStrategy from '../Strategies/EditStrategy';
 import NewTrade from '../Trades/NewTrade';
 
+
 export const getCurrentModal = (modalName, modalData, handleCloseModal) => {
   switch (modalName) {
     case 'newAccount':

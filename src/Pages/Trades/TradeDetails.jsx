@@ -3,10 +3,11 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns';
 
-import { fetchTrade } from '../../Redux/Actions/tradeActions';
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
 import LoadingGroup from '../Shared/LoadingGroup';
+import { fetchTradeById } from '../../Services/Requests/tradeRequests';
+import Button from '../Shared/ui/Button';
 
 const TradeDetails = () => {
   const { token } = useSelector(state => state.auth);
@@ -22,40 +23,34 @@ const TradeDetails = () => {
 
   useEffect(() => {
     if (!trade.symbol) {
-      const fetchTradeById = async (token, tradeId) => {
-        try {
-          const response = await dispatch(
-            fetchTrade({
-              url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
-            auth: { Authorization: `Bearer ${token}` },
-          }),
-          );
-          return response;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchTradeById(token, tradeId);
+      fetchTradeById(token, tradeId, dispatch, trade.symbol);
     }
   }, [token, tradeId, dispatch]);
 
   //TODO - Do Edit trade
   return (
     <LoadingGroup>
-      <div>
-        <h1>TradeDetails</h1>
-        <h2>{symbol}</h2>
-        <p>{outcome}</p>
-        <p>{date && format(new Date(date), 'Mo MMMM, yyyy')}</p>
-        <span>{amount}</span>
-        <button>Edit Details</button>
-        <button
-          onClick={() => {
-            history.go(-1);
-          }}>
-          Back
-        </button>
-        <button onClick={openDeleteModal}>Delete</button>
+      <div className='trade-details'>
+        <div className='trade-details__header'>
+          <p className='trade-details__date'>
+            {date && format(new Date(date), 'Mo MMMM, yyyy')}
+          </p>
+          <h2 className='trade-details__symbol'>{symbol}</h2>
+        </div>
+        <div className='trade-details__body'>
+          <p className='trade-details__outcome'>{outcome}</p>
+          <p className='trade-details__amount'>{amount}</p>
+        </div>
+        <div className='buttons-container'>
+          <Button
+            buttonStyle='outline'
+            onClick={() => {
+              history.go(-1);
+            }}>
+            Back
+          </Button>
+          <Button onClick={openDeleteModal}>Delete</Button>
+        </div>
       </div>
     </LoadingGroup>
   );
