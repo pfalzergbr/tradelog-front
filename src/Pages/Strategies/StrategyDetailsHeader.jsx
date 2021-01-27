@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectStrategy } from '../../Redux/Reducers/strategy';
+import Button from '../Shared/ui/Button';
 
 const StrategyDetailsHeader = ({ currentStrategy }) => {
   const dispatch = useDispatch();
@@ -30,9 +31,13 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
             Select your account to show all trades
           </p>
           <div className='page-header__button-container'>
-            <button className='btn btn--primary'>New Trade</button>
-            <button className='btn btn--secondary' onClick={openEditModal}>Edit Strategy</button>
-            <button className='btn btn--secondary' onClick={openDeleteModal}>Delete Strategy</button>
+            <Button buttonStyle='primary'>New Trade</Button>
+            <Button buttonStyle='' onClick={openEditModal}>
+              Edit Strategy
+            </Button>
+            <Button buttonStyle='' onClick={openDeleteModal}>
+              Delete Strategy
+            </Button>
           </div>
         </div>
       ) : (
@@ -45,7 +50,7 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
             Select a strategy on the side menu to filter your trades
           </p>
           <div className='page-header__button-container'>
-            <button className='btn btn--primary'>New Trade</button>
+            <Button buttonStyle='primary'>New Trade</Button>
           </div>
         </div>
       )}
