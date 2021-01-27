@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteStrategy } from '../../Services/Requests/strategyRequests';
+import Button from '../Shared/ui/Button';
 
 const DeleteStrategy = props => {
   const { closeModal, data } = props;
-  const { strategy_id: strategyId, strategy_name, user_id, account_id } = data.strategy;
+  const {
+    strategy_id: strategyId,
+    strategy_name,
+    user_id,
+    account_id,
+  } = data.strategy;
   const { token } = data;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
@@ -22,29 +28,37 @@ const DeleteStrategy = props => {
   };
 
   return (
-    <div>
-      <button onClick={closeModal}>X</button>
-      <h1>{`You are trying to delete your ${strategy_name} Strategy.`}</h1>
-      <p>
-        You are trying to delete this strategy. Once it is deleted, this action
-        cannot be reversed. All trades associated with this account will be
-        permanently deleted.
-      </p>
-      <form action=''>
-        <label htmlFor='confirm-delete'>
-          Yes, I am sure I want to delete this strategy
-        </label>
-        <input
-          type='checkbox'
-          id='confirm-delete'
-          checked={isChecked}
-          onChange={handleChange}
-        />
-      </form>
-      <button disabled={!isChecked} onClick={handleDelete}>
-        Delete
-      </button>
-      <button onClick={closeModal}>Cancel</button>
+    <div className='modal'>
+      <Button buttonStyle='close'>x</Button>
+      <div className='modal-body'>
+        <h3 className='modal__title'>{`You are trying to delete your ${strategy_name} Strategy.`}</h3>
+        <p className='modal__paragraphj'>
+          You are trying to delete this strategy. Once it is deleted, this
+          action cannot be reversed. All trades associated with this account
+          will be permanently deleted.
+        </p>
+        <form className='form-control form-control--checkbox modal__checkbox'>
+          <input
+            className='form__input form__input--checkbox'
+            type='checkbox'
+            id='confirm-delete'
+            checked={isChecked}
+            onChange={handleChange}
+          />
+          <label htmlFor='confirm-delete'>
+            Yes, I am sure I want to delete this strategy
+          </label>
+        </form>
+      </div>
+      <div className='buttons-container'>
+        <Button
+          buttonStyle='danger'
+          onClick={handleDelete}
+          disabled={!isChecked}>
+          Delete
+        </Button>
+        <Button onClick={closeModal}>Cancel</Button>
+      </div>
     </div>
   );
 };
