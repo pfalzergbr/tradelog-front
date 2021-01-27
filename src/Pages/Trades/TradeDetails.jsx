@@ -14,7 +14,7 @@ const TradeDetails = () => {
   const { tradeId } = useParams();
   const history = useHistory();
   const trade = useSelector(state => selectTrade(state, tradeId) || {});
-  const { symbol, outcome, amount, date } = trade;
+  const { symbol, outcome, amount, date, strategy_name } = trade;
   const dispatch = useDispatch();
 
   const openDeleteModal = () => {
@@ -38,6 +38,7 @@ const TradeDetails = () => {
           <h2 className='trade-details__symbol'>{symbol}</h2>
         </div>
         <div className='trade-details__body'>
+        <p className="trade-details__strategy">{strategy_name}</p>
           <p className='trade-details__outcome'>{outcome}</p>
           <p className='trade-details__amount'>{amount}</p>
         </div>

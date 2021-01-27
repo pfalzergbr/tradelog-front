@@ -68,7 +68,7 @@ const AccountCard = props => {
           />
           <StatContainer
             text='Number of Strategies'
-            value={'Todo!'}
+            value={currentAccountStats.num_of_strategies}
             type='number'
           />
           <div className="card-footer">
