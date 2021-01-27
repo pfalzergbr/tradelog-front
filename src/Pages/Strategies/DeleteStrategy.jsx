@@ -29,10 +29,10 @@ const DeleteStrategy = props => {
 
   return (
     <div className='modal'>
-      <Button buttonStyle='close'>x</Button>
+      <Button buttonStyle='close' onClick={closeModal}>x</Button>
       <div className='modal-body'>
         <h3 className='modal__title'>{`You are trying to delete your ${strategy_name} Strategy.`}</h3>
-        <p className='modal__paragraphj'>
+        <p className='modal__paragraph'>
           You are trying to delete this strategy. Once it is deleted, this
           action cannot be reversed. All trades associated with this account
           will be permanently deleted.

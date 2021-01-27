@@ -11,8 +11,11 @@
   font-family: 'Lato';
   box-shadow: $shadow-light;
 
+  & > .buttons-container {
+    margin-top: $space-16;
+
+  }
   &__body {
-    margin-bottom: $space-24;
   }
 
 
@@ -24,7 +27,8 @@
     }
   }
   &__title {
-    font-size: 4.1rem;
+    font-size: $font-size-header-3;
+    font-weight: 700;
     margin-bottom: $space-24;
   }
 

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteTrade } from '../../Services/Requests/tradeRequests';
+import Button from '../Shared/ui/Button';
 
 const DeleteTrade = props => {
   const { closeModal, data } = props;
-  const { trade_id: tradeId, user_id, symbol } = data.trade;
+  const { trade_id: tradeId, user_id, account_id, symbol } = data.trade;
   const { token } = data;
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
@@ -16,36 +17,48 @@ const DeleteTrade = props => {
   };
 
   const handleDelete = async () => {
-    await deleteTrade(tradeId, token, dispatch)
+    await deleteTrade(tradeId, token, dispatch);
     closeModal();
-    history.replace(`/${user_id}/accounts/`);
+    history.replace(`/${user_id}/accounts/${account_id}`);
   };
 
   return (
-    <div>
-      <button onClick={closeModal}>X</button>
-      <h1>{`You are trying to delete your ${symbol} Trade.`}</h1>
-      <p>
-        ' Please only delete the trade if you had an input mistake. Deleting
-        trades from your record changes your statistics, and distorts your real
-        performance.'
-      </p>
-      <p>Note: You cannot reverse this action once you deleted the trade.</p>
-      <form action=''>
-        <label htmlFor='confirm-delete'>
-        Yes, I want to delete this trade
-        </label>
-        <input
-          type='checkbox'
-          id='confirm-delete'
-          checked={isChecked}
-          onChange={handleChange}
-        />
-      </form>
-      <button disabled={!isChecked} onClick={handleDelete}>
-        Delete
-      </button>
-      <button onClick={closeModal}>Cancel</button>
+    <div className='modal'>
+      <Button buttonStyle='close' onClick={closeModal}>
+        x
+      </Button>
+      <div className='modal-body'>
+        <h3 className='modal__title'>{`You are trying to delete your ${symbol} Trade`}</h3>
+        <p className='modal__paragraph'>
+          Please only delete the trade if you had an input mistake. Deleting
+          trades from your record changes your statistics, and distorts your
+          real performance.
+        </p>
+        <p className='modal__paragraph'>
+          Note: You cannot reverse this action once you deleted the trade.
+        </p>
+        <form className='form-control form-control--checkbox modal__checkbox'>
+          <input
+            className='form__input form__input--checkbox'
+            type='checkbox'
+            id='confirm-delete'
+            checked={isChecked}
+            onChange={handleChange}
+          />
+          <label htmlFor='confirm-delete'>
+            Yes, I want to delete this trade
+          </label>
+        </form>
+      </div>
+      <div className='buttons-container'>
+        <Button
+          buttonStyle='danger'
+          onClick={handleDelete}
+          disabled={!isChecked}>
+          Delete
+        </Button>
+        <Button onClick={closeModal}>Cancel</Button>
+      </div>
     </div>
   );
 };

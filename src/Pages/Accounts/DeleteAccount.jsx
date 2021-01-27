@@ -17,7 +17,7 @@ const DeleteAccount = props => {
   };
   const handleDelete = async () => {
     await deleteAccount(accountId, token, dispatch);
-    history.replace(`/${userId}/accounts/`);
+    history.replace(`/${userId}/dashboard/`);
     closeModal();
   };
 
