@@ -32,12 +32,15 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
           </p>
           <div className='page-header__button-container'>
             <Button buttonStyle='primary'>New Trade</Button>
-            <Button buttonStyle='' onClick={openEditModal}>
-              Edit Strategy
-            </Button>
-            <Button buttonStyle='' onClick={openDeleteModal}>
-              Delete Strategy
-            </Button>
+
+            { !strategy.is_default && (<React.Fragment>
+              <Button buttonStyle='' onClick={openEditModal}>
+                Edit Strategy
+              </Button>
+              <Button buttonStyle='' onClick={openDeleteModal}>
+                Delete Strategy
+              </Button>
+            </React.Fragment>)}
           </div>
         </div>
       ) : (

@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  selectAccount,
-} from '../../Redux/Reducers/account';
+import { selectAccount } from '../../Redux/Reducers/account';
 import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 
 import { loadStrategyStats } from '../../Services/Requests/strategyRequests';
@@ -57,7 +55,7 @@ const AccountDetails = () => {
             setFilter={setFilter}
           />
         </div>
-        <div className="strategy-details">
+        <div className='strategy-details'>
           <StrategyDetailsHeader currentStrategy={filter} />
         </div>
         <div className='trades-column'>
