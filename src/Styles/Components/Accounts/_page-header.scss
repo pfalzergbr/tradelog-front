@@ -25,7 +25,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 8rem;
+  }
+
+  &__title {
+    padding-top: $space-16;
+
   }
   &__title, &__value {
     padding-left: $space-40;

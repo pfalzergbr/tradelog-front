@@ -53,7 +53,7 @@ const DeleteAccount = props => {
           disabled={!isChecked}>
           Delete
         </Button>
-        <Button buttonStyle={'outline'} onClick={closeModal}>Cancel</Button>
+        <Button onClick={closeModal}>Cancel</Button>
       </div>
     </div>
   );

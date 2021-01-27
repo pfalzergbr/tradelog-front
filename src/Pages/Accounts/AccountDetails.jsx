@@ -58,7 +58,7 @@ const AccountDetails = () => {
           />
         </div>
         <div className="strategy-details">
-          <StrategyDetailsHeader />
+          <StrategyDetailsHeader currentStrategy={filter} />
         </div>
         <div className='trades-column'>
           <TradeList trades={filteredTrades} />

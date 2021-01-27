@@ -23,7 +23,6 @@ export const generatePageNumbers = paginatedData => {
 
 
 export const fillPaginatedData = (pageData, itemPerPage) => {
-  console.log(pageData);
   let i = pageData.length
   let filledPageData = pageData;
   while (i < itemPerPage) {
