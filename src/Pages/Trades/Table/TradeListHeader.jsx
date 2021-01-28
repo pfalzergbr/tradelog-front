@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TradeListHeaderColumn from './TradeListHeaderColumn';
 
-//TODO - implement a loop to build columns automatically.
-//TODO - Build in Sorting
 const TradeListHeader = ({ handleSort }) => {
+  const [activeColumn, setActiveColumn] = useState('');
+
   return (
     <thead className='table-header'>
       <tr className='table-header__row'>
@@ -12,16 +12,24 @@ const TradeListHeader = ({ handleSort }) => {
         <TradeListHeaderColumn value='bias' text='Bias' />
         <TradeListHeaderColumn value='outcome' text='Outcome' />
         <TradeListHeaderColumn
+          setActiveColumn={setActiveColumn}
+          activeColumn={activeColumn}
           handleSort={handleSort}
           value='relative_gain'
           text='Relative Gain'
         />
         <TradeListHeaderColumn
+          setActiveColumn={setActiveColumn}
+          activeColumn={activeColumn}
+          handleSort={handleSort}
           handleSort={handleSort}
           value='amount'
           text='Profit/Loss'
         />
         <TradeListHeaderColumn
+          setActiveColumn={setActiveColumn}
+          activeColumn={activeColumn}
+          handleSort={handleSort}
           handleSort={handleSort}
           value='date'
           text='Date'

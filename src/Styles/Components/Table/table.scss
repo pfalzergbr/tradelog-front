@@ -29,7 +29,6 @@ tr {
   }
 }
 .trade-item {
-
   &__column {
     padding-left: $space-24;
 
@@ -37,14 +36,13 @@ tr {
       display: block;
       width: 100%;
       text-align: right;
-
     }
   }
 
   &--empty {
     height: 3rem;
     cursor: initial;
-  
+
     &:hover,
     &:active,
     &:focus {
@@ -52,7 +50,6 @@ tr {
     }
   }
 }
-
 
 .table-container {
   font-family: 'Roboto';
@@ -71,7 +68,8 @@ tr {
     &--sortable {
       cursor: pointer;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $color-purple-medium;
       }
     }
@@ -114,7 +112,12 @@ tr {
   }
 }
 
-
 .chevron {
+  &__container {
+    padding-left: $space-8;
+  }
+
+  &__icon {
     vertical-align: bottom;
+  }
 }
