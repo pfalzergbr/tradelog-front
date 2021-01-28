@@ -36,13 +36,13 @@ const TradeForm = ({ onSubmit, accounts }) => {
   );
 
   const outcomeOptions = [
-    { optionValue: 'breakeven', optionName: 'Breakeven' },
     { optionValue: 'profit', optionName: 'Profit' },
     { optionValue: 'loss', optionName: 'Loss' },
+    { optionValue: 'breakeven', optionName: 'Breakeven' },
   ];
 
   const biasOptions = [
-    { optionValue: 'neutral', optionName: 'Neutral' },
+    // { optionValue: 'neutral', optionName: 'Neutral' },
     { optionValue: 'bullish', optionName: 'Bullish' },
     { optionValue: 'bearish', optionName: 'Bearish' },
   ];

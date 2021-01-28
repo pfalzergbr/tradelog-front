@@ -66,7 +66,15 @@ tr {
     height: 4.2rem;
     color: $color-off-white;
     padding-left: $space-24;
+    cursor: auto;
 
+    &--sortable {
+      cursor: pointer;
+
+      &:hover, &:focus {
+        color: $color-purple-medium;
+      }
+    }
     &--right {
       text-align: right;
       width: 12rem;

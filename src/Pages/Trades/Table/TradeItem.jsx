@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { calcTradeGain } from '../../../Services/statService';
 
 const TradeItem = ({data }) => {
-  const { symbol, amount, date, bias, outcome, trade_id, strategy_name, snapshot_balance, currency } = data;
+  const { symbol, amount, date, bias, outcome, trade_id, strategy_name, snapshot_balance, currency_symbol } = data;
   const history = useHistory()
 
 
@@ -16,15 +16,15 @@ const TradeItem = ({data }) => {
       case 'profit':
         return 'green';
       case 'breakeven':
-        return '';
+        return 'purple';
       default:
         return '';
     }
   };
   
   const color = setItemColor(outcome);
-  const formattedDate = format(new Date(date), 'dd/M/Y');
-  const formattedAmount = (amount >= 0 ? '+' : '') + amount + '$';
+  const formattedDate = format(date, 'dd/M/Y');
+  const formattedAmount = (amount > 0 ? '+' : '') + amount + currency_symbol;
   const gainPercentage = calcTradeGain(snapshot_balance, amount) + '%';
 
   const linkToTrade = () => {
