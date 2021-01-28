@@ -23,6 +23,7 @@
 }
 
 .menu-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding-bottom: $space-8;
@@ -43,6 +44,16 @@
   color: $color-purple-light;
   cursor: pointer;
   
+  &__chevron {
+    position: absolute;
+    right: $space-8;
+    transform: rotate(-90deg);
+
+    &--active {
+      transform: rotate(0deg);
+    }
+  }
+
   &--active {
     background: $color-purple-dark;
     // margin-bottom: .8rem;

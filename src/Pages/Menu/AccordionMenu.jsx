@@ -9,8 +9,6 @@ const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
     setActiveItem(title);
   };
 
-  // VERY_VERY hacky, but at least it works. Fint a more elegant way to refactor in a reusable way
-  // Major refactor needed from the backend? Swap the SQL join logic? Merge strategyies and strategystats?
   return (
     <div className='accordion'>
       <MenuItemAccount

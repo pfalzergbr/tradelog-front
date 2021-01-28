@@ -22,14 +22,12 @@ const TradeListHeader = ({ handleSort }) => {
           setActiveColumn={setActiveColumn}
           activeColumn={activeColumn}
           handleSort={handleSort}
-          handleSort={handleSort}
           value='amount'
           text='Profit/Loss'
         />
         <TradeListHeaderColumn
           setActiveColumn={setActiveColumn}
           activeColumn={activeColumn}
-          handleSort={handleSort}
           handleSort={handleSort}
           value='date'
           text='Date'
