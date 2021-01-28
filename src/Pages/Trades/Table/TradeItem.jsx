@@ -3,27 +3,14 @@ import { format } from 'date-fns';
 import TradeColumn from './TradeColumn';
 import { useHistory } from 'react-router-dom';
 import { calcTradeGain } from '../../../Services/statService';
+import { setItemColor } from '../../../Services/Requests/setColorService';
 
 const TradeItem = ({data }) => {
   const { symbol, amount, date, bias, outcome, trade_id, strategy_name, snapshot_balance, currency_symbol } = data;
   const history = useHistory()
 
-
-  const setItemColor = outcome => {
-    switch (outcome) {
-      case 'loss':
-        return 'red';
-      case 'profit':
-        return 'green';
-      case 'breakeven':
-        return 'purple';
-      default:
-        return '';
-    }
-  };
-  
   const color = setItemColor(outcome);
-  const formattedDate = format(date, 'dd/M/Y');
+  const formattedDate = format(new Date(date), 'dd/M/Y');
   const formattedAmount = (amount > 0 ? '+' : '') + amount + currency_symbol;
   const gainPercentage = calcTradeGain(snapshot_balance, amount) + '%';
 

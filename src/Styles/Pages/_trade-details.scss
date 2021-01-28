@@ -3,13 +3,62 @@
   display: flex;
   flex-direction: column;
   background: $color-dark;
-  max-width: 35rem;
+  max-width: 42rem;
   border-radius: 1rem;
-  padding: $space-16 $space-40;
   align-self: top;
-  // justify-self: top;
 
-  &__title {
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
+    // align-items: flex-end;
 
+    &-value {
+      font-weight: 300;
+  
+    }
+    &-title {
+      font-weight: 300;
+      text-transform: capitalize;
+    }
+  }
+
+  &__header {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: space-between;
+
+    width: 80%;
+    margin: 0 auto;
+  
+  }
+  
+  &__header-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__symbol {
+
+  }
+
+  &__date {
+    font-weight: 300;
+  }
+  
+
+  
+  &__body {
+    display: flex;
+    // flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__buttons {
+    width: 80%;
+    margin: 0 auto;
   }
 }
