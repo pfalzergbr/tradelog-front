@@ -15,6 +15,7 @@ const InputText = ({ label, type = 'text', placeholder, name, register, errors, 
         name={name}
         placeholder={placeHolderText}
         ref={register}
+        step="0.01"
       />
       {errors && errors[name] && <ErrorMessage message={errors[name].message} />}
     </div>

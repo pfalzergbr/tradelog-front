@@ -4,6 +4,10 @@
   &--default {
     background: $color-dark;
     color: $color-off-white;
+
+    &:first-child {
+      padding-left: $space-8;
+    }
   }
 
   // &--error {

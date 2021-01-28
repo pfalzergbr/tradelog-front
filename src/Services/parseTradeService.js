@@ -8,7 +8,7 @@ export const parseTrade = trade => {
 
   const parsedTrade = {
     ...trade,
-    amount: parseFloat(trade.amount),
+    amount: parseFloat(trade.amount).toFixed(2),
     date: new Date(trade.date),
     currency_symbol: currencyMap[trade.currency],
     snapshot_balance: parseFloat(trade.snapshot_balance),
