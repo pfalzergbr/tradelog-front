@@ -25,7 +25,7 @@ const TradeDetails = () => {
     if (!trade.symbol) {
       fetchTradeById(token, tradeId, dispatch, trade.symbol);
     }
-  }, [token, tradeId, dispatch]);
+  }, [token, tradeId, dispatch, trade.symbol]);
 
   //TODO - Do Edit trade
   return (
