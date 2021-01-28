@@ -1,10 +1,14 @@
 import React from 'react';
+import { calcWinPercentage } from '../../Services/statService';
 import StatContainer from '../Accounts/AccountCard/StatContainer';
 
-const MenuItemBody = ({strategy, active, strategy_id, currency}) => {
+const MenuItemBody = ({strategy, active, item, currency}) => {
+
+  const itemId = item.strategy_id || item.account_id
+
 
   const {
-    winPercentage,
+    // winPercentage,
     average_profit,
     average_loss,
     num_of_profit,
@@ -12,10 +16,12 @@ const MenuItemBody = ({strategy, active, strategy_id, currency}) => {
     num_of_trades,
   } = strategy;
 
+  const winPercentage = calcWinPercentage(num_of_profit, num_of_loss) || 0;
+
   return (
     <div
       className={`${
-        active === strategy_id
+        active === itemId
           ? 'accordion-content--show'
           : 'accordion-content--hide'
       } accordion-content`}>

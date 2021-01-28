@@ -28,7 +28,7 @@ const MenuItem = ({ item, active, setActive, setFilter, currency }) => {
 
       <MenuItemBody
         strategy={strategyStats}
-        strategy_id={item.strategy_id}
+        item={item}
         active={active}
         currency={currency}
       />
