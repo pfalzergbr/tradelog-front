@@ -1,5 +1,7 @@
+import { parseTrade } from '../../Services/parseTradeService';
 import { GET_TRADES, ADD_TRADE, EDIT_TRADE, DELETE_TRADE, GET_SINGLE_TRADE } from '../constants';
 import { handleThunk } from '../handleThunk';
+
 
 const getSingleTrade = (trade) => ({
     type: GET_SINGLE_TRADE,
@@ -8,17 +10,17 @@ const getSingleTrade = (trade) => ({
 
 const getTrades = (trades) => ({
     type: GET_TRADES,
-    payload: {trades}
+    payload: {trades: trades.map(trade => parseTrade(trade))}
 })
 
 const addTrade = (tradeData) => ({
     type: ADD_TRADE,
-    payload: { newTrade: tradeData.trade, accountUpdate: tradeData.account},
+    payload: { newTrade: parseTrade(tradeData.trade), accountUpdate: tradeData.account},
 });
 
 const editTrade = (tradeData) => ({
     type: EDIT_TRADE,
-    payload: { updatedTrade: tradeData.updatedTrade },
+    payload: { updatedTrade: parseTrade(tradeData.updatedTrade) },
 });
 
 const deleteTrade = (tradeData) => ({

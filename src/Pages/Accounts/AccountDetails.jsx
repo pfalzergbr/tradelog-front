@@ -16,17 +16,22 @@ import LoadingGroup from '../Shared/LoadingGroup';
 import AccordionMenu from '../Menu/AccordionMenu';
 import AccountDetailsHeader from './AccountDetailsHeader';
 import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
+import useSort from '../../Services/hooks/useSort';
 
 const AccountDetails = () => {
+  const dispatch = useDispatch();
   const [filter, setFilter] = useState(null);
   const { accountId } = useParams();
   const { token } = useSelector(state => state.auth);
   const { trades } = useSelector(state => state.trade);
   const account = useSelector(state => selectAccount(state, accountId)) || {};
-  const dispatch = useDispatch();
   const accountStrategies =
-    useSelector(state => selectAccountStrategies(state, accountId)) || {};
+  useSelector(state => selectAccountStrategies(state, accountId)) || {};
+
+  const sortedStrategies = accountStrategies.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   const filteredTrades = tradeFilter(trades, 'strategy_id', filter);
+  const [handleSetSortBy, toggleOrder, sortedTrades] = useSort(filteredTrades, 'date')
+
 
   useEffect(() => {
     loadAccountStats(token, dispatch);
@@ -51,7 +56,7 @@ const AccountDetails = () => {
         <div className='menu-column'>
           <AccordionMenu
             account={account}
-            strategies={accountStrategies}
+            strategies={sortedStrategies}
             setFilter={setFilter}
           />
         </div>
@@ -59,7 +64,7 @@ const AccountDetails = () => {
           <StrategyDetailsHeader currentStrategy={filter} />
         </div>
         <div className='trades-column'>
-          <TradeList trades={filteredTrades} />
+          <TradeList trades={sortedTrades} />
         </div>
       </div>
     </LoadingGroup>

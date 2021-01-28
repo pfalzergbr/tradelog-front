@@ -12,9 +12,9 @@ const PaginatedData = ({ pageData, itemPerPage }) => {
   return (
     <tbody className="table-body">
       {paddedPageData &&
-        paddedPageData.map(item => item.trade_id ? (
+        paddedPageData.map((item, index )=> item.trade_id ? (
             <TradeItem key={item.trade_id} data={item}  />
-        ): <TradeItemPlaceholder />)}
+        ): <TradeItemPlaceholder key={index}/>)}
     </tbody>
   );
 };
