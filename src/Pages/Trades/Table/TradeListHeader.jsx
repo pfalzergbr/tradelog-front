@@ -1,18 +1,19 @@
 import React from 'react';
+import TradeListHeaderColumn from './TradeListHeaderColumn';
 
 //TODO - implement a loop to build columns automatically.
 //TODO - Build in Sorting
-const TradeListHeader = () => {
+const TradeListHeader = ({handleSort}) => {
   return (
     <thead className='table-header'>
       <tr className='table-header__row'>
-        <th className='table-header__column'>Symbol</th>
-        <th className='table-header__column'>Strategy</th>
-        <th className='table-header__column'>Bias</th>
-        <th className='table-header__column'>Outcome</th>
-        <th className='table-header__column'>Relative Gain</th>
-        <th className='table-header__column'>Profit/Loss</th>
-        <th className='table-header__column'>Date</th>
+        <TradeListHeaderColumn handleSort={handleSort} value='symbol' text='Symbol' />
+        <TradeListHeaderColumn handleSort={handleSort} value='strategy' text='Strategy' />
+        <TradeListHeaderColumn handleSort={handleSort} value='bias' text='Bias' />
+        <TradeListHeaderColumn handleSort={handleSort} value='outcome' text='Outcome' />
+        <TradeListHeaderColumn handleSort={handleSort} value='relative_gain' text='Relative Gain' />
+        <TradeListHeaderColumn handleSort={handleSort} value='amount' text='Profit/Loss' />
+        <TradeListHeaderColumn handleSort={handleSort} value='date' text='Date' />
       </tr>
     </thead>
   );

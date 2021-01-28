@@ -3,10 +3,10 @@ import React from 'react';
 import Pagination from '../Pagination/Pagination';
 import LoadingGroup from '../../Shared/LoadingGroup';
 
-const TradeList = ({ trades }) => {
+const TradeList = ({ trades, handleSort }) => {
   return (
     <LoadingGroup>
-        <Pagination data={trades} />
+        <Pagination data={trades} handleSort={handleSort} />
     </LoadingGroup>
   );
 };

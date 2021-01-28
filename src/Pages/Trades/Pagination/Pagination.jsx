@@ -8,7 +8,7 @@ import TradeListHeader from '../Table/TradeListHeader';
 import PaginatedData from './PaginatedData';
 import PaginationPages from './PaginationPages';
 
-const Pagination = ({ data }) => {
+const Pagination = ({ data, handleSort }) => {
   const itemPerPage = 15;
   const paginatedData = paginate(data, itemPerPage);
   const pageNumbers = generatePageNumbers(paginatedData);
@@ -29,7 +29,7 @@ const Pagination = ({ data }) => {
   return (
     <React.Fragment>
       <table className='table-container'>
-        <TradeListHeader />
+        <TradeListHeader handleSort={handleSort}/>
         <PaginatedData pageData={pageData} itemPerPage={itemPerPage}/>
       </table>
       <PaginationPages

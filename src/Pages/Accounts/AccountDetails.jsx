@@ -30,7 +30,7 @@ const AccountDetails = () => {
 
   const sortedStrategies = accountStrategies.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   const filteredTrades = tradeFilter(trades, 'strategy_id', filter);
-  const [handleSetSortBy, toggleOrder, sortedTrades] = useSort(filteredTrades, 'date')
+  const [handleSort, sortedTrades] = useSort(filteredTrades, 'date')
 
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const AccountDetails = () => {
           <StrategyDetailsHeader currentStrategy={filter} />
         </div>
         <div className='trades-column'>
-          <TradeList trades={sortedTrades} />
+          <TradeList trades={sortedTrades} handleSort={handleSort} />
         </div>
       </div>
     </LoadingGroup>
