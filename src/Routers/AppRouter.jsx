@@ -32,6 +32,7 @@ const AppRouter = () => {
   //Routes to display if there is no logged in user.
   const publicRoutes = (
     <Switch>
+    <Suspense fallback={<Loading />}>
       <Route exact={true} path='/'>
         <Landing />
       </Route>
@@ -41,6 +42,7 @@ const AppRouter = () => {
       <Route path='/user/login'>
         <Login />
       </Route>
+      </Suspense>
     </Switch>
   );
 
