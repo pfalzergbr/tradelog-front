@@ -14,7 +14,7 @@
   }
 
   &__link {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-size: $font-size-medium;
     font-weight: 400;
     color: $color-purple-light;
@@ -80,7 +80,7 @@
   overflow: hidden;
   color: $color-purple-light;
   font-size: $font-size-small;
-  font-family: 'Roboto';  
+  font-family: 'Roboto', sans-serif;  
   
   
   &__title {

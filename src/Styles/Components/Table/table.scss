@@ -52,7 +52,7 @@ tr {
 }
 
 .table-container {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: $font-size-small;
 }
 
@@ -101,7 +101,7 @@ tr {
   // }
 
   &__btn {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     color: $color-off-white;
     padding: 0.8rem 2rem;

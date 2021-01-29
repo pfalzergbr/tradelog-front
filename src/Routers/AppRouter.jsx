@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 
 import Nav from '../Pages/Shared/Nav';
 import Landing from '../Pages/Landing/Landing';
-import Login from '../Pages/Login/Login';
-import Register from '../Pages/Register/Register';
+// import Login from '../Pages/Login/Login';
+// import Register from '../Pages/Register/Register';
 // import NotFound from '../Pages/Shared/NotFound';
 import Loading from '../Pages/Shared/Loading';
 
+const Register = lazy(() => import('../Pages/Register/Register'))
+const Login = lazy(() => import('../Pages/Login/Login'))
 const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
 const Profile = lazy(() => import('../Pages/Profile/Profile'));
 const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'));
