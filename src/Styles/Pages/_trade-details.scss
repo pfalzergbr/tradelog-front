@@ -27,10 +27,16 @@
     &--strategy {
       grid-column: 1/3;
       grid-row: 1/2;
-      padding: 0 $space-8 ;
+      padding: 0 $space-8;
+    }
+
+    &--notes {
+      grid-column: 1/3;
+      grid-row: 1/2;
+      padding: 0 $space-8;
     }
   }
-  
+
   &__date {
     font-weight: 400;
   }
@@ -39,10 +45,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 $space-8 ;
+    padding: 0 $space-8;
     // padding: $space-8;
 
-    &--relative-gain{
+    &--relative-gain {
       grid-row: 2/3;
       grid-column: 2/3;
       align-self: center;
@@ -67,7 +73,6 @@
         padding-left: $space-8;
       }
     }
-
   }
   &__strategy {
     grid-row: 3/4;
@@ -91,16 +96,38 @@
     }
     & .form__input {
       padding-left: $space-8;
-      border-radius: .8rem 0 0 .8rem;
+      border-radius: 0.8rem 0 0 0.8rem;
       border: 1px solid $color-purple-dark;
       // border: 1px solid red;
       flex: 1;
     }
-    
+
     > .btn {
       height: 3.56rem;
-      border-radius: 0 .8rem .8rem 0;
+      border-radius: 0 0.8rem 0.8rem 0;
       border: 1px solid $color-purple-dark;
+    }
+  }
+
+  &__edit-notes {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    width: 100%;
+    grid-column: 1 / 3;
+    grid-row-gap: $space-12;
+
+    & .form-control {
+      height: 100%;
+    }
+
+    & .form__input {
+      height: 100%;
+      resize: none;
+      padding: $space-8;
+    }
+
+    & .btn {
+      justify-self: end;
     }
   }
 
@@ -110,22 +137,13 @@
     display: grid;
     grid-template-rows: min-content 1fr;
     grid-gap: $space-8;
-    padding: 0 $space-8;
-
-    // & > .btn {
-    //   justify-self: start;
-    // }
-
   }
 
   &__paragraph {
     font-size: $font-size-small;
     font-weight: 300;
+    padding: 0 $space-8;
   }
-
-
-
-
 
   &__buttons {
     padding: 0 $space-8;

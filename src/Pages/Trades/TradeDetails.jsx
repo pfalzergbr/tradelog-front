@@ -6,14 +6,19 @@ import { format } from 'date-fns';
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
 import LoadingGroup from '../Shared/LoadingGroup';
-import { editTrade, fetchTradeById } from '../../Services/Requests/tradeRequests';
+import {
+  editTrade,
+  fetchTradeById,
+} from '../../Services/Requests/tradeRequests';
 import Button from '../Shared/ui/Button';
 import { setItemColor } from '../../Services/Requests/setColorService';
 import ChangeStrategy from './EditTrade/ChangeStrategy';
 import { selectStrategy } from '../../Redux/Reducers/strategy';
+import EditTradeNotes from './EditTrade/EditTradeNotes';
 
 const TradeDetails = () => {
   const [isChangingStrategy, setIsChangingStrategy] = useState(false);
+  const [isUpdatingNotes, setIsUpdatingNotes] = useState(false);
   const { token } = useSelector(state => state.auth);
   const { tradeId } = useParams();
   const history = useHistory();
@@ -23,13 +28,15 @@ const TradeDetails = () => {
     outcome,
     amount,
     date,
-    // strategy_name,
+    notes,
     relative_gain,
     currency_symbol,
     strategy_id,
     account_id,
   } = trade;
-  const { strategy_name } = useSelector(state => selectStrategy(state, strategy_id) || {})
+  const { strategy_name } = useSelector(
+    state => selectStrategy(state, strategy_id) || {},
+  );
   const dispatch = useDispatch();
   const color = setItemColor(outcome);
 
@@ -38,12 +45,21 @@ const TradeDetails = () => {
   };
 
   const onSubmitStrategy = async data => {
-    editTrade(data, token, tradeId, dispatch)
+    editTrade(data, token, tradeId, dispatch);
     setIsChangingStrategy(false);
+  };
+
+  const onSubmitNotes = async data => {
+    editTrade(data, token, tradeId, dispatch);
+    setIsUpdatingNotes(false);
   };
 
   const toggleChangeStrategy = () => {
     setIsChangingStrategy(!isChangingStrategy);
+  };
+
+  const toggleIsUpdatingNotes = () => {
+    setIsUpdatingNotes(!isUpdatingNotes);
   };
 
   useEffect(() => {
@@ -95,22 +111,31 @@ const TradeDetails = () => {
             />
           ) : (
             <div>
-              <h3 className='trade-details__stats-title trade-details__stats-title--strategy'>{strategy_name}</h3>
+              <h3 className='trade-details__stats-title trade-details__stats-title--strategy'>
+                {strategy_name}
+              </h3>
             </div>
           )}
         </div>
         )
         <div className='trade-details__notes'>
-          <div className='trade-details__title-container'>
+          <div className='trade-details__title-container trade-details__title-container--notes'>
             <p className='trade-details__stats-title'>Notes</p>
-            <Button buttonStyle='small-link'>Edit Notes</Button>
+            {isUpdatingNotes ? (
+              <Button buttonStyle='small-link' onClick={toggleIsUpdatingNotes}>
+                Cancel
+              </Button>
+            ) : (
+              <Button buttonStyle='small-link' onClick={toggleIsUpdatingNotes}>
+                Edit Notes
+              </Button>
+            )}
           </div>
-          <p className='trade-details__paragraph'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-            consectetur cum consequuntur? Itaque eius dolorem ad harum
-            distinctio beatae nisi, dignissimos optio ab. Ad, explicabo! Et
-            eaque a harum accusamus.{' '}
-          </p>
+          {isUpdatingNotes ? (
+            <EditTradeNotes onSubmit={onSubmitNotes} notes={notes} />
+          ) : (
+            <p className='trade-details__paragraph'>{notes}</p>
+          )}
         </div>
         <div className='trade-details__buttons buttons-container'>
           <Button

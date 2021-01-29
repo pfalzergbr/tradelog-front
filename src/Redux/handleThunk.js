@@ -16,10 +16,8 @@ export const handleThunk = (requestData, successHandler) => async (dispatch) => 
         dispatch(requestStart());
         const response = await requestService(requestData);
         const data = response.data;
-        console.log(data);
         return onSuccess(data);
     } catch (error) {
-        console.log(error)
         return onError(error);
     }
 };

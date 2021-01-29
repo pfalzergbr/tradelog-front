@@ -1,8 +1,9 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import React from 'react';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+
 import Select from '../../Shared/ui/formControl/Select';
 import Button from '../../Shared/ui/Button';
 
