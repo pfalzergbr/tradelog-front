@@ -17,7 +17,6 @@ const AccountCard = props => {
     state => selectAccountStats(state, account_id) || {},
   );
   const { account_name, balance, currency } = props.accountData;
-  console.log(props.accountData)
 
   const relativeGain =
     calcRelativeGain(

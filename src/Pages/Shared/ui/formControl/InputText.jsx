@@ -10,7 +10,7 @@ const InputText = ({ label, type = 'text', placeholder, name, register, errors, 
         {label}
       </label>
       <input
-        className={`form__input ${errors[name] && 'form__input--error'}`}
+        className={`form__input ${errors && errors[name] && 'form__input--error'}`}
         type={type}
         name={name}
         placeholder={placeHolderText}
