@@ -5,7 +5,7 @@ import { handleThunk } from '../handleThunk';
 
 const getSingleTrade = (trade) => ({
     type: GET_SINGLE_TRADE,
-    payload: {trade}
+    payload: {trade: parseTrade(trade)}
 });
 
 const getTrades = (trades) => ({
