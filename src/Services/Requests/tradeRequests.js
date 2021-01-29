@@ -1,4 +1,10 @@
-import { fetchTrades, addNewTrade, removeTrade, fetchTrade } from '../../Redux/Actions/tradeActions';
+import {
+  fetchTrades,
+  addNewTrade,
+  removeTrade,
+  fetchTrade,
+  updateTrade
+} from '../../Redux/Actions/tradeActions';
 import { toast } from 'react-toastify';
 
 export const fetchTradesByAccount = async (token, account, dispatch) => {
@@ -11,7 +17,7 @@ export const fetchTradesByAccount = async (token, account, dispatch) => {
     );
     return response;
   } catch (error) {
-    toast.error(`Cannot fetch data. Please try again!`)
+    toast.error(`Cannot fetch data. Please try again!`);
   }
 };
 
@@ -25,7 +31,7 @@ export const fetchTradesByStrategy = async (token, strategy, dispatch) => {
     );
     return response;
   } catch (error) {
-    toast.error(`Cannot fetch data. Please try again!`)
+    toast.error(`Cannot fetch data. Please try again!`);
   }
 };
 
@@ -41,15 +47,15 @@ export const addTrade = async (data, token, dispatch) => {
         auth: { Authorization: `Bearer ${token}` },
       }),
     );
-    toast(`New trade added - ${response.trade.symbol} `)
+    toast(`New trade added - ${response.trade.symbol} `);
     return response;
   } catch (error) {
-    toast.error(`Something went wrong. Please try again!`)
+    toast.error(`Something went wrong. Please try again!`);
   }
-}
+};
 
 export const deleteTrade = async (tradeId, token, dispatch) => {
-  try { 
+  try {
     const response = await dispatch(
       removeTrade({
         method: 'delete',
@@ -57,23 +63,39 @@ export const deleteTrade = async (tradeId, token, dispatch) => {
         auth: { Authorization: `Bearer ${token}` },
       }),
     );
-    toast('Trade successfully deleted.')
+    toast('Trade successfully deleted.');
     return response;
   } catch (error) {
-    toast.error(`Cannot delete this trade. Please try again later`)
+    toast.error(`Cannot delete this trade. Please try again later`);
   }
-}
+};
 
 export const fetchTradeById = async (token, tradeId, dispatch) => {
   try {
     const response = await dispatch(
       fetchTrade({
         url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
-      auth: { Authorization: `Bearer ${token}` },
-    }),
+        auth: { Authorization: `Bearer ${token}` },
+      }),
     );
     return response;
   } catch (error) {
-    toast.error(`Cannot fetch the trade. Please try again later.`)
+    toast.error(`Cannot fetch the trade. Please try again later.`);
+  }
+};
+
+export const editTrade = async (data, token, tradeId, dispatch) => {
+  try {
+    const response = await dispatch(
+      updateTrade({
+        method: 'patch',
+        url: `${process.env.REACT_APP_API}/api/trades/${tradeId}`,
+        auth: { Authorization: `Bearer ${token}` },
+        data
+      }),
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
   }
 };

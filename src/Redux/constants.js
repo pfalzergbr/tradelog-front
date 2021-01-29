@@ -31,5 +31,5 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const GET_SINGLE_TRADE = 'GET_SINGLE_TRADE'
 export const GET_TRADES = 'GET_TRADES'
 export const ADD_TRADE = 'ADD_TRADE';
-export const EDIT_TRADE = 'ADD_TRADE';
+export const EDIT_TRADE = 'EDIT_TRADE';
 export const DELETE_TRADE = 'DELETE_TRADE';

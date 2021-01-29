@@ -9,10 +9,11 @@ const Select = ({
   optionValue = 'optionValue',
   optionName = 'optionName',
   errors,
+  hiddenLabel = false
 }) => {
   return (
     <div className='form-control'>
-      <label htmlFor={name}>{label}</label>
+      <label style={{display: `${hiddenLabel && 'none'}`}} htmlFor={name}>{label}</label>
       <select className='form__input' name={name} ref={register}>
         {optionsArray &&
           optionsArray.map(option => (

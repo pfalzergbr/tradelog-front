@@ -14,6 +14,7 @@ import {
   LOAD_ACCOUNT_STATS,
   LOAD_STRATEGY_STATS,
   GET_SINGLE_TRADE,
+  EDIT_TRADE
 } from '../constants';
 
 const initialState = {
@@ -48,6 +49,8 @@ export const control = (state = initialState, action = {}) => {
     case GET_SINGLE_TRADE:
       return { ...state, isLoading: false };
     case ADD_TRADE:
+      return { ...state, isLoading: false };
+    case EDIT_TRADE:
       return { ...state, isLoading: false };
     case LOAD_ACCOUNT_STATS:
       return { ...state, isLoading: false };

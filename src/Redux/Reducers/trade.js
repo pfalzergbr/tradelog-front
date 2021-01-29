@@ -27,7 +27,11 @@ export const trade = (state = initialState, action) => {
       const trades = [...state.trades, action.payload.newTrade];
       return { ...state, trades };
     case EDIT_TRADE:
-      return state;
+      const updatedTrade = action.payload.updatedTrade;
+      const updatedTrades = state.trades.map(trade =>
+        trade.trade_id === updatedTrade.trade_id ? updatedTrade : trade,
+      );
+      return { ...state, trades: updatedTrades };
     case DELETE_TRADE:
       const filteredTrades = state.trades.filter(
         trade => trade.trade_id !== action.payload.trade_id,

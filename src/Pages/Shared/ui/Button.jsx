@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ children, buttonStyle, onClick, disabled = false }) => {
   const buttonType = () => {
-    return `btn btn--${buttonStyle}`;
+    return `btn ${buttonStyle ? 'btn--'+ buttonStyle : ''}`;
   };
 
   return (

@@ -7,7 +7,7 @@
   border-radius: 20px;
   border: 1px solid transparent;
   color: $color-purple-light;
-  box-shadow: $shadow-light;
+  // box-shadow: $shadow-light;
   outline: none;
   cursor: pointer;
 
@@ -49,6 +49,21 @@
     color: $color-red;
   }
 
+  &--small-link {
+    font-size: 1.2rem;
+    padding: 0;
+  }
+
+  &--small-outline {
+    font-size: 1.2rem;
+    border: 1px solid $color-purple-light;
+    padding: $space-4 $space-8;
+
+    &:hover, &:active , &:focus {
+      border-color: $color-off-white;
+      color: $color-off-white;
+    }
+  }
 }
 
 .buttons-container {
@@ -60,3 +75,4 @@
     margin-right: $space-16;
   }
 }
+
