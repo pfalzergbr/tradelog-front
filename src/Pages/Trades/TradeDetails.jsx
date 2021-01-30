@@ -16,12 +16,7 @@ import { setItemColor } from '../../Services/Requests/setColorService';
 import ChangeStrategy from './EditTrade/ChangeStrategy';
 import { selectStrategy } from '../../Redux/Reducers/strategy';
 import EditTradeNotes from './EditTrade/EditTradeNotes';
-import {
-  routeAnimate,
-  routeExit,
-  routeInitial,
-  routeTransition,
-} from '../../Services/Animations/routeTransition';
+import { routeAnimation } from '../../Services/Animations/routeTransition';
 
 const TradeDetails = () => {
   const [isChangingStrategy, setIsChangingStrategy] = useState(false);
@@ -78,12 +73,7 @@ const TradeDetails = () => {
   //TODO - Do Edit trade
   return (
     <LoadingGroup>
-      <motion.div
-        className='trade-details'
-        initial={routeInitial}
-        animate={routeAnimate}
-        exit={routeExit}
-        transition={routeTransition}>
+      <motion.div className='trade-details' {...routeAnimation}>
         <div className='trade-details__header-container'>
           <p className='trade-details__date'>
             {date && format(new Date(date), 'Mo MMMM, yyyy')}

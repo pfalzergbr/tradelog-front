@@ -17,12 +17,7 @@ import AccordionMenu from '../Menu/AccordionMenu';
 import AccountDetailsHeader from './AccountDetailsHeader';
 import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
 import useSort from '../../Services/hooks/useSort';
-import {
-  routeAnimate,
-  routeExit,
-  routeInitial,
-  routeTransition,
-} from '../../Services/Animations/routeTransition';
+import { routeAnimation } from '../../Services/Animations/routeTransition';
 
 const AccountDetails = () => {
   const dispatch = useDispatch();
@@ -32,12 +27,13 @@ const AccountDetails = () => {
   const { trades } = useSelector(state => state.trade);
   const account = useSelector(state => selectAccount(state, accountId)) || {};
   const accountStrategies =
-  useSelector(state => selectAccountStrategies(state, accountId)) || {};
+    useSelector(state => selectAccountStrategies(state, accountId)) || {};
 
-  const sortedStrategies = accountStrategies.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  const sortedStrategies = accountStrategies.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at),
+  );
   const filteredTrades = tradeFilter(trades, 'strategy_id', filter);
-  const [handleSort, sortedTrades] = useSort(filteredTrades, 'date')
-
+  const [handleSort, sortedTrades] = useSort(filteredTrades, 'date');
 
   useEffect(() => {
     loadAccountStats(token, dispatch);
@@ -57,10 +53,7 @@ const AccountDetails = () => {
 
   return (
     <LoadingGroup>
-      <motion.div className='details'       initial={routeInitial}
-      animate={routeAnimate}
-      exit={routeExit}
-      transition={routeTransition}>
+      <motion.div className='details' {...routeAnimation}>
         <AccountDetailsHeader account={account} token={token} />
         <div className='menu-column'>
           <AccordionMenu

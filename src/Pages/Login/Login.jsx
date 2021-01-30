@@ -10,12 +10,7 @@ import LoadingGroup from '../Shared/LoadingGroup';
 import { loginUser } from '../../Services/Requests/userService';
 import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
-import {
-  routeAnimate,
-  routeExit,
-  routeInitial,
-  routeTransition,
-} from '../../Services/Animations/routeTransition';
+import { routeAnimation } from '../../Services/Animations/routeTransition';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -37,12 +32,7 @@ const Login = () => {
 
   return (
     <LoadingGroup>
-      <motion.div
-        className='login-page'
-        initial={routeInitial}
-        animate={routeAnimate}
-        exit={routeExit}
-        transition={routeTransition}>
+      <motion.div className='login-page' {...routeAnimation}>
         <LoginForm onSubmit={onSubmit} />
         <Footer />
       </motion.div>

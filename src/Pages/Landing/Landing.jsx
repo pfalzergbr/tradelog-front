@@ -2,22 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import {
-  routeAnimate,
-  routeExit,
-  routeInitial,
-  routeTransition,
-} from '../../Services/Animations/routeTransition';
-
+import { routeAnimation } from '../../Services/Animations/routeTransition';
 import Footer from '../Shared/Footer';
+
 const Landing = () => {
   return (
-    <motion.div
-      className='landing-page'
-      initial={routeInitial}
-      animate={routeAnimate}
-      exit={routeExit}
-      transition={routeTransition}>
+    <motion.div className='landing-page' {...routeAnimation}>
       <div className='landing-page__container'>
         <main className='landing-page__main'>
           <h1 className='landing-page__title'>

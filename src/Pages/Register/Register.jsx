@@ -8,12 +8,7 @@ import { storeUser } from '../../Services/storageService';
 import LoadingGroup from '../Shared/LoadingGroup';
 import { registerUser } from '../../Services/Requests/userService';
 import { motion } from 'framer-motion';
-import {
-  routeAnimate,
-  routeExit,
-  routeInitial,
-  routeTransition,
-} from '../../Services/Animations/routeTransition';
+import { routeAnimation } from '../../Services/Animations/routeTransition';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -29,12 +24,7 @@ const Register = () => {
 
   return (
     <LoadingGroup>
-      <motion.div
-        className='register-page'
-        initial={routeInitial}
-        animate={routeAnimate}
-        exit={routeExit}
-        transition={routeTransition}>
+      <motion.div className='register-page' {...routeAnimation}>
         <RegisterForm onSubmit={onSubmit} />
       </motion.div>
     </LoadingGroup>
