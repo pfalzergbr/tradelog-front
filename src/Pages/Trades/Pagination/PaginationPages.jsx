@@ -1,7 +1,7 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
-import bxChevronLeft from '@iconify/icons-bx/bx-chevron-left';
-import bxChevronRight from '@iconify/icons-bx/bx-chevron-right';
+// import { Icon } from '@iconify/react';
+// import bxChevronLeft from '@iconify/icons-bx/bx-chevron-left';
+// import bxChevronRight from '@iconify/icons-bx/bx-chevron-right';
 
 //TODO - ADD trade Counter on the bottom
 
