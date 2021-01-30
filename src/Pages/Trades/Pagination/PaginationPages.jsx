@@ -8,6 +8,8 @@ import bxChevronRight from '@iconify/icons-bx/bx-chevron-right';
 const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
   const firstPage = pageNumbers[0];
   const lastPage = pageNumbers[pageNumbers.length - 1];
+  const previousPage = parseInt(currentPage) - 1
+  const nextPage = parseInt(currentPage) + 1
 
   console.log(currentPage);
 
@@ -21,7 +23,7 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
                 <button
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}
-                  value={currentPage - 1}>
+                  value={previousPage}>
                   {'<'}
                 </button>
               )}
@@ -44,7 +46,7 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
             <div className='table-pagination__back'>
               {currentPage !== lastPage && (
                 <button
-                  pointerEvents="auto"
+                  value={nextPage}
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}>
                    &gt;
