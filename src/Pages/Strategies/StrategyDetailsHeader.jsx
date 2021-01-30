@@ -23,7 +23,6 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
   };
 
   const openTradeModal = () => {
-    console.log('yoohoo');
     dispatch(openModal('newTrade', {}));
   };
 

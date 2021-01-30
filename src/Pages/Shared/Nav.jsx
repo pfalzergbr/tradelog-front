@@ -13,8 +13,6 @@ const Nav = props => {
   const auth = useSelector(state => state.auth);
   const hasAccounts = useSelector(selectHasAccounts);
 
-  console.log(hasAccounts);
-
   const dispatch = useDispatch();
 
   const handleOpenModal = () => {

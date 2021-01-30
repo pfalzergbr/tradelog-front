@@ -11,6 +11,7 @@ import { populateUserData } from './Services/Requests/userService';
 const AppContainer = () => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
+  const { trades } = useSelector(state => state.trade);
   const { token } = auth;
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const AppContainer = () => {
     if (userData && userData.user && userData.token) {
       dispatch(loadUser(userData));
     }
-  }, [dispatch]);
+  }, [dispatch, trades]);
 
   return (
     <React.Fragment>

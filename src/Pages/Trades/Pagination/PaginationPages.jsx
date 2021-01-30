@@ -14,10 +14,10 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
   return (
     <div className='table-pagination'>
       <div className='table-pagination__btn-container'>
-        {pageNumbers.length !== 0 ? (
+        {pageNumbers.length !== 0? (
           <React.Fragment>
             <div className='table-pagination__back'>
-              {currentPage !== firstPage && (
+              {currentPage !== firstPage  && pageNumbers.length !== 1 &&  (
                 <button
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}
@@ -42,7 +42,7 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
               ))}
             </div>
             <div className='table-pagination__back'>
-              {currentPage !== lastPage && (
+              {currentPage !== lastPage  && pageNumbers.length !== 1  && (
                 <button
                   value={nextPage}
                   className='table-pagination__btn table-pagination__btn--chevron'

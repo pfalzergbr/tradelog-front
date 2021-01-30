@@ -28,7 +28,7 @@
   }
 
   &__title {
-    padding: $space-16 0;
+    padding-top: $space-16;
   
 
   }
@@ -42,6 +42,7 @@
   // }
   
   &__paragraph {
+    padding-top: $space-16;
     padding-left: $space-40;
     padding-right: $space-40;
     margin-bottom: $space-24;

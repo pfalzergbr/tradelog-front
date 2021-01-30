@@ -7,7 +7,9 @@ import { calcTradeGain } from '../../../Services/statService';
 import { setItemColor } from '../../../Services/Requests/setColorService';
 import { tableAnimation } from '../../../Services/Animations/tableTransition';
 
+
 const TradeItem = ({ data }) => {
+  
   const {
     symbol,
     amount,
@@ -19,7 +21,10 @@ const TradeItem = ({ data }) => {
     snapshot_balance,
     currency_symbol,
   } = data;
+
+
   const history = useHistory();
+
 
   const color = setItemColor(outcome);
   const formattedDate = format(new Date(date), 'dd/M/Y');

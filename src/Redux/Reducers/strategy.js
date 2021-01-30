@@ -58,3 +58,4 @@ export const selectStrategyStat = (state, strategyId) => {
     strategy => strategy.strategy_id === strategyId,
   );
 };
+
