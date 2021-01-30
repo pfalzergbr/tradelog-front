@@ -5,7 +5,7 @@ import StatContainer from '../Accounts/AccountCard/StatContainer';
 const MenuItemBody = ({strategy, active, item, currency}) => {
 
   const itemId = item.strategy_id || item.account_id
-
+  const isOpen = active === itemId;
 
   const {
     // winPercentage,
@@ -19,12 +19,9 @@ const MenuItemBody = ({strategy, active, item, currency}) => {
   const winPercentage = calcWinPercentage(num_of_profit, num_of_loss) || 0;
 
   return (
-    <div
-      className={`${
-        active === itemId
-          ? 'accordion-content--show'
-          : 'accordion-content--hide'
-      } accordion-content`}>
+    <React.Fragment>
+    { isOpen && <div
+      className='accordion-content'>
       <StatContainer
         text='Win Percentage'
         value={winPercentage}
@@ -72,7 +69,8 @@ const MenuItemBody = ({strategy, active, item, currency}) => {
       <div className='item-container'>
         <p className='accordion__link'>Strategy Details</p>
       </div>
-    </div>
+    </div>}
+    </React.Fragment>
   );
 };
 
