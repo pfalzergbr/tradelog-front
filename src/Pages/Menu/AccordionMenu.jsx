@@ -10,6 +10,7 @@ const AccordionMenu = ({ account = {}, strategies = {}, setFilter }) => {
   };
 
   return (
+
     <div className='accordion'>
       <MenuItemAccount
         item={account}

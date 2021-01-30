@@ -63,7 +63,7 @@ const AccountDetails = () => {
           />
         </div>
         <div className='strategy-details'>
-          <StrategyDetailsHeader currentStrategy={filter} />
+            <StrategyDetailsHeader currentStrategy={filter} />
         </div>
         <div className='trades-column'>
           <TradeList trades={sortedTrades} handleSort={handleSort} />

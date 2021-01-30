@@ -25,14 +25,14 @@ const MenuItem = ({ item, active, setActive, setFilter, currency }) => {
         currency={currency}
         profitLoss={strategyStats.total_pnl}
       />
-      <AnimatePresence itinial={false}>
+
         <MenuItemBody
           strategy={strategyStats}
           item={item}
           active={active}
           currency={currency}
         />
-      </AnimatePresence>
+
     </div>
   );
 };

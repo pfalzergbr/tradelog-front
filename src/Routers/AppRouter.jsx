@@ -75,7 +75,7 @@ const AppRouter = () => {
     <div className='app'>
       <Nav data={token && user ? authLinks : publicLinks} user={user} />
       <div className='container main-container'>
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence exitBeforeEnter={true} initial={false}>
           {token && user ? authRoutes : publicRoutes}
         </AnimatePresence>
       </div>

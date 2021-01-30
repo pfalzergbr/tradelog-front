@@ -2,7 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
 import { selectStrategy } from '../../Redux/Reducers/strategy';
+import { AnimatePresence, motion } from 'framer-motion';
+
 import Button from '../Shared/ui/Button';
+import { cardAnimation } from '../../Services/Animations/cardTransition';
 
 const StrategyDetailsHeader = ({ currentStrategy }) => {
   const dispatch = useDispatch();
@@ -20,12 +23,14 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
   };
 
   return (
-    <React.Fragment>
+    <AnimatePresence exitBeforeEnter>
       {strategy ? (
-        <div className='page-header page-header--details'>
+        <motion.div
+          className='page-header page-header--details'
+          key={strategy.strategy_id}
+          {...cardAnimation}>
           <div className='page-header__title-container'>
             <h3 className='page-header__title'>{strategy.strategy_name}</h3>
-            <h4 className='page-header__value'>No strategy selected</h4>
           </div>
           <p className='page-header__paragraph'>
             Select your account to show all trades
@@ -33,18 +38,23 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
           <div className='page-header__button-container'>
             <Button buttonStyle='primary'>New Trade</Button>
 
-            { !strategy.is_default && (<React.Fragment>
-              <Button buttonStyle='' onClick={openEditModal}>
-                Edit Strategy
-              </Button>
-              <Button buttonStyle='' onClick={openDeleteModal}>
-                Delete Strategy
-              </Button>
-            </React.Fragment>)}
+            {!strategy.is_default && (
+              <React.Fragment>
+                <Button buttonStyle='' onClick={openEditModal}>
+                  Edit Strategy
+                </Button>
+                <Button buttonStyle='' onClick={openDeleteModal}>
+                  Delete Strategy
+                </Button>
+              </React.Fragment>
+            )}
           </div>
-        </div>
+        </motion.div>
       ) : (
-        <div className='page-header page-header--details'>
+        <motion.div
+          className='page-header page-header--details'
+          key='no-strategy'
+          {...cardAnimation}>
           <div className='page-header__title-container'>
             <h3 className='page-header__title'>All trades</h3>
             <h4 className='page-header__value'>No strategy selected</h4>
@@ -55,9 +65,9 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
           <div className='page-header__button-container'>
             <Button buttonStyle='primary'>New Trade</Button>
           </div>
-        </div>
+        </motion.div>
       )}
-    </React.Fragment>
+    </AnimatePresence>
   );
 };
 
