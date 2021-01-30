@@ -12,14 +12,18 @@ const loginSchema = yup.object().shape({
     .string()
     .email('This must be a valid E-mail address')
     .required('E-mail address is required.'),
-  password: yup.string().required('Password is required.').min(6, 'Password must be at least 6 characters'),
+  password: yup
+    .string()
+    .required('Password is required.')
+    .min(6, 'Password must be at least 6 characters'),
+  keepLoggedIn: yup.boolean(),
 });
 
 const LoginForm = ({ onSubmit }) => {
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(loginSchema),
     mode: 'onBlur',
-    reValidateMode: 'onChange'
+    reValidateMode: 'onChange',
   });
   const { isValid } = formState;
 

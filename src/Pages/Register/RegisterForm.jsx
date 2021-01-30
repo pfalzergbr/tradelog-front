@@ -24,6 +24,7 @@ const registerSchema = yup.object().shape({
       'Confirmation has to match your password',
     )
     .required('Password verification is required'),
+  keepLoggedIn: yup.boolean(),
 });
 
 const RegisterForm = ({ onSubmit }) => {
