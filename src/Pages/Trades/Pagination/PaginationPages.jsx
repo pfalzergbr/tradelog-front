@@ -22,14 +22,7 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}
                   value={currentPage - 1}>
-                  <Icon
-                    pointerEvents='none'
-                    icon={bxChevronLeft}
-                    className='table-pagination__chevron'
-                    style={{
-                      fontSize: '18px',
-                    }}
-                  />
+                  {'<'}
                 </button>
               )}
             </div>
@@ -51,16 +44,10 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
             <div className='table-pagination__back'>
               {currentPage !== lastPage && (
                 <button
+                  pointerEvents="auto"
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}>
-                  <Icon
-                    pointerEvents='none'
-                    icon={bxChevronRight}
-                    className='table-pagination__chevron'
-                    style={{
-                      fontSize: '18px',
-                    }}
-                  />
+                   &gt;
                 </button>
               )}
             </div>
