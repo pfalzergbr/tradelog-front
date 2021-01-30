@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectStrategyStat } from '../../Redux/Reducers/strategy';
-
+import { AnimatePresence } from 'framer-motion';
 import MenuItemBody from './MenuItemBody';
 import MenuItemHeader from './MenuItemHeader';
 
@@ -25,13 +25,14 @@ const MenuItem = ({ item, active, setActive, setFilter, currency }) => {
         currency={currency}
         profitLoss={strategyStats.total_pnl}
       />
-
-      <MenuItemBody
-        strategy={strategyStats}
-        item={item}
-        active={active}
-        currency={currency}
-      />
+      <AnimatePresence itinial={false}>
+        <MenuItemBody
+          strategy={strategyStats}
+          item={item}
+          active={active}
+          currency={currency}
+        />
+      </AnimatePresence>
     </div>
   );
 };
