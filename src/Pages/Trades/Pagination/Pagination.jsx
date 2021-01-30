@@ -19,12 +19,9 @@ const Pagination = ({ data, handleSort }) => {
     setCurrentPage(e.target.value);
   };
 
-  
-
   useEffect(() => {
     setCurrentPage(1);
   }, [data])
-
 
   return (
     <React.Fragment>

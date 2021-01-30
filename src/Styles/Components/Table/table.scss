@@ -96,25 +96,58 @@ tr {
   background: $color-purple-dark;
   border-radius: 0 0 10px 10px;
 
-  // &__btn-container {
+  &__btn-container {
+    // width: 100%;
+    padding-left: $space-8;
+    display: grid;
+    grid-template-columns: 4rem 1fr 4rem;
+    align-items: center;
+  }  
+ 
+  &__buttons {
+    grid-column: 2/3;
+  }
+  
+  &__back {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    padding: 0;
 
-  // }
+  }
 
   &__btn {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
-    padding: 0.8rem 2rem;
+    padding: $space-8 $space-16;
     color: $color-purple-medium;
+    cursor:pointer;
     
     &--active {
       color: $color-off-white;
     }
+
+    &--chevron {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      // padding: 0;
+
+      &:hover, &:focus {
+        color: $color-off-white;
+      }
+    }
+
+
   }
 
   &--notrades {
     font-weight: 300;
-
+    cursor: auto;
   }
+
+
+
 }
 
 .chevron {

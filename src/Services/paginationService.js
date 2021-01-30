@@ -16,7 +16,7 @@ export const paginate = (data, itemPerPage) => {
 export const generatePageNumbers = paginatedData => {
   const pageNumbers = [];
   for (let i = 1; i <= paginatedData.length; i++) {
-    pageNumbers.push(i);
+    pageNumbers.push(i.toString());
   }
   return pageNumbers;
 };
