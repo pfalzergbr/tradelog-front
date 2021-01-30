@@ -8,10 +8,8 @@ import React from 'react';
 const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
   const firstPage = pageNumbers[0];
   const lastPage = pageNumbers[pageNumbers.length - 1];
-  const previousPage = parseInt(currentPage) - 1
-  const nextPage = parseInt(currentPage) + 1
-
-  console.log(currentPage);
+  const previousPage = parseInt(currentPage) - 1;
+  const nextPage = parseInt(currentPage) + 1;
 
   return (
     <div className='table-pagination'>
@@ -49,15 +47,16 @@ const PaginationPages = ({ handlePageChange, pageNumbers, currentPage }) => {
                   value={nextPage}
                   className='table-pagination__btn table-pagination__btn--chevron'
                   onClick={handlePageChange}>
-                   &gt;
+                  &gt;
                 </button>
               )}
             </div>
           </React.Fragment>
         ) : (
-          <p className='table-pagination__btn table-pagination__btn--notrades'>
-            No trades found
-          </p>
+            <p className='table-pagination__btn table-pagination__btn--notrades'>
+              No trades found
+            </p>
+
         )}
       </div>
     </div>

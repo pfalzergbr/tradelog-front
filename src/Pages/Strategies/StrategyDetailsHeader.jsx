@@ -22,6 +22,11 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
     dispatch(openModal('editStrategy', { strategy, token }));
   };
 
+  const openTradeModal = () => {
+    console.log('yoohoo');
+    dispatch(openModal('newTrade', {}));
+  };
+
   return (
     <AnimatePresence exitBeforeEnter>
       {strategy ? (
@@ -36,7 +41,9 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
             Select your account to show all trades
           </p>
           <div className='page-header__button-container'>
-            <Button buttonStyle='primary'>New Trade</Button>
+            <Button buttonStyle='primary' onClick={openTradeModal}>
+              New Trade
+            </Button>
 
             {!strategy.is_default && (
               <React.Fragment>
@@ -63,7 +70,7 @@ const StrategyDetailsHeader = ({ currentStrategy }) => {
             Select a strategy on the side menu to filter your trades
           </p>
           <div className='page-header__button-container'>
-            <Button buttonStyle='primary'>New Trade</Button>
+            <Button buttonStyle='primary' onClick={openTradeModal}>New Trade</Button>
           </div>
         </motion.div>
       )}
