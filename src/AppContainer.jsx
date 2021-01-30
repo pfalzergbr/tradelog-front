@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from './Redux/Actions/authActions';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-
+import { AnimatePresence } from 'framer-motion';
 import ModalController from './Pages/Shared/ModalController';
 import AppRouter from './Routers/AppRouter';
 import { populateUserData } from './Services/Requests/userService';
@@ -34,7 +34,9 @@ const AppContainer = () => {
         closeOnClick
         autoClose={5000}
       />
-      <ModalController />
+      <AnimatePresence>
+        <ModalController />
+      </AnimatePresence>
       <AppRouter />
     </React.Fragment>
   );

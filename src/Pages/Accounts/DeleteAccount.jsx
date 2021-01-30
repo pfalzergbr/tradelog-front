@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Button from '../Shared/ui/Button';
+import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteAccount } from '../../Services/Requests/accountRequests';
+import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const DeleteAccount = props => {
   const { closeModal, data } = props;
@@ -22,7 +24,7 @@ const DeleteAccount = props => {
   };
 
   return (
-    <div className='modal'>
+    <motion.div className='modal' {...modalAnimation}>
       <Button buttonStyle='close' onClick={closeModal}>
         x
       </Button>
@@ -55,7 +57,7 @@ const DeleteAccount = props => {
         </Button>
         <Button onClick={closeModal}>Cancel</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

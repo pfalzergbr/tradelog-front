@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import StrategyForm from './StrategyForm';
 import { editStrategy } from '../../Services/Requests/strategyRequests';
+import { motion } from 'framer-motion';
+import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const NewStrategy = props => {
   const { strategy, token } = props.data;
@@ -10,20 +12,17 @@ const NewStrategy = props => {
 
   const onSubmit = async data => {
     await editStrategy(data, strategy.strategy_id, token, dispatch);
-    // history.push(
-    //   `/${response.strategy.user_id}/strategies/${response.strategy.strategy_id}`,
-    // );
   };
 
   return (
-    <div>
+    <motion.div {...modalAnimation}>
       <button onClick={props.closeModal}>X</button>
       <StrategyForm
         strategyData={strategy}
         button='Edit Strategy'
         onSubmit={onSubmit}
       />
-    </div>
+    </motion.div>
   );
 };
 

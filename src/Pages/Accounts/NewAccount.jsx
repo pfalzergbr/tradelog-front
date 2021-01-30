@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import {useHistory} from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useHistory } from 'react-router-dom';
 import NewAccountForm from './NewAccountForm';
 import { addAccount } from '../../Services/Requests/accountRequests';
-
+import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const NewAccount = props => {
   const { token } = useSelector(state => state.auth);
@@ -17,10 +17,9 @@ const NewAccount = props => {
   };
 
   return (
-
-      <div>
-        <NewAccountForm onSubmit={onSubmit} closeModa={props.closeModal}/>
-      </div>
+    <motion.div {...modalAnimation}>
+      <NewAccountForm onSubmit={onSubmit} closeModa={props.closeModal} />
+    </motion.div>
   );
 };
 

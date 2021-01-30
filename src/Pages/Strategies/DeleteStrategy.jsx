@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { deleteStrategy } from '../../Services/Requests/strategyRequests';
 import Button from '../Shared/ui/Button';
+import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const DeleteStrategy = props => {
   const { closeModal, data } = props;
@@ -28,8 +30,10 @@ const DeleteStrategy = props => {
   };
 
   return (
-    <div className='modal'>
-      <Button buttonStyle='close' onClick={closeModal}>x</Button>
+    <motion.div className='modal' {...modalAnimation}>
+      <Button buttonStyle='close' onClick={closeModal}>
+        x
+      </Button>
       <div className='modal-body'>
         <h3 className='modal__title'>{`You are trying to delete your ${strategy_name} Strategy.`}</h3>
         <p className='modal__paragraph'>
@@ -59,7 +63,7 @@ const DeleteStrategy = props => {
         </Button>
         <Button onClick={closeModal}>Cancel</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { deleteTrade } from '../../Services/Requests/tradeRequests';
+import { motion } from 'framer-motion';
+
 import Button from '../Shared/ui/Button';
+import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const DeleteTrade = props => {
   const { closeModal, data } = props;
@@ -23,7 +26,7 @@ const DeleteTrade = props => {
   };
 
   return (
-    <div className='modal'>
+    <motion.div className='modal' {...modalAnimation}>
       <Button buttonStyle='close' onClick={closeModal}>
         x
       </Button>
@@ -59,7 +62,7 @@ const DeleteTrade = props => {
         </Button>
         <Button onClick={closeModal}>Cancel</Button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
