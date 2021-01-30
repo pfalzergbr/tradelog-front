@@ -103,12 +103,17 @@ tr {
   &__btn {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
-    color: $color-off-white;
     padding: 0.8rem 2rem;
-
+    color: $color-purple-medium;
+    
     &--active {
-      color: $color-purple-medium;
+      color: $color-off-white;
     }
+  }
+
+  &--notrades {
+    font-weight: 300;
+
   }
 }
 
