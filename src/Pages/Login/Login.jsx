@@ -9,6 +9,13 @@ import Footer from '../Shared/Footer';
 import LoadingGroup from '../Shared/LoadingGroup';
 import { loginUser } from '../../Services/Requests/userService';
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
+import {
+  routeAnimate,
+  routeExit,
+  routeInitial,
+  routeTransition,
+} from '../../Services/Animations/routeTransition';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -23,17 +30,22 @@ const Login = () => {
       }
       history.push(`/${response.user.userId}/dashboard`);
       toast('Logged in successfully! Welcome back!');
-    } catch (error){
+    } catch (error) {
       toast.error('Cannot log in. Please try again');
     }
   };
 
   return (
     <LoadingGroup>
-      <div className='login-page'>
+      <motion.div
+        className='login-page'
+        initial={routeInitial}
+        animate={routeAnimate}
+        exit={routeExit}
+        transition={routeTransition}>
         <LoginForm onSubmit={onSubmit} />
         <Footer />
-      </div>
+      </motion.div>
     </LoadingGroup>
   );
 };

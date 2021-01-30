@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { format } from 'date-fns';
+import { motion } from 'framer-motion';
 
 import { selectTrade } from '../../Redux/Reducers/trade';
 import { openModal } from '../../Redux/Actions/modalActions';
@@ -15,6 +16,12 @@ import { setItemColor } from '../../Services/Requests/setColorService';
 import ChangeStrategy from './EditTrade/ChangeStrategy';
 import { selectStrategy } from '../../Redux/Reducers/strategy';
 import EditTradeNotes from './EditTrade/EditTradeNotes';
+import {
+  routeAnimate,
+  routeExit,
+  routeInitial,
+  routeTransition,
+} from '../../Services/Animations/routeTransition';
 
 const TradeDetails = () => {
   const [isChangingStrategy, setIsChangingStrategy] = useState(false);
@@ -71,7 +78,12 @@ const TradeDetails = () => {
   //TODO - Do Edit trade
   return (
     <LoadingGroup>
-      <div className='trade-details'>
+      <motion.div
+        className='trade-details'
+        initial={routeInitial}
+        animate={routeAnimate}
+        exit={routeExit}
+        transition={routeTransition}>
         <div className='trade-details__header-container'>
           <p className='trade-details__date'>
             {date && format(new Date(date), 'Mo MMMM, yyyy')}
@@ -147,7 +159,7 @@ const TradeDetails = () => {
           </Button>
           <Button onClick={openDeleteModal}>Delete</Button>
         </div>
-      </div>
+      </motion.div>
     </LoadingGroup>
   );
 };

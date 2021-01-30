@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { motion } from 'framer-motion';
 import { selectAccount } from '../../Redux/Reducers/account';
 import { selectAccountStrategies } from '../../Redux/Reducers/strategy';
 
@@ -17,6 +17,12 @@ import AccordionMenu from '../Menu/AccordionMenu';
 import AccountDetailsHeader from './AccountDetailsHeader';
 import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
 import useSort from '../../Services/hooks/useSort';
+import {
+  routeAnimate,
+  routeExit,
+  routeInitial,
+  routeTransition,
+} from '../../Services/Animations/routeTransition';
 
 const AccountDetails = () => {
   const dispatch = useDispatch();
@@ -51,7 +57,10 @@ const AccountDetails = () => {
 
   return (
     <LoadingGroup>
-      <div className='details'>
+      <motion.div className='details'       initial={routeInitial}
+      animate={routeAnimate}
+      exit={routeExit}
+      transition={routeTransition}>
         <AccountDetailsHeader account={account} token={token} />
         <div className='menu-column'>
           <AccordionMenu
@@ -66,7 +75,7 @@ const AccountDetails = () => {
         <div className='trades-column'>
           <TradeList trades={sortedTrades} handleSort={handleSort} />
         </div>
-      </div>
+      </motion.div>
     </LoadingGroup>
   );
 };
