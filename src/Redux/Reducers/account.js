@@ -69,3 +69,7 @@ export const selectAccountCurrency = ( state, accountId ) => {
     account => account.account_id === accountId,
   )).currency;
 }
+
+export const selectHasAccounts = (state, account) => {
+  return state.account.accounts.length !== 0
+}

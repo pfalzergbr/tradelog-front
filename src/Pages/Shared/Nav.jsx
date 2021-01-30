@@ -5,11 +5,15 @@ import { clearUser } from '../../Services/storageService';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../Redux/Actions/authActions';
 import { openModal } from '../../Redux/Actions/modalActions';
+import { selectHasAccounts } from '../../Redux/Reducers/account';
 
 const Nav = props => {
   const history = useHistory();
   const links = props.data;
   const auth = useSelector(state => state.auth);
+  const hasAccounts = useSelector(selectHasAccounts);
+
+  console.log(hasAccounts);
 
   const dispatch = useDispatch();
 
@@ -17,6 +21,9 @@ const Nav = props => {
     dispatch(openModal('newTrade', {}));
   };
 
+  const openNewAccountModal = () => {
+    dispatch(openModal('newAccount', {}));
+  };
 
   const logoutUser = () => {
     dispatch(logout());
@@ -28,9 +35,7 @@ const Nav = props => {
     <nav className='nav'>
       <div className='nav__container'>
         <div className='nav__logo-container'>
-
-            <h3 className='logo'>TradeLog</h3>
- 
+          <h3 className='logo'>TradeLog</h3>
         </div>
         <div className='nav__link-container'>
           {links.map(link => (
@@ -43,9 +48,14 @@ const Nav = props => {
               Logout
             </button>
           )}
-          {auth.token && (
+          {auth.token && hasAccounts && (
             <button className='btn btn--primary' onClick={handleOpenModal}>
               QuickTrade
+            </button>
+          )}
+          {auth.token && !hasAccounts && (
+            <button className='btn btn--primary' onClick={openNewAccountModal}>
+              New Account
             </button>
           )}
         </div>
