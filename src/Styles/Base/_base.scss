@@ -35,9 +35,10 @@ button {
 }
 
 .app {
+  width: 100vw;
   display: grid;
   grid-template-rows: [nav-start] 10rem [nav-end main-start] 1fr [main-end footer-start] 10rem [footer-end];
-  grid-template-columns: 1fr minmax(400px, 1200px) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(1fr, 1200px) minmax(0, 1fr);
   grid-gap: $space-24;
   height: 100vh;
 }

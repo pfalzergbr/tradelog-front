@@ -1,20 +1,27 @@
 .nav {
-  grid-area: nav-start / 1 / nav-end / -1;
+  // grid-area: nav-start / 1 / nav-end / -1;
   @include grid-colums-3;
   height: 10rem;
   background-color: $color-purple-dark;
   align-items: center;
   justify-content: center;
-
+  
+  @media (min-width: 800px) {
+    @include grid-colums-3;
+    grid-area: nav-start / 1 / nav-end / -1;
+  }
 
   &__container {
-    @include centered-in-grid-3;
+    @include grid-columns-full;
+    grid-column: 1 / -1;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-
+    
     @media (min-width: 800px) {
+      @include centered-in-grid-3;
+      justify-content: space-between;
       flex-direction: row;
+      
     }
   }
 

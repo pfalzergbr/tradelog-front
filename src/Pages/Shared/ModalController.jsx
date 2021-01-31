@@ -27,7 +27,9 @@ const ModalController = () => {
       backgroundColor: 'rgba(0, 0, 0, 0.85)'
     },
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.85)'
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      height: '100vh',
+      width: '100vw'
     }
   };
   return (

@@ -7,10 +7,14 @@
 
 @mixin grid-colums-3 {
   display: grid;
-  grid-template-columns: 1fr minmax(400px, 1200px) 1fr;
+  grid-template-columns: 1fr minmax(min-content, 1200px) 1fr;
   grid-gap: $space-24;
 }
 
 @mixin centered-in-grid-3 {
   grid-column: 2/3;
+}
+
+@mixin grid-columns-full {
+  grid-column: 1/ -1;
 }
