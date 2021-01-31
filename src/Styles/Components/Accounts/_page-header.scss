@@ -25,8 +25,13 @@
   }
   
   &--details {
+    display: none;
     grid-column: 1 / 2;
     border-radius: 1rem;
+
+    @media (min-width: 800px){
+      display: flex;
+    }
   }
   
   

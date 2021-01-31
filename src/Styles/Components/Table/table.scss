@@ -37,6 +37,14 @@ tr {
       width: 100%;
       text-align: right;
     }
+
+    &--hidden {
+      display: none;
+
+      @media(min-width: 1000px){
+        display: block;
+      }
+    }
   }
 
   &--empty {
@@ -84,6 +92,14 @@ tr {
 
     &--active {
       color: $color-purple-medium;
+    }
+
+    &--hidden {
+      display: none;
+
+      @media(min-width: 1000px){
+        display: block;
+      }
     }
   }
 }

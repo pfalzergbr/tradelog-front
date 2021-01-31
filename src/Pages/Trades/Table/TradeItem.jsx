@@ -43,7 +43,7 @@ const TradeItem = ({ data }) => {
         <TradeColumn color={color} text={symbol} />
         <TradeColumn color={color} text={strategy_name} />
         <TradeColumn color={color} text={bias} />
-        <TradeColumn color={color} text={outcome} />
+        <TradeColumn color={color} text={outcome} variant='trade-item__column--hidden' />
         <TradeColumn color={color} text={gainPercentage} />
         <TradeColumn color={color} text={formattedAmount} />
         <TradeColumn color={color} text={formattedDate} />

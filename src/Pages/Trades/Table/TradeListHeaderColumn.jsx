@@ -8,11 +8,12 @@ const TradeListHeaderColumn = ({
   text,
   activeColumn,
   setActiveColumn,
+  variant = '',
 }) => {
   const [currentOrder, setCurrentOrder] = useState(null);
   const classes = `table-header__column ${
-    handleSort && 'table-header__column--sortable'
-  } ${currentOrder && 'sorting' + currentOrder}`;
+    handleSort ? 'table-header__column--sortable' : ''
+  } ${currentOrder ? 'sorting' + currentOrder : ''} ${variant}`;
 
   const handleSetSortBy = () => {
     if (handleSort) {

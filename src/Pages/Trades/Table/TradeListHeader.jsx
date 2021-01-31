@@ -10,7 +10,7 @@ const TradeListHeader = ({ handleSort }) => {
         <TradeListHeaderColumn value='symbol' text='Symbol' />
         <TradeListHeaderColumn value='strategy' text='Strategy' />
         <TradeListHeaderColumn value='bias' text='Bias' />
-        <TradeListHeaderColumn value='outcome' text='Outcome' />
+        <TradeListHeaderColumn value='outcome' text='Outcome' variant='table-header__column--hidden'/>
         <TradeListHeaderColumn
           setActiveColumn={setActiveColumn}
           activeColumn={activeColumn}
