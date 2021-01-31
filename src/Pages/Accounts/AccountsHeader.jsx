@@ -8,7 +8,7 @@ const AccountsHeader = ({ userName, openNewAccountModal }) => {
   const hasAccounts = useSelector(selectHasAccounts)
 
   return (
-    <div className='page-header'>
+    <div className='page-header page-header--account'>
       <div className='page-header__title-container'>
         <h3 className='page-header__title'>Welcome, {userName}!</h3>
       </div>

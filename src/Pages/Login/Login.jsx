@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './LoginForm';
 
 import { storeUser } from '../../Services/storageService';
-import Footer from '../Shared/Footer';
 
 import LoadingGroup from '../Shared/LoadingGroup';
 import { loginUser } from '../../Services/Requests/userService';

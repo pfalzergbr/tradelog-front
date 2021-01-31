@@ -1,5 +1,5 @@
 .card {
-  width: 32rem;
+  width: 100vw;
   height: 42rem;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,7 @@
   border-radius: 1rem;
   transition: color .3s ease-out;
 
+
   &:hover, &:active , &:focus {
     background: $color-purple-dark;
     & .card-body {
@@ -16,6 +17,9 @@
     }
   }
 
+  @media(min-width: 400px){
+    width: 32rem;
+  }
 }
 
 .card-header {

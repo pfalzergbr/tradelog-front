@@ -13,7 +13,12 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
+  
+  @media(min-width: 800px){
+    font-size: 62.5%;
+    
+  }
 }
 
 a {
@@ -38,13 +43,19 @@ button {
   width: 100vw;
   display: grid;
   grid-template-rows: [nav-start] 10rem [nav-end main-start] 1fr [main-end footer-start] 10rem [footer-end];
-  // grid-template-rows: [nav-start] 10rem [nav-end main-start] 1fr;
   grid-template-columns: minmax(0, 1fr) minmax(1fr, 1200px) minmax(0, 1fr);
-  grid-gap: $space-24;
+  grid-gap: 0;
   height: 100vh;
+  
+  @media (min-width: 800px){
+    grid-gap: $space-24;
+  }
 }
 
 .main-container {
   grid-area: main-start / 1/ main-end /-1;
-  @include grid-colums-3;
+  
+  @media (min-width: 800px){
+    @include grid-colums-3;
+  }
 }

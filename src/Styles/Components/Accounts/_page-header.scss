@@ -5,14 +5,23 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  // height: 100%;
   background: $color-dark;
-  border-radius: 1rem;
   padding: $space-12;
+  // width: 100vw;
+
   
   @media(min-width: 800px) {
     grid-column: 1 / span 2;
+    border-radius: 1rem;
     padding: 0;
+  }
+
+  &--account {
+    width: 100vw;
+    @media (min-width: 800px){
+      width: auto;
+    }
   }
   
   &--details {

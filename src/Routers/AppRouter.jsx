@@ -6,7 +6,6 @@ import { AnimatePresence } from 'framer-motion';
 import Nav from '../Pages/Shared/Nav';
 import Landing from '../Pages/Landing/Landing';
 import Loading from '../Pages/Shared/Loading';
-import Footer from '../Pages/Shared/Footer';
 
 const Register = lazy(() => import('../Pages/Register/Register'));
 const Login = lazy(() => import('../Pages/Login/Login'));
