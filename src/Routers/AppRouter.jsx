@@ -1,11 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import Nav from '../Pages/Shared/Nav';
 import Landing from '../Pages/Landing/Landing';
 import Loading from '../Pages/Shared/Loading';
+import Footer from '../Pages/Shared/Footer';
 
 const Register = lazy(() => import('../Pages/Register/Register'));
 const Login = lazy(() => import('../Pages/Login/Login'));
@@ -17,7 +18,7 @@ const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'));
 const AppRouter = () => {
   const auth = useSelector(state => state.auth);
   const { token, user } = auth;
-  const location = useLocation()
+  const location = useLocation();
 
   //Links to display if there is no logged in user. Feeds into the Navbar components as props
   const publicLinks = [
@@ -51,7 +52,7 @@ const AppRouter = () => {
   //Routes if there is a user logged in.
   const authRoutes = (
     <Switch location={location} key={location.pathname}>
-      <Suspense fallback={<Loading />}>    
+      <Suspense fallback={<Loading />}>
         <Route exact={true} path='/'>
           <Landing />
         </Route>

@@ -7,6 +7,7 @@
 
 @mixin grid-colums-3 {
   display: grid;
+  min-width: 320px;
   grid-template-columns: 1fr minmax(min-content, 1200px) 1fr;
   grid-gap: $space-24;
 }

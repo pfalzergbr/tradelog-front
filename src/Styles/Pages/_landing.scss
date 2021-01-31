@@ -1,7 +1,8 @@
 .landing-page {
-  height: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: column;
+  // grid-row: 1/2;
 
   @include centered-in-grid-3;
   justify-content: center;

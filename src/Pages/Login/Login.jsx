@@ -34,7 +34,7 @@ const Login = () => {
     <LoadingGroup>
       <motion.div className='login-page' {...routeAnimation}>
         <LoginForm onSubmit={onSubmit} />
-        <Footer />
+
       </motion.div>
     </LoadingGroup>
   );

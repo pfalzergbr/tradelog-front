@@ -37,7 +37,7 @@ const Landing = () => {
         </div>
       </div>
       <Footer />
-    </motion.div>
+      </motion.div>          
   );
 };
 
