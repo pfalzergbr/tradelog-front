@@ -69,9 +69,9 @@ const MenuItemBody = ({ strategy, active, item, currency }) => {
             variant='accordion-content'
             containerClass='item-container'
           />
-          <div className='item-container'>
+          {/*<div className='item-container'>
             <p className='accordion__link'>Strategy Details</p>
-          </div>
+      </div>*/}
         </motion.div>
       )}
       </AnimatePresence>

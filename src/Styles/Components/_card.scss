@@ -6,7 +6,7 @@
   background: $color-dark;
   box-shadow: $shadow-light;
   color: $color-purple-light;
-  border-radius: 1rem;
+
   transition: color .3s ease-out;
 
 
@@ -19,6 +19,7 @@
 
   @media(min-width: 400px){
     width: 32rem;
+    border-radius: 1rem;
   }
 }
 

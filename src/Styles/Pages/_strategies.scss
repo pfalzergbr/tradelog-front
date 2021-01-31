@@ -7,11 +7,15 @@
 // }
 
 .details {
-  @include centered-in-grid-3;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: min-content 1fr;
-  grid-gap: $space-24;
+
+  @media (min-width: 800px){
+
+    @include centered-in-grid-3;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: min-content 1fr;
+    grid-gap: $space-24;
+  }
 }
 
 .trades-column {

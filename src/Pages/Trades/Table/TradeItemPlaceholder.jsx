@@ -9,7 +9,7 @@ const TradeItemPlaceholder = () => {
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
-    <TradeColumn color={color} text={text} />
+    <TradeColumn color={color} text={text} variant='trade-item__column--hidden'/>
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
     <TradeColumn color={color} text={text} />
