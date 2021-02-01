@@ -72,12 +72,20 @@ const AccountDetails = () => {
         ) : (
           <React.Fragment>
             <AccountWidget account={account} token={token} />
-            <StrategyWidget account={account} />
+            <StrategyWidget
+              accountStrategies={accountStrategies}
+              currentStrategy={filter}
+              token={token}
+            />
           </React.Fragment>
         )}
         {isBigScreen && (
           <div className='strategy-details'>
-            <StrategyDetailsHeader currentStrategy={filter} />
+            <StrategyDetailsHeader
+              accountStrategies={accountStrategies}
+              currentStrategy={filter}
+              token={token}
+            />
           </div>
         )}
         <div className='trades-column'>

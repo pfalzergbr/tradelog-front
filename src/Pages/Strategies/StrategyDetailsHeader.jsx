@@ -1,18 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { openModal } from '../../Redux/Actions/modalActions';
-import { selectStrategy } from '../../Redux/Reducers/strategy';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Button from '../Shared/ui/Button';
 import { cardAnimation } from '../../Services/Animations/cardTransition';
 
-const StrategyDetailsHeader = ({ currentStrategy }) => {
+const StrategyDetailsHeader = ({ currentStrategy, accountStrategies, token }) => {
   const dispatch = useDispatch();
-  const { token } = useSelector(state => state.auth);
-  const strategy = useSelector(
-    (state => selectStrategy(state, currentStrategy)) || {},
-  );
+  const strategy = accountStrategies.find(strategy => strategy.strategy_id === currentStrategy)
 
   const openDeleteModal = () => {
     dispatch(openModal('deleteStrategy', { strategy, token }));
