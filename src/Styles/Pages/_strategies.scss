@@ -7,9 +7,10 @@
 // }
 
 .details {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
 
-  @media (min-width: 800px){
-
+  @media (min-width: 800px) {
     @include centered-in-grid-3;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -21,17 +22,23 @@
 .trades-column {
   display: flex;
   flex-direction: column;
-  grid-row: 2/3;
-  grid-column: 2/3;
+  @media (min-width: 800px) {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
 }
 
 .strategy-details {
-  grid-column: 2 / 3;
-  grid-row: 1/2;
+  @media (min-width: 800px) {
+    grid-column: 2 / 3;
+    grid-row: 1/2;
+  }
 }
 
 .menu-column {
   display: flex;
-  grid-row: 2/3;
-  grid-column: 1/2;
+  @media (min-width: 800px) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
 }

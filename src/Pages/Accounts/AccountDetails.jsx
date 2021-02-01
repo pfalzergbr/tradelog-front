@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {useMediaQuery} from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { selectAccount } from '../../Redux/Reducers/account';
@@ -18,8 +19,10 @@ import AccountDetailsHeader from './AccountDetailsHeader';
 import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
 import useSort from '../../Services/hooks/useSort';
 import { routeAnimation } from '../../Services/Animations/routeTransition';
+import StrategyWidget from '../Strategies/SmallScreen/StrategyWidget';
 
 const AccountDetails = () => {
+  const isBigScreen = useMediaQuery({query: '(min-width: 800px)'})
   const dispatch = useDispatch();
   const [filter, setFilter] = useState(null);
   const { accountId } = useParams();
@@ -54,6 +57,7 @@ const AccountDetails = () => {
   return (
     <LoadingGroup>
       <motion.div className='details' {...routeAnimation}>
+        { isBigScreen ? <React.Fragment>
         <AccountDetailsHeader account={account} token={token} />
         <div className='menu-column'>
           <AccordionMenu
@@ -62,9 +66,10 @@ const AccountDetails = () => {
             setFilter={setFilter}
           />
         </div>
-        <div className='strategy-details'>
+        </React.Fragment> : <StrategyWidget /> }
+        { isBigScreen && <div className='strategy-details'>
             <StrategyDetailsHeader currentStrategy={filter} />
-        </div>
+        </div>}
         <div className='trades-column'>
           <TradeList trades={sortedTrades} handleSort={handleSort} />
         </div>

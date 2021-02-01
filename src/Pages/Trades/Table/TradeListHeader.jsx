@@ -16,7 +16,7 @@ const TradeListHeader = ({ handleSort }) => {
           activeColumn={activeColumn}
           handleSort={handleSort}
           value='relative_gain'
-          text='Relative Gain'
+          text='Gain'
         />
         <TradeListHeaderColumn
           setActiveColumn={setActiveColumn}
