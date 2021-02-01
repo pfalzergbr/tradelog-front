@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {useMediaQuery} from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { selectAccount } from '../../Redux/Reducers/account';
@@ -20,9 +20,10 @@ import StrategyDetailsHeader from '../Strategies/StrategyDetailsHeader';
 import useSort from '../../Services/hooks/useSort';
 import { routeAnimation } from '../../Services/Animations/routeTransition';
 import StrategyWidget from '../Strategies/SmallScreen/StrategyWidget';
+import AccountWidget from './SmallScreen/AccountWidget';
 
 const AccountDetails = () => {
-  const isBigScreen = useMediaQuery({query: '(min-width: 800px)'})
+  const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' });
   const dispatch = useDispatch();
   const [filter, setFilter] = useState(null);
   const { accountId } = useParams();
@@ -57,19 +58,28 @@ const AccountDetails = () => {
   return (
     <LoadingGroup>
       <motion.div className='details' {...routeAnimation}>
-        { isBigScreen ? <React.Fragment>
-        <AccountDetailsHeader account={account} token={token} />
-        <div className='menu-column'>
-          <AccordionMenu
-            account={account}
-            strategies={sortedStrategies}
-            setFilter={setFilter}
-          />
-        </div>
-        </React.Fragment> : <StrategyWidget /> }
-        { isBigScreen && <div className='strategy-details'>
+        {isBigScreen ? (
+          <React.Fragment>
+            <AccountDetailsHeader account={account} token={token} />
+            <div className='menu-column'>
+              <AccordionMenu
+                account={account}
+                strategies={sortedStrategies}
+                setFilter={setFilter}
+              />
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <AccountWidget account={account} />
+            <StrategyWidget account={account} />
+          </React.Fragment>
+        )}
+        {isBigScreen && (
+          <div className='strategy-details'>
             <StrategyDetailsHeader currentStrategy={filter} />
-        </div>}
+          </div>
+        )}
         <div className='trades-column'>
           <TradeList trades={sortedTrades} handleSort={handleSort} />
         </div>

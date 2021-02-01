@@ -1,31 +1,28 @@
 .widget {
   display: flex;
   justify-content: space-between;
-  margin: $space-8 0;
   padding: $space-12 $space-12;
   background-color: $color-purple-dark;
 
   &__container {
     display: flex;
-    flex:1 ;
+    flex: 1;
     align-items: center;
     justify-content: space-between;
     margin-right: $space-24;
   }
 
   &__value {
-
   }
 
   &__title {
-
   }
 
-  &--account{
-
+  &--account {
+    grid-row: 1/2;
   }
 
-  &--strategy{
-
+  &--strategy {
+    grid-row: 3/4;
   }
 }
