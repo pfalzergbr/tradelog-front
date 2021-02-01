@@ -71,7 +71,7 @@ const AccountDetails = () => {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <AccountWidget account={account} />
+            <AccountWidget account={account} token={token} />
             <StrategyWidget account={account} />
           </React.Fragment>
         )}

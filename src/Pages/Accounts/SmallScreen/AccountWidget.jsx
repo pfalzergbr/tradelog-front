@@ -1,21 +1,42 @@
 import React from 'react';
+import { openModal } from '../../../Redux/Actions/modalActions';
+import { useDispatch } from 'react-redux';
+
 import Button from '../../Shared/ui/Button';
 
-const AccountWidget = ({ account }) => {
+const AccountWidget = ({ account, token }) => {
+  const dispatch = useDispatch();
+
+  const openEditModal = () => {
+    dispatch(openModal('editAccount', { account }));
+  };
+
+  const openStrategyModal = () => {
+    dispatch(openModal('newStrategy', { accountId: account.account_id }));
+  };
+
+  const openDeleteModal = () => {
+    dispatch(openModal('deleteAccount', { account, token }));
+  };
+
   return (
     <div className='widget widget--account'>
       <div className='widget__container'>
-        <h4 className='widget__title'>Account - AccountName</h4>
-        <p className='widget__value'>500$</p>
+        <h4 className='widget__title'>Account - {account.account_name}</h4>
+        <p className='widget__value'>${account.balance}</p>
       </div>
       <div className='widget__details-container'>
-        <p className="widget__details">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis omnis ad molestias repudiandae eligendi! Autem aspernatur tenetur magnam ut recusandae doloribus maiores dolorem nesciunt officiis ab? Ducimus cum neque vero.</p>
+        <p className='widget__details'>
+          {account.details || 'No account description added yet.'}{' '}
+        </p>
       </div>
       <div className='widget__button-container'>
-        <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={openEditModal}>Edit</Button>
+        <Button onClick={openDeleteModal}>Delete</Button>
         <Button buttonStyle='outline'>Details</Button>
-        <Button buttonStyle='outline'>New Strategy</Button>
+        <Button buttonStyle='outline' onClick={openStrategyModal}>
+          New Strategy
+        </Button>
       </div>
     </div>
   );
