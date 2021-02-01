@@ -12,10 +12,10 @@ const StrategySelectMobile = ({
   };
 
   return (
-    <div className='form-control--row'>
-      <label htmlFor='strategySelect'>Strategy: </label>
+    <div className='widget__form-control'>
+      <label className='widget__label' htmlFor='strategySelect'>Strategy</label>
       <select
-        className='form__input'
+        className='form__input widget__select'
         name='strategySelect'
         onChange={onSelect}
         value={currentStrategy || strategyOptions[0]}>

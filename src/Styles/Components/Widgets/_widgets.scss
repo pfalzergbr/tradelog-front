@@ -16,10 +16,20 @@
     margin-right: $space-24;
   }
 
+  &__label {
+    font-size: $font-size-medium;
+    color: $color-off-white;
+  }
+
+  &__form-control {
+    display: flex;
+    align-items: center;
+  }
+
   &__button-container {
     display: flex;
     justify-content: space-between;
-    padding: $space-12;
+    padding: $space-12 0;
     
 
     @media(min-width: 400px){
