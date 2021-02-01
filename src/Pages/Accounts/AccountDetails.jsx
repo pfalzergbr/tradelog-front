@@ -76,6 +76,7 @@ const AccountDetails = () => {
               accountStrategies={accountStrategies}
               currentStrategy={filter}
               token={token}
+              setFilter={setFilter}
             />
           </React.Fragment>
         )}
