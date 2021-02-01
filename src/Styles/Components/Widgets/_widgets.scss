@@ -2,7 +2,11 @@
   display: flex;
   justify-content: space-between;
   padding: $space-12 $space-12;
-  background-color: $color-purple-dark;
+  background-color: $color-dark;
+  
+  @media(min-width: 600px){
+    padding: $space-24 $space-24;
+  }
 
   &__container {
     display: flex;
@@ -12,17 +16,49 @@
     margin-right: $space-24;
   }
 
+  &__button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: $space-12;
+    
+
+    @media(min-width: 400px){
+      justify-content: flex-end;
+
+      > .btn {
+        margin-left: $space-12;
+      }
+
+    }
+
+    @media(min-width: 600px){
+      padding: $space-24;
+    }
+
+
+  }
+
   &__value {
   }
 
   &__title {
+
+  }
+
+
+  &__details {
+    font-weight: 300;
   }
 
   &--account {
-    grid-row: 1/2;
+    display: grid;
+    grid-template-rows: repeat(1fr);
+    grid-template-columns: 1fr;
+    grid-gap: $space-24;
+    grid-row: 3/4;
   }
 
   &--strategy {
-    grid-row: 3/4;
+    grid-row: 1/2;
   }
 }
