@@ -25,6 +25,8 @@ User interface is built with [**React**](https://github.com/facebook/react), ful
 - Using [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) for routing, lazy loading most of the components on the route level for a faster first render. Route transitions are handled by [Framer Motion](https://github.com/framer/motion).
 - Forms are handled by [React-hook-form](https://github.com/react-hook-form/react-hook-form), validated by [yup](https://github.com/jquense/yup). I further extracted reusable form control elements(inputs, labels, error messages) for more code reuse and simplifications of components, and integrated with these libraries. Some minor inputs are handled with simple two-way data binding, and react useState hook. 
 - Data fetching is handled with [Axios](https://github.com/axios/axios)
+- Toasties are using [React-Toastify](https://github.com/fkhadra/react-toastify). Modals are built with [React-Modal](https://github.com/reactjs/react-modal), controlled centrally by a custom modal controller and Redux. 
+- Account Details page includes a custom build accordion menu for strategies and statistics, connected as an automatic filter to a trades table. The table is paginated, built from scratch. Although I am sure there are libraries for that, I wanted to build these myself to practice.  
 - Styled with SCSS, layout is a combination of CSS Grid and Flexbox. More complex responsiveness issues with mobile screens are solved by [react-responsive](https://github.com/contra/react-responsive), to conditionally render appropriate components, based on the viewport. 
 
 ### State Management
