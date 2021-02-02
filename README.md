@@ -4,6 +4,7 @@
 Front-end code for the Tradelog project. My first full stack web application for the portfolio site, built mainly for my own practice. Connects to a custom Node.js backend, [Tradelog API](https://github.com/pfalzergbr/tradelog-api).
 
 ### Frontend Stack
+- Javascript
 - React (Hooks)
 - Redux (No toolkit)
 - Sass (Scss)
@@ -16,7 +17,17 @@ Since most trading platforms and brokers provide robust analytical tools and exp
 
 Also explored using other financial API-s to fetch stock market data, was very keen on build in a Symbol search and populating company data. Unfortunately, restrictions on the free APIs don't actually make this possible, even on this scale. 
 
+### User Interface
+
+User interface is built with **React**, fully using functional components and react hooks. One of the main purpose of this project was to get used to writing reusable code, extracted as much code into smaller components as possible. More refactoring and drying is possible, will most likely spend more time for further tidy up. 
+
+Front-end Authentication is JWT based, tokens are stored in the auth reducer, and local storage if the user wishes to stay logged in. This might not be the most secure solution, but probably sufficient for this particular project. Using [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) for routing
 
 
+### State Management
+
+The application is using **Redux** with hooks as a state management solution. Started the project without, considered useReucers and Context API. Finally decided that the complex appliacation state including 6 separate reducers, cross-component communication and extensive data fetching justifies for the added complexity of Redux. Using Redux Thunks for asyncronous actions. Built a separate handleThunks action to dry up the code, and reuse the same data fetching/loading logic throughout the whole application. Considered using Redux toolkit instead of the full boilerplate code, but since this was my first major Redux Project, went with the traditional, more extensive solution. 
+Redux handles Authentication, displaying Modals in a single component, User, Account, Strategy and Trade API requests, controlling loading spinners, fetching errors.
+The project gave me a great practice in Redux, lot of documentation time, consideration of best practices, and an excellent opportunity to work wit complex state early my career. 
 
 
