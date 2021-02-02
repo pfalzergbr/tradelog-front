@@ -4,12 +4,13 @@
   grid-gap: $space-24;
   grid-template-columns: repeat(auto-fit, 1fr);
   grid-template-rows: 1fr 42rem;
-  // justify-content: center;
   
-  @media (min-width: 800px){
+  @media (min-width: 800px) {
     grid-template-columns: repeat(auto-fit, 32rem);
     @include centered-in-grid-3;
-    justify-content: center;
+    justify-content: start;
+    // margin-right: auto
+    // width: 100%;
 
   }
 }
