@@ -1,3 +1,5 @@
-## Tradelog - Web application for analysing stock market trade results. 
+## Tradelog - Front-end
+### Porftolio-project by Gabor Pfalzer
 
-### Portfolio Project by Gabor Pfalzer
+
+Front-end code for the Tradelog project. Full stack web application
