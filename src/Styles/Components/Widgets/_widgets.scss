@@ -8,22 +8,37 @@
     padding: $space-24 $space-24;
   }
 
+  &__value-title {
+    margin-right: $space-12;
+  }
+
   &__container {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: space-between;
-    margin-right: $space-24;
+
+
+    &--strategy {
+
+    }
   }
 
   &__label {
-    font-size: $font-size-medium;
+    font-size: $font-size-regular;
     color: $color-off-white;
+    margin-right: $space-12;
+  }
+
+  &__select {
+    padding-left: $space-12;
   }
 
   &__form-control {
     display: flex;
     align-items: center;
+
+
   }
 
   &__button-container {
@@ -48,12 +63,8 @@
 
   }
 
-  &__value {
-  }
 
-  &__title {
 
-  }
 
 
   &__details {
