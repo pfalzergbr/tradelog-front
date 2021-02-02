@@ -32,6 +32,6 @@ User interface is built with [**React**](https://github.com/facebook/react), ful
 ### State Management
 
 The application is using [**Redux**](https://github.com/reduxjs/redux) with hooks as a state management solution. Started the project without, considered useReucers and Context API. Finally decided that the complex appliacation state including 6 separate reducers, cross-component communication and extensive data fetching justifies for the added complexity of Redux. Using [Redux Thunks](https://github.com/reduxjs/redux-thunk) for asyncronous actions. Built a separate handleThunks action to dry up the code, and reuse the same data fetching/loading logic throughout the whole application. Considered using Redux toolkit instead of the full boilerplate code, but since this was my first major Redux Project, went with the traditional, more extensive solution. 
-Redux handles Authentication, displaying Modals in a single component, User, Account, Strategy and Trade API requests, controlling loading spinners, fetching errors.
+Redux handles Authentication, displaying Modals in a single component, User, Account, Strategy and Trade API requests, controlling loading spinners, fetching and errors.
 The project gave me a great practice in Redux, lot of documentation time, consideration of best practices, and an excellent opportunity to work with complex state.
 
