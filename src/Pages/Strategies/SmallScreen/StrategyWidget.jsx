@@ -17,7 +17,7 @@ const StrategyWidget = ({
 
   const strategyStats =
     useSelector(state => selectStrategyStat(state, currentStrategy)) || {};
-  const value = strategyStats.total_pnl || balance - opening_balance;
+  const value = (strategyStats.total_pnl || balance - opening_balance).toFixed(2);
   const valueColor = value > 0 ? 'green' : 'red';
 
   return (
@@ -28,13 +28,13 @@ const StrategyWidget = ({
           accountStrategies={accountStrategies}
           setFilter={setFilter}
         />
+        <Button>Details</Button>
         <p className={`widget__value`}>
           <span className={valueColor}>
             {currencyMap[currency]}
             {value}
           </span>
         </p>
-
       </div>
     </div>
   );
