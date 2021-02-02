@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { loadAccountStats } from '../../Services/Requests/accountRequests';
 
 
-const NewTrade = props => {
+const NewTrade = ({closeModal}) => {
   const { token } = useSelector(state => state.auth);
   const { accounts } = useSelector(state => state.account);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const NewTrade = props => {
         <TradeForm
           onSubmit={onSubmit}
           accounts={accounts}
-          closeModal={props.closeModal}
+          closeModal={closeModal}
         />
       </motion.div>
     </LoadingGroup>

@@ -9,8 +9,8 @@ import {
   modalAnimation
 } from '../../Services/Animations/modalTransition';
 
-const NewStrategy = props => {
-  const { accountId } = props.data;
+const NewStrategy = ({data, closeModal}) => {
+  const { accountId } = data;
   const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
@@ -22,9 +22,8 @@ const NewStrategy = props => {
   };
 
   return (
-    <motion.div {...modalAnimation}>
-      <button onClick={props.closeModal}>X</button>
-      <StrategyForm onSubmit={onSubmit} />
+    <motion.div className='modal' {...modalAnimation}>
+      <StrategyForm onSubmit={onSubmit} closeModal={closeModal}/>
     </motion.div>
   );
 };

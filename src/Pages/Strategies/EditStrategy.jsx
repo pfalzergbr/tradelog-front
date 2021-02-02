@@ -6,8 +6,8 @@ import { editStrategy } from '../../Services/Requests/strategyRequests';
 import { motion } from 'framer-motion';
 import { modalAnimation } from '../../Services/Animations/modalTransition';
 
-const NewStrategy = props => {
-  const { strategy, token } = props.data;
+const NewStrategy = ({data, closeModal}) => {
+  const { strategy, token } = data;
   const dispatch = useDispatch();
 
   const onSubmit = async data => {
@@ -16,11 +16,11 @@ const NewStrategy = props => {
 
   return (
     <motion.div {...modalAnimation}>
-      <button onClick={props.closeModal}>X</button>
       <StrategyForm
         strategyData={strategy}
         button='Edit Strategy'
         onSubmit={onSubmit}
+        closeModal={closeModal}
       />
     </motion.div>
   );

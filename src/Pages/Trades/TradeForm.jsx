@@ -20,7 +20,7 @@ const basicTradeSchema = yup.object().shape({
   date: yup.date().required('Date is required'),
 });
 
-const TradeForm = ({ onSubmit, accounts }) => {
+const TradeForm = ({ onSubmit, accounts, closeModal }) => {
   const { register, handleSubmit, formState, errors, watch } = useForm({
     resolver: yupResolver(basicTradeSchema),
     mode: 'onChange',
@@ -117,6 +117,9 @@ const TradeForm = ({ onSubmit, accounts }) => {
         <div className='form__button-container'>
           <Button disabled={!isValid} buttonStyle='primary' type='submit'>
             New Trade
+          </Button>
+          <Button type='button' onClick={closeModal}>
+            Cancel
           </Button>
         </div>
       </form>

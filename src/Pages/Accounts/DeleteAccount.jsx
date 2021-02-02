@@ -25,9 +25,7 @@ const DeleteAccount = props => {
 
   return (
     <motion.div className='modal' {...modalAnimation}>
-      <Button buttonStyle='close' onClick={closeModal}>
-        x
-      </Button>
+    <div className="modal__container">
       <div className='modal__body'>
         <h3 className='modal__title'>{`You are trying to delete your ${account_name} account.`}</h3>
         <p className='modal__paragraph'>
@@ -56,6 +54,7 @@ const DeleteAccount = props => {
           Delete
         </Button>
         <Button onClick={closeModal}>Cancel</Button>
+        </div>
       </div>
     </motion.div>
   );

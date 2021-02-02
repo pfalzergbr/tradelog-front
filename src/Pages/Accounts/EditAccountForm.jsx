@@ -11,7 +11,7 @@ const accountSchema = yup.object().shape({
   description: yup.string().required('Description is required'),
 });
 
-const EditAccountForm = ({ onSubmit, data }) => {
+const EditAccountForm = ({ onSubmit, data, closeModal }) => {
   const { account_name: accountName, description } = data.account;
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(accountSchema),
@@ -43,11 +43,14 @@ const EditAccountForm = ({ onSubmit, data }) => {
             />
           </div>
           <div className='form__button-container'>
-            <Button buttonStyle='primary' disabled={!isValid} type='submit'>
-              Edit Account
-            </Button>
+          <Button buttonStyle='primary' disabled={!isValid} type='submit'>
+          Edit Account
+          </Button>
+          <Button type='button' onClick={closeModal}>
+          Cancel
+          </Button>
           </div>
-        </form>
+          </form>
       </div>
     </React.Fragment>
   );

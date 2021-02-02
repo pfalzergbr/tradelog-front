@@ -14,7 +14,7 @@ const accountSchema = yup.object().shape({
   description: yup.string().required('A short description is required'),
 });
 
-const NewAccountForm = ({ onSubmit }) => {
+const NewAccountForm = ({ onSubmit, closeModal }) => {
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(accountSchema),
     mode: 'onChange',
@@ -22,17 +22,17 @@ const NewAccountForm = ({ onSubmit }) => {
   const { isValid } = formState;
 
   const currencyOptions = [
-    {optionValue: 'usd', optionName: 'USD - $'},
-    {optionValue: 'gbp', optionName: 'GBP - £'},
-    {optionValue: 'eur', optionName: 'EUR - €'},
-    {optionValue: 'jpy', optionName: 'JPY - ¥'}
-  ]
+    { optionValue: 'usd', optionName: 'USD - $' },
+    { optionValue: 'gbp', optionName: 'GBP - £' },
+    { optionValue: 'eur', optionName: 'EUR - €' },
+    { optionValue: 'jpy', optionName: 'JPY - ¥' },
+  ];
 
   return (
     <div className='form-container'>
       <form onSubmit={handleSubmit(onSubmit)} className='form'>
         <h2 className='form__title'>New Account</h2>
-        <div className='form-items'>
+        <div className='form__items'>
           <InputText
             name='accountName'
             label='Account Name'
@@ -46,7 +46,7 @@ const NewAccountForm = ({ onSubmit }) => {
             optionValue='optionValue'
             register={register}
             errors={errors}
-            />
+          />
           <InputText
             name='balance'
             label='Opening Balance'
@@ -59,11 +59,14 @@ const NewAccountForm = ({ onSubmit }) => {
             register={register}
             errors={errors}
           />
+          </div>
           <div className='form__button-container'>
             <Button disabled={!isValid} buttonStyle='primary' type='submit'>
               New Account
             </Button>
-          </div>
+            <Button type='button' onClick={closeModal}>
+              Cancel
+            </Button>
           </div>
       </form>
     </div>

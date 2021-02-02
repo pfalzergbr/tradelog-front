@@ -17,8 +17,8 @@ const NewAccount = props => {
   };
 
   return (
-    <motion.div {...modalAnimation}>
-      <NewAccountForm onSubmit={onSubmit} closeModa={props.closeModal} />
+    <motion.div className='modal' {...modalAnimation}>
+      <NewAccountForm onSubmit={onSubmit} closeModal={props.closeModal} />
     </motion.div>
   );
 };

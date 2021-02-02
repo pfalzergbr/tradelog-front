@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import EditAccountForm from './EditAccountForm';
 import LoadingGroup from '../Shared/LoadingGroup';
 import { editAccount } from '../../Services/Requests/accountRequests';
-import Button from '../Shared/ui/Button';
 import { modalAnimation } from '../../Services/Animations/modalTransition';
 
 const NewTrade = props => {
@@ -20,10 +19,7 @@ const NewTrade = props => {
   return (
     <LoadingGroup>
       <motion.div className='modal' {...modalAnimation}>
-        <Button buttonStyle='close' onClick={props.closeModal}>
-          x
-        </Button>
-        <EditAccountForm onSubmit={onSubmit} data={props.data} />
+        <EditAccountForm onSubmit={onSubmit} data={props.data} closeModal={props.closeModal}/>
       </motion.div>
     </LoadingGroup>
   );
