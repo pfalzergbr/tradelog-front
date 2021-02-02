@@ -23,7 +23,7 @@ const NewTrade = props => {
 
   return (
     <LoadingGroup>
-      <motion.div {...modalAnimation}>
+      <motion.div className='modal' {...modalAnimation}>
         <TradeForm
           onSubmit={onSubmit}
           accounts={accounts}
