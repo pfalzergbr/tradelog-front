@@ -13,6 +13,7 @@ const Dashboard = lazy(() => import('../Pages/Accounts/Dashboard'));
 const Profile = lazy(() => import('../Pages/Profile/Profile'));
 const AccountDetails = lazy(() => import('../Pages/Accounts/AccountDetails'));
 const TradeDetails = lazy(() => import('../Pages/Trades/TradeDetails'));
+const StrategyDetailsSmall = lazy(() => import('../Pages/Strategies/SmallScreen/StretegyDetailsSmall'));
 
 const AppRouter = () => {
   const auth = useSelector(state => state.auth);
@@ -66,6 +67,9 @@ const AppRouter = () => {
         </Route>
         <Route path='/trade/:tradeId'>
           <TradeDetails />
+        </Route>
+        <Route path='/:userId/strategies/:strategyId'>
+          <StrategyDetailsSmall />
         </Route>
       </Suspense>
     </Switch>
