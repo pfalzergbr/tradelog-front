@@ -7,12 +7,20 @@ import {
   // ADD_TRADE,
 } from '../constants';
 
-const initialState = { accounts: [], accountStats: [], isLoaded: { accounts: false, accountStats: false}};
+const initialState = {
+  accounts: [],
+  accountStats: [],
+  isLoaded: { accounts: false, accountStats: false },
+};
 
 export const account = (state = initialState, action = {}) => {
   switch (action.type) {
     case POPULATE_USER:
-      return { ...state, accounts: action.payload.accounts, isLoaded: {...state.isLoaded, accounts: true} };
+      return {
+        ...state,
+        accounts: action.payload.accounts,
+        isLoaded: { ...state.isLoaded, accounts: true },
+      };
     case ADD_ACCOUNT:
       return {
         ...state,
@@ -35,7 +43,11 @@ export const account = (state = initialState, action = {}) => {
       );
       return { ...state, accounts: filteredAccounts };
     case LOAD_ACCOUNT_STATS:
-      return { ...state, accountStats: action.payload.accountStats, isLoaded: {...state.isLoaded, accountStats: true} };
+      return {
+        ...state,
+        accountStats: action.payload.accountStats,
+        isLoaded: { ...state.isLoaded, accountStats: true },
+      };
     // case ADD_TRADE:
 
     //     const updatedStats = state.accountStats.map(stat =>
@@ -62,14 +74,19 @@ export const selectAccountStats = (state, accountId) => {
   return state.account.accountStats.find(
     account => account.account_id === accountId,
   );
-}
+};
 
-export const selectAccountCurrency = ( state, accountId ) => {
-  return (state.account.accounts.find(
+export const selectAccountCurrency = (state, accountId) => {
+  const account = state.account.accounts.find(
     account => account.account_id === accountId,
-  )).currency;
-}
+  );
+  if (account) {
+    return account.currency;
+  } else {
+    return ''
+  }
+};
 
 export const selectHasAccounts = (state, account) => {
-  return state.account.accounts.length !== 0
-}
+  return state.account.accounts.length !== 0;
+};

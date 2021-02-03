@@ -1,0 +1,32 @@
+.strategy-details-small {
+  @include centered-in-grid-3;
+  background-color: $color-dark;
+  padding: $space-32;
+  color: $color-off-white;
+
+  @media (min-width: 800px) {
+    width: 42rem;
+    margin: 0 auto;
+  }
+
+  &__title-container {
+    padding-bottom: $space-24;
+  }
+
+  &__stats-container {
+    margin-bottom: $space-32;
+    & > div {
+      padding: $space-8 0;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+
+    :first-child {
+      margin-right: auto;
+    }
+  }
+}

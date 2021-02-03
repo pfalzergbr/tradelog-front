@@ -12,6 +12,17 @@
       height: 42rem;
   }
 
+  &--strategy-details {
+    width: 100vw;
+    height: 42rem;
+    display: flex;
+
+    @media(min-width: 400px){
+      width: 32rem;
+      border-radius: 1rem;
+    }
+  }
+
   &:hover, &:active , &:focus {
     background: $color-purple-dark;
     & .card-body {
@@ -77,8 +88,11 @@
     font-weight: 400;
   }
   &__value {
+    font-size: $font-size-regular;
     font-family: 'Roboto', sans-serif;
+
   }
+
 }
 
 .card-footer {
@@ -100,5 +114,8 @@
   margin: 0 auto;
   justify-content: space-between;
   margin-bottom: $space-8;
-}
 
+  span {
+
+  }
+}
