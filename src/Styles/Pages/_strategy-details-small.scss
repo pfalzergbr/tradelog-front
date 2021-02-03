@@ -13,12 +13,38 @@
     padding-bottom: $space-24;
   }
 
+  &__title {
+    font-size: $font-size-header-3;
+  }
+
+  &__value {
+    font-size: $font-size-header-3;
+  }
+
   &__stats-container {
     margin-bottom: $space-32;
     & > div {
       padding: $space-8 0;
     }
   }
+
+
+  &__description-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto $space-32;
+  }
+
+  &__description {
+    font-weight: 300;
+  }
+
+  &__description-title {
+    margin-bottom: $space-12;
+  }
+
+
 
   &__button-container {
     display: flex;

@@ -42,6 +42,7 @@ const StrategyDetailsSmall = () => {
               value={strategyStats.total_pnl}
               type='amount'
               currency={currency}
+              variant='strategy-details-small'
               containerClass='item-container'
             />
           </div>
@@ -85,7 +86,15 @@ const StrategyDetailsSmall = () => {
               containerClass='item-container'
             />
           </div>
-          <div className="strategy-details-small__button-container">
+          <div className='strategy-details-small__description-container'>
+            <h4 className='strategy-details-small__description-title'>
+              Details
+            </h4>
+            <p className='strategy-details-small__description'>
+              {strategy.description}
+            </p>
+          </div>
+          <div className='strategy-details-small__button-container'>
             <Button buttonStyle='outline'>Back</Button>
             <Button>Delete</Button>
             <Button>Edit</Button>
