@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { openModal } from '../../../Redux/Actions/modalActions';
 import { selectAccountCurrency } from '../../../Redux/Reducers/account';
 import {
   selectStrategyStat,
@@ -8,13 +9,13 @@ import {
 } from '../../../Redux/Reducers/strategy';
 import { loadStrategyStats } from '../../../Services/Requests/strategyRequests';
 
-import Card from '../../Accounts/AccountCard/Card';
 import StatContainer from '../../Accounts/AccountCard/StatContainer';
 import LoadingGroup from '../../Shared/LoadingGroup';
 import Button from '../../Shared/ui/Button';
 
 const StrategyDetailsSmall = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { strategyId } = useParams();
   const { token } = useSelector(state => state.auth);
   const strategy =
@@ -31,6 +32,18 @@ const StrategyDetailsSmall = () => {
       loadStrategyStats(token, strategy, dispatch);
     }
   }, [token, strategy, strategyStats, dispatch]);
+
+  const handleGoBack = () => {
+    history.push(`/${strategy.user_id}/accounts/${strategy.account_id}`);
+  };
+
+  const openDeleteModal = () => {
+    dispatch(openModal('deleteStrategy', { strategy, token }));
+  };
+
+  const openEditModal = () => {
+    dispatch(openModal('editStrategy', { strategy, token }));
+  };
 
   return (
     <LoadingGroup>
@@ -95,9 +108,11 @@ const StrategyDetailsSmall = () => {
             </p>
           </div>
           <div className='strategy-details-small__button-container'>
-            <Button buttonStyle='outline'>Back</Button>
-            <Button>Delete</Button>
-            <Button>Edit</Button>
+            <Button buttonStyle='outline' onClick={handleGoBack}>
+              Back
+            </Button>
+            <Button onClick={openDeleteModal}>Delete</Button>
+            <Button onClick={openEditModal}>Edit</Button>
           </div>
         </div>
       )}

@@ -12,7 +12,7 @@ const strategySchema = yup.object().shape({
   description: yup.string().required('Description is required'),
 });
 
-const StrategyForm = ({strategyData = {}, onSubmit, closeModal}) => {
+const StrategyForm = ({strategyData = {}, onSubmit, closeModal, button = 'New Strategy'}) => {
   const { register, handleSubmit, formState, errors } = useForm({
     resolver: yupResolver(strategySchema),
     mode: 'onChange',
@@ -25,7 +25,7 @@ const StrategyForm = ({strategyData = {}, onSubmit, closeModal}) => {
   return (
     <div className='form-container'>
       <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <h1 className='form__title'>New Strategy</h1>
+        <h1 className='form__title'>{ strategyData.strategy_name ? 'Edit Strategy' : 'New Strategy'}</h1>
         <div className='form__items'>
         <InputText
           name='strategyName'
@@ -44,7 +44,7 @@ const StrategyForm = ({strategyData = {}, onSubmit, closeModal}) => {
         </div>
         <div className='form__button-container'>
         <Button buttonStyle='primary' type='submit' disabled={!isValid}>
-          New Strategy
+          {button}
         </Button>
         <Button type='button' onClick={closeModal}>
         Cancel

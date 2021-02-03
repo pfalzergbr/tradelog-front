@@ -6,7 +6,7 @@ import { editStrategy } from '../../Services/Requests/strategyRequests';
 import { motion } from 'framer-motion';
 import { modalAnimation } from '../../Services/Animations/modalTransition';
 
-const NewStrategy = ({data, closeModal}) => {
+const NewStrategy = ({ data, closeModal }) => {
   const { strategy, token } = data;
   const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const NewStrategy = ({data, closeModal}) => {
   };
 
   return (
-    <motion.div {...modalAnimation}>
+    <motion.div className='modal' {...modalAnimation}>
       <StrategyForm
         strategyData={strategy}
         button='Edit Strategy'
