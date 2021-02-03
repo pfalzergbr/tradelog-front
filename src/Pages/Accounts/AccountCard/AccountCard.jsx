@@ -32,7 +32,7 @@ const AccountCard = props => {
 
 
   return (
-    <Card>
+    <Card type='account'>
       <CardHeader accountName={account_name} relativeGain={relativeGain} />
       {currentAccountStats ? (
         <div className='card-body'>

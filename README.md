@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+## [Tradelog](https://tradelog-app.herokuapp.com/) - Front-end
+### Porftolio-project by Gabor Pfalzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end code for the Tradelog project. My first full stack web application for the portfolio site, built mainly for my own practice. Connects to a custom Node.js backend, [Tradelog API](https://github.com/pfalzergbr/tradelog-api).
 
-## Available Scripts
+### Frontend Stack
+- Javascript
+- React (Hooks)
+- Redux (No toolkit)
+- Sass (Scss)
 
-In the project directory, you can run:
 
-### `yarn start`
+The application is help retail traders on financial markets keep track of their trading activities, may there be Stocks, Forex, Options or Cryptocurrencies.
+Traders can create separate accounts for different kind of trading, and add strategies to differentiate between different trading activities. The application summarises profits, losses, win percentages, average profits and losses by accounts, strategies. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Since most trading platforms and brokers provide robust analytical tools and expensive real-time data, this is more a practice project than a viable product, although it could be very useful for self assessing strategies and building discipline for individual retail traders. Most major brokers provide APIs to connect applications like this to fetch data and make it way more useful, but since it is not meant to be a full fledged product, did not go down that avenue. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Also explored using other financial API-s to fetch stock market data, was very keen on build in a Symbol search and populating company data. Unfortunately, restrictions on the free APIs don't actually make this possible, even on this scale. 
 
-### `yarn test`
+### User Interface
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User interface is built with [**React**](https://github.com/facebook/react), fully using functional components and react hooks. One of the main purpose of this project was to get used to writing reusable code, extracted as much code into smaller components as possible. More refactoring and drying is possible, will most likely spend more time for further tidy up. 
 
-### `yarn build`
+- Front-end Authentication is JWT based, tokens are stored in the auth reducer, and local storage if the user wishes to stay logged in. This might not be the most secure solution, but probably sufficient for this particular project. 
+- Using [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) for routing, lazy loading most of the components on the route level for a faster first render. Route transitions are handled by [Framer Motion](https://github.com/framer/motion).
+- Forms are handled by [React-hook-form](https://github.com/react-hook-form/react-hook-form), validated by [yup](https://github.com/jquense/yup). I further extracted reusable form control elements(inputs, labels, error messages) for more code reuse and simplifications of components, and integrated with these libraries. Some minor inputs are handled with simple two-way data binding, and react useState hook. 
+- Data fetching is handled with [Axios](https://github.com/axios/axios)
+- Toasties are using [React-Toastify](https://github.com/fkhadra/react-toastify). Modals are built with [React-Modal](https://github.com/reactjs/react-modal), controlled centrally by a custom modal controller and Redux. 
+- Account Details page includes a custom build accordion menu for strategies and statistics, connected as an automatic filter to a trades table. The table is paginated, built from scratch. Although I am sure there are libraries for that, I wanted to build these myself to practice.  
+- Styled with SCSS, layout is a combination of CSS Grid and Flexbox. More complex responsiveness issues with mobile screens are solved by [react-responsive](https://github.com/contra/react-responsive), to conditionally render appropriate components, based on the viewport. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### State Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application is using [**Redux**](https://github.com/reduxjs/redux) with hooks as a state management solution. Started the project without, considered useReucers and Context API. Finally decided that the complex appliacation state including 6 separate reducers, cross-component communication and extensive data fetching justifies for the added complexity of Redux. Using [Redux Thunks](https://github.com/reduxjs/redux-thunk) for asyncronous actions. Built a separate handleThunks action to dry up the code, and reuse the same data fetching/loading logic throughout the whole application. Considered using Redux toolkit instead of the full boilerplate code, but since this was my first major Redux Project, went with the traditional, more extensive solution. 
+Redux handles Authentication, displaying Modals in a single component, User, Account, Strategy and Trade API requests, controlling loading spinners, fetching and errors.
+The project gave me a great practice in Redux, lot of documentation time, consideration of best practices, and an excellent opportunity to work with complex state.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

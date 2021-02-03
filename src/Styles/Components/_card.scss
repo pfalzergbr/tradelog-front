@@ -1,14 +1,16 @@
 .card {
-  width: 100vw;
-  height: 42rem;
+
   display: flex;
   flex-direction: column;
   background: $color-dark;
   box-shadow: $shadow-light;
   color: $color-purple-light;
-
   transition: color .3s ease-out;
 
+  &--account {
+      width: 100vw;
+      height: 42rem;
+  }
 
   &:hover, &:active , &:focus {
     background: $color-purple-dark;

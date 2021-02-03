@@ -33,7 +33,7 @@ const AccountWidget = ({ account, token }) => {
       <div className='widget__button-container'>
         <Button onClick={openEditModal}>Edit</Button>
         <Button onClick={openDeleteModal}>Delete</Button>
-        <Button buttonStyle='outline'>Details</Button>
+        <Button>Details</Button>
         <Button buttonStyle='outline' onClick={openStrategyModal}>
           New Strategy
         </Button>
