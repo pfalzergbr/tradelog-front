@@ -3,6 +3,8 @@
 
 Front-end code for the Tradelog project. My first full stack web application for the portfolio site, built mainly for my own practice. Connects to a custom Node.js backend, [Tradelog API](https://github.com/pfalzergbr/tradelog-api).
 
+<img src="https://github.com/pfalzergbr/pfalzergbr/blob/main/images/tradelog-landing.png?raw=true" alt="landing page for tradelog app" width="30%" height="30%"/> 
+
 ### Frontend Stack
 - Javascript
 - React (Hooks)
