@@ -35,3 +35,6 @@ The application is using [**Redux**](https://github.com/reduxjs/redux) with hook
 Redux handles Authentication, displaying Modals in a single component, User, Account, Strategy and Trade API requests, controlling loading spinners, fetching and errors.
 The project gave me a great practice in Redux, lot of documentation time, consideration of best practices, and an excellent opportunity to work with complex state.
 
+### Testing
+
+I am currently learning unit testing, start applying in my next projects, to get into the habit. Planning to build test coverage for this project slowly, over time as practice.
