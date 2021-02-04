@@ -31,6 +31,8 @@ User interface is built with [**React**](https://github.com/facebook/react), ful
 - Account Details page includes a custom build accordion menu for strategies and statistics, connected as an automatic filter to a trades table. The table is paginated, built from scratch. Although I am sure there are libraries for that, I wanted to build these myself to practice.  
 - Styled with SCSS, layout is a combination of CSS Grid and Flexbox. More complex responsiveness issues with mobile screens are solved by [react-responsive](https://github.com/contra/react-responsive), to conditionally render appropriate components, based on the viewport. 
 
+<img src="https://github.com/pfalzergbr/pfalzergbr/blob/main/images/tradelog-details.png?raw=true" alt="account details page of tradelog" width="80%"/> 
+
 ### State Management
 
 The application is using [**Redux**](https://github.com/reduxjs/redux) with hooks as a state management solution. Started the project without, considered useReucers and Context API. Finally decided that the complex appliacation state including 6 separate reducers, cross-component communication and extensive data fetching justifies for the added complexity of Redux. Using [Redux Thunks](https://github.com/reduxjs/redux-thunk) for asyncronous actions. Built a separate handleThunks action to dry up the code, and reuse the same data fetching/loading logic throughout the whole application. Considered using Redux toolkit instead of the full boilerplate code, but since this was my first major Redux Project, went with the traditional, more extensive solution. 
