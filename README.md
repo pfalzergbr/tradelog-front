@@ -49,3 +49,4 @@ I am currently learning unit testing, start applying in my next projects, to get
 - Add test coverage.
 - Build a trade symbol search
 - Build Profile management
+- Add description snippets
