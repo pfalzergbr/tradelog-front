@@ -42,3 +42,10 @@ The project gave me a great practice in Redux, lot of documentation time, consid
 ### Testing
 
 I am currently learning unit testing, start applying in my next projects, to get into the habit. Planning to build test coverage for this project slowly, over time as practice.
+
+
+## Todo
+
+- Add test coverage.
+- Build a trade symbol search
+- Build Profile management
