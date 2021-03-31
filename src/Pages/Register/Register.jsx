@@ -16,10 +16,13 @@ const Register = () => {
 
   const onSubmit = async data => {
     const response = await registerUser(data, dispatch);
-    if (data.keepLoggedIn) {
+    if (response && data.keepLoggedIn) {
       storeUser({ user: response.user, token: response.token });
+      history.push(`/${response.user.userId}/dashboard`);
     }
-    history.push(`/${response.user.userId}/dashboard`);
+    if (response) {
+      history.push(`/${response.user.userId}/dashboard`);
+    }
   };
 
   return (

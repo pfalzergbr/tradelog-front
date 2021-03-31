@@ -27,6 +27,9 @@ export const registerUser = async (data, dispatch) => {
         data,
       }),
     );
+    if (!response.token) {
+      throw new Error()
+    }
     toast('Registered successfully. Welcome!');
     return response;
   } catch (error) {
